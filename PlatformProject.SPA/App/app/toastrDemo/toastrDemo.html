@@ -1,0 +1,192 @@
+﻿<div>
+    <section class="row">
+        <h1>toastr</h1>
+        <div class="well row">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="title">Title</label>
+                            <div class="col-sm-9">
+                                <input id="title" type="text" class="form-control" placeholder="Enter a title ..." />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="message">Message</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="message" rows="3" placeholder="Enter a message ..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="checkbox">
+                            <label>
+                                <input id="closeButton" type="checkbox" value="checked" class="input-mini" />Close Button
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="addBehaviorOnToastClick" type="checkbox" value="checked" class="input-mini" />Add behavior on toast click
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="debugInfo" type="checkbox" value="checked" class="input-mini" />Debug
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="progressBar" type="checkbox" value="checked" class="input-mini" />Progress Bar
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group" id="toastTypeGroup">
+                            <label class="col-sm-3 control-label">Toast Type</label>
+                            <div class="col-sm-9">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="toasts" value="success" checked />Success
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="toasts" value="info" />Info
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="toasts" value="warning" />Warning
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="toasts" value="error" />Error
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group" id="positionGroup">
+                            <label class="col-sm-3 control-label">Position</label>
+                            <div class="col-sm-9">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-top-right" checked />Top Right
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-bottom-right" />Bottom Right
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-bottom-left" />Bottom Left
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-top-left" />Top Left
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-top-full-width" />Top Full Width
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-bottom-full-width" />Bottom Full Width
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-top-center" />Top Center
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="positions" value="toast-bottom-center" />Bottom Center
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label " for="showEasing">Show Easing</label>
+                            <div class="col-sm-9">
+                                <input id="showEasing" type="text" placeholder="swing, linear" class="form-control" value="swing" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="hideEasing">Hide Easing</label>
+                            <div class="col-sm-9">
+                                <input id="hideEasing" type="text" placeholder="swing, linear" class="form-control" value="linear" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="showMethod">Show Method</label>
+                            <div class="col-sm-9">
+                                <input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" class="form-control" value="fadeIn" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="hideMethod">Hide Method</label>
+                            <div class="col-sm-9">
+                                <input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" class="form-control" value="fadeOut" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label " for="showDuration">Show Duration</label>
+                            <div class="col-sm-9">
+                                <input id="showDuration" type="text" placeholder="ms" class="form-control" value="300" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="hideDuration">Hide Duration</label>
+                            <div class="col-sm-9">
+                                <input id="hideDuration" type="text" placeholder="ms" class="form-control" value="1000" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="timeOut">Time out</label>
+                            <div class="col-sm-9">
+                                <input id="timeOut" type="text" placeholder="ms" class="form-control" value="5000" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="extendedTimeOut">Extended time out</label>
+                            <div class="col-sm-9">
+                                <input id="extendedTimeOut" type="text" placeholder="ms" class="form-control" value="1000" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
+                <button type="button" class="btn btn-danger" id="cleartoasts">Clear Toasts</button>
+                <button type="button" class="btn btn-danger" id="clearlasttoast">Clear Last Toast</button>
+            </div>
+            <div class="row" style='margin-top: 25px;'>
+                <pre id='toastrOptions'></pre>
+            </div>
+        </div>
+    </section>
+    <script src="app/toastrDemo/toastrImpl.js"></script>
+</div>

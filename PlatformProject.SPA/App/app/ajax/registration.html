@@ -1,0 +1,147 @@
+<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../common/validation/jquery.validationEngine.js"></script>
+<script src="../common/validation/jquery.validationEngine-en.js"></script>
+<script src="../common/preloader/script/PreloaderHandler.js"></script>
+<script src="../js/WingsProperty.js"></script>
+<script src="../js/Wings.js"></script>
+
+<script src="../common/shared/SharedFunctions.js"></script>
+<script src="../common/shared/q.js"></script>
+<script src="../common/asynchronous/Promises.js"></script>
+
+
+
+<link rel="stylesheet" href="../common/preloader/css/load6.css" />
+<link rel="stylesheet" href="../common/preloader/css/linePre1.css" />
+<link href="../common/validation/template.css" rel="stylesheet">
+<link href="../common/validation/validationEngine.jquery.css" rel="stylesheet">
+
+<script>
+   jQuery(document).ready(function(){
+       // binds form submission and fields to the validation engine
+      jQuery("#formId").validationEngine();
+   });
+</script>
+<!--Start Breadcrumb-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <a href="#" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ol class="breadcrumb pull-left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">Registration</a></li>
+        </ol>
+        <div id="social" class="pull-right">
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
+<!--End Breadcrumb-->
+ <div class="container-fluid" id="divcontent">
+    <div id="page-login" class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="text-right">
+                <a href="page_login_v1.html" class="txt-default">Already have an account?</a>
+            </div>
+            <div class="box">
+                <!--<form id="formId" onsubmit="NotificationHandler.ViewNotification('Trying to Submit Form');" action="#ajax/feedback.html">-->
+                <form id="formId" onsubmit="Promises.callFunction(timeConsumingJob,'mappp')" action="#ajax/feedback.html">
+                    <div class="box-content">
+                        <div class="text-center">
+                            <h3 class="page-header">Registration Form</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Full Name</label>
+                            <input type="text" class="validate[required] text-input form-control" name="fullName" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Address</label>
+                            <input type="text" class="validate[required] form-control" name="address" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Date of Birth</label>
+                            <input type="text" class="validate[required,custom[date]] form-control" name="dob" />
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Gender</label></br>
+                            <select class="validate[required]">
+                                <option value="">Choose</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Qualifications</label></br>
+                            <textarea class="validate[required] form-control" name="qualifications" rows="4" cols="60"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input type="text" class="validate[required,custom[email]] form-control" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Username</label>
+                            <input type="text" class="validate[required] form-control" name="username" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input type="password" class="validate[required,minSize[5],maxSize[10]] form-control" name="password" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Confirm Password</label>
+                            <input type="password" class="validate[required] form-control" name="confirmPassword" />
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" checked> I want to receive newsletters
+                                <i class="fa fa-square-o small"></i>
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="Apply" class="btn btn-primary" onclick="NotificationHandler.ViewSuccess(LocalisationHandler.init('Find', 'si-LK'), LocalisationHandler.init('Find', 'en-US'));">
+                        </div>
+                    </div>
+                    <div id="mappp">
+                        <!--<div class="region"><a href="link1">submit</a></div>-->
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function countdown(counter) {
+        x = counter;
+        if (x > 0) {
+            x--;
+            if (x % 2 === 0) {
+                NotificationHandler.ViewWarning('Background process Warnings ' + x + "/5");
+            } else {
+                NotificationHandler.ViewError('Background process Warnings ' + x + "/5");
+
+            }
+            if (x > 0) {
+                setTimeout(function () {
+                    countdown(x);
+                }, 5000);
+            }
+        }
+    };
+
+    jQuery(document).ready(function () {
+        // binds form submission and fields to the validation engine
+        countdown(6);
+
+    });
+
+</script>

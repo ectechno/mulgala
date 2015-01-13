@@ -1,0 +1,44 @@
+/* line 4, app.sass */
+html {
+  font-size: 100%;
+}
+
+/* line 7, app.sass */
+body {
+  font-family: "Open Sans", Helvetica Neue, Sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: #323232;
+  overflow-x: hidden !important;
+  margin: auto !important;
+}
+
+/* line 20, app.sass */
+preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fefefe;
+  z-index: 99999;
+  height: 100%;
+  width: 100%;
+  overflow: hidden !important;
+}
+
+/* line 32, app.sass */
+status {
+  background-image: url(../assets/images/loader-blue.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px;
+}

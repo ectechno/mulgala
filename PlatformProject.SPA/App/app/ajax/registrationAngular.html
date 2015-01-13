@@ -1,0 +1,166 @@
+<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../common/validation/jquery.validationEngine.js"></script>
+<script src="../common/validation/jquery.validationEngine-en.js"></script>
+<script src="../common/preloader/script/PreloaderHandler.js"></script>
+<script src="app/app.js"></script>
+<script src="../js/WingsProperty.js"></script>
+<script src="../js/Wings.js"></script>
+<script src="../common/shared/SharedFunctions.js"></script>
+<script src="../common/shared/q.js"></script>
+<script src="../common/asynchronous/Promises.js"></script>
+
+
+<link rel="stylesheet" href="../common/preloader/css/load6.css" />
+<link rel="stylesheet" href="../common/preloader/css/linePre1.css" />
+<link href="../common/validation/template.css" rel="stylesheet">
+<link href="../common/validation/validationEngine.jquery.css" rel="stylesheet">
+
+<script>
+   jQuery(document).ready(function(){
+       // binds form submission and fields to the validation engine
+      jQuery("#formId").validationEngine();
+   });
+</script>
+
+<!--Start Breadcrumb-->
+<div class="row">                                                                                                     
+    <div id="breadcrumb" class="col-xs-12">
+        <a href="#" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ol class="breadcrumb pull-left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">Registration</a></li>
+        </ol>
+        <div id="social" class="pull-right">
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
+<!--End Breadcrumb-->
+
+ <div class="container-fluid" id="divcontent" ng-app="validationApp">
+    <div id="page-login" class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="text-right">
+                <a href="page_login_v1.html" class="txt-default">Already have an account?</a>
+            </div>
+            <div class="box">
+                <form id="formId" name="registrationForm" onsubmit="Promises.callFunction(timeConsumingJob,'mappp')" action="#ajax/feedback.html" >
+                  <div class="box-content">
+                        
+                     <div class="text-center">
+                        <h3 class="page-header">Registration Form</h3>
+                     </div>
+                        
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.name.$invalid && !registrationForm.name.$pristine &&                               submitted}">
+                        <label class="control-label">Full Name</label>
+                        <input type="text" class="text-input form-control" name="name" ng-model="name" required>
+                        <p ng-show="registrationForm.name.$invalid && !registrationForm.name.$pristine" class="help-inline">You name is required.</p>
+                     </div>
+                        
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.address.$invalid && !registrationForm.address.$pristine &&                         submitted} }">
+                        <label class="control-label">Address</label>
+                        <input type="text" class="form-control" name="address" ng-model="address" required>
+                        <p ng-show="registrationForm.address.$invalid && !registrationForm.address.$pristine" class="help-block">You address is                               required.</p>
+                     </div>
+                      
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.dob.$invalid && !registrationForm.dob.$pristine &&                                 submitted} }">
+                         <label class="control-label">Date of Birth</label>
+                         <input type="date" class="form-control" name="dob" ng-model="dob" required>
+                         <p ng-show="registrationForm.dob.$invalid && !registrationForm.dob.$pristine" class="help-block">Please enter a valid date.                          </p>
+                     </div>
+                      
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.gender.$invalid && !registrationForm.gender.$pristine &&                           submitted}}">
+                         <label class="control-label">Gender</label></br>
+                         <select name="gender" ng-model="gender" required>
+                              <option value="">Choose</option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                         </select>
+                         <p ng-show="registrationForm.gender.$invalid && !registrationForm.gender.$pristine" class="help-block">Please choose your                            gender.</p>
+                     </div>
+                    
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.qualifications.$invalid &&                                                        !registrationForm.qualifications.$pristine && submitted} }">
+                          <label class="control-label">Qualifications</label></br>
+                          <textarea class="form-control" name="qualifications" rows="4" cols="60" ng-model="qualifications" required></textarea>
+                          <p ng-show="registrationForm.qualifications.$invalid && !registrationForm.qualifications.$pristine" class="help-block">Your                           qualifications are required.</p> 
+                     </div>
+
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine &&                               submitted} }">
+                          <label class="control-label">Email</label>
+                          <input type="email" class="form-control" name="email" ng-model="email" required>
+                          <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block">Please enter a valid                             email address.</p> 
+                     </div>
+                
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.username.$invalid && !registrationForm.username.$pristine &&                         submitted} }">
+                          <label class="control-label">Username</label>
+                          <input type="text" class="form-control" name="username" ng-model="username" required>
+                          <p ng-show="registrationForm.username.$invalid && !registrationForm.username.$pristine" class="help-block">Your username is                            required.</p> 
+                     </div>
+                
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine &&                         submitted} }">
+                          <label class="control-label">Password</label>
+                          <input type="password" class="form-control" name="password" ng-model="password" ng-maxlength=8 ng-minlength=5 required>
+                          <p ng-show="registrationForm.password.$invalid && !registrationForm.password.$pristine" class="help-block">Your password is                            required.</p>
+                          <p ng-show="registrationForm.password.$error.minlength" class="help-block">Minimum 5 characters allowed.</p>
+                          <p ng-show="registrationForm.password.$error.maxlength" class="help-block">Maximum 8 characters allowed.</p>
+                     </div>
+                
+                     <div class="form-group" ng-class="{ 'has-error' : registrationForm.confirmPassword.$invalid &&                                                        !registrationForm.confirmPassword.$pristine && submitted} }">
+                          <label class="control-label">Confirm Password</label>
+                          <input type="password" class="form-control" name="confirmPassword" ng-model="confirmPassword" required>
+                          <p ng-show="registrationForm.confirmPassword.$invalid && !registrationForm.confirmPassword.$pristine" class="help-                                    block">This field is required.</p> 
+                     </div>
+                
+                     <div class="checkbox">
+                          <label>
+                               <input type="checkbox" checked> I want to receive newsletters
+                               <i class="fa fa-square-o small"></i>
+                          </label>
+                     </div>
+                
+                     <div class="text-center">
+                          <input type="submit" value="Apply" class="btn btn-primary"                                                                                           onclick="NotificationHandler.ViewSuccess(LocalisationHandler.init('Find', 'si-LK'), LocalisationHandler.init('Find', 'en-                             US'));">
+                     </div>
+                
+                    </div>
+                    <div id="mappp">
+                        <!--<div class="region"><a href="link1">submit</a></div>-->
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function countdown(counter) {
+        x = counter;
+        if (x > 0) {
+            x--;
+            if (x % 2 === 0) {
+                NotificationHandler.ViewWarning('Background process Warnings ' + x + "/5");
+            } else {
+                NotificationHandler.ViewError('Background process Warnings ' + x + "/5");
+
+            }
+            if (x > 0) {
+                setTimeout(function () {
+                    countdown(x);
+                }, 5000);
+            }
+        }
+    };
+
+    jQuery(document).ready(function () {
+        countdown(6);   // binds form submission and fields to the validation engine
+    });
+
+</script>
