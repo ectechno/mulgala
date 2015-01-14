@@ -11,17 +11,17 @@ namespace PlatformProject.Constants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        public const string AuthorizationServerBaseAddress = "http://localhost:21681/";
+        public const string AuthorizationServerBaseAddress = "http://localhost:21681";
 
         /// <summary>
         /// ResourceServer project should run on this URL
         /// </summary>
-        public const string ResourceServerBaseAddress = "http://localhost:48846/";
+        public const string ResourceServerBaseAddress = "http://localhost:48846";
 
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'
         /// </summary>
-        public const string ImplicitGrantCallBackPath = "http://localhost:38515/Home/SignIn";
+        public const string ImplicitGrantCallBackPath = "http://localhost:32891/Home/SignIn";
 
         /// <summary>
         /// AuthorizationCodeGrant project should be running on this URL.
