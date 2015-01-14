@@ -11,13 +11,12 @@ namespace PlatformProject.Constants
         /// <summary>
         /// AuthorizationServer project should run on this URL
         /// </summary>
-        //public const string AuthorizationServerBaseAddress = "http://localhost:11625";
-        public const string AuthorizationServerBaseAddress = "http://localhost:1215";
+        public const string AuthorizationServerBaseAddress = "http://localhost:21681/";
 
         /// <summary>
         /// ResourceServer project should run on this URL
         /// </summary>
-        public const string ResourceServerBaseAddress = "http://localhost:38385";
+        public const string ResourceServerBaseAddress = "http://localhost:48846/";
 
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'
