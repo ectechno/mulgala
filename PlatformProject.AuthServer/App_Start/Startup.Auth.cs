@@ -12,7 +12,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 
-namespace PlatformProject.AuthServer.App_Start
+namespace PlatformProject.AuthServer
 {
     public partial class Startup
     {
@@ -47,9 +47,9 @@ namespace PlatformProject.AuthServer.App_Start
                 AuthorizeEndpointPath = new PathString(Paths.AuthorizePath),
                 TokenEndpointPath = new PathString(Paths.TokenPath),
                 ApplicationCanDisplayErrors = true,
-#if DEBUG
+                #if DEBUG
                 AllowInsecureHttp = true,
-#endif
+                #endif
                 // Authorization server provider which controls the lifecycle of Authorization Server
                 Provider = new OAuthAuthorizationServerProvider
                 {
