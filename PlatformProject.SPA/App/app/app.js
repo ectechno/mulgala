@@ -19,32 +19,32 @@ var myApp = angular
   .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-            templateUrl: 'app/ajax/dashboard.html',
+            templateUrl: 'App/app/ajax/dashboard.html',
         })
         .when('/about', {
-            templateUrl: 'app/about/about.html',
+            templateUrl: 'App/app/about/about.html',
             controller: 'AboutCtrl'
         })
         .when('/plusOneDemo', {
-            templateUrl: 'app/plusOneDemo/plusOneDemo.html',
+            templateUrl: 'App/app/plusOneDemo/plusOneDemo.html',
             controller: 'plusOneDemoCtrl'
         })
         .when('/toastrDemo', {
-            templateUrl: 'app/toastrDemo/toastrDemo.html',
+            templateUrl: 'App/app/toastrDemo/toastrDemo.html',
             controller: 'toastrDemoCtrl'
         })
         .when('/validationDemo', {
-            templateUrl: 'app/validationDemo/validationDemo.html',
+            templateUrl: 'App/app/validationDemo/validationDemo.html',
             controller: 'validationDemoCtrl'
         })
         .when('/ajax/:url', {
             templateUrl: function(params){
-                return 'app/ajax/'+params.url
+                return 'App/app/ajax/' + params.url
             }
         })
         .when('/:url', {
             templateUrl: function(params){
-                return 'app/ajax/'+params.url +'.html'
+                return 'App/app/ajax/' + params.url + '.html'
             }
         })
         .otherwise({
