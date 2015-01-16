@@ -14,7 +14,9 @@ var myApp = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'notifyApp',
+    'validationApp'
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -52,6 +54,49 @@ var myApp = angular
         });
   });
 
+var notifyApp = angular.module('notifyApp', []);
+notifyApp.controller("notifyController", function ($scope) {
+
+    $scope.show = function (data, type, position) {
+        setInterval(function () {
+            var para = document.createElement("p");
+            var node = document.createTextNode(data);
+            para.appendChild(node);
+            var element = document.getElementById("notify");
+            element.appendChild(para);
+
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = '.cssClass { color: white; height: 20px;width:250px; padding:20px; text-align:center';
+            document.getElementsByTagName('head')[0].appendChild(style);
+            document.getElementById('notify').className = 'cssClass';
+            if (type == 'success') {
+                element.style.backgroundColor = '#00CC00';
+            }
+            else if (type == 'error') {
+                element.style.backgroundColor = '#E62E19';
+            }
+            else if (type == 'info') {
+                element.style.backgroundColor = '#2368FF';
+            }
+            if (position == 'right') {
+                element.style.marginLeft = '922px';
+            }
+            else if (position == 'left') {
+                element.style.marginLeft = '0px';
+            }
+            else if (position == 'center') {
+                element.style.marginLeft = '500px';
+            }
+
+
+        }, 2000);
+
+    };
+    $scope.alert = function () {
+        alert('alerted!');
+    };
+});
 
 var validationApp = angular.module('validationApp', []);
 validationApp.controller('mainController', function($scope) {     // create angular controller
