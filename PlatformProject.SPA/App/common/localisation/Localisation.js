@@ -35,14 +35,14 @@ var LocalisationHandler = (function ()
             {
                 //localize.language = provider.defaultLanguage;
                 //return 'common/localisation/resources-locale_' + localize.language + '.' + provider.ext;
-                return 'common/localisation/resources-locale_si-LK' + '.' + provider.ext;
+                return 'App/common/localisation/resources-locale_si-LK' + '.' + provider.ext;
                
             } 
             else if(localize.language == "en-US"){
-                return 'common/localisation/resources-locale_en-US' + '.' + provider.ext;
+                return 'App/common/localisation/resources-locale_en-US' + '.' + provider.ext;
             }
             else{
-                return 'common/localisation/resources-locale_ta-LK' + '.' + provider.ext;
+                return 'App/common/localisation/resources-locale_ta-LK' + '.' + provider.ext;
             }
             
         },
