@@ -13,7 +13,7 @@
 function LoadCalendarScript(callback){
 	function LoadFullCalendarScript(){
 		if(!$.fn.fullCalendar){
-			$.getScript('plugins/fullcalendar/fullcalendar.js', callback);
+			$.getScript('App/plugins/fullcalendar/fullcalendar.js', callback);
 		}
 		else {
 			if (callback && typeof(callback) === "function") {
@@ -22,7 +22,7 @@ function LoadCalendarScript(callback){
 		}
 	}
 	if (!$.fn.moment){
-		$.getScript('plugins/moment/moment.min.js', LoadFullCalendarScript);
+		$.getScript('App/plugins/moment/moment.min.js', LoadFullCalendarScript);
 	}
 	else {
 		LoadFullCalendarScript();
@@ -48,7 +48,7 @@ function LoadOpenLayersScript(callback){
 //
 function LoadLeafletScript(callback){
 	if (!$.fn.L){
-		$.getScript('plugins/leaflet/leaflet.js', callback);
+		$.getScript('App/plugins/leaflet/leaflet.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -62,7 +62,7 @@ function LoadLeafletScript(callback){
 //
 function LoadTimePickerScript(callback){
 	if (!$.fn.timepicker){
-		$.getScript('plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min.js', callback);
+	    $.getScript('App/App/plugins/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -76,7 +76,7 @@ function LoadTimePickerScript(callback){
 //
 function LoadBootstrapValidatorScript(callback){
 	if (!$.fn.bootstrapValidator){
-		$.getScript('plugins/bootstrapvalidator/bootstrapValidator.min.js', callback);
+		$.getScript('App/plugins/bootstrapvalidator/bootstrapValidator.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -90,7 +90,7 @@ function LoadBootstrapValidatorScript(callback){
 //
 function LoadSelect2Script(callback){
 	if (!$.fn.select2){
-		$.getScript('plugins/select2/select2.min.js', callback);
+		$.getScript('App/plugins/select2/select2.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -104,10 +104,10 @@ function LoadSelect2Script(callback){
 //
 function LoadDataTablesScripts(callback){
 	function LoadDatatables(){
-		$.getScript('plugins/datatables/jquery.dataTables.js', function(){
-			$.getScript('plugins/datatables/ZeroClipboard.js', function(){
-				$.getScript('plugins/datatables/TableTools.js', function(){
-					$.getScript('plugins/datatables/dataTables.bootstrap.js', callback);
+		$.getScript('App/plugins/datatables/jquery.dataTables.js', function(){
+			$.getScript('App/plugins/datatables/ZeroClipboard.js', function(){
+				$.getScript('App/plugins/datatables/TableTools.js', function(){
+					$.getScript('App/plugins/datatables/dataTables.bootstrap.js', callback);
 				});
 			});
 		});
@@ -127,7 +127,7 @@ function LoadDataTablesScripts(callback){
 //
 function LoadFineUploader(callback){
 	if (!$.fn.fineuploader){
-		$.getScript('plugins/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
+	    $.getScript('App/plugins/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -142,11 +142,11 @@ function LoadFineUploader(callback){
 //
 function LoadXChartScript(callback){
 	function LoadXChart(){
-		$.getScript('plugins/xcharts/xcharts.min.js', callback);
+		$.getScript('App/plugins/xcharts/xcharts.min.js', callback);
 	}
 	function LoadD3Script(){
 		if (!$.fn.d3){
-			$.getScript('plugins/d3/d3.min.js', LoadXChart)
+			$.getScript('App/plugins/d3/d3.min.js', LoadXChart)
 		}
 		else {
 			LoadXChart();
@@ -167,13 +167,13 @@ function LoadXChartScript(callback){
 //
 function LoadFlotScripts(callback){
 	function LoadFlotScript(){
-		$.getScript('plugins/flot/jquery.flot.js', LoadFlotResizeScript);
+		$.getScript('App/plugins/flot/jquery.flot.js', LoadFlotResizeScript);
 	}
 	function LoadFlotResizeScript(){
-		$.getScript('plugins/flot/jquery.flot.resize.js', LoadFlotTimeScript);
+		$.getScript('App/plugins/flot/jquery.flot.resize.js', LoadFlotTimeScript);
 	}
 	function LoadFlotTimeScript(){
-		$.getScript('plugins/flot/jquery.flot.time.js', callback);
+		$.getScript('App/plugins/flot/jquery.flot.time.js', callback);
 	}
 	if (!$.fn.flot){
 		LoadFlotScript();
@@ -192,7 +192,7 @@ function LoadFlotScripts(callback){
 function LoadMorrisScripts(callback){
 	function LoadMorrisScript(){
 		if(!$.fn.Morris){
-			$.getScript('plugins/morris/morris.min.js', callback);
+			$.getScript('App/plugins/morris/morris.min.js', callback);
 		}
 		else {
 			if (callback && typeof(callback) === "function") {
@@ -201,7 +201,7 @@ function LoadMorrisScripts(callback){
 		}
 	}
 	if (!$.fn.raphael){
-		$.getScript('plugins/raphael/raphael-min.js', LoadMorrisScript);
+		$.getScript('App/plugins/raphael/raphael-min.js', LoadMorrisScript);
 	}
 	else {
 		LoadMorrisScript();
@@ -213,16 +213,16 @@ function LoadMorrisScripts(callback){
 //
 function LoadAmchartsScripts(callback){
 	function LoadAmchartsScript(){
-		$.getScript('plugins/amcharts/amcharts.js', LoadFunnelScript);
+		$.getScript('App/plugins/amcharts/amcharts.js', LoadFunnelScript);
 	}
 	function LoadFunnelScript(){
-		$.getScript('plugins/amcharts/funnel.js', LoadSerialScript);
+		$.getScript('App/plugins/amcharts/funnel.js', LoadSerialScript);
 	}
 	function LoadSerialScript(){
-		$.getScript('plugins/amcharts/serial.js', LoadPieScript);
+		$.getScript('App/plugins/amcharts/serial.js', LoadPieScript);
 	}
 	function LoadPieScript(){
-		$.getScript('plugins/amcharts/pie.js', callback);
+		$.getScript('App/plugins/amcharts/pie.js', callback);
 	}
 	if (!$.fn.AmCharts){
 		LoadAmchartsScript();
@@ -239,7 +239,7 @@ function LoadAmchartsScripts(callback){
 //
 function LoadChartistScripts(callback){
 	function LoadChartistScript(){
-		$.getScript('plugins/chartist/chartist.min.js', callback);
+		$.getScript('App/plugins/chartist/chartist.min.js', callback);
 	}
 	if (!$.fn.Chartist){
 		LoadChartistScript();
@@ -256,10 +256,10 @@ function LoadChartistScripts(callback){
 //
 function LoadSpringyScripts(callback){
 	function LoadSpringyScript(){
-		$.getScript('plugins/springy/springy.js', LoadSpringyUIScript);
+		$.getScript('App/plugins/springy/springy.js', LoadSpringyUIScript);
 	}
 	function LoadSpringyUIScript(){
-		$.getScript('plugins/springy/springyui.js', callback);
+		$.getScript('App/plugins/springy/springyui.js', callback);
 	}
 	if (!$.fn.Springy){
 		LoadSpringyScript();
@@ -1091,7 +1091,7 @@ function DrawChartistChart5(){
 //
 function LoadFancyboxScript(callback){
 	if (!$.fn.fancybox){
-		$.getScript('plugins/fancybox/jquery.fancybox.js', callback);
+		$.getScript('App/plugins/fancybox/jquery.fancybox.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -1105,7 +1105,7 @@ function LoadFancyboxScript(callback){
 //
 function LoadKnobScripts(callback){
 	if(!$.fn.knob){
-		$.getScript('plugins/jQuery-Knob/jquery.knob.js', callback);
+		$.getScript('App/plugins/jQuery-Knob/jquery.knob.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -1119,7 +1119,7 @@ function LoadKnobScripts(callback){
 //
 function LoadSparkLineScript(callback){
 	if(!$.fn.sparkline){
-		$.getScript('plugins/sparkline/jquery.sparkline.min.js', callback);
+		$.getScript('App/plugins/sparkline/jquery.sparkline.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -2513,7 +2513,7 @@ function TestTable3(){
 			"sLengthMenu": '_MENU_'
 		},
 		"oTableTools": {
-			"sSwfPath": "plugins/datatables/copy_csv_xls_pdf.swf",
+			"sSwfPath": "App/plugins/datatables/copy_csv_xls_pdf.swf",
 			"aButtons": [
 				"copy",
 				"print",
@@ -2783,8 +2783,8 @@ function FileUpload(){
 		},
 		thumbnails: {
 			placeholders: {
-				waitingPath: "assets/waiting-generic.png",
-				notAvailablePath: "assets/not_available-generic.png"
+				waitingPath: "App/assets/waiting-generic.png",
+				notAvailablePath: "App/assets/not_available-generic.png"
 			}
 		},
 		request: {
