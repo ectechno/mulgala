@@ -116,8 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app\ajax\application.html" />
-    <Content Include="App\app\ajax\calendar.html" />
-    <Content Include="App\app\ajax\dashboard.html" />
     <Content Include="App\app\ajax\feedback.html" />
     <Content Include="App\app\ajax\registration.html" />
     <Content Include="App\app\ajax\registrationAngular.html" />
@@ -131,6 +129,7 @@
     <Content Include="App\app\charts\charts_google.html" />
     <Content Include="App\app\charts\charts_morris.html" />
     <Content Include="App\app\charts\charts_xcharts.html" />
+    <Content Include="App\app\dashboard\dashboard.html" />
     <Content Include="App\app\forms\forms_elements.html" />
     <Content Include="App\app\forms\forms_file_uploader.html" />
     <Content Include="App\app\forms\forms_layouts.html" />

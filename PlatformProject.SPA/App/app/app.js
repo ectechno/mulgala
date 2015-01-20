@@ -28,6 +28,11 @@ var myApp = angular
         //    controller: 'plusOneDemoCtrl'
         //})
 
+ .when('/dashboard/:url', {
+     templateUrl: function (params) {
+         return 'App/app/dashboard/' + params.url
+     }
+ })
         .when('/chart/:url', {
             templateUrl: function (params) {
                 return 'App/app/charts/' + params.url
