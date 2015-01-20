@@ -1,4 +1,3 @@
-
 /**
  * @ngdoc overview
  * @name myAppApp
@@ -21,7 +20,7 @@ var myApp = angular
   .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-            templateUrl: 'App/app/ajax/dashboard.html',
+            templateUrl: '../App/app/dashboard/dashboard.html',
         })
         //.when('/plusOneDemo', {
         //    templateUrl: 'App/app/plusOneDemo/plusOneDemo.html',
