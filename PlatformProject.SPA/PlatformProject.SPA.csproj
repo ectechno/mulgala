@@ -115,8 +115,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\app\about\about.html" />
-    <Content Include="App\app\about\about.js" />
     <Content Include="App\app\ajax\application.html" />
     <Content Include="App\app\ajax\calendar.html" />
     <Content Include="App\app\ajax\charts_amcharts.html" />
@@ -163,16 +161,6 @@
     <Content Include="App\app\ajax\ui_progressbars.html" />
     <Content Include="App\app\ajax\validationDemo.html" />
     <Content Include="App\app\app.js" />
-    <Content Include="App\app\home\home.html" />
-    <Content Include="App\app\home\home.js" />
-    <Content Include="App\app\plusOneDemo\plusOneDemo.html" />
-    <Content Include="App\app\plusOneDemo\plusOneDemo.js" />
-    <Content Include="App\app\toastrDemo\toastrDemo.html" />
-    <Content Include="App\app\toastrDemo\toastrDemo.js" />
-    <Content Include="App\app\toastrDemo\toastrImpl.js" />
-    <Content Include="App\app\validationDemo\validationDemo.html" />
-    <Content Include="App\app\validationDemo\validationDemo.js" />
-    <Content Include="App\assets\images\loader-blue.gif" />
     <Content Include="App\bower_components\angular-animate\angular-animate.js" />
     <Content Include="App\bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="App\bower_components\angular-cookies\angular-cookies.js" />
@@ -937,8 +925,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App\app\home\README.md" />
-    <Content Include="App\app\plusOneDemo\README.md" />
     <Content Include="App\bower_components\angular-animate\.bower.json" />
     <Content Include="App\bower_components\angular-animate\angular-animate.min.js.map" />
     <Content Include="App\bower_components\angular-animate\bower.json" />

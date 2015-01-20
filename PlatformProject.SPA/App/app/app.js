@@ -23,22 +23,10 @@ var myApp = angular
         .when('/', {
             templateUrl: 'App/app/ajax/dashboard.html',
         })
-        .when('/about', {
-            templateUrl: 'App/app/about/about.html',
-            controller: 'AboutCtrl'
-        })
-        .when('/plusOneDemo', {
-            templateUrl: 'App/app/plusOneDemo/plusOneDemo.html',
-            controller: 'plusOneDemoCtrl'
-        })
-        .when('/toastrDemo', {
-            templateUrl: 'App/app/toastrDemo/toastrDemo.html',
-            controller: 'toastrDemoCtrl'
-        })
-        .when('/validationDemo', {
-            templateUrl: 'App/app/validationDemo/validationDemo.html',
-            controller: 'validationDemoCtrl'
-        })
+        //.when('/plusOneDemo', {
+        //    templateUrl: 'App/app/plusOneDemo/plusOneDemo.html',
+        //    controller: 'plusOneDemoCtrl'
+        //})
         .when('/ajax/:url', {
             templateUrl: function(params){
                 return 'App/app/ajax/' + params.url
