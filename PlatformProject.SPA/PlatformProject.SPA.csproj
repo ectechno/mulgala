@@ -876,30 +876,11 @@
     <Content Include="App\plugins\xcharts\xcharts.js" />
     <Content Include="App\plugins\xcharts\xcharts.min.css" />
     <Content Include="App\plugins\xcharts\xcharts.min.js" />
-    <Content Include="App\styles\app.css" />
-    <Content Include="App\styles\css\style_v1.css" />
-    <Content Include="App\styles\css\style_v2.css" />
-    <Content Include="App\styles\img\8962691008_7f489395c9_m.jpg" />
-    <Content Include="App\styles\img\8985207189_01ea27882d_m.jpg" />
-    <Content Include="App\styles\img\9036958611_fa1bb7f827_m.jpg" />
-    <Content Include="App\styles\img\9041440555_2175b32078_m.jpg" />
-    <Content Include="App\styles\img\avatar.jpg" />
-    <Content Include="App\styles\img\chevron-left.png" />
-    <Content Include="App\styles\img\chevron-right.png" />
-    <Content Include="App\styles\img\devoops_getdata.gif" />
-    <Content Include="App\styles\img\devoops_pattern_b10.png" />
-    <Content Include="App\styles\img\logo-200.png" />
-    <Content Include="App\styles\img\logo.png" />
-    <Content Include="App\styles\img\sort-asc.png" />
-    <Content Include="App\styles\img\sort-desc.png" />
-    <Content Include="App\styles\img\sort.png" />
-    <Content Include="App\styles\img\times.png" />
-    <Content Include="App\styles\img\ui-accordion-down.png" />
-    <Content Include="App\styles\img\ui-accordion-right.png" />
-    <Content Include="App\styles\img\ui-left.png" />
-    <Content Include="App\styles\img\ui-right.png" />
+    <Content Include="Content\css\app.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\style_v1.css" />
+    <Content Include="Content\css\style_v2.css" />
     <Content Include="Content\images\8962691008_7f489395c9_m.jpg" />
     <Content Include="Content\images\8985207189_01ea27882d_m.jpg" />
     <Content Include="Content\images\9036958611_fa1bb7f827_m.jpg" />
@@ -1105,8 +1086,8 @@
     <Content Include="App\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="App\plugins\xcharts\LICENSE" />
     <Content Include="App\plugins\xcharts\README.md" />
-    <Content Include="App\styles\app.sass" />
     <Content Include="bower.json" />
+    <Content Include="Content\css\app.sass" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1173,7 +1154,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>cd $(ProjectDir) &amp;&amp; bower update</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
