@@ -45,12 +45,14 @@
         },
         validateToken: function () {
             var token = readCookie('access_token');
-            var validation_json = getJSONdata('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token='+token);
-            if (validation_json.hasOwnProperty('error')) {
-                return false;
+            if (token != null) {
+                var validation_json = getJSONdata('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + token);
+                if (validation_json.hasOwnProperty('error')) {
+                    return false;
 
-            } else {
-                return true;
+                } else {
+                    return true;
+                }
             }
         }
 
