@@ -115,11 +115,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\app\ajax\application.html" />
-    <Content Include="App\app\ajax\feedback.html" />
-    <Content Include="App\app\ajax\registration.html" />
-    <Content Include="App\app\ajax\registrationAngular.html" />
-    <Content Include="App\app\ajax\validationDemo.html" />
     <Content Include="App\app\app.js" />
     <Content Include="App\app\calendar\calendar.html" />
     <Content Include="App\app\charts\charts_amcharts.html" />

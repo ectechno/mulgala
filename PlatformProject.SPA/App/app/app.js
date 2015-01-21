@@ -21,13 +21,8 @@ var myApp = angular
   .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-            templateUrl: 'App/app/ajax/dashboard.html',
+            templateUrl: 'App/app/dashboard/dashboard.html',
         })
-        //.when('/plusOneDemo', {
-        //    templateUrl: 'App/app/plusOneDemo/plusOneDemo.html',
-        //    controller: 'plusOneDemoCtrl'
-        //})
-
  .when('/dashboard/:url', {
      templateUrl: function (params) {
          return 'App/app/dashboard/' + params.url
@@ -79,11 +74,6 @@ var myApp = angular
              return 'App/app/calendar/' + params.url
          }
      })
-             //.when('/:url', {
-        //    templateUrl: function (params) {
-        //        return 'App/app/ajax/' + params.url + '.html'
-        //    }
-        //})
    .otherwise({
        redirectTo: '/'
    });
