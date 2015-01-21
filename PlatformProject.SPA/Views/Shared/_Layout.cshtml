@@ -10,7 +10,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 
-    <link href="~/App/styles/css/style_v2.css" rel="stylesheet" />
+    <link href="~/Content/css/style_v2.css" rel="stylesheet" />
     @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -41,10 +41,10 @@
     <script src="~/App/js/devoops.js"></script>
     <script>
         var changeTheme = function (data) {
-            if ($("#theme").attr("href") === "styles/css/style_v1.css") {
-                $("#theme").attr("href", "styles/css/style_v2.css");
+            if ($("#theme").attr("href") === "~/Content/css/style_v1.css") {
+                $("#theme").attr("href", "~/Content/css/style_v2.css");
             } else {
-                $("#theme").attr("href", "styles/css/style_v1.css");
+                $("#theme").attr("href", "~/Content/css/style_v2.css");
             };
         };
         jQuery(document).ready(function () {
