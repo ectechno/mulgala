@@ -886,7 +886,7 @@
     <Content Include="Content\images\devoops_getdata.gif" />
     <Content Include="Content\images\devoops_pattern_b10.png" />
     <Content Include="Content\images\logo-200.png" />
-    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\images\sort-asc.png" />
     <Content Include="Content\images\sort-desc.png" />
     <Content Include="Content\images\sort.png" />
