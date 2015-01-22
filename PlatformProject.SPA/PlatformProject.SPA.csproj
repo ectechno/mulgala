@@ -180,9 +180,9 @@
     <Content Include="App\common\validation\jquery.validationEngine.js" />
     <Content Include="App\common\validation\template.css" />
     <Content Include="App\common\validation\validationEngine.jquery.css" />
-    <Content Include="App\js\devoops.js" />
-    <Content Include="App\js\Wings.js" />
-    <Content Include="App\js\WingsProperty.js" />
+    <Content Include="App\app\devoops.js" />
+    <Content Include="App\app\Wings.js" />
+    <Content Include="App\app\WingsProperty.js" />
     <Content Include="bower_components\amcharts\amcharts.js" />
     <Content Include="bower_components\amcharts\exporting\amexport.js" />
     <Content Include="bower_components\amcharts\exporting\canvg.js" />
@@ -889,10 +889,6 @@
     <Content Include="Content\images\ui-accordion-right.png" />
     <Content Include="Content\images\ui-left.png" />
     <Content Include="Content\images\ui-right.png" />
-    <Content Include="Content\img\sort-asc.png" />
-    <Content Include="Content\img\sort.png" />
-    <Content Include="Content\img\ui-accordion-down.png" />
-    <Content Include="Content\img\ui-accordion-right.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

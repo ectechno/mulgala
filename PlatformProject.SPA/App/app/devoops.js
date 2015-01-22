@@ -11,8 +11,6 @@
 // homepage: http://arshaw.com/fullcalendar
 // require moment.js
 //
-var $ = jQuery.noConflict();
-
 function LoadCalendarScript(callback){
 	function LoadFullCalendarScript(){
 		if(!$.fn.fullCalendar){
@@ -1157,12 +1155,12 @@ function LoadAjaxContent(url){
 //  Function maked all .box selector is draggable, to disable for concrete element add class .no-drop
 //
 function WinMove(){
-	/*$( "div.box").not('.no-drop')
+	$( "div.box").not('.no-drop')
 		.draggable({
 			revert: true,
 			zIndex: 2000,
 			cursor: "crosshair",
-            handle: '.box-name',
+			handle: '.box-name',
 			opacity: 0.8
 		})
 		.droppable({
@@ -1190,7 +1188,7 @@ function WinMove(){
 					droppable.find('[id^=map-]').resize();
 				}, 250);
 			}
-		});*/
+		});
 }
 //
 // Swap 2 elements on page. Used by WinMove function
@@ -2785,9 +2783,9 @@ function FileUpload(){
 			fail: 'alert alert-error'
 		},
 		thumbnails: {
-		    placeholders: {
-		        waitingPath: "../../Content/images/waiting-generic.png",
-		        notAvailablePath: "../../Content/images/not_available-generic.png"
+			placeholders: {
+				waitingPath: "App/assets/waiting-generic.png",
+				notAvailablePath: "App/assets/not_available-generic.png"
 			}
 		},
 		request: {
@@ -3162,12 +3160,12 @@ function CreateAllSliders(){
 // Function for make all Date-Time pickers on page
 //
 function AllTimePickers(){
-	/*$('#datetime_example').datetimepicker({});
+	$('#datetime_example').datetimepicker({});
 	$('#time_example').timepicker({
 		hourGrid: 4,
 		minuteGrid: 10,
 		timeFormat: 'hh:mm tt'
-	});*/
+	});
 	$('#date3_example').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	$('#date3-1_example').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	$('#date_example').datepicker({});
@@ -3181,22 +3179,19 @@ function AllTimePickers(){
 function DrawCalendar(){
 	/* initialize the external events
 	-----------------------------------------------------------------*/
-   	$('#external-events div.external-event').each(function() {
+	$('#external-events div.external-event').each(function() {
 		// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
 		var eventObject = {
 			title: $.trim($(this).text()) // use the element's text as the event title
 		};
 		// store the Event Object in the DOM element so we can get to it later
 		$(this).data('eventObject', eventObject);
-	    // make the event draggable using jQuery UI
-	    //(function($){
-		
-		    $(this).draggable({
-		        zIndex: 999,
-		        revert: true,    // will cause the event to go back to its
-		        revertDuration: 0 //  original position after the drag
-		    })
-		//})(jQuery);
+		// make the event draggable using jQuery UI
+		$(this).draggable({
+			zIndex: 999,
+			revert: true,      // will cause the event to go back to its
+			revertDuration: 0  //  original position after the drag
+		});
 	});
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
@@ -3498,6 +3493,6 @@ $(document).ready(function () {
 	$('#about').on('mouseleave', function(){
 		$('#about').removeClass('about-h');
 	})
-  });
+});
 
 
