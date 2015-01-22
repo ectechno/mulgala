@@ -153,6 +153,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501220844036_InitialCreate.cs" />
+    <Compile Include="Migrations\201501220844036_InitialCreate.Designer.cs">
+      <DependentUpon>201501220844036_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Tenant.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\PlatformProjectAuthServerContext.cs" />
@@ -179,6 +184,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201501220844036_InitialCreate.resx">
+      <DependentUpon>201501220844036_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
