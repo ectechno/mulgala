@@ -1155,12 +1155,12 @@ function LoadAjaxContent(url){
 //  Function maked all .box selector is draggable, to disable for concrete element add class .no-drop
 //
 function WinMove(){
-	$( "div.box").not('.no-drop')
+	/*$( "div.box").not('.no-drop')
 		.draggable({
 			revert: true,
 			zIndex: 2000,
 			cursor: "crosshair",
-			handle: '.box-name',
+            handle: '.box-name',
 			opacity: 0.8
 		})
 		.droppable({
@@ -1188,7 +1188,7 @@ function WinMove(){
 					droppable.find('[id^=map-]').resize();
 				}, 250);
 			}
-		});
+		});*/
 }
 //
 // Swap 2 elements on page. Used by WinMove function
@@ -2783,9 +2783,9 @@ function FileUpload(){
 			fail: 'alert alert-error'
 		},
 		thumbnails: {
-			placeholders: {
-				waitingPath: "App/assets/waiting-generic.png",
-				notAvailablePath: "App/assets/not_available-generic.png"
+		    placeholders: {
+		        waitingPath: "../../Content/images/waiting-generic.png",
+		        notAvailablePath: "../../Content/images/not_available-generic.png"
 			}
 		},
 		request: {
@@ -3160,12 +3160,12 @@ function CreateAllSliders(){
 // Function for make all Date-Time pickers on page
 //
 function AllTimePickers(){
-	$('#datetime_example').datetimepicker({});
+	/*$('#datetime_example').datetimepicker({});
 	$('#time_example').timepicker({
 		hourGrid: 4,
 		minuteGrid: 10,
 		timeFormat: 'hh:mm tt'
-	});
+	});*/
 	$('#date3_example').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	$('#date3-1_example').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	$('#date_example').datepicker({});

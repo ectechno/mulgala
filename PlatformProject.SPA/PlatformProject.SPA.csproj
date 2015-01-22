@@ -889,6 +889,8 @@
     <Content Include="Content\images\ui-accordion-right.png" />
     <Content Include="Content\images\ui-left.png" />
     <Content Include="Content\images\ui-right.png" />
+    <Content Include="Content\img\sort-asc.png" />
+    <Content Include="Content\img\sort.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
