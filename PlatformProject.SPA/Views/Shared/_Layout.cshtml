@@ -9,24 +9,20 @@
     <link href="~/bower_components/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-
+    <link href="~/bower_components/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.css" rel="stylesheet" />
     <link href="~/Content/css/style_v2.css" rel="stylesheet" />
     @*@Styles.Render("~/Content/css")*@
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body>
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 
-    <script src="~/bower_components/jquery/jquery.min.js"></script>
-    <script src="~/bower_components/jquery-ui/jquery-ui.min.js"></script>
-
     <!-- bower:js -->
-    <script src="~/bower_components/jquery/dist/jquery.js"></script>
-    <script src="~/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/bower_components/jquery/jquery.min.js"></script>
     <script src="~/bower_components/angular/angular.js"></script>
     <script src="~/bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="~/bower_components/angular-resource/angular-resource.js"></script>
@@ -36,13 +32,11 @@
     <script src="~/bower_components/angular-touch/angular-touch.js"></script>
     <script src="~/bower_components/angular-route/angular-route.js"></script>
     <script src="~/bower_components/angular-scenario/angular-scenario.js"></script>
-    <script src="~/bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="~/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script src="~/bower_components/justified-gallery/jquery.justifiedGallery.js"></script>
     <script src="~/bower_components/jquery.html5loader/src/jquery.html5Loader.js"></script>
     <script src="~/bower_components/toastr/toastr.js"></script>
+    <script src="~/bower_components/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min.js"></script>
     <!-- endbower -->
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/bower_components/justified-gallery/jquery.justifiedGallery.min.js"></script>
@@ -58,54 +52,35 @@
 
     <!-- All functions for this theme + document.ready processing -->
     <script src="~/App/devoops.js"></script>
-    <script>
-        var changeTheme = function (data) {
-            if ($("#theme").attr("href") === "~/Content/css/style_v1.css") {
-                $("#theme").attr("href", "~/Content/css/style_v2.css");
-            } else {
-                $("#theme").attr("href", "~/Content/css/style_v2.css");
-            };
-        };
-        jQuery(document).ready(function () {
-            if (SingleSignOnHandler.isLoggedIn() === true) {
-                NotificationHandler.ViewSuccess("logged in");
-                $("#signInButton").hide();
-                var profile = SingleSignOnHandler.getProfile();
-                $("#sso_name").text(profile.name);
-                $("#sso_picture").attr('src', profile.picture);
-                $("#sso_link").attr('href', profile.link);
-                $("#singleSignOnDropDown").show();
-                $("#singleSignOnProfile").show();
-            } else {
-                NotificationHandler.ViewError("Not logged in");
-                $("#signInButton").show();
-                $("#singleSignOnDropDown").hide();
-                $("#singleSignOnProfile").hide();
+    <script src="~/App/app.js"></script>
 
-            };
-        });
+    <script>
+    var changeTheme = function (data) {
+        if ($("#theme").attr("href") === "~/Content/css/style_v1.css") {
+            $("#theme").attr("href", "~/Content/css/style_v2.css");
+        } else {
+            $("#theme").attr("href", "~/Content/css/style_v2.css");
+        };
+    };
+    jQuery(document).ready(function () {
+        if (SingleSignOnHandler.isLoggedIn() === true) {
+            NotificationHandler.ViewSuccess("logged in");
+            $("#signInButton").hide();
+            var profile = SingleSignOnHandler.getProfile();
+            $("#sso_name").text(profile.name);
+            $("#sso_picture").attr('src', profile.picture);
+            $("#sso_link").attr('href', profile.link);
+            $("#singleSignOnDropDown").show();
+            $("#singleSignOnProfile").show();
+        } else {
+            NotificationHandler.ViewError("Not logged in");
+            $("#signInButton").show();
+            $("#singleSignOnDropDown").hide();
+            $("#singleSignOnProfile").hide();
+
+        };
+    });
     </script>
 
-    <!-- bower:js -->
-    <script src="~/bower_components/jquery/dist/jquery.js"></script>
-    <script src="~/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/bower_components/angular/angular.js"></script>
-    <script src="~/bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="~/bower_components/angular-resource/angular-resource.js"></script>
-    <script src="~/bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="~/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="~/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="~/bower_components/angular-touch/angular-touch.js"></script>
-    <script src="~/bower_components/angular-route/angular-route.js"></script>
-    <script src="~/bower_components/angular-scenario/angular-scenario.js"></script>
-    <script src="~/bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="~/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    
-    <script src="~/bower_components/justified-gallery/jquery.justifiedGallery.js"></script>
-    <script src="~/bower_components/jquery.html5loader/src/jquery.html5Loader.js"></script>
-    <script src="~/bower_components/toastr/toastr.js"></script>
-    <!-- endbower -->
-
-    <script src="~/App/app.js"></script>
 </body>
 </html>

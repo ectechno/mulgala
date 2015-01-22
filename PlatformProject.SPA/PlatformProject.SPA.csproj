@@ -883,7 +883,6 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\not_available-generic.png" />
     <Content Include="Content\images\waiting-generic.png" />
-    <Content Include="Content\img\logo.png" />
     <Content Include="Content\images\sort-asc.png" />
     <Content Include="Content\images\sort-desc.png" />
     <Content Include="Content\images\sort.png" />
@@ -892,10 +891,6 @@
     <Content Include="Content\images\ui-accordion-right.png" />
     <Content Include="Content\images\ui-left.png" />
     <Content Include="Content\images\ui-right.png" />
-    <Content Include="Content\img\sort-asc.png" />
-    <Content Include="Content\img\sort.png" />
-    <Content Include="Content\img\ui-accordion-down.png" />
-    <Content Include="Content\img\ui-accordion-right.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1081,9 +1076,6 @@
     <Content Include="bower_components\toastr\toastr.scss" />
     <Content Include="bower_components\xcharts\LICENSE" />
     <Content Include="bower_components\xcharts\README.md" />
-    <None Include=".bin\bower.cmd" />
-    <None Include=".bin\git.cmd" />
-    <None Include=".bin\node.cmd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1110,7 +1102,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\app\multiLevelMenu\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -1134,7 +1125,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9222</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

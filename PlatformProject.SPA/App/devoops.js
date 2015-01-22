@@ -3159,7 +3159,7 @@ function CreateAllSliders(){
 // Function for make all Date-Time pickers on page
 //
 function AllTimePickers(){
-	$('#datetime_example').datetimepicker({});
+	$('#datetime_example').datetimepicker();
 	$('#time_example').timepicker({
 		hourGrid: 4,
 		minuteGrid: 10,
