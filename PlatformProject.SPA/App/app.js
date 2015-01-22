@@ -20,57 +20,57 @@ var myApp = angular
   .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-            templateUrl: 'App/app/dashboard/dashboard.html',
+            templateUrl: 'App/dashboard/dashboard.html',
         })
  .when('/dashboard/:url', {
      templateUrl: function (params) {
-         return 'App/app/dashboard/' + params.url
+         return 'App/dashboard/' + params.url
      }
  })
         .when('/chart/:url', {
             templateUrl: function (params) {
-                return 'App/app/charts/' + params.url
+                return 'App/charts/' + params.url
             }
         })
        .when('/table/:url', {
            templateUrl: function (params) {
-               return 'App/app/tables/' + params.url
+               return 'App/tables/' + params.url
            }
        })
        .when('/form/:url', {
            templateUrl: function (params) {
-               return 'App/app/forms/' + params.url
+               return 'App/forms/' + params.url
            }
        })
       .when('/uiElement/:url', {
           templateUrl: function (params) {
-              return 'App/app/uiElements/' + params.url
+              return 'App/uiElements/' + params.url
           }
       })
       .when('/page/:url', {
           templateUrl: function (params) {
-              return 'App/app/pages/' + params.url
+              return 'App/pages/' + params.url
           }
       })
       .when('/map/:url', {
           templateUrl: function (params) {
-              return 'App/app/maps/' + params.url
+              return 'App/maps/' + params.url
           }
       })
     .when('/gallery/:url', {
         templateUrl: function (params) {
-            return 'App/app/gallery/' + params.url
+            return 'App/gallery/' + params.url
         }
     })
 
     .when('/typography/:url', {
         templateUrl: function (params) {
-            return 'App/app/typography/' + params.url
+            return 'App/typography/' + params.url
         }
     })
      .when('/calendar/:url', {
          templateUrl: function (params) {
-             return 'App/app/calendar/' + params.url
+             return 'App/calendar/' + params.url
          }
      })
    .otherwise({

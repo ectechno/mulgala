@@ -2784,8 +2784,8 @@ function FileUpload(){
 		},
 		thumbnails: {
 			placeholders: {
-				waitingPath: "App/assets/waiting-generic.png",
-				notAvailablePath: "App/assets/not_available-generic.png"
+				waitingPath: "../../Content/images/waiting-generic.png",
+				notAvailablePath: "../../Content/images/not_available-generic.png"
 			}
 		},
 		request: {
@@ -3357,7 +3357,7 @@ $(document).ready(function () {
 	});
 	var ajax_url = location.hash.replace(/^#/, '');
 	if (ajax_url.length < 1) {
-	    ajax_url = '~/App/app/dashboard/dashboard.html';
+	    ajax_url = '~/App/dashboard/dashboard.html';
 	}
 //	LoadAjaxContent(ajax_url);
 	var item = $('.main-menu li a[href$="' + ajax_url + '"]');
