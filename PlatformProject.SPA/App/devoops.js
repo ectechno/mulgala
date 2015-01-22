@@ -2783,8 +2783,8 @@ function FileUpload(){
 		},
 		thumbnails: {
 			placeholders: {
-				waitingPath: "App/assets/waiting-generic.png",
-				notAvailablePath: "App/assets/not_available-generic.png"
+				waitingPath: "../../Content/images/waiting-generic.png",
+				notAvailablePath: "../../Content/images/not_available-generic.png"
 			}
 		},
 		request: {

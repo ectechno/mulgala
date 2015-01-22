@@ -880,6 +880,9 @@
     <Content Include="Content\images\devoops_getdata.gif" />
     <Content Include="Content\images\devoops_pattern_b10.png" />
     <Content Include="Content\images\logo-200.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\not_available-generic.png" />
+    <Content Include="Content\images\waiting-generic.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\images\sort-asc.png" />
     <Content Include="Content\images\sort-desc.png" />
@@ -889,6 +892,10 @@
     <Content Include="Content\images\ui-accordion-right.png" />
     <Content Include="Content\images\ui-left.png" />
     <Content Include="Content\images\ui-right.png" />
+    <Content Include="Content\img\sort-asc.png" />
+    <Content Include="Content\img\sort.png" />
+    <Content Include="Content\img\ui-accordion-down.png" />
+    <Content Include="Content\img\ui-accordion-right.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1103,6 +1110,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\app\multiLevelMenu\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
