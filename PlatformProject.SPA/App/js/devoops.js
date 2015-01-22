@@ -11,6 +11,8 @@
 // homepage: http://arshaw.com/fullcalendar
 // require moment.js
 //
+var $ = jQuery.noConflict();
+
 function LoadCalendarScript(callback){
 	function LoadFullCalendarScript(){
 		if(!$.fn.fullCalendar){
@@ -3179,19 +3181,22 @@ function AllTimePickers(){
 function DrawCalendar(){
 	/* initialize the external events
 	-----------------------------------------------------------------*/
-	$('#external-events div.external-event').each(function() {
+   	$('#external-events div.external-event').each(function() {
 		// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
 		var eventObject = {
 			title: $.trim($(this).text()) // use the element's text as the event title
 		};
 		// store the Event Object in the DOM element so we can get to it later
 		$(this).data('eventObject', eventObject);
-		// make the event draggable using jQuery UI
-		$(this).draggable({
-			zIndex: 999,
-			revert: true,      // will cause the event to go back to its
-			revertDuration: 0  //  original position after the drag
-		});
+	    // make the event draggable using jQuery UI
+	    //(function($){
+		
+		    $(this).draggable({
+		        zIndex: 999,
+		        revert: true,    // will cause the event to go back to its
+		        revertDuration: 0 //  original position after the drag
+		    })
+		//})(jQuery);
 	});
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
@@ -3493,6 +3498,6 @@ $(document).ready(function () {
 	$('#about').on('mouseleave', function(){
 		$('#about').removeClass('about-h');
 	})
-});
+  });
 
 
