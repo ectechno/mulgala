@@ -1,4 +1,3 @@
-/// <reference path="E:\Documents\99X Projects\mulgala\PlatformProject.SPA\bower_components/jQuery-Knob/jquery.knob.js" />
 //
 //    Main script of DevOOPS v1.0 Bootstrap Theme
 //
@@ -1092,7 +1091,7 @@ function DrawChartistChart5(){
 //
 function LoadFancyboxScript(callback){
 	if (!$.fn.fancybox){
-		$.getScript('App/plugins/fancybox/jquery.fancybox.js', callback);
+	    $.getScript('/bower_components/fancybox/jquery.fancybox.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -1547,7 +1546,7 @@ function CloseModalBox(){
 //  Created by DevOOPS.
 //
 (function( $ ){
-	$.fn.beautyTables = function() {
+    $.fn.beautyTables = function () {
 		var table = this;
 		var string_fill = false;
 		this.on('keydown', function(event) {
@@ -1621,7 +1620,7 @@ function CloseModalBox(){
 		});
 	})
 };
-})( jQuery );
+})(jQuery);
 //
 // Beauty Hover Plugin (backlight row and col when cell in mouseover)
 //
