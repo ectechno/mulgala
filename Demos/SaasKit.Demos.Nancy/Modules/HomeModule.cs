@@ -1,5 +1,6 @@
 using Nancy;
 using SaasKit.Integration.Nancy;
+using PlatformProject.Constants;
 
 namespace SaasKit.Demos.Nancy.Modules
 {  
@@ -11,10 +12,26 @@ namespace SaasKit.Demos.Nancy.Modules
             {
                 var model = new
                 {
-                    Tenant = Context.GetTenantInstance()
+                    Tenant = Context.GetTenantInstance(),
+                    authorizeUri = Paths.AuthorizationServerBaseAddress + Paths.AuthorizePath,
+                    tokenUri = Paths.AuthorizationServerBaseAddress + Paths.TokenPath,
+                    apiUri = Paths.ResourceServerBaseAddress + Paths.MePath
+                };
+                
+                return View["home", model];
+            };
+
+            Get["/signin"] = _ =>
+            {
+                var model = new
+                {
+                    Tenant = Context.GetTenantInstance(),
+                    authorizeUri = Paths.AuthorizationServerBaseAddress + Paths.AuthorizePath,
+                    tokenUri = Paths.AuthorizationServerBaseAddress + Paths.TokenPath,
+                    apiUri = Paths.ResourceServerBaseAddress + Paths.MePath
                 };
 
-                return View["home", model];
+                return View["signin", model];
             };
         }
     }

@@ -91,11 +91,21 @@
     <Content Include="Views\Tenant1\Home.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Tenant1\SignIn.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Tenant2\Home.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Tenant2\SignIn.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PlatformProject.Constants\PlatformProject.Constants.csproj">
+      <Project>{9a8d8123-174e-4692-9062-4222d985eb16}</Project>
+      <Name>PlatformProject.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SaasKit.Integration.Nancy\SaasKit.Integration.Nancy.csproj">
       <Project>{3994dcc4-cf23-448f-a61b-4eb2334edaa3}</Project>
       <Name>SaasKit.Integration.Nancy</Name>

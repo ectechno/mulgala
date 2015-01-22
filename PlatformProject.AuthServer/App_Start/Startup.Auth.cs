@@ -81,9 +81,13 @@ namespace PlatformProject.AuthServer
             {
                 context.Validated(Clients.Client1.RedirectUrl);
             }
-            else if (context.ClientId == Clients.Client2.Id)
+            else if (context.ClientId == Clients.ImplicitGrantClient1.Id)
             {
-                context.Validated(Clients.Client2.RedirectUrl);
+                context.Validated(Clients.ImplicitGrantClient1.RedirectUrl);
+            }
+            else if (context.ClientId == Clients.ImplicitGrantClient2.Id)
+            {
+                context.Validated(Clients.ImplicitGrantClient2.RedirectUrl);
             }
             return Task.FromResult(0);
         }
@@ -99,7 +103,11 @@ namespace PlatformProject.AuthServer
                 {
                     context.Validated();
                 }
-                else if (clientId == Clients.Client2.Id && clientSecret == Clients.Client2.Secret)
+                else if (clientId == Clients.ImplicitGrantClient1.Id && clientSecret == Clients.ImplicitGrantClient1.Secret)
+                {
+                    context.Validated();
+                }
+                else if (clientId == Clients.ImplicitGrantClient2.Id && clientSecret == Clients.ImplicitGrantClient2.Secret)
                 {
                     context.Validated();
                 }
