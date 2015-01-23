@@ -1078,6 +1078,8 @@
     <Content Include="bower_components\toastr\toastr.scss" />
     <Content Include="bower_components\xcharts\LICENSE" />
     <Content Include="bower_components\xcharts\README.md" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
