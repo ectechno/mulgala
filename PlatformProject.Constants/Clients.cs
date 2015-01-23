@@ -15,11 +15,18 @@ namespace PlatformProject.Constants
             RedirectUrl = Paths.AuthorizeCodeCallBackPath
         };
 
-        public readonly static Client Client2 = new Client
+        public readonly static Client ImplicitGrantClient1 = new Client
         {
             Id = "7890ab",
             Secret = "7890ab",
-            RedirectUrl = Paths.ImplicitGrantCallBackPath
+            RedirectUrl = Paths.ImplicitGrantCallBackPathT1
+        };
+
+        public readonly static Client ImplicitGrantClient2 = new Client
+        {
+            Id = "abc0ab",
+            Secret = "abc0ab",
+            RedirectUrl = Paths.ImplicitGrantCallBackPathT2
         };
     }
 
