@@ -81,6 +81,9 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\ITenantIdentifier.cs" />
+    <Compile Include="Data\TenantProvider.cs" />
+    <Compile Include="Data\UserTenant.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
