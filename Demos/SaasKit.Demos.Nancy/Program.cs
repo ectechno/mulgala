@@ -19,11 +19,13 @@ namespace SaasKit.Demos.Nancy
             // Note: Add the following host entries to your host file
             //      127.0.0.1    sony.localhost
             //      127.0.0.1    samsung.localhost
+            //      127.0.0.1    htc.localhost
             
-            UserTenant t1 = new UserTenant("Sony", 0, "sony.localhost", "127.0.0.1", 9000);
-            UserTenant t2 = new UserTenant("Samsung", 1, "samsung.localhost", "127.0.0.1", 9000);
-
-            TenantList = new[] {t1, t2};
+            TenantList = new[] { 
+                new UserTenant("Sony", 0, "sony.localhost", "127.0.0.1", 9000), 
+                new UserTenant("Samsung", 1, "samsung.localhost", "127.0.0.1", 9000),
+                new UserTenant("HTC", 1, "htc.localhost", "127.0.0.1", 9000)
+            };
 
             RegisterAllTenants(TenantList, startOptions);
 
