@@ -13,8 +13,9 @@
             //startOptions.Urls.Add("http://localhost:8000");
             //startOptions.Urls.Add("http://dev.local:8000");
 
-            startOptions.Urls.Add("http://localhost:9000");
-            startOptions.Urls.Add("http://127.0.0.1:9000");
+            //In the host file, add these two hostNames
+            startOptions.Urls.Add("http://t1.localhost:9000");
+            startOptions.Urls.Add("http://t2.localhost:9000");
             
             using (WebApp.Start<Startup>(startOptions))
             {
