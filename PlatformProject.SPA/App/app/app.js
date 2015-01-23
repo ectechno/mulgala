@@ -15,7 +15,7 @@ var myApp = angular
     'ngSanitize',
     'ngTouch',
     'notifyApp',
-    'validationApp'
+    'validationApp', 
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -73,13 +73,18 @@ var myApp = angular
              return 'App/app/calendar/' + params.url
          }
      })
+ .when('/sampleService/:url', {
+     templateUrl: function (params) {
+         return 'App/app/sampleService/' + params.url
+     }
+ })
    .otherwise({
        redirectTo: '/'
    });
   });
 
 var notifyApp = angular.module('notifyApp', []);
-notifyApp.controller("notifyController", function ($scope) {
+    notifyApp.controller("notifyController", function ($scope) {
 
     $scope.show = function (data, type, position) {
         setInterval(function () {
@@ -133,6 +138,7 @@ notifyApp.controller("notifyController", function ($scope) {
 });
 
 var validationApp = angular.module('validationApp', []);
+
 validationApp.controller('mainController', function ($scope) {     // create angular controller
 
     $scope.submitForm = function (isValid) {    // function to submit the form after all validation has occurred	
@@ -141,3 +147,4 @@ validationApp.controller('mainController', function ($scope) {     // create ang
         }
     };
 });
+

@@ -125,6 +125,7 @@
     <Content Include="App\app\charts\charts_morris.html" />
     <Content Include="App\app\charts\charts_xcharts.html" />
     <Content Include="App\app\dashboard\dashboard.html" />
+    <Content Include="App\app\forms\feedback.html" />
     <Content Include="App\app\forms\forms_elements.html" />
     <Content Include="App\app\forms\forms_file_uploader.html" />
     <Content Include="App\app\forms\forms_layouts.html" />
@@ -148,6 +149,8 @@
     <Content Include="App\app\pages\page_register.html" />
     <Content Include="App\app\pages\page_register_v1.html" />
     <Content Include="App\app\pages\page_search.html" />
+    <Content Include="App\app\sampleService\calculator.html" />
+    <Content Include="App\app\sampleService\calculatorController.js" />
     <Content Include="App\app\tables\tables_beauty.html" />
     <Content Include="App\app\tables\tables_datatables.html" />
     <Content Include="App\app\tables\tables_simple.html" />
