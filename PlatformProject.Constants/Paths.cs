@@ -21,8 +21,8 @@ namespace PlatformProject.Constants
         /// <summary>
         /// ImplicitGrant project should be running on this specific port '38515'
         /// </summary>
-        public const string ImplicitGrantCallBackPathT1 = "http://localhost:9000/SignIn";
-        public const string ImplicitGrantCallBackPathT2 = "http://127.0.0.1:9000/SignIn";
+        public const string ImplicitGrantCallBackPathT1 = "http://sony.localhost:9000/SignIn";
+        public const string ImplicitGrantCallBackPathT2 = "http://samsung.localhost:9000/SignIn";
 
         /// <summary>
         /// AuthorizationCodeGrant project should be running on this URL.

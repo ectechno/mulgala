@@ -13,8 +13,9 @@ namespace SaasKit.Demos.Nancy
 
             this.Conventions.ViewLocationConventions.Add((viewName, model, context) =>
             {
-                var tenant = context.Context.GetTenantInstance().Tenant;
-                return string.Concat("views/", tenant.Name, "/", viewName);
+                //var tenant = context.Context.GetTenantInstance().Tenant;
+                var module = model.module;
+                return string.Concat("views/", module, "/", viewName);
             });
         }
     }

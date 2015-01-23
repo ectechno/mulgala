@@ -47,7 +47,7 @@ namespace SaasKit.Demos.Nancy
         {           
             var tenant = new Tenant
             {
-                Name = tenantIdentifier.Equals("localhost") ? "Tenant1" : "Tenant2",
+                Name = tenantIdentifier.Equals("sony.localhost") ? "Sony" : "Samsung",
                 RequestIdentifiers = new[] { tenantIdentifier }
             };
 
