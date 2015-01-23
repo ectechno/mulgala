@@ -15,19 +15,19 @@ namespace PlatformProject.Constants
             RedirectUrl = Paths.AuthorizeCodeCallBackPath
         };
 
-        public readonly static Client ImplicitGrantClient1 = new Client
+        public readonly static Client ImplicitGrantClient = new Client
         {
             Id = "7890ab",
             Secret = "7890ab",
-            RedirectUrl = Paths.ImplicitGrantCallBackPathT1
+            RedirectUrls = new List<string> { Paths.ImplicitGrantCallBackPathT1, Paths.ImplicitGrantCallBackPathT2 }
         };
 
-        public readonly static Client ImplicitGrantClient2 = new Client
-        {
-            Id = "abc0ab",
-            Secret = "abc0ab",
-            RedirectUrl = Paths.ImplicitGrantCallBackPathT2
-        };
+        //public readonly static Client ImplicitGrantClient2 = new Client
+        //{
+        //    Id = "7890ab",
+        //    Secret = "7890ab",
+        //    RedirectUrl = Paths.ImplicitGrantCallBackPathT2
+        //};
     }
 
     public class Client
@@ -35,5 +35,6 @@ namespace PlatformProject.Constants
         public string Id { get; set; }
         public string Secret { get; set; }
         public string RedirectUrl { get; set; }
+        public IList<string> RedirectUrls { get; set; }
     }
 }

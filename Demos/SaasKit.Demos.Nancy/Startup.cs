@@ -2,6 +2,7 @@ using Owin;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using SaasKit.Demos.Nancy.Data;
 
 namespace SaasKit.Demos.Nancy
 {
@@ -43,15 +44,31 @@ namespace SaasKit.Demos.Nancy
 
     public class MyResolver : ITenantResolver
     {
-        public Task<ITenant> Resolve(string tenantIdentifier)
-        {           
-            var tenant = new Tenant
-            {
-                Name = tenantIdentifier.Equals("localhost") ? "Tenant1" : "Tenant2",
-                RequestIdentifiers = new[] { tenantIdentifier }
-            };
+        TenantProvider tenantProvider = new TenantProvider();
 
-            return Task.FromResult<ITenant>(tenant);
+        public Task<ITenant> Resolve(string tenantIdentifier)
+        {
+            UserTenant userTenant = tenantProvider.GetTenant(tenantIdentifier);
+
+            //Console.WriteLine(userTenant.TenantName);
+            if (userTenant != null)
+            {
+                string tenantName = userTenant.TenantName;
+
+                var tenant = new Tenant
+                {
+                    Name = tenantName,
+                    RequestIdentifiers = new[] {tenantIdentifier}
+                };
+
+                return Task.FromResult<ITenant>(tenant);
+            }
+            else
+            {
+                //return error page
+                return null;
+            }
+
         }
     }
 }
