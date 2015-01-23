@@ -24,7 +24,7 @@ namespace SaasKit.Demos.Nancy
 
             var instanceStore = new MemoryCacheInstanceStore(
                 new InstanceLifetimeOptions { 
-                    Lifetime =  TimeSpan.FromSeconds(30),
+                    Lifetime =  TimeSpan.FromSeconds(3600),
                     UseSlidingExpiration = true
                 }
             );
