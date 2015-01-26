@@ -150,6 +150,8 @@
     <Content Include="App\pages\page_search.html" />
     <Content Include="App\sampleService\calculator.html" />
     <Content Include="App\sampleService\calculatorController.js" />
+    <Content Include="App\sampleService\dialogBox.html" />
+    <Content Include="App\sampleService\dialogBoxController.js" />
     <Content Include="App\tables\tables_beauty.html" />
     <Content Include="App\tables\tables_datatables.html" />
     <Content Include="App\tables\tables_simple.html" />

@@ -15,7 +15,8 @@ var myApp = angular
     'ngSanitize',
     'ngTouch',
     'notifyApp',
-    'validationApp', 
+    'validationApp',
+    'dialogApp'
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -73,10 +74,13 @@ var myApp = angular
              return 'App/calendar/' + params.url
          }
      })
- .when('/sampleService/:url', {
-     templateUrl: 'App/sampleService/calculator.html',
-     controller: 'calculatorController'
- })
+   .when('/sampleService/:url', {
+       templateUrl: function (params) {
+           return 'App/sampleService/' + params.url
+           //templateUrl: 'App/sampleService/calculator.html',
+           //controller: 'calculatorController'
+       }
+   })
    .otherwise({
        redirectTo: '/'
    });
@@ -87,11 +91,6 @@ var notifyApp = angular.module('notifyApp', []);
 
     $scope.show = function (data, type, position) {
         setInterval(function () {
-            //if (document.getElementById("notify").style.visibility == 'hidden') {
-            // document.getElementById("notify").style.visibility='visible';
-            //}
-
-            //else{
             var para = document.createElement("p");
             var node = document.createTextNode(data);
             para.appendChild(node);
