@@ -32,7 +32,7 @@ namespace PlatformProject.AuthServer.Controllers
                 }
             }
 
-            //to-do - validate the tenant id is null
+            //To-Do : Add validation for the tenant like null validation ..etc
             
             // Authenticate the user
             var authentication = HttpContext.GetOwinContext().Authentication;
