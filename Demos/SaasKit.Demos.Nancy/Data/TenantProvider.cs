@@ -12,10 +12,10 @@ namespace SaasKit.Demos.Nancy.Data
 
         public UserTenant GetTenant(string host)
         {
-            UserTenant[] tenants = SaasKit.Demos.Nancy.Program.TenantList;
+            List<UserTenant> tenants = SaasKit.Demos.Nancy.Program.TenantList;
 
             int i;
-            for (i = 0; i < tenants.Length; i++)
+            for (i = 0; i < tenants.Count; i++)
             {
                 if (tenants[i].HostName == host)
                 {
