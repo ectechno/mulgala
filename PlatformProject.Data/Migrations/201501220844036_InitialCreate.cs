@@ -1,4 +1,4 @@
-namespace PlatformProject.AuthServer.Migrations
+namespace PlatformProject.Data
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -19,15 +19,13 @@ namespace PlatformProject.Constants
         {
             Id = "7890ab",
             Secret = "7890ab",
-            RedirectUrls = new List<string> { Paths.ImplicitGrantCallBackPathT1, Paths.ImplicitGrantCallBackPathT2 }
+            RedirectUrls = new List<string> { 
+                Paths.ImplicitGrantCallBackPathT1, 
+                Paths.ImplicitGrantCallBackPathT2,
+                Paths.ImplicitGrantCallBackPathT3
+            }
         };
 
-        //public readonly static Client ImplicitGrantClient2 = new Client
-        //{
-        //    Id = "7890ab",
-        //    Secret = "7890ab",
-        //    RedirectUrl = Paths.ImplicitGrantCallBackPathT2
-        //};
     }
 
     public class Client

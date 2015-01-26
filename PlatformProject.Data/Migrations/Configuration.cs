@@ -1,6 +1,6 @@
-namespace PlatformProject.AuthServer.Migrations
+namespace PlatformProject.Data
 {
-    using PlatformProject.AuthServer.Models;
+    using PlatformProject.Model;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using PlatformProject.Model;
 
 namespace PlatformProject.AuthServer.Models
 {
@@ -20,8 +21,8 @@ namespace PlatformProject.AuthServer.Models
         {
         }
 
-        public System.Data.Entity.DbSet<PlatformProject.AuthServer.Models.Tenant> Tenants { get; set; }
-        public System.Data.Entity.DbSet<PlatformProject.AuthServer.Models.User> Users { get; set; }
+        public System.Data.Entity.DbSet<Tenant> Tenants { get; set; }
+        public System.Data.Entity.DbSet<User> Users { get; set; }
 
     }
 }

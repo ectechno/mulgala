@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasKit.Integration.Nancy",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasKit.Demos.Nancy", "Demos\SaasKit.Demos.Nancy\SaasKit.Demos.Nancy.csproj", "{DB0103FB-DA35-4DE3-A24E-DD477267F930}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.Model", "PlatformProject.Model\PlatformProject.Model.csproj", "{DEE50F85-0DF8-4251-8CED-1E2B1E76FF13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.Data", "PlatformProject.Data\PlatformProject.Data.csproj", "{965F1E33-B075-4918-8B34-6F2A12874319}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{DB0103FB-DA35-4DE3-A24E-DD477267F930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB0103FB-DA35-4DE3-A24E-DD477267F930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB0103FB-DA35-4DE3-A24E-DD477267F930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEE50F85-0DF8-4251-8CED-1E2B1E76FF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE50F85-0DF8-4251-8CED-1E2B1E76FF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE50F85-0DF8-4251-8CED-1E2B1E76FF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE50F85-0DF8-4251-8CED-1E2B1E76FF13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965F1E33-B075-4918-8B34-6F2A12874319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965F1E33-B075-4918-8B34-6F2A12874319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965F1E33-B075-4918-8B34-6F2A12874319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965F1E33-B075-4918-8B34-6F2A12874319}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
