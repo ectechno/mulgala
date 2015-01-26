@@ -62,7 +62,7 @@ function LoadLeafletScript(callback){
 //
 function LoadTimePickerScript(callback){
 	if (!$.fn.timepicker){
-	    $.getScript('/bower_components/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
+	    $.getScript('/Scripts/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -76,7 +76,7 @@ function LoadTimePickerScript(callback){
 //
 function LoadBootstrapValidatorScript(callback){
 	if (!$.fn.bootstrapValidator){
-	    $.getScript('/bower_components/bootstrapvalidator/bootstrapValidator.min.js', callback);
+	    $.getScript('/Scripts/bootstrapvalidator/bootstrapValidator.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -127,7 +127,7 @@ function LoadDataTablesScripts(callback){
 //
 function LoadFineUploader(callback){
 	if (!$.fn.fineuploader){
-	    $.getScript('/bower_components/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
+	    $.getScript('/Scripts/fineuploader/jquery.fineuploader-5.0.5.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -142,7 +142,7 @@ function LoadFineUploader(callback){
 //
 function LoadXChartScript(callback){
 	function LoadXChart(){
-	    $.getScript('/bower_components/xcharts/xcharts.min.js', callback);
+	    $.getScript('/Scripts/xcharts/xcharts.min.js', callback);
 	}
 	function LoadD3Script(){
 		if (!$.fn.d3){
@@ -213,16 +213,16 @@ function LoadMorrisScripts(callback){
 //
 function LoadAmchartsScripts(callback){
 	function LoadAmchartsScript(){
-	    $.getScript('/bower_components/amcharts/amcharts.js', LoadFunnelScript);
+	    $.getScript('/Scripts/amcharts/amcharts.js', LoadFunnelScript);
 	}
 	function LoadFunnelScript(){
-	    $.getScript('/bower_components/amcharts/funnel.js', LoadSerialScript);
+	    $.getScript('/Scripts/amcharts/funnel.js', LoadSerialScript);
 	}
 	function LoadSerialScript(){
-	    $.getScript('/bower_components/amcharts/serial.js', LoadPieScript);
+	    $.getScript('/Scripts/amcharts/serial.js', LoadPieScript);
 	}
 	function LoadPieScript(){
-	    $.getScript('/bower_components/amcharts/pie.js', callback);
+	    $.getScript('/Scripts/amcharts/pie.js', callback);
 	}
 	if (!$.fn.AmCharts){
 		LoadAmchartsScript();
@@ -1105,7 +1105,7 @@ function LoadFancyboxScript(callback){
 //
 function LoadKnobScripts(callback){
 	if(!$.fn.knob){
-	    $.getScript('/bower_components/jQuery-Knob/jquery.knob.js', callback);
+	    $.getScript('/Scripts/jQuery-Knob/jquery.knob.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {

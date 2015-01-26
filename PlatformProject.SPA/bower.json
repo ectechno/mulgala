@@ -1,25 +1,40 @@
 {
-  "name": "PlatformProject.SPA",
-  "version": "0.0.0",
-  "homepage": "https://github.com/ectechno/mulgala",
-  "authors": [
-    "RakshithaG <rakshithagw@gmail.com>"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "angular-animate": "~1.3.2",
-    "angular-mocks": "~1.3.2",
-    "angular-resource": "~1.3.2",
-    "angular-scenario": "~1.3.2",
-    "angular-touch": "~1.3.2",
-    "bootstrap": "~3.3.0",
-    "jquery.html5loader": "~1.8.0",
-    "toastr": "~2.1.0",
-    "angular-cookies": "~1.3.2",
-    "angular-route": "~1.3.2",
-    "angular-sanitize": "~1.3.2",
-    "angular": "~1.3.10",
-    "jquery": "2.1.3",
-    "jquery-ui": "1.11.2"
-  }
+    "name": "PlatformProject.SPA",
+    "version": "0.0.0",
+    "homepage": "https://github.com/ectechno/mulgala",
+    "authors": [
+        "RakshithaG <rakshithagw@gmail.com>"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "chartist": "~0.6.1",
+        "angular-animate": "~1.3.2",
+        "angular-mocks": "~1.3.2",
+        "angular-resource": "~1.3.2",
+        "angular-scenario": "~1.3.2",
+        "angular-touch": "~1.3.2",
+        "bootstrap": "~3.3.0",
+        "jquery.html5loader": "~1.8.0",
+        "toastr": "~2.1.0",
+        "angular-cookies": "~1.3.2",
+        "angular-route": "~1.3.2",
+        "angular-sanitize": "~1.3.2",
+        "angular": "~1.3.10",
+        "jquery": "~2.1.3",
+        "jquery-ui": "~1.11.2",
+        "d3": "~3.5.3",
+        "datatables": "~1.10.4",
+        "fancybox": "~2.1.5",
+        "flot": "~0.8.3",
+        "fullcalendar": "~2.2.6",
+        "Justified-Gallery": "~3.5.1",
+        "leaflet": "~0.7.3",
+        "moment": "~2.9.0",
+        "morris": "~0.5.1",
+        "raphael": "~2.1.3",
+        "select2": "~3.5.2",
+        "sparkline": "~2.1.2",
+        "springy": "~2.7.1",
+        "tinymce": "~4.1.7"
+    }
 }
