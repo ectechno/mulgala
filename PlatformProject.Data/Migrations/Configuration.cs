@@ -7,7 +7,7 @@ namespace PlatformProject.Data
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PlatformProject.AuthServer.Models.PlatformProjectAuthServerContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PlatformProject.Data.PlatformProjectDBContext>
     {
         public Configuration()
         {
@@ -15,13 +15,13 @@ namespace PlatformProject.Data
             ContextKey = "PlatformProject.AuthServer.Models.PlatformProjectAuthServerContext";
         }
 
-        protected override void Seed(PlatformProject.AuthServer.Models.PlatformProjectAuthServerContext context)
+        protected override void Seed(PlatformProject.Data.PlatformProjectDBContext context)
         {
             //Seeding Initial tenants
-            Tenant tenant1 = new Tenant { ID = 1, GUID = "abc123", Name = "Sony", TenantString = "Sony123" };
-            Tenant tenant2 = new Tenant { ID = 2, GUID = "bcd123", Name = "Panasonic", TenantString = "Panasonic123" };
-            Tenant tenant3 = new Tenant { ID = 3, GUID = "cde123", Name = "Samsung", TenantString = "Samsung123" };
-            Tenant tenant4 = new Tenant { ID = 4, GUID = "def123", Name = "Toshiba", TenantString = "Toshiba123" };
+            Tenant tenant1 = new Tenant { ID = 1, GUID = "7f42acd7-067c-4c82-834e-021d4c0132e0", Name = "Sony", TenantString = "sony" };
+            Tenant tenant2 = new Tenant { ID = 2, GUID = "f70115e9-f644-4ba9-bcf6-2c1692d986e9", Name = "Panasonic", TenantString = "panasonic" };
+            Tenant tenant3 = new Tenant { ID = 3, GUID = "9168e6d4-6600-4f3b-9cab-d10e44f75500", Name = "Samsung", TenantString = "samsung" };
+            Tenant tenant4 = new Tenant { ID = 4, GUID = "a66c80cd-0ba9-4261-b44a-6fc522fc6501", Name = "Toshiba", TenantString = "toshiba" };
 
             IList<Tenant> defaultTenants = new List<Tenant>();
 
@@ -37,8 +37,8 @@ namespace PlatformProject.Data
 
 
             //Seeding Initial users
-            User user1 = new User { ID = 1, Name = "User1", UserName = "User1", Password = "Password1", Tenant = tenant1 };
-            User user2 = new User { ID = 2, Name = "User2", UserName = "User2", Password = "Password2", Tenant = tenant1 };
+            User user1 = new User { ID = 1, Name = "Oliver Queen", UserName = "Oliver", Password = "oli@queen", Tenant = tenant1 };
+            User user2 = new User { ID = 2, Name = "Sara Lance", UserName = "Sara", Password = "sara@lance", Tenant = tenant1 };
             User user3 = new User { ID = 3, Name = "User3", UserName = "User3", Password = "Password3", Tenant = tenant1 };
             User user4 = new User { ID = 4, Name = "User4", UserName = "User4", Password = "Password4", Tenant = tenant2 };
             User user5 = new User { ID = 5, Name = "User5", UserName = "User5", Password = "Password5", Tenant = tenant2 };

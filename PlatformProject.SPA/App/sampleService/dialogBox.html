@@ -1,0 +1,24 @@
+﻿<div ng-app="dialogApp">
+    <div ng-controller="dialogController">
+        <h2 style="text-align:center; padding-top:20px;">Message Boxes</h2></br></br>
+        <h4>Click to get an Alert</h4>
+        <button ng-click="showAlert('Alert Message')">Click</button></br></br>
+
+        <h4>Click to get a Promt</h4>
+        <button ng-click="showPrompt('Prompt Message')">Click</button></br></br>
+
+        <h4>Click to get a Confirm Alert</h4>
+        <button ng-click="showConfirm('Confirm Message')">Click</button></br></br>
+
+        <h4>Click to get a Dialog Box</h4>
+        <button ng-click="showDialogBox('Hello','center','#afef95','black','center')">Click</button>
+        <div data-ng-show="isData">
+            <div id="dialog">
+                <p>{{value}}</p>
+                <button>Ok</button>
+                <button ng-click="">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
