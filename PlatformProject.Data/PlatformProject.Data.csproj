@@ -51,7 +51,7 @@
       <DependentUpon>201501220844036_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PlatformProjectAuthServerContext.cs" />
+    <Compile Include="PlatformProjectDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

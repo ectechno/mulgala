@@ -24,7 +24,7 @@ namespace SaasKit.Demos.Nancy
             TenantList = new[] { 
                 new UserTenant("Sony", 0, "sony.localhost", "127.0.0.1", 9000), 
                 new UserTenant("Samsung", 1, "samsung.localhost", "127.0.0.1", 9000),
-                new UserTenant("HTC", 1, "htc.localhost", "127.0.0.1", 9000)
+                new UserTenant("HTC", 2, "htc.localhost", "127.0.0.1", 9000)
             };
 
             RegisterAllTenants(TenantList, startOptions);

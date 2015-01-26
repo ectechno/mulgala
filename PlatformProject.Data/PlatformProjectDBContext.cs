@@ -5,9 +5,10 @@ using System.Linq;
 using System.Web;
 using PlatformProject.Model;
 
-namespace PlatformProject.AuthServer.Models
+
+namespace PlatformProject.Data
 {
-    public class PlatformProjectAuthServerContext : DbContext
+    public class PlatformProjectDBContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -16,13 +17,13 @@ namespace PlatformProject.AuthServer.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
-        public PlatformProjectAuthServerContext()
+        public PlatformProjectDBContext()
             : base("name=PlatformProjectAuthServerContext")
         {
         }
 
-        public System.Data.Entity.DbSet<Tenant> Tenants { get; set; }
-        public System.Data.Entity.DbSet<User> Users { get; set; }
+        public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }

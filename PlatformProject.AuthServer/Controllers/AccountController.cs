@@ -5,13 +5,24 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using PlatformProject.Model;
+
+using PlatformProject.Data;
 
 namespace PlatformProject.AuthServer.Controllers
 {
     public class AccountController : Controller
     {
+
+        private PlatformProjectDBContext db = new PlatformProjectDBContext();
+
         public ActionResult Login()
         {
+
+            // Find the tenant form the query string
             var tenant = "";
             foreach (var item in Request.QueryString.Get("ReturnUrl").Split('&'))
             {
@@ -20,7 +31,10 @@ namespace PlatformProject.AuthServer.Controllers
                     tenant = item.Split('=')[1].ToLower();
                 }
             }
+
+            //to-do - validate the tenant id is null
             
+            // Authenticate the user
             var authentication = HttpContext.GetOwinContext().Authentication;
             if (Request.HttpMethod == "POST")
             {
@@ -28,14 +42,28 @@ namespace PlatformProject.AuthServer.Controllers
 
                 if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
                 {
-                    authentication.SignIn(
+                    var username = Request.Form["username"];
+                    var password = Request.Form["password"];
+                    User currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Tenant.TenantString == tenant);
+
+                    if (currentUser != null)
+                    {
+                        authentication.SignIn(
                         new AuthenticationProperties { IsPersistent = isPersistent },
                         new ClaimsIdentity(
                             new[] { 
                                 new Claim(ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]),
                                 new Claim("urn:oauth:tenant", tenant)
-                            }, 
+                            },
                             "Application"));
+                    }
+                    else
+                    {
+                        // Display the un authorized error message
+                        authentication.Challenge("Application");
+                        return new HttpUnauthorizedResult();
+                    }
+                    
                 }
             }
 
