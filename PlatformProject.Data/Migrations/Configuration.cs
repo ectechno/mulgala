@@ -18,10 +18,10 @@ namespace PlatformProject.Data
         protected override void Seed(PlatformProject.Data.PlatformProjectDBContext context)
         {
             //Seeding Initial tenants
-            Tenant tenant1 = new Tenant { ID = 1, GUID = "7f42acd7-067c-4c82-834e-021d4c0132e0", Name = "Sony", TenantString = "sony" };
-            Tenant tenant2 = new Tenant { ID = 2, GUID = "f70115e9-f644-4ba9-bcf6-2c1692d986e9", Name = "Panasonic", TenantString = "panasonic" };
-            Tenant tenant3 = new Tenant { ID = 3, GUID = "9168e6d4-6600-4f3b-9cab-d10e44f75500", Name = "Samsung", TenantString = "samsung" };
-            Tenant tenant4 = new Tenant { ID = 4, GUID = "a66c80cd-0ba9-4261-b44a-6fc522fc6501", Name = "Toshiba", TenantString = "toshiba" };
+            Tenant tenant1 = new Tenant { ID = 1, GUID = "7f42acd7-067c-4c82-834e-021d4c0132e0", Name = "Sony", TenantString = "sony", LogoUrl = "http://localhost:21681/Images/Tenants/Logo/Sony-logo.jpg" };
+            Tenant tenant2 = new Tenant { ID = 2, GUID = "f70115e9-f644-4ba9-bcf6-2c1692d986e9", Name = "Panasonic", TenantString = "panasonic", LogoUrl = "http://localhost:21681/Images/Tenants/Logo/Panasonic-logo.jpg" };
+            Tenant tenant3 = new Tenant { ID = 3, GUID = "9168e6d4-6600-4f3b-9cab-d10e44f75500", Name = "Samsung", TenantString = "samsung", LogoUrl = "http://localhost:21681/Images/Tenants/Logo/Samsung-logo.jpg" };
+            Tenant tenant4 = new Tenant { ID = 4, GUID = "a66c80cd-0ba9-4261-b44a-6fc522fc6501", Name = "Toshiba", TenantString = "toshiba", LogoUrl = "http://localhost:21681/Images/Tenants/Logo/Toshiba-logo.jpg" };
 
             IList<Tenant> defaultTenants = new List<Tenant>();
 
@@ -35,10 +35,9 @@ namespace PlatformProject.Data
                  context.Tenants.AddOrUpdate(t => t.ID, tenant);
             }
 
-
             //Seeding Initial users
-            User user1 = new User { ID = 1, Name = "Oliver Queen", UserName = "Oliver", Password = "oli@queen", Tenant = tenant1 };
-            User user2 = new User { ID = 2, Name = "Sara Lance", UserName = "Sara", Password = "sara@lance", Tenant = tenant1 };
+            User user1 = new User { ID = 1, Name = "Oliver Queen", UserName = "Oliver", Password = "oli@queen", LogoUrl = "http://localhost:21681/Images/User/Logo/Oliver-logo.jpg", Tenant = tenant1 };
+            User user2 = new User { ID = 2, Name = "Sara Lance", UserName = "Sara", Password = "sara@lance", LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg", Tenant = tenant1 };
             User user3 = new User { ID = 3, Name = "User3", UserName = "User3", Password = "Password3", Tenant = tenant1 };
             User user4 = new User { ID = 4, Name = "User4", UserName = "User4", Password = "Password4", Tenant = tenant2 };
             User user5 = new User { ID = 5, Name = "User5", UserName = "User5", Password = "Password5", Tenant = tenant2 };

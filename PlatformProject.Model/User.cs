@@ -11,6 +11,7 @@ namespace PlatformProject.Model
         public String Name { get; set; }
         public String UserName { get; set; }
         public String Password { get; set; }
+        public String LogoUrl { get; set; }
 
         public int TenantId { get; set; }
         public virtual Tenant Tenant { get; set; }

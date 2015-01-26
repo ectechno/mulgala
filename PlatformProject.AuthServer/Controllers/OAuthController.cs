@@ -25,6 +25,11 @@ namespace PlatformProject.AuthServer.Controllers
                 return new HttpUnauthorizedResult();
             }
 
+            if (TempData["UserLogoUrl"] != null)
+            {
+                ViewBag.UserLogoUrl = TempData["UserLogoUrl"];
+            }
+
             var scopes = (Request.QueryString.Get("scope") ?? "").Split(' ');
 
             if (Request.HttpMethod == "POST")
