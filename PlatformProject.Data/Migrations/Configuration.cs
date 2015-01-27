@@ -94,7 +94,7 @@ namespace PlatformProject.Data
                     Name = "Sony Admin",
                     UserName = "soadmin",
                     Password = "admin",
-                    LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
+                    LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
                     Tenant = _tenants[0]
                 },
                 new User()
@@ -103,7 +103,7 @@ namespace PlatformProject.Data
                     Name = "Sony User",
                     UserName = "souser",
                     Password = "user",
-                    LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
+                    LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
                     Tenant = _tenants[0]
                 },
                 new User()
@@ -112,7 +112,7 @@ namespace PlatformProject.Data
                     Name = "Samsung Admin",
                     UserName = "saadmin",
                     Password = "admin",
-                    LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
+                    LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
                     Tenant = _tenants[1]
                 },
                 new User()
@@ -121,7 +121,7 @@ namespace PlatformProject.Data
                     Name = "Samsung User",
                     UserName = "sauser",
                     Password = "user",
-                    LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
+                    LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
                     Tenant = _tenants[1]
                 },
             };
