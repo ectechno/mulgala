@@ -15,9 +15,10 @@ var myApp = angular
     'ngSanitize',
     'ngTouch',
     'notifyApp',
-    'validationApp',
+    'validationApp', 
     'mapComponentsApp',
     'progressBarApp'
+    'dialogApp'
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -83,7 +84,7 @@ var myApp = angular
  .when('/googleMap/:url', {
      templateUrl: 'App/googleMap/map.html',
      controller: 'mapController'
-           })
+ })
    .otherwise({
        redirectTo: '/'
    });
@@ -94,11 +95,6 @@ var notifyApp = angular.module('notifyApp', []);
 
     $scope.show = function (data, type, position) {
         setInterval(function () {
-            //if (document.getElementById("notify").style.visibility == 'hidden') {
-            // document.getElementById("notify").style.visibility='visible';
-            //}
-
-            //else{
             var para = document.createElement("p");
             var node = document.createTextNode(data);
             para.appendChild(node);

@@ -23,13 +23,19 @@ namespace PlatformProject.AuthServer.Controllers
         {
 
             // Find the tenant form the query string
-            var tenant = "";
+            var tenantString = "";
             foreach (var item in Request.QueryString.Get("ReturnUrl").Split('&'))
             {
                 if (item.Split('=').Length == 2 && item.Split('=')[0].ToLower() == "tenant")
                 {
-                    tenant = item.Split('=')[1].ToLower();
+                    tenantString = item.Split('=')[1].ToLower();
                 }
+            }
+
+            Tenant currentTenant = db.Tenants.FirstOrDefault(tenant => tenant.TenantString == tenantString);
+            if (currentTenant != null)
+            {
+                ViewBag.TenantLogoUrl = currentTenant.LogoUrl;
             }
 
             //To-Do : Add validation for the tenant like null validation ..etc
@@ -44,16 +50,19 @@ namespace PlatformProject.AuthServer.Controllers
                 {
                     var username = Request.Form["username"];
                     var password = Request.Form["password"];
-                    User currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Tenant.TenantString == tenant);
+                    User currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Tenant.TenantString == tenantString);
 
                     if (currentUser != null)
                     {
+                        //ViewBag.UserLogoUrl = currentUser.LogoUrl;
+                        TempData["UserLogoUrl"] = currentUser.LogoUrl;
+
                         authentication.SignIn(
                         new AuthenticationProperties { IsPersistent = isPersistent },
                         new ClaimsIdentity(
                             new[] { 
                                 new Claim(ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]),
-                                new Claim("urn:oauth:tenant", tenant)
+                                new Claim("urn:oauth:tenant", tenantString)
                             },
                             "Application"));
                     }

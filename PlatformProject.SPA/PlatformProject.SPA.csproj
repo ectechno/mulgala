@@ -152,6 +152,10 @@
     <Content Include="App\pages\page_search.html" />
     <Content Include="App\sampleService\calculator.html" />
     <Content Include="App\sampleService\calculatorController.js" />
+    <Content Include="App\sampleService\dialogBox.html" />
+    <Content Include="App\sampleService\dialogBoxComponents\dialogBoxController.js" />
+    <Content Include="App\sampleService\dialogBoxComponents\dialogTemplate.html" />
+    <Content Include="App\sampleService\dialogBoxComponents\titleTemplate.html" />
     <Content Include="App\sampleService\progressbar.html" />
     <Content Include="App\sampleService\progressbarController.js" />
     <Content Include="App\tables\tables_beauty.html" />

@@ -10,23 +10,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Authorize</title>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/authserver.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Authorization Server</h1>
-    <h2>OAuth2 Authorize</h2>
     <form method="POST">
-        <p>Hello, @identity.Name</p>
-        <p>A third party application want to do the following on your behalf:</p>
-        <ul>
-            @foreach (var scope in scopes)
-            {
-                <li>@scope</li>
-            }
-        </ul>
-        <p>
-            <input type="submit" name="submit.Grant" value="Grant" />
-            <input type="submit" name="submit.Login" value="Sign in as different user" />
-        </p>
+        <div class="container">
+            <div class="row login_box">
+                <div class="col-md-12 col-xs-12" align="center">
+                    <div class="outter"><img src="@ViewBag.UserLogoUrl" class="image-circle" /></div>
+                    <h1>Hi @identity.Name</h1>
+                    <span>Application want to do the following on your behalf</span>
+                </div>
+
+
+
+                <div class="col-md-12 col-xs-12 login_control">
+
+                    <ul class="scopelist">
+                        @foreach (var scope in scopes)
+                        {
+                            <li class="scope">@scope</li>
+                        }
+                    </ul>
+                
+                    <div align="center">
+                        <input type="submit" class="btn btn-orange" name="submit.Grant" value="Grant" />
+                        <input type="submit" class="btn btn-orange" name="submit.Login" value="Not @identity.Name ?" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </form>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
