@@ -15,7 +15,9 @@ var myApp = angular
     'ngSanitize',
     'ngTouch',
     'notifyApp',
-    'validationApp',
+    'validationApp', 
+    'mapComponentsApp',
+    'progressBarApp',
     'dialogApp'
   ])
   .config(function ($routeProvider) {
@@ -74,13 +76,20 @@ var myApp = angular
              return 'App/calendar/' + params.url
          }
      })
-   .when('/sampleService/:url', {
-       templateUrl: function (params) {
-           return 'App/sampleService/' + params.url
-           //templateUrl: 'App/sampleService/calculator.html',
-           //controller: 'calculatorController'
-       }
-   })
+    .when('/sampleService/calculator', {
+              templateUrl: function (params) {
+                  return 'App/sampleService/' + params.url
+              }
+          })
+ .when('/sampleService/:url', {
+     templateUrl: function (params) {
+         return 'App/sampleService/' + params.url
+     }
+ })
+ .when('/googleMap/:url', {
+     templateUrl: 'App/googleMap/map.html',
+     controller: 'mapController'
+ })
    .otherwise({
        redirectTo: '/'
    });

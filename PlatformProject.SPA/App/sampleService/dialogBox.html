@@ -11,14 +11,13 @@
         <button ng-click="showConfirm('Confirm Message')">Click</button></br></br>
 
         <h4>Click to get a Dialog Box</h4>
-        <button ng-click="showDialogBox('Hello','center','#afef95','black','center')">Click</button>
-        <div data-ng-show="isData">
-            <div id="dialog">
-                <p>{{value}}</p>
-                <button>Ok</button>
-                <button ng-click="">Cancel</button>
-            </div>
+        <button ng-click="showDialogBox('Dialog Box','Hello','center','#B6B6B4','black','center')">Click</button>
+        <div id="titleBar" data-ng-show="isData">
+            <title-bar></title-bar>
         </div>
-    </div>
+        <div id="dialog" data-ng-show="isData">
+            <dialog-box></dialog-box>
+        </div>
+     </div>
 </div>
 

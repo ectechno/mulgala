@@ -1,0 +1,6 @@
+﻿<div ng-app="progressBarApp" ng-controller="progressbarController">
+    <div progressbar="value"></div>
+    <select ng-model="value" ng-options="item as item + '%' for item in items">
+        <option value="">-- Select current progress --</option>
+    </select>
+</div>
