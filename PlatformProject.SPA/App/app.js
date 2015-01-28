@@ -17,7 +17,7 @@ var myApp = angular
     'notifyApp',
     'validationApp', 
     'mapComponentsApp',
-    'progressBarApp'
+    'progressBarApp',
     'dialogApp'
   ])
   .config(function ($routeProvider) {
@@ -76,6 +76,11 @@ var myApp = angular
              return 'App/calendar/' + params.url
          }
      })
+    .when('/sampleService/calculator', {
+              templateUrl: function (params) {
+                  return 'App/sampleService/' + params.url
+              }
+          })
  .when('/sampleService/:url', {
      templateUrl: function (params) {
          return 'App/sampleService/' + params.url
