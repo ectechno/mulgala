@@ -17,7 +17,7 @@ var myApp = angular
     'notifyApp',
     'validationApp',
     'dialogApp'
-  ])
+   ])
   .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
