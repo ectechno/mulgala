@@ -119,9 +119,14 @@
     <Content Include="App\AT\app\app.js" />
     <Content Include="App\AT\app\Views\createAdmin.html" />
     <Content Include="App\AT\app\Views\createTenant.html" />
+    <Content Include="App\AT\app\Views\createUser.html" />
+    <Content Include="App\AT\app\Views\darkLaunching.html" />
     <Content Include="App\AT\app\Views\dashboard.html" />
+    <Content Include="App\AT\app\Views\userManagement.html" />
     <Content Include="App\AT\app\Views\licensing.html" />
+    <Content Include="App\AT\app\Views\logs.html" />
     <Content Include="App\AT\app\Views\statistics.html" />
+    <Content Include="App\AT\app\Views\systemHealth.html" />
     <Content Include="App\AT\css\AdminLTE.css" />
     <Content Include="App\AT\css\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
     <Content Include="App\AT\css\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
@@ -511,7 +516,6 @@
     <Content Include="App\AT\app\Views\forms\advanced.html" />
     <Content Include="App\AT\app\Views\forms\empty.html" />
     <Content Include="App\AT\app\Views\forms\general.html" />
-    <Content Include="App\AT\app\Views\widgets.html" />
     <Content Include="App\calendar\calendar.html" />
     <Content Include="App\charts\charts_amcharts.html" />
     <Content Include="App\charts\charts_chartist.html" />
@@ -1560,6 +1564,8 @@
     <Content Include="Scripts\xcharts\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\AT\app\Controllers\" />
+    <Folder Include="App\AT\app\Models\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

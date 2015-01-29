@@ -10,19 +10,31 @@ app.config(function ($routeProvider) {
             //controller: 'Controller',
             templateUrl: 'app/Views/create.html'
         })
-         .when('/Widgets', {
+        .when('/UserManagement', {
              //controller: 'Controller',
-             templateUrl: 'app/Views/widgets.html'
+             templateUrl: 'app/Views/userManagement.html'
          })
         .when('/Licensing', {
             //controller: 'Controller',
             templateUrl: 'app/Views/licensing.html'
         })
+        .when('/Logs', {
+             //controller: 'Controller',
+             templateUrl: 'app/Views/logs.html'
+         })
         .when('/Statistics', {
             //controller: 'Controller',
             templateUrl: 'app/Views/statistics.html'
         })
-         .when('/Create/CreateTenant', {
+        .when('/SystemHealth', {
+            //controller: 'Controller',
+            templateUrl: 'app/Views/systemHealth.html'
+        })
+        .when('/DarkLaunching', {
+            //controller: 'Controller',
+            templateUrl: 'app/Views/darkLaunching.html'
+        })
+        .when('/Create/CreateTenant', {
              //controller: 'Controller',
              templateUrl: 'app/Views/createTenant.html'
          })
@@ -30,7 +42,7 @@ app.config(function ($routeProvider) {
             //controller: 'Controller',
             templateUrl: 'app/Views/createUser.html'
         })
-         .when('/Create/CreateTenant/CreateAdmin', {
+        .when('/Create/CreateAdmin', {
              //controller: 'Controller',
              templateUrl: 'app/Views/createAdmin.html'
          })
@@ -38,18 +50,18 @@ app.config(function ($routeProvider) {
         .otherwise({ redirectTo: '/' });
 });
 
-app.controller('submission', function ($scope, $http, $location) {
+/*app.controller('submission', function ($scope, $http, $location) {
     $scope.save = function () {
         $http({
             method: "POST",
-            url: "Bills_Angular",
-            data: {
-                Fornecedor: $scope.fornecedor
-            },
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            //url: "r",
+            //data: {
+            //Fornecedor: $scope.fornecedor
+            //},
+            //headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).success(function (data) {
             //to change the angular view use $location t0 redirect
-            $location.path("/route-where-you-want-to-go");
+            $location.path("#/Create/CreateTenant/CreateAdmin");
             //to redirect to page outside current angular app use 'window.location':
             //window.location = "/path-where-you-want-to-go
 
@@ -57,4 +69,4 @@ app.controller('submission', function ($scope, $http, $location) {
             alert("Error");
         });
     };
-});
+});*/
