@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace PlatformProject.API.Models
+namespace PlatformProject.API.DAL
 {
     public class PlatformProjectAPIContext : DbContext
     {

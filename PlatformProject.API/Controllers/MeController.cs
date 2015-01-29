@@ -15,6 +15,7 @@ namespace PlatformProject.API.Controllers
         public IEnumerable<object> Get()
         {
             var identity = User.Identity as ClaimsIdentity;
+
             return identity.Claims.Select(c => new
             {
                 Type = c.Type,
