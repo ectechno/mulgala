@@ -105,7 +105,8 @@ namespace PlatformProject.Data
                     UserName = "soadmin",
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
-                    Tenant = _tenants[0]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "Administrator")
                 },
                 new User()
                 {
@@ -114,7 +115,8 @@ namespace PlatformProject.Data
                     UserName = "souser",
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
-                    Tenant = _tenants[0]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "User")
                 },
                 new User()
                 {
@@ -123,7 +125,8 @@ namespace PlatformProject.Data
                     UserName = "saadmin",
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
-                    Tenant = _tenants[1]
+                    Tenant = _tenants[1],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "Administrator")
                 },
                 new User()
                 {
@@ -132,7 +135,8 @@ namespace PlatformProject.Data
                     UserName = "sauser",
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
-                    Tenant = _tenants[1]
+                    Tenant = _tenants[1],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "User")
                 },
             };
 
