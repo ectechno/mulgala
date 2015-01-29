@@ -26,5 +26,14 @@ app.config(function ($routeProvider) {
              //controller: 'Controller',
              templateUrl: 'app/createTenant.html'
          })
+        .when('/Create/CreateUser', {
+            //controller: 'Controller',
+            templateUrl: 'app/createUser.html'
+        })
+         .when('/Create/CreateTenant/CreateAdmin', {
+             //controller: 'Controller',
+             templateUrl: 'app/createAdmin.html'
+         })
+       
         .otherwise({ redirectTo: '/' });
 });

@@ -117,6 +117,7 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\AT\app\app.js" />
+    <Content Include="App\AT\app\createAdmin.html" />
     <Content Include="App\AT\app\createTenant.html" />
     <Content Include="App\AT\app\dashboard.html" />
     <Content Include="App\AT\app\licensing.html" />
