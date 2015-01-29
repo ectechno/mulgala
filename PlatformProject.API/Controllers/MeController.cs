@@ -9,7 +9,8 @@ using System.Web.Http;
 namespace PlatformProject.API.Controllers
 {
     //[Authorize]
-    [Authorize(Users = "Oliver,Sara,John")]
+    //[Authorize(Users = "Oliver,Sara,John")]
+    [Authorize(Roles="Administrator")]
     public class MeController : ApiController
     {
         public IEnumerable<object> Get()

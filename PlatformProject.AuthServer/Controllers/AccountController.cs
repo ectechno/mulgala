@@ -62,7 +62,8 @@ namespace PlatformProject.AuthServer.Controllers
                         new ClaimsIdentity(
                             new[] { 
                                 new Claim(ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]),
-                                new Claim("urn:oauth:tenant", tenantString)
+                                new Claim("urn:oauth:tenant", tenantString),
+                                new Claim(ClaimsIdentity.DefaultRoleClaimType, currentUser.Role.Name)
                             },
                             "Application"));
                     }
