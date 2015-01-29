@@ -35,6 +35,7 @@
         "select2": "~3.5.2",
         "sparkline": "~2.1.2",
         "springy": "~2.7.1",
-        "tinymce": "~4.1.7"
+        "tinymce": "~4.1.7",
+		
     }
 }

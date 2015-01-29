@@ -18,7 +18,9 @@ var myApp = angular
     'validationApp', 
     'mapComponentsApp',
     'progressBarApp',
-    'dialogApp'
+    'dialogApp',
+    'tableApp'
+   
   ])
   .config(function ($routeProvider) {
       $routeProvider
@@ -30,7 +32,7 @@ var myApp = angular
          return 'App/dashboard/' + params.url
      }
  })
-        .when('/chart/:url', {
+ .when('/chart/:url', {
             templateUrl: function (params) {
                 return 'App/charts/' + params.url
             }

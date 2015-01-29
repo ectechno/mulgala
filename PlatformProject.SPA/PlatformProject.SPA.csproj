@@ -158,6 +158,10 @@
     <Content Include="App\sampleService\dialogBoxComponents\titleTemplate.html" />
     <Content Include="App\sampleService\progressbar.html" />
     <Content Include="App\sampleService\progressbarController.js" />
+    <Content Include="App\sampleService\table.html" />
+    <Content Include="App\sampleService\tableComponents\tableTemplate.html" />
+    <Content Include="App\sampleService\tableComponents\tableController.js" />
+    <Content Include="App\sampleService\tableComponents\tableTitle.html" />
     <Content Include="App\tables\tables_beauty.html" />
     <Content Include="App\tables\tables_datatables.html" />
     <Content Include="App\tables\tables_simple.html" />
