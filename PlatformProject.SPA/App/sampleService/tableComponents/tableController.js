@@ -14,11 +14,12 @@ tableApp.controller('tableController', function ($scope) {
             sex: 'Male'
         }
     ];
+
 });
    
   
 
-dialogApp.directive('myElement', function () {
+tableApp.directive('myElement', function () {
     var directive = {};
     directive.templateUrl = "/App/sampleService/tableComponents/tableTemplate.html";
     directive.scope = {
