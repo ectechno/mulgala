@@ -12,6 +12,9 @@ namespace PlatformProject.Model
         public String UserName { get; set; }
         public String Password { get; set; }
         public String LogoUrl { get; set; }
+        
+        public string RoleId { get; set; }
+        public virtual Role Role { get; set; }
 
         public int TenantId { get; set; }
         public virtual Tenant Tenant { get; set; }

@@ -1,3 +1,4 @@
+using System.Linq;
 using PlatformProject.Model;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -56,6 +57,13 @@ namespace PlatformProject.Data
             };
         }
 
+        private void AddRoles(PlatformProjectDBContext context) 
+        {
+            context.Roles.Add(new Role { RoleId = 0, Name = "Administrator" });
+            context.Roles.Add(new Role { RoleId = 0, Name = "User" });
+            context.SaveChanges();
+        }
+
         private void AddTenants(PlatformProjectDBContext context)
         {
             foreach (var tenant in _tenants)
@@ -77,7 +85,8 @@ namespace PlatformProject.Data
                     UserName = "Oliver",
                     Password = "oli@queen",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/Oliver-logo.jpg",
-                    Tenant = _tenants[0]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "Administrator")
                 },
                 new User()
                 {
@@ -86,7 +95,8 @@ namespace PlatformProject.Data
                     UserName = "Sara",
                     Password = "sara@lance",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
-                    Tenant = _tenants[1]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "User")
                 },
                 new User()
                 {
@@ -95,7 +105,8 @@ namespace PlatformProject.Data
                     UserName = "soadmin",
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
-                    Tenant = _tenants[0]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "Administrator")
                 },
                 new User()
                 {
@@ -104,7 +115,8 @@ namespace PlatformProject.Data
                     UserName = "souser",
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
-                    Tenant = _tenants[0]
+                    Tenant = _tenants[0],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "User")
                 },
                 new User()
                 {
@@ -113,7 +125,8 @@ namespace PlatformProject.Data
                     UserName = "saadmin",
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
-                    Tenant = _tenants[1]
+                    Tenant = _tenants[1],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "Administrator")
                 },
                 new User()
                 {
@@ -122,7 +135,8 @@ namespace PlatformProject.Data
                     UserName = "sauser",
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
-                    Tenant = _tenants[1]
+                    Tenant = _tenants[1],
+                    Role = context.Roles.FirstOrDefault(role => role.Name == "User")
                 },
             };
 
@@ -135,6 +149,7 @@ namespace PlatformProject.Data
 
         protected override void Seed(PlatformProjectDBContext context)
         {
+            AddRoles(context);
             AddTenants(context);
             AddUsers(context);
             context.SaveChanges();

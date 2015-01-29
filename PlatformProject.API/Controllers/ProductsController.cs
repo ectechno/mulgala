@@ -9,24 +9,33 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using PlatformProject.API.Models;
+using PlatformProject.API.DAL;
+using System.Security.Claims;
 
 namespace PlatformProject.API.Controllers
 {
+
     public class ProductsController : ApiController
     {
-        private PlatformProjectAPIContext db = new PlatformProjectAPIContext();
+        private string tenantID;
+        private UnitOfWork unitOfWork = new UnitOfWork();
+
 
         // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        [Authorize(Roles="Administrator")]
+        public IEnumerable<Product> GetProducts()
         {
-            return db.Products;
+            this.setTenantID();
+            return unitOfWork.ProductRepository.Get();
         }
 
         // GET: api/Products/5
+        [Authorize(Roles = "Administrator,User")]
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
-            Product product = db.Products.Find(id);
+            this.setTenantID();
+            Product product = unitOfWork.ProductRepository.GetByID(id);
             if (product == null)
             {
                 return NotFound();
@@ -39,6 +48,7 @@ namespace PlatformProject.API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct(int id, Product product)
         {
+            this.setTenantID();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -49,11 +59,11 @@ namespace PlatformProject.API.Controllers
                 return BadRequest();
             }
 
-            db.Entry(product).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                unitOfWork.ProductRepository.Update(product);
+                unitOfWork.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,13 +84,14 @@ namespace PlatformProject.API.Controllers
         [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
         {
+            this.setTenantID();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Products.Add(product);
-            db.SaveChanges();
+            unitOfWork.ProductRepository.Insert(product);
+            unitOfWork.Save();
 
             return CreatedAtRoute("DefaultApi", new { id = product.ID }, product);
         }
@@ -89,14 +100,14 @@ namespace PlatformProject.API.Controllers
         [ResponseType(typeof(Product))]
         public IHttpActionResult DeleteProduct(int id)
         {
-            Product product = db.Products.Find(id);
+            this.setTenantID();
+            Product product = unitOfWork.ProductRepository.GetByID(id);
             if (product == null)
             {
                 return NotFound();
             }
-
-            db.Products.Remove(product);
-            db.SaveChanges();
+            unitOfWork.ProductRepository.Delete(id);
+            unitOfWork.Save();
 
             return Ok(product);
         }
@@ -105,14 +116,22 @@ namespace PlatformProject.API.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool ProductExists(int id)
         {
-            return db.Products.Count(e => e.ID == id) > 0;
+            this.setTenantID();
+            return unitOfWork.ProductRepository.GetByID(id) != null;
+        }
+
+        private void setTenantID()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            this.tenantID = identity.Claims.FirstOrDefault(c => c.Type == "urn:oauth:tenant").Value.ToString();
+            this.unitOfWork.tenantID = tenantID;
         }
     }
 }
