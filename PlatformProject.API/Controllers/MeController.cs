@@ -9,12 +9,14 @@ using System.Web.Http;
 namespace PlatformProject.API.Controllers
 {
     //[Authorize]
-    [Authorize(Users = "Oliver,Sara,John")]
+    //[Authorize(Users = "Oliver,Sara,John")]
+    [Authorize(Roles="Administrator")]
     public class MeController : ApiController
     {
         public IEnumerable<object> Get()
         {
             var identity = User.Identity as ClaimsIdentity;
+
             return identity.Claims.Select(c => new
             {
                 Type = c.Type,
