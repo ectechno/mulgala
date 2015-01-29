@@ -131,6 +131,8 @@
     <Content Include="App\forms\registrationAngular.html" />
     <Content Include="App\gallery\gallery_flickr.html" />
     <Content Include="App\gallery\gallery_simple.html" />
+    <Content Include="App\googleMap\map.html" />
+    <Content Include="App\googleMap\mapController.js" />
     <Content Include="App\maps\maps.html" />
     <Content Include="App\maps\map_fullscreen.html" />
     <Content Include="App\maps\map_leaflet.html" />
@@ -151,7 +153,11 @@
     <Content Include="App\sampleService\calculator.html" />
     <Content Include="App\sampleService\calculatorController.js" />
     <Content Include="App\sampleService\dialogBox.html" />
-    <Content Include="App\sampleService\dialogBoxController.js" />
+    <Content Include="App\sampleService\dialogBoxComponents\dialogBoxController.js" />
+    <Content Include="App\sampleService\dialogBoxComponents\dialogTemplate.html" />
+    <Content Include="App\sampleService\dialogBoxComponents\titleTemplate.html" />
+    <Content Include="App\sampleService\progressbar.html" />
+    <Content Include="App\sampleService\progressbarController.js" />
     <Content Include="App\tables\tables_beauty.html" />
     <Content Include="App\tables\tables_datatables.html" />
     <Content Include="App\tables\tables_simple.html" />
