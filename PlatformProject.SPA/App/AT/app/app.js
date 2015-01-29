@@ -4,36 +4,69 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/Dashboard', {
             //controller: 'Controller',
-            templateUrl: 'app/dashboard.html'
+            templateUrl: 'app/Views/dashboard.html'
         })
         .when('/Create', {
             //controller: 'Controller',
-            templateUrl: 'app/create.html'
+            templateUrl: 'app/Views/create.html'
         })
-         .when('/Widgets', {
+        .when('/UserManagement', {
              //controller: 'Controller',
-             templateUrl: 'app/widgets.html'
+             templateUrl: 'app/Views/userManagement.html'
          })
         .when('/Licensing', {
             //controller: 'Controller',
-            templateUrl: 'app/licensing.html'
+            templateUrl: 'app/Views/licensing.html'
         })
+        .when('/Logs', {
+             //controller: 'Controller',
+             templateUrl: 'app/Views/logs.html'
+         })
         .when('/Statistics', {
             //controller: 'Controller',
-            templateUrl: 'app/statistics.html'
+            templateUrl: 'app/Views/statistics.html'
         })
-         .when('/Create/CreateTenant', {
+        .when('/SystemHealth', {
+            //controller: 'Controller',
+            templateUrl: 'app/Views/systemHealth.html'
+        })
+        .when('/DarkLaunching', {
+            //controller: 'Controller',
+            templateUrl: 'app/Views/darkLaunching.html'
+        })
+        .when('/Create/CreateTenant', {
              //controller: 'Controller',
-             templateUrl: 'app/createTenant.html'
+             templateUrl: 'app/Views/createTenant.html'
          })
         .when('/Create/CreateUser', {
             //controller: 'Controller',
-            templateUrl: 'app/createUser.html'
+            templateUrl: 'app/Views/createUser.html'
         })
-         .when('/Create/CreateTenant/CreateAdmin', {
+        .when('/Create/CreateAdmin', {
              //controller: 'Controller',
-             templateUrl: 'app/createAdmin.html'
+             templateUrl: 'app/Views/createAdmin.html'
          })
        
         .otherwise({ redirectTo: '/' });
 });
+
+/*app.controller('submission', function ($scope, $http, $location) {
+    $scope.save = function () {
+        $http({
+            method: "POST",
+            //url: "r",
+            //data: {
+            //Fornecedor: $scope.fornecedor
+            //},
+            //headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).success(function (data) {
+            //to change the angular view use $location t0 redirect
+            $location.path("#/Create/CreateTenant/CreateAdmin");
+            //to redirect to page outside current angular app use 'window.location':
+            //window.location = "/path-where-you-want-to-go
+
+        }).error(function () {
+            alert("Error");
+        });
+    };
+});*/
