@@ -53,7 +53,7 @@ namespace PlatformProject.API.DAL
 
         public virtual TEntity GetByID(object id)
         {
-            return dbQuery.FirstOrDefault(e=> e.ID.Equals(id));
+            return dbQuery.FirstOrDefault(e=> e.ID.Equals((int)id));
         }
 
         public virtual void Insert(TEntity entity)

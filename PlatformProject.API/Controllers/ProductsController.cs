@@ -22,7 +22,7 @@ namespace PlatformProject.API.Controllers
 
 
         // GET: api/Products
-        [Authorize(Users = "Oliver,Sara")]
+        [Authorize(Roles="Administrator")]
         public IEnumerable<Product> GetProducts()
         {
             this.setTenantID();
@@ -30,7 +30,7 @@ namespace PlatformProject.API.Controllers
         }
 
         // GET: api/Products/5
-        [Authorize(Users = "Oliver")]
+        [Authorize(Roles = "Administrator,User")]
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
