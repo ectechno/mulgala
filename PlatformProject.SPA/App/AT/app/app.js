@@ -6,9 +6,9 @@ app.config(function ($routeProvider) {
             //controller: 'Controller',
             templateUrl: 'app/Views/dashboard.html'
         })
-        .when('/Create', {
+        .when('/TenantManagement', {
             //controller: 'Controller',
-            templateUrl: 'app/Views/create.html'
+            templateUrl: 'app/Views/tenantManagement.html'
         })
         .when('/UserManagement', {
              //controller: 'Controller',
@@ -34,15 +34,15 @@ app.config(function ($routeProvider) {
             //controller: 'Controller',
             templateUrl: 'app/Views/darkLaunching.html'
         })
-        .when('/Create/CreateTenant', {
+        .when('/TenantManagement/CreateTenant', {
              //controller: 'Controller',
              templateUrl: 'app/Views/createTenant.html'
          })
-        .when('/Create/CreateUser', {
-            //controller: 'Controller',
+        .when('/UserManagement/CreateUser', {
+            controller: 'userController',
             templateUrl: 'app/Views/createUser.html'
         })
-        .when('/Create/CreateAdmin', {
+        .when('/TenantManagement/CreateAdmin', {
              //controller: 'Controller',
              templateUrl: 'app/Views/createAdmin.html'
          })
