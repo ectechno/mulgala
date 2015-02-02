@@ -2,22 +2,23 @@
     <div ng-controller="dialogController">
         <h2 style="text-align:center; padding-top:20px;">Message Boxes</h2></br></br>
         <h4>Click to get an Alert</h4>
-        <button ng-click="showAlert('Alert Message')">Click</button></br></br>
+        <button class="btn btn-danger" ng-click="showAlert('Alert Message')">Click</button></br></br>
 
         <h4>Click to get a Promt</h4>
-        <button ng-click="showPrompt('Prompt Message')">Click</button></br></br>
+        <button class="btn btn-info" ng-click="showPrompt('Prompt Message')">Click</button></br></br>
 
         <h4>Click to get a Confirm Alert</h4>
-        <button ng-click="showConfirm('Confirm Message')">Click</button></br></br>
+        <button class="btn btn-warning" ng-click="showConfirm('Confirm Message')">Click</button></br></br>
 
         <h4>Click to get a Dialog Box</h4>
-        <button ng-click="showDialogBox('Dialog Box','Hello','center','#B6B6B4','black','center')">Click</button>
+        <button class="btn btn-success" ng-click="showDialogBox('Dialog Box','Hello','center','#B6B6B4','black','center','submit()')">Click</button>
         <div id="titleBar" data-ng-show="isData">
             <title-bar></title-bar>
-        </div>
+         </div>
         <div id="dialog" data-ng-show="isData">
             <dialog-box></dialog-box>
         </div>
+      
      </div>
 </div>
 

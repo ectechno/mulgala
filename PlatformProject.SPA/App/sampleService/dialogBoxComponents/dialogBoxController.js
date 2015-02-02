@@ -5,8 +5,14 @@ dialogApp.service('dialogService', function () {
 });
 
 dialogApp.controller('dialogController', function ($scope, dialogService) {
-    $scope.showDialogBox = function (title, value, position, backgroundColour, textColour, textAlign) {   // Show dialog box
+    $scope.showDialogBox = function (title, value, position, backgroundColour, textColour, textAlign,callBack) {   // Show dialog box
 
+        var dialog = document.getElementById("dialog");
+        var titleBar = document.getElementById("titleBar");
+        dialog.style.visibility = "visible";
+        titleBar.style.visibility = "visible";
+        //dialog.parentElement.style.background = '#F0F0F5';
+             
         var style1 = document.createElement('style');  // For applying required styles for title bar
         style1.type = 'text/css';
         var style2 = document.createElement('style');  // For applying required styles for dialog box
@@ -17,12 +23,11 @@ dialogApp.controller('dialogController', function ($scope, dialogService) {
         document.getElementsByTagName('head')[0].appendChild(style2);
         document.getElementById('titleBar').className = 'titleBar';
         document.getElementById('dialog').className = 'dialogBox';
-
-        var dialog = document.getElementById("dialog");
-        var titleBar = document.getElementById("titleBar");
+                
         dialog.style.backgroundColor = backgroundColour;
         dialog.style.color = textColour;
         dialog.style.textAlign = textAlign;
+        
                 
         if (position == 'right') {
             dialog.style.marginLeft = '922px';
@@ -43,9 +48,13 @@ dialogApp.controller('dialogController', function ($scope, dialogService) {
         return $scope.isData;
     };
 
-    /*$scope.closeDialogBox = function () {
+    $scope.closeDialogBox = function () {
         dialogService.isData = false;
-    };*/
+        document.getElementById("titleBar").style.visibility="hidden";
+        document.getElementById("dialog").style.visibility = "hidden"
+        //document.getElementById("dialog").parentElement.style.removeProperty("background");
+
+    };
 
     $scope.showAlert = function (value) {    // Show alert
         window.alert(value);
