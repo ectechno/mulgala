@@ -118,7 +118,7 @@
     <Content Include="App\app.js" />
     <Content Include="App\AT\app\app.js" />
     <Content Include="App\AT\app\Controllers\UserController.js" />
-    <Content Include="App\AT\app\Services\UserService.js" />
+    <Content Include="App\AT\app\Models\UserModel.js" />
     <Content Include="App\AT\app\Views\createAdmin.html" />
     <Content Include="App\AT\app\Views\createTenant.html" />
     <Content Include="App\AT\app\Views\createUser.html" />
@@ -1570,7 +1570,7 @@
     <Content Include="Scripts\xcharts\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\AT\app\Models\" />
+    <Folder Include="App\AT\app\Services\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

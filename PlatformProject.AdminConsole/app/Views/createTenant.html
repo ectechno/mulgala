@@ -14,31 +14,31 @@
                 <section class="content">
                     <form name="createTenant" method="get" action="#/TenantManagement/CreateAdmin">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID">
+                            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="tId">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name">
+                            <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="hostName" placeholder="Host Name">
+                            <input type="text" class="form-control" id="hostName" placeholder="Host Name" ng-model="tHost">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="ip" placeholder="IP Address">
+                            <input type="text" class="form-control" id="ip" placeholder="IP Address" ng-model="tIp">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="port" placeholder="Port">
+                            <input type="text" class="form-control" id="port" placeholder="Port" ng-model="tPort">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="logo" placeholder="Logo">
+                            <input type="text" class="form-control" id="logo" placeholder="Logo" ng-model="tLogo">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="email" placeholder="Email">
+                            <input type="text" class="form-control" id="email" placeholder="Email" ng-model="tEmail">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="enable" placeholder="Enable">
+                            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="tEnable">
                         </div>
-                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" />
-                        <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="" />
+                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+                        <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
                     </form>                    
                 </section><!-- /.content -->
             

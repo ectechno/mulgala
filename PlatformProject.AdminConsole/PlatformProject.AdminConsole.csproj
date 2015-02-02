@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\Controllers\TenantAdminController.js" />
+    <Content Include="app\Controllers\TenantController.js" />
     <Content Include="app\Controllers\UserController.js" />
     <Content Include="app\Views\charts\empty.html" />
     <Content Include="app\Views\charts\flot.html" />

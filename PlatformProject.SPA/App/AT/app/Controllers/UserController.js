@@ -5,33 +5,35 @@
    
     //Function to load all User records
     function loadRecords() {
-        var promiseGet = UserService.getTrainers(); //The Method Call from service
+        var promiseGet = UserService.getUsers(); //The Method Call from service
 
-        promiseGet.then(function (pl) { $scope.Users = pl.data },
+        promiseGet.then(function (pl) {
+            $scope.Users = pl.data
+        },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
               });
-    }
+    };
 
     $scope.save = function () {
-        var user={
-            uId : $scope.uId,
-            uName :$scope.uName,
-            uEmail : $scope.uEmail,
-            uRole : $scope.uRole,
+        var user = {
+            uId: $scope.uId,
+            uName: $scope.uName,
+            uEmail: $scope.uEmail,
+            uRole: $scope.uRole,
             uTenant: $scope.uTenant,
-            username : $scope.username,
-            uPassword : $scope.uPassword
+            username: $scope.username,
+            uPassword: $scope.uPassword
         };
 
         if ($scope.isNew) {
-            var promisePost = createUserService.post(user);
+            var promisePost = UserService.post(user);
             promisePost.then(function (pl) {
                 $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
                 console.log($scope.Message);
-                //$scope.clear();
-                //loadRecords();
+                $scope.clear();
+                loadRecords();
             }, function (err) {
                 console.log("Err" + err);
             });
@@ -44,10 +46,10 @@
             }, function (err) {
                 console.log("Err" + err);
             });
-        } 
-        
+        }
+       
     };
-
+    
     //Method to Delete
     $scope.delete = function (uId) {
         var promiseDelete = UserService.delete(uId);
@@ -57,17 +59,18 @@
             $scope.uName = "";
             $scope.uEmail = "";
             $scope.uRole = "";
-            $scope.uTenat = "";
+            $scope.uTenant = "";
             $scope.username = "";
             $scope.uPassword = "";
             loadRecords();
         }, function (err) {
             console.log("Err" + err);
         });
+       
     }
 
-    //Method to Get Single Trainer based on Id
-    $scope.get = function (user) {
+    //Method to Get Single user based on Id
+    $scope.get = function (uId) {
         var promiseGetSingle = UserService.get(user.Id);
 
         promiseGetSingle.then(function (pl) {
@@ -83,7 +86,7 @@
                   function (errorPl) {
                       console.log('failure loading User', errorPl);
                   });
-    }
+    };
 
     $scope.clear = function () {
         $scope.isNew = true; 
@@ -99,7 +102,13 @@
 
     $scope.edit = function (user) {
         $scope.isNew = false;
-
+        $scope.uId = user.uId;
+        $scope.uName = user.uName;
+        $scope.uEmail = user.uEmail;
+        $scope.uRole = user.uRole;
+        $scope.uTenant = user.uTenant;
+        $scope.username = user.username;
+        $scope.uPassword = user.uPassword;
     };
 
     $scope.cancel = function () {
