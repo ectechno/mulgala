@@ -6,4 +6,8 @@ angular.module('admin').service('MessageService', function ($rootScope)
     {
         $rootScope.$emit(SHOW_ERROR_MESSAGE, { 'title': title, 'message': message });
     };
+    this.showSuccessMessage = function (title, message)
+    {
+        $rootScope.$emit(SHOW_ERROR_MESSAGE, { 'title': title, 'message': message });
+    };
 });

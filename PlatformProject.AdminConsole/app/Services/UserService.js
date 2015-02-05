@@ -89,8 +89,32 @@ angular.module('UserService').service('MetaDataService',['$http', '$rootScope', 
             }
         };
 
-        function createUser(){
+        function createUser(userObj)
+        {
+            var key = $cookies.sessionKey;
+            var request;
+            var params = {
+                id: userObj.id,
+                name: userObj.name,
+                logo: userObj.logo,
+                email: userObj.email,
+                role: userObj.role,
+                tenant: userObj.tenant,
+                password: userObj.password,
+                enable: userObj.enable,
+                username: userObj.username,
+                dateTime: userObj.dateTime
+            };
+            var status = RequestService.get(request, params, null);
 
+            if (status.isSuccess)
+            {
+                MessageService.showErrorMessage('Message', 'Message');
+            } else if (!status.isSuccess)
+            {
+                MessageService.showErrorMessage('Error Message', status.data.error);
+            }
+            return status;
         }
         function updateUser() {
 
@@ -101,8 +125,6 @@ angular.module('UserService').service('MetaDataService',['$http', '$rootScope', 
         function getUserData() {
 
         }
-
-      
 
 
         this.getUserType = getUserTyp;
