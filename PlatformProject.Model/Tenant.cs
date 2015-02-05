@@ -8,10 +8,26 @@ namespace PlatformProject.Model
     public class Tenant
     {
         public int ID { get; set; }
-        public String GUID { get; set; }
-        public String TenantString { get; set; }
-        public String Name { get; set; }
-        public String LogoUrl { get; set; }
+
+        public string GUID { get; set; }
+
+        public string TenantString { get; set; }
+
+        public string Name { get; set; }
+
+        public string LogoUrl { get; set; }
+
+        public bool Enable { get; set; }
+
+        public DateTime CreatedDateTime { get; set; }
+
+        public DateTime UpdatedDateTime { get; set; }
+
+        public int CreatorId { get; set; }
+        public User Creator { get; set; }
+
+        public int UpdaterId { get; set; }
+        public User Updater { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }
