@@ -48,13 +48,9 @@
   <ItemGroup>
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201502051135284_InitialCreate.cs" />
-    <Compile Include="Migrations\201502051135284_InitialCreate.Designer.cs">
-      <DependentUpon>201502051135284_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502051249460_TenantGUIDTypeChange.cs" />
-    <Compile Include="Migrations\201502051249460_TenantGUIDTypeChange.Designer.cs">
-      <DependentUpon>201502051249460_TenantGUIDTypeChange.cs</DependentUpon>
+    <Compile Include="Migrations\201502051435203_InitialCreate.cs" />
+    <Compile Include="Migrations\201502051435203_InitialCreate.Designer.cs">
+      <DependentUpon>201502051435203_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlatformProjectDBContext.cs" />
@@ -73,11 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502051135284_InitialCreate.resx">
-      <DependentUpon>201502051135284_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502051249460_TenantGUIDTypeChange.resx">
-      <DependentUpon>201502051249460_TenantGUIDTypeChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502051435203_InitialCreate.resx">
+      <DependentUpon>201502051435203_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

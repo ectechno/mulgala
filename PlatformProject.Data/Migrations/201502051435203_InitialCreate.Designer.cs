@@ -7,13 +7,13 @@ namespace PlatformProject.Data
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class TenantGUIDTypeChange : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TenantGUIDTypeChange));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201502051249460_TenantGUIDTypeChange"; }
+            get { return "201502051435203_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

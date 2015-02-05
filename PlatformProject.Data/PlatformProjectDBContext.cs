@@ -26,5 +26,30 @@ namespace PlatformProject.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasOptional(user => user.Creator)
+                .WithMany()
+                .HasForeignKey(user => user.CreatorId);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(user => user.Updater)
+                .WithMany()
+                .HasForeignKey(user => user.UpdaterId);
+
+            modelBuilder.Entity<Tenant>()
+                .HasOptional(user => user.Creator)
+                .WithMany()
+                .HasForeignKey(user => user.CreatorId);
+
+            modelBuilder.Entity<Tenant>()
+                .HasOptional(user => user.Updater)
+                .WithMany()
+                .HasForeignKey(user => user.UpdaterId);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

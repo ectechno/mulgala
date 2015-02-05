@@ -90,7 +90,11 @@ namespace PlatformProject.Data
                     Password = "oli@queen",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/Oliver-logo.jpg",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "sony").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id,
+                    Email = "oli@queen.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 },
                 new User()
                 {
@@ -100,7 +104,11 @@ namespace PlatformProject.Data
                     Password = "sara@lance",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/Sara-logo.jpg",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "sony").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id,
+                    Email = "sara@lance.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 },
                 new User()
                 {
@@ -110,7 +118,11 @@ namespace PlatformProject.Data
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "sony").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id,
+                    Email = "admin@sony.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 },
                 new User()
                 {
@@ -120,7 +132,11 @@ namespace PlatformProject.Data
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "sony").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id,
+                    Email = "user@sony.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 },
                 new User()
                 {
@@ -130,7 +146,11 @@ namespace PlatformProject.Data
                     Password = "admin",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "samsung").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Administrator").Id,
+                    Email = "admin@samsung.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 },
                 new User()
                 {
@@ -140,7 +160,11 @@ namespace PlatformProject.Data
                     Password = "user",
                     LogoUrl = "http://localhost:21681/Images/User/Logo/user.png",
                     TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "samsung").Id,
-                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "User").Id,
+                    Email = "user@samsung.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
                 }
                 );
             context.SaveChanges();
