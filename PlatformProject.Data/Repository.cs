@@ -35,7 +35,7 @@ namespace PlatformProject.Data
 
         public virtual Entity Update(Entity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
+            //dbSet.Attach(entityToUpdate);
             dbContext.Entry(entityToUpdate).State = EntityState.Modified;
             return entityToUpdate;
         }

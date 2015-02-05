@@ -5,16 +5,16 @@ using System.Web;
 
 namespace PlatformProject.Model
 {
-    public class Tenant
+    public class Tenant: IIdentityField
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public string GUID { get; set; }
+        public Guid GUID { get; set; }
 
         public string TenantString { get; set; }
 
         public string Name { get; set; }
-
+        
         public string LogoUrl { get; set; }
 
         public bool Enable { get; set; }
@@ -23,11 +23,11 @@ namespace PlatformProject.Model
 
         public DateTime UpdatedDateTime { get; set; }
 
-        public int CreatorId { get; set; }
-        public User Creator { get; set; }
+        public int? CreatorId { get; set; }
+        public virtual User Creator { get; set; }
 
-        public int UpdaterId { get; set; }
-        public User Updater { get; set; }
+        public int? UpdaterId { get; set; }
+        public virtual User Updater { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }
