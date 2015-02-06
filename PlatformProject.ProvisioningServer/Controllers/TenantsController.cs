@@ -81,7 +81,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 });
                 unitOfWork.Save();
 
-                tenantDTO.Id = tenant.Id;
+                //tenantDTO.Id = tenant.Id;
                 response = Request.CreateResponse(HttpStatusCode.Created, new TenantDTO
                 {
                     Id = tenant.Id,

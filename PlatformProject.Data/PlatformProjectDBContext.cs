@@ -20,6 +20,7 @@ namespace PlatformProject.Data
         public PlatformProjectDBContext()
             : base("name=PlatformProjectAuthServerContext")
         {
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<Tenant> Tenants { get; set; }
