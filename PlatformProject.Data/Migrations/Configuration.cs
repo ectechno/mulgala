@@ -21,8 +21,11 @@ namespace PlatformProject.Data
 
         private void AddRoles(PlatformProjectDBContext context) 
         {
-            context.Roles.Add(new Role { Id = 0, Name = "Administrator" });
-            context.Roles.Add(new Role { Id = 0, Name = "User" });
+            context.Roles.AddOrUpdate(
+                role => role.Name,
+                new Role { Id = 0, Name = "Administrator" },
+                new Role { Id = 0, Name = "User" }
+                );
             context.SaveChanges();
         }
 
