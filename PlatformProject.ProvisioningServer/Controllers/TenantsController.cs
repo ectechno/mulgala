@@ -25,13 +25,13 @@ namespace PlatformProject.ProvisioningServer.Controllers
         public IList<TenantDTO> Get()
         {
             IQueryable<Tenant> tenantList = tenantRepository.Get();
-            return tenantList.Select(tenant => new TenantDTO 
+            return tenantList.Select(tenant => new TenantDTO
             {
                 Id = tenant.Id,
                 Name = tenant.Name,
                 TenantString = tenant.TenantString,
                 LogoUrl = tenant.LogoUrl,
-                Enable = tenant.Enable 
+                Enable = tenant.Enable
             }).ToList();
         }
 
@@ -64,8 +64,8 @@ namespace PlatformProject.ProvisioningServer.Controllers
             HttpResponseMessage response;
             if (ModelState.IsValid)
             {
-                Tenant tenant = tenantRepository.Insert(new Tenant 
-                { 
+                Tenant tenant = tenantRepository.Insert(new Tenant
+                {
                     Id = 0,
                     GUID = Guid.NewGuid(),
                     Name = tenantDTO.Name,

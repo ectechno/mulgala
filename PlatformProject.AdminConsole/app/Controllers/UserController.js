@@ -1,11 +1,11 @@
-﻿app.controller('userController', function ($scope, UserService) {
+﻿app.controller('userController', function ($scope, MetaDataService) {
     $scope.isNew = true;
     $scope.isFormMode = false;
     loadRecords();
 
     //Function to load all User records
     function loadRecords() {
-        var promiseGet = UserService.getUsers(); //The Method Call from service
+        var promiseGet = MetaDataService.getUsers(); //The Method Call from service
 
         promiseGet.then(function (pl) {
             $scope.Users = pl.data
@@ -27,7 +27,7 @@
         };
 
         if ($scope.isNew) {
-            var promisePost = UserService.post(user);
+            var promisePost = MetaDataService.post(user);
             promisePost.then(function (pl) {
                 $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
@@ -38,7 +38,7 @@
                 console.log("Err" + err);
             });
         } else { //Else Edit the record
-            var promisePut = UserService.put($scope.uId, user);
+            var promisePut = MetaDataService.put($scope.uId, user);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
                 $scope.clear();
@@ -52,7 +52,7 @@
 
     //Method to Delete
     $scope.delete = function (uId) {
-        var promiseDelete = UserService.delete(uId);
+        var promiseDelete = MetaDataService.delete(uId);
         promiseDelete.then(function (pl) {
             $scope.Message = "Deleted Successfuly";
             $scope.uId = 0;
@@ -71,7 +71,7 @@
 
     //Method to Get Single user based on Id
     $scope.get = function (uId) {
-        var promiseGetSingle = UserService.get(user.Id);
+        var promiseGetSingle = MetaDataServicee.get(user.Id);
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;

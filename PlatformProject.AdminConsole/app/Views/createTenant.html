@@ -1,44 +1,38 @@
-﻿                <section class="content-header">
-                    <h1>
-                        Create Tenant
-                        <small>Control panel</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="#">Tenant Management</a></li>
-                        <li class="active">Create Tenant</li>
-                    </ol>
-                </section>
+﻿    <section class="content-header">
+        <h1>
+            Create Tenant
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tenant Management</a></li>
+            <li class="active">Create Tenant</li>
+        </ol>
+    </section>
 
-                <!-- Main content -->
-                <section class="content">
-                    <form name="createTenant" method="get" action="#/TenantManagement/CreateAdmin">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="tId">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="hostName" placeholder="Host Name" ng-model="tHost">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="ip" placeholder="IP Address" ng-model="tIp">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="port" placeholder="Port" ng-model="tPort">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="logo" placeholder="Logo" ng-model="tLogo">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email" placeholder="Email" ng-model="tEmail">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="tEnable">
-                        </div>
-                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-                        <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
-                    </form>                    
-                </section><!-- /.content -->
+    <!-- Main content -->
+    <section class="content">
+        <form name="createTenant" method="get" action="">
+            <div class="form-group">
+                <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="tId">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tenantString" placeholder="Tenant String" ng-model="tString">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="tLogo">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="tEnable">
+            </div>
+            <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+            <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
+        </form>
+    </section><!-- /.content -->
+
+
             

@@ -81,6 +81,11 @@
     <Content Include="app\Controllers\TenantAdminController.js" />
     <Content Include="app\Controllers\TenantController.js" />
     <Content Include="app\Controllers\UserController.js" />
+    <Content Include="app\Services\MessageService.js" />
+    <Content Include="app\Services\MetaDataService.js" />
+    <Content Include="app\Services\RequestService.js" />
+    <Content Include="app\Services\TenantService.js" />
+    <Content Include="app\Services\UserService.js" />
     <Content Include="app\Views\charts\empty.html" />
     <Content Include="app\Views\charts\flot.html" />
     <Content Include="app\Views\charts\inline.html" />
@@ -182,6 +187,7 @@
     <Content Include="index.html" />
     <Content Include="js\AdminLTE\app.js" />
     <Content Include="js\AdminLTE\dashboard.js" />
+    <Content Include="js\angular-cookies.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
@@ -513,31 +519,31 @@
     <Content Include="js\plugins\jqueryKnob\.DS_Store" />
     <Content Include="js\plugins\jvectormap\.DS_Store" />
     <Content Include="js\plugins\slimScroll\slimScroll.jquery.json" />
-    <Content Include="less\404_500_errors.less" />
-    <Content Include="less\AdminLTE.less" />
-    <Content Include="less\alerts.less" />
-    <Content Include="less\bootstrap-social.less" />
-    <Content Include="less\boxes.less" />
-    <Content Include="less\buttons.less" />
-    <Content Include="less\callout.less" />
-    <Content Include="less\core.less" />
-    <Content Include="less\dropdown.less" />
-    <Content Include="less\forms.less" />
-    <Content Include="less\header.less" />
-    <Content Include="less\iCheck.less" />
-    <Content Include="less\invoice.less" />
-    <Content Include="less\lockscreen.less" />
-    <Content Include="less\login_and_register.less" />
-    <Content Include="less\mailbox.less" />
-    <Content Include="less\mixins.less" />
-    <Content Include="less\navs.less" />
-    <Content Include="less\pace.less" />
-    <Content Include="less\progress-bars.less" />
-    <Content Include="less\sidebar.less" />
-    <Content Include="less\skins.less" />
-    <Content Include="less\small-box.less" />
-    <Content Include="less\timeline.less" />
-    <Content Include="less\vars.less" />
+    <Content Include="Models\less\404_500_errors.less" />
+    <Content Include="Models\less\AdminLTE.less" />
+    <Content Include="Models\less\alerts.less" />
+    <Content Include="Models\less\bootstrap-social.less" />
+    <Content Include="Models\less\boxes.less" />
+    <Content Include="Models\less\buttons.less" />
+    <Content Include="Models\less\callout.less" />
+    <Content Include="Models\less\core.less" />
+    <Content Include="Models\less\dropdown.less" />
+    <Content Include="Models\less\forms.less" />
+    <Content Include="Models\less\header.less" />
+    <Content Include="Models\less\iCheck.less" />
+    <Content Include="Models\less\invoice.less" />
+    <Content Include="Models\less\lockscreen.less" />
+    <Content Include="Models\less\login_and_register.less" />
+    <Content Include="Models\less\mailbox.less" />
+    <Content Include="Models\less\mixins.less" />
+    <Content Include="Models\less\navs.less" />
+    <Content Include="Models\less\pace.less" />
+    <Content Include="Models\less\progress-bars.less" />
+    <Content Include="Models\less\sidebar.less" />
+    <Content Include="Models\less\skins.less" />
+    <Content Include="Models\less\small-box.less" />
+    <Content Include="Models\less\timeline.less" />
+    <Content Include="Models\less\vars.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -547,13 +553,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\Models\" />
-    <Folder Include="app\Services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="js\plugins\bootstrap-slider\" />
     <Folder Include="js\plugins\colorpicker\" />
     <Folder Include="js\plugins\fullcalendar\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

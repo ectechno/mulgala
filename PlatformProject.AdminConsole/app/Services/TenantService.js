@@ -1,47 +1,54 @@
 ﻿/// <reference path="UserService.js" />
 //Created by Madushanka on 29/01/2015.
 
-angular.module('admin').service('TenantService'['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
-    function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService)
+//angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
+//    function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService)
+
+angular.module('admin').service('TenantService', ['$http','RequestService', function ($http, RequestService)
     {
         
         function createTenant(trnObj){
 
-            var key = $cookies.sessionKey;
-            var request;
+            //var key = $cookies.sessionKey;
+            var request = 'http://localhost:44552/api/tenants/';
             var params = {
-                id: trnObj.id,
-                name: trnObj.name,
-                hostName: trnObj.hostName,
-                IP: trnObj.IP,
-                port: trnObj.port,
-                logo: trnObj.logo,
-                email: trnObj.email,
-                enable: trnObj.enable,
-                username: trnObj.username,
+                Id: trnObj.tId,
+                Name: trnObj.Name,
+                TenantString: trnObj.tString,
+                LogoUrl: trnObj.tLogo,
+                Enable: trnObj.tEnable,
                 dateTime: trnObj.dateTime
             };
-            var status = RequestService.get(request, params, null);
-
-                if (status.isSuccess)
+            /*var params = {
+                Name: 'abc',
+                TenantString: 'abc',
+                LogoUrl: 'abc',
+                Enable: 'abc'
+            };*/
+            var status = RequestService.post(request, params, null);
+            //alert(status);
+               /* if (status.isSuccess)
                 {
                     MessageService.showErrorMessage('Message', 'Message');
                 } else if (!status.isSuccess)
                 {
                     MessageService.showErrorMessage('Error Message', status.data.error);
-                }
+                }*/
             return status;
         }
-        function updateTenant(){
+        function getTenants() {
 
         }
-        function removeTenant(){
+        function updateTenant(tenantID,tenant){
+
+        }
+        function removeTenant(tenantId){
 
         }
         function getTenantData(tenantId) {
 
-            var key = $cookies.sessionKey;
-            var request;
+            //var key = $cookies.sessionKey;
+            var request = 'http://localhost:44552/api/tenants/get/'+tenantId;
             var params = {
                 id: tenantId
             };

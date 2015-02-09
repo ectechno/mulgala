@@ -35,7 +35,7 @@ app.config(function ($routeProvider) {
             templateUrl: 'app/Views/darkLaunching.html'
         })
         .when('/TenantManagement/CreateTenant', {
-             //controller: 'Controller',
+             controller: 'tenantController',
              templateUrl: 'app/Views/createTenant.html'
          })
         .when('/UserManagement/CreateUser', {
