@@ -6,7 +6,7 @@
 
 angular.module('admin').service('RequestService', function ($http)
 {
-    var responce = {
+    var response = {
         isSuccess: false,
         data: null
     };
@@ -14,41 +14,54 @@ angular.module('admin').service('RequestService', function ($http)
     //Create new record
     this.post = function (requestUrl,data,headers)
     {
-        
+
         $http({
-            method: "POST",
+            method: "post",
             url: requestUrl,
-            params: data
+            data: data,
+            headers: headers
         }).success(function (status)
         {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
-        }); alert('service');
-        return this.responce;
+            response.isSuccess = true;
+            response.data = status;
+
+        });
+        alert('service');
+
+        return response;
     }
     //Get  Records
     this.get = function (requestUrl, data,headers)
     {
-        $http({
+        var request = $http({
             method: 'get',
             url: requestUrl,
-            params: data,
+            data: data,
+            headers: headers
+        });
+
+        return request;
+
+       /* $http({
+            method: 'get',
+            url: requestUrl,
+            data: data,
             headers: headers
         }).success(function (status)
         {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
+            response.isSuccess = true;
+            response.data = status;
         });
-        return this.responce;
+        return response;*/
     }
 
     //Update the Record
     this.put = function (requestUrl, data)
     {
         var request = $http({
-            method: "PUT",
+            method: "put",
             url: requestUrl,
-            params: data
+            data: data
         });
         return request;
     }
@@ -56,7 +69,7 @@ angular.module('admin').service('RequestService', function ($http)
     this.delete = function (requestUrl)
     {
         var request = $http({
-            method: "DELETE",
+            method: "delete",
             url: requestUrl
         });
         return request;
@@ -67,13 +80,13 @@ angular.module('admin').service('RequestService', function ($http)
         $http({
             method: requestMode,
             url: requestUrl,
-            params: data
+            data: data
         }).success(function (status)
         {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
+            response.isSuccess = true;
+            response.data = status;
         });
-        return this.responce;
+        return response;
     }
 });
 

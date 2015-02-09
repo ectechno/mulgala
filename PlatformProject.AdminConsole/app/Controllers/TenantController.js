@@ -1,7 +1,7 @@
 ﻿angular.module('admin').controller('tenantController', ['$scope', 'TenantService', function ($scope, TenantService) {
     $scope.isNew = true;
     $scope.isFormMode = false;
-    //loadRecords();
+    loadRecords();
 
     //Function to load all Tenant records
     function loadRecords() {
@@ -27,15 +27,15 @@
         if ($scope.isNew) {
             var promisePost = TenantService.createTenant(tenant);
         
-            promisePost.then(function (pl) {
-                $scope.Id = pl.data.Id;
-                $scope.Message = "Created Successfuly";
-                console.log($scope.Message);
+           // promisePost.then(function (pl) {
+            //    $scope.Id = pl.data.Id;
+            //    $scope.Message = "Created Successfuly";
+            //    console.log($scope.Message);
                 $scope.clear();
                 loadRecords();
-            }, function (err) {
-                console.log("Err" + err);
-            });
+           // }, function (err) {
+           //     console.log("Err" + err);
+           // });
         } else { //Else Edit the record
             var promisePut = TenantService.updateTenant($scope.tId, tenant);
             promisePut.then(function (pl) {
@@ -98,6 +98,12 @@
         $scope.isFormMode = true;
         $scope.get(Id);
     };
+
+    $scope.createNew = function () {
+        $scope.clear();
+        $scope.isFormMode = true;
+        $scope.isNew = true;
+    }
 
     $scope.cancel = function () {
         $scope.clear();
