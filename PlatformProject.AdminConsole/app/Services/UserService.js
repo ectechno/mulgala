@@ -1,6 +1,6 @@
 ﻿//Created by Madushanka on 29/01/2015.
 
-angular.module('UserService').service('MetaDataService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
+angular.module('admin').service('UserService', ['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
     function ($http, $rootScope, $cookies, $cookieStore, MessageService, RequestService)
     {
         var userData = {

@@ -12,16 +12,16 @@ angular.module('admin').service('RequestService', function ($http)
     //Create new record
     this.post = function (requestUrl,data,headers)
     {
+        
         $http({
             method: "POST",
             url: requestUrl,
-            params: data,
-            headers: headers
+            params: data
         }).success(function (status)
         {
             this.responce.isSuccess = true;
             this.responce.data = status;
-        });
+        }); alert('service');
         return this.responce;
     }
     //Get  Records

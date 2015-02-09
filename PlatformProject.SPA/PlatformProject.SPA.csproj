@@ -558,6 +558,7 @@
     <Content Include="App\sampleService\dialogBoxComponents\dialogBoxController.js" />
     <Content Include="App\sampleService\dialogBoxComponents\dialogTemplate.html" />
     <Content Include="App\sampleService\dialogBoxComponents\titleTemplate.html" />
+    <Content Include="App\sampleService\dialogBoxController.js" />
     <Content Include="App\sampleService\progressbar.html" />
     <Content Include="App\sampleService\progressbarController.js" />
     <Content Include="App\sampleService\table.html" />

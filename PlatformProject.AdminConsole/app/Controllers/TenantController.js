@@ -1,7 +1,7 @@
-﻿app.controller('tenantController', function ($scope, TenantService) {
+﻿angular.module('admin').controller('tenantController', ['$scope', 'TenantService', function ($scope, TenantService) {
     $scope.isNew = true;
     $scope.isFormMode = false;
-    loadRecords();
+    //loadRecords();
 
     //Function to load all Tenant records
     function loadRecords() {
@@ -18,17 +18,15 @@
     $scope.save = function () {
         var tenant = {
             tId: $scope.tId,
-            tName: $scope.tName,
-            tHost: $scope.tHost,
-            tIp: $scope.tIp,
-            tPort: $scope.tPort,
+            Name: $scope.tName,
+            tString: $scope.tString,
             tLogo:$scope.tLogo,
-            tEmail: $scope.tEmail,
             tEnable:$scope.tEnable
         };
-
+      
         if ($scope.isNew) {
-            var promisePost = TenantService.post(tenant);
+            var promisePost = TenantService.createTenant(tenant);
+        
             promisePost.then(function (pl) {
                 $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
@@ -39,7 +37,7 @@
                 console.log("Err" + err);
             });
         } else { //Else Edit the record
-            var promisePut = TenantService.put($scope.tId, tenant);
+            var promisePut = TenantService.updateTenant($scope.tId, tenant);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
                 $scope.clear();
@@ -53,16 +51,13 @@
 
     //Method to Delete
     $scope.delete = function (tId) {
-        var promiseDelete = TenantService.delete(tId);
+        var promiseDelete = TenantService.removeTenant(tId);
         promiseDelete.then(function (pl) {
             $scope.Message = "Deleted Successfuly";
             $scope.tId = 0;
             $scope.tName = "";
-            $scope.tHost = "";
-            $scope.tIp = "";
-            $scope.tPort = "";
+            $scope.tString = "";
             $scope.tLogo = "";
-            $scope.tEmail = "";
             $scope.tEnable = "";
             loadRecords();
         }, function (err) {
@@ -73,17 +68,14 @@
 
     //Method to Get Single tenant based on Id
     $scope.get = function (tId) {
-        var promiseGetSingle = TenantService.get(tId);
+        var promiseGetSingle = TenantService.getTenantData(tId);
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
             $scope.tId = res.tId;
             $scope.tName = res.tName;
-            $scope.tHost = res.tHost;
-            $scope.tIp = res.tIp;
-            $scope.tPort = res.tPort;
+            $scope.tString = res.tString;
             $scope.tLogo = res.tLogo;
-            $scope.tEmail = res.tEmail;
             $scope.tEnable = res.tEnable;
             $scope.isNew = false;
         },
@@ -96,28 +88,19 @@
         $scope.isNew = true;
         $scope.tId = "";
         $scope.tName = "";
-        $scope.tHost = "";
-        $scope.tIp = "";
-        $scope.tPort = "";
+        $scope.tString = "";
         $scope.tLogo = "";
-        $scope.tEmail = "";
         $scope.tEnable = "";
     };
 
-    $scope.edit = function (tenant) {
+    $scope.edit = function (Id) {
         $scope.isNew = false;
-        $scope.tId = tenant.tId;
-        $scope.tName = tenant.tName;
-        $scope.tHost = tenant.tHost;
-        $scope.tIp = tenant.tIp;
-        $scope.tPort = tenant.tPort;
-        $scope.tLogo = tenant.tLogo;
-        $scope.tEmail = tenant.tEmail;
-        $scope.tEnable = tenant.tEnable;
+        $scope.isFormMode = true;
+        $scope.get(Id);
     };
 
     $scope.cancel = function () {
         $scope.clear();
     };
 
-});
+}]);

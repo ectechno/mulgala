@@ -1,11 +1,12 @@
-﻿app.controller('tenantAdminController', function ($scope, UserService) {
+﻿/// <reference path="TenantAdminController.js" />
+app.controller('tenantAdminController', function ($scope, UserService) {
     $scope.isNew = true;
     $scope.isFormMode = false;
     loadRecords();
 
     //Function to load all Tenant Admin records
     function loadRecords() {
-        var promiseGet = UserService.getTenantAdmins(); //The Method Call from service
+        var promiseGet = MetaDataService.getTenantAdmins(); //The Method Call from service
 
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data
@@ -26,7 +27,7 @@
         };
 
         if ($scope.isNew) {
-            var promisePost = UserService.post(tenantAdmin);
+            var promisePost = MetaDataService.post(tenantAdmin);
             promisePost.then(function (pl) {
                 $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
@@ -37,7 +38,7 @@
                 console.log("Err" + err);
             });
         } else { //Else Edit the record
-            var promisePut = UserService.put($scope.taId, tenantAdmin);
+            var promisePut = MetaDataService.put($scope.taId, tenantAdmin);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
                 $scope.clear();
@@ -51,7 +52,7 @@
 
     //Method to Delete
     $scope.delete = function (taId) {
-        var promiseDelete = UserService.delete(taId);
+        var promiseDelete = MetaDataService.delete(taId);
         promiseDelete.then(function (pl) {
             $scope.Message = "Deleted Successfuly";
             $scope.taId = 0;
@@ -69,7 +70,7 @@
 
     //Method to Get Single tenant admin based on Id
     $scope.get = function (taId) {
-        var promiseGetSingle = UserService.get(taId);
+        var promiseGetSingle = MetaDataService.get(taId);
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
