@@ -81,6 +81,11 @@
     <Content Include="app\Controllers\TenantAdminController.js" />
     <Content Include="app\Controllers\TenantController.js" />
     <Content Include="app\Controllers\UserController.js" />
+    <Content Include="app\Services\MessageService.js" />
+    <Content Include="app\Services\MetaDataService.js" />
+    <Content Include="app\Services\RequestService.js" />
+    <Content Include="app\Services\TenantService.js" />
+    <Content Include="app\Services\UserService.js" />
     <Content Include="app\Views\charts\empty.html" />
     <Content Include="app\Views\charts\flot.html" />
     <Content Include="app\Views\charts\inline.html" />
@@ -182,6 +187,7 @@
     <Content Include="index.html" />
     <Content Include="js\AdminLTE\app.js" />
     <Content Include="js\AdminLTE\dashboard.js" />
+    <Content Include="js\angular-cookies.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
@@ -547,7 +553,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\Models\" />
-    <Folder Include="app\Services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="js\plugins\bootstrap-slider\" />

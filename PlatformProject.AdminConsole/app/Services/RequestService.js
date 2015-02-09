@@ -1,7 +1,5 @@
 ﻿//Created by Madushanka on 29/01/2015.
 
-//http://localhost:44552
-//http://localhost:44552/api/tenants
 
 
 angular.module('admin').service('RequestService', function ($http)
