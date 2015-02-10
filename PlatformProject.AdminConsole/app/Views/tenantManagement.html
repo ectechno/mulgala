@@ -2,17 +2,25 @@
                     <h1 ng-show="!isFormMode">
                         Tenant Management
                     </h1>
-                    <h1 ng-show="isFormMode">
+                    <h1 ng-show="isNew">
                         Create Tenant
+                    </h1>
+                    <h1 ng-show="isEdit">
+                        Edit Tenant
                     </h1>
                     <ol class="breadcrumb" ng-show="!isFormMode">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active">Tenant Management</li>
                     </ol>
-                    <ol class="breadcrumb" ng-show="isFormMode">
+                    <ol class="breadcrumb" ng-show="isNew">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li><a href="#"><i class="fa fa-dashboard"></i> Tenant Management</a></li>
                         <li class="active">Create Tenant</li>
+                    </ol>
+                    <ol class="breadcrumb" ng-show="isEdit">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Tenant Management</a></li>
+                        <li class="active">Edit Tenant</li>
                     </ol>
                 </section>
 
@@ -47,9 +55,6 @@
                    </table>
 
                     <form name="createTenant" method="get" action="" ng-show="isFormMode">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="tId">
-                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
                         </div>

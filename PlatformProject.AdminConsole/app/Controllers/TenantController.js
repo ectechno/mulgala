@@ -1,6 +1,6 @@
 ﻿angular.module('admin').controller('tenantController', ['$scope', 'TenantService', function ($scope, TenantService) {
-    $scope.isNew = true;
     $scope.isFormMode = false;
+    $scope.isEdit = false;
     loadRecords();
 
     //Function to load all Tenant records
@@ -72,11 +72,11 @@
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
-            $scope.tId = res.tId;
-            $scope.tName = res.tName;
-            $scope.tString = res.tString;
-            $scope.tLogo = res.tLogo;
-            $scope.tEnable = res.tEnable;
+            $scope.tId = res.id;
+            $scope.tName = res.name;
+            $scope.tString = res.tenantString;
+            $scope.tLogo = res.logoUrl;
+            $scope.tEnable = res.enable;
             $scope.isNew = false;
         },
                   function (errorPl) {
@@ -96,6 +96,8 @@
     $scope.edit = function (Id) {
         $scope.isNew = false;
         $scope.isFormMode = true;
+        $scope.isEdit = true;
+        $scope.Message = "";
         $scope.get(Id);
     };
 
