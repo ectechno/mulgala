@@ -1,4 +1,4 @@
-﻿angular.module('admin').controller('tenantController', ['$scope', 'TenantService', function ($scope, TenantService) {
+﻿angular.module('admin').controller('tenantController', ['$scope','$window', 'TenantService', function ($scope, $window,TenantService) {
     $scope.isFormMode = false;
     $scope.isEdit = false;
     loadRecords();
@@ -9,7 +9,8 @@
         var promiseGet = TenantService.getTenants(); //The Method Call from service
       
         promiseGet.then(function (pl) {
-            $scope.Tenants = pl.data
+            $scope.Tenants = pl.data;
+            $window.location.href = 'http://localhost:40838/index.html#/TenantManagement';
         },
               function (errorPl) {
                   $log.error('failure loading Tenants', errorPl);

@@ -23,6 +23,9 @@
                             <input type="text" class="form-control" id="email" placeholder="Eamil" ng-model="uEmail">
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="uLogo">
+                        </div>
+                        <div class="form-group">
                             <select class="form-control" ng-model="uRole" >
                                 <option default selected>Role</option>
                                 <option>Admin</option>
@@ -35,16 +38,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="username">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="uPassword">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" ng-model="confirm">
+                            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="uEnable">
                         </div>
                         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-                        <input type="submit" class="btn btn-success btn-lg" value="Create" ng-click="save();" />
+                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" />
                     </form>                    
                 </section><!-- /.content -->
             
