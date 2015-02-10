@@ -1,12 +1,13 @@
 ﻿angular.module('admin').controller('tenantController', ['$scope', 'TenantService', function ($scope, TenantService) {
-    $scope.isNew = true;
     $scope.isFormMode = false;
+    $scope.isEdit = false;
     loadRecords();
 
     //Function to load all Tenant records
     function loadRecords() {
+       
         var promiseGet = TenantService.getTenants(); //The Method Call from service
-
+      
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data
         },
@@ -25,6 +26,7 @@
         };
 
         if ($scope.isNew) {
+         
             var promisePost = TenantService.createTenant(tenant);
 
              //promisePost.then(function (pl) {
@@ -72,11 +74,11 @@
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
-            $scope.tId = res.tId;
-            $scope.tName = res.tName;
-            $scope.tString = res.tString;
-            $scope.tLogo = res.tLogo;
-            $scope.tEnable = res.tEnable;
+            $scope.tId = res.id;
+            $scope.tName = res.name;
+            $scope.tString = res.tenantString;
+            $scope.tLogo = res.logoUrl;
+            $scope.tEnable = res.enable;
             $scope.isNew = false;
         },
                   function (errorPl) {
@@ -85,7 +87,7 @@
     };
 
     $scope.clear = function () {
-        $scope.isNew = true;
+       
         $scope.tId = "";
         $scope.tName = "";
         $scope.tString = "";
@@ -96,6 +98,8 @@
     $scope.edit = function (Id) {
         $scope.isNew = false;
         $scope.isFormMode = true;
+        $scope.isEdit = true;
+        $scope.Message = "";
         $scope.get(Id);
     };
 
@@ -108,6 +112,9 @@
 
     $scope.cancel = function () {
         $scope.clear();
+        $scope.isFormMode = false;
+        $scope.isEdit = false;
+        $scope.isNew = false;
     };
 
 }]);

@@ -1,10 +1,10 @@
 ﻿/// <reference path="UserService.js" />
 //Created by Madushanka on 29/01/2015.
 
-angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
-    function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService){
+//angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
+    //function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService){
 
-//angular.module('admin').service('TenantService', ['$http', 'RequestService', function ($http, RequestService) {
+angular.module('admin').service('TenantService', ['$http', 'RequestService', function ($http, RequestService) {
 
     function createTenant(trnObj) {
 
@@ -38,7 +38,16 @@ angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookie
 
 
     function updateTenant(tenantID, tenant) {
-
+        var request = 'http://localhost:44552/api/tenants/' + tenant.tId;
+        var params = {
+            "Id": tenant.tId,
+            "TenantString": tenant.tString,
+            "Name": tenant.Name,
+            "LogoUrl": tenant.tLogo,
+            "Enable": tenant.tEnable
+        };
+        var status = RequestService.put(request, params);
+        return status;
     }
 
 
@@ -52,16 +61,19 @@ angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookie
     function getTenantData(tenantId) {
 
         //var key = $cookies.sessionKey;
-        var request = 'http://localhost:44552/api/tenants/get/' + tenantId;
+        var request = 'http://localhost:44552/api/tenants/' + tenantId;
         var params = {
             id: tenantId
         };
-        var status = RequestService.get(request, params, null);
+        var header = {
+            'Content-Type': 'application/json'
+        };
+        var status = RequestService.get(request, params, header);
 
         if (status.isSuccess) {
-            MessageService.showErrorMessage('Message', 'Message');
+           // MessageService.showErrorMessage('Message', 'Message');
         } else if (!status.isSuccess) {
-            MessageService.showErrorMessage('Error Message', status.data.error);
+            //MessageService.showErrorMessage('Error Message', status.data.error);
         }
         return status;
     }
