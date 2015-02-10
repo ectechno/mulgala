@@ -20,8 +20,8 @@ namespace PlatformProject.ProvisioningServer
             formatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             //Note: The Allowed Origins, Headers and Methods will be updated later
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+            var cors1 = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors1);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

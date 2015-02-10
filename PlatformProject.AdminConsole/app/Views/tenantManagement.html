@@ -1,10 +1,18 @@
 ﻿                <section class="content-header">
-                    <h1>
+                    <h1 ng-show="!isFormMode">
                         Tenant Management
                     </h1>
-                    <ol class="breadcrumb">
+                    <h1 ng-show="isFormMode">
+                        Create Tenant
+                    </h1>
+                    <ol class="breadcrumb" ng-show="!isFormMode">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active">Tenant Management</li>
+                    </ol>
+                    <ol class="breadcrumb" ng-show="isFormMode">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Tenant Management</a></li>
+                        <li class="active">Create Tenant</li>
                     </ol>
                 </section>
 
@@ -27,13 +35,13 @@
                       </thead>
                       <tbody ng-repeat="tenant in Tenants">
                            <tr>
-                              <td> <span>{{tenant.Id}}</span></td>
-                              <td> <span>{{tenant.Name}}</span></td>
-                              <td> <span>{{tenant.TenantString}}</span></td>
-                              <td> <span>{{tenant.LogoUrl}}</span></td>
-                              <td> <span>{{tenant.Enable}}</span></td>
-                              <td> <span><button class="btn btn-warning" ng-click="edit(tenant.Id)">Edit</button></span></td>
-                              <td> <span><button class="btn btn-danger" ng-click="delete(tenant.Id)">Delete</button></span></td>
+                              <td> <span>{{tenant.id}}</span></td>
+                              <td> <span>{{tenant.name}}</span></td>
+                              <td> <span>{{tenant.tenantString}}</span></td>
+                              <td> <span>{{tenant.logoUrl}}</span></td>
+                              <td> <span>{{tenant.enable}}</span></td>
+                              <td> <span><button class="btn btn-warning" ng-click="edit(tenant.id)">Edit</button></span></td>
+                              <td> <span><button class="btn btn-danger" ng-click="delete(tenant.id)">Delete</button></span></td>
                            </tr>
                      </tbody>
                    </table>
@@ -58,8 +66,7 @@
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                         <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
                     </form>
-
-
+                    {{Message}}
 </section>
 
             
