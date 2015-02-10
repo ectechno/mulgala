@@ -1,10 +1,10 @@
 ﻿/// <reference path="UserService.js" />
 //Created by Madushanka on 29/01/2015.
 
-//angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
-//    function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService)
+angular.module('admin').service('TenantService',['$http', '$rootScope', '$cookies', '$cookieStore', 'MessageService', 'RequestService',
+    function ($http, $rootScope, $cookies, $cookieStore, MessageService,RequestService){
 
-angular.module('admin').service('TenantService', ['$http', 'RequestService', function ($http, RequestService) {
+//angular.module('admin').service('TenantService', ['$http', 'RequestService', function ($http, RequestService) {
 
     function createTenant(trnObj) {
 
