@@ -39,7 +39,11 @@ angular.module('admin').service('UserService', ['$http', '$rootScope', '$cookies
                     password: user.password
             };
 
-            var status = RequestService.get(request,params,null);
+            var header = {
+                'Content-Type': 'application/json'
+            };
+
+            var status = RequestService.get(request, params, header);
 
             if (status.isSuccess)
             {
@@ -56,7 +60,10 @@ angular.module('admin').service('UserService', ['$http', '$rootScope', '$cookies
         {
             var key = $cookies.sessionKey;
             var request;
-            var headers = { session: key };
+            var headers = {
+                'Content-Type': 'application/json',
+                session: key
+            };
             var status = RequestService.get(request, null, headers);
 
             if (status.isSuccess)
@@ -76,7 +83,11 @@ angular.module('admin').service('UserService', ['$http', '$rootScope', '$cookies
 
             var key = $cookies.sessionKey;
             var request;
-            var headers = { session: key };
+
+            var headers = {
+                'Content-Type': 'application/json',
+                session: key
+            };
             var status = RequestService.get(request, null, headers);
 
             if (status.isSuccess)
@@ -105,7 +116,12 @@ angular.module('admin').service('UserService', ['$http', '$rootScope', '$cookies
                 username: userObj.username,
                 dateTime: userObj.dateTime
             };
-            var status = RequestService.get(request, params, null);
+
+            var headers = {
+                'Content-Type': 'application/json',
+                session: key
+            };
+            var status = RequestService.get(request, params, headers);
 
             if (status.isSuccess)
             {
