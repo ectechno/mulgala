@@ -5,8 +5,9 @@
 
     //Function to load all Tenant records
     function loadRecords() {
+       
         var promiseGet = TenantService.getTenants(); //The Method Call from service
-
+      
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data
         },
@@ -25,6 +26,7 @@
         };
 
         if ($scope.isNew) {
+         
             var promisePost = TenantService.createTenant(tenant);
 
              //promisePost.then(function (pl) {
@@ -85,7 +87,7 @@
     };
 
     $scope.clear = function () {
-        $scope.isNew = true;
+       
         $scope.tId = "";
         $scope.tName = "";
         $scope.tString = "";
@@ -110,6 +112,9 @@
 
     $scope.cancel = function () {
         $scope.clear();
+        $scope.isFormMode = false;
+        $scope.isEdit = false;
+        $scope.isNew = false;
     };
 
 }]);
