@@ -88,7 +88,6 @@
     };
 
     $scope.clear = function () {
-       
         $scope.tId = "";
         $scope.tName = "";
         $scope.tString = "";

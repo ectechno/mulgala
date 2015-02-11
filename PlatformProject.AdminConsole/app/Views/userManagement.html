@@ -66,10 +66,16 @@
             <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="uLogo">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="roleId" placeholder="Role ID" ng-model="uRole">
+            <select ng-model="uRole" class="form-control">
+                <option value="0" selected="selected">Role</option>
+                <option value="1">Administrator</option>
+                <option value="2">User</option>
+            </select>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="uTenant">
+            <select ng-model="uTenant" class="form-control">
+                <option ng-repeat="tenant in Tenants" value={{tenant.id}}>{{tenant.name}}</option>
+            </select>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="uEnable">
