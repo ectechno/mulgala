@@ -1,95 +1,77 @@
 ﻿                <section class="content-header">
-                    <h1>
+                    <h1 ng-show="!isFormMode">
                         Tenant Management
                     </h1>
-                    <ol class="breadcrumb">
+                    <h1 ng-show="isNew">
+                        Create Tenant
+                    </h1>
+                    <h1 ng-show="isEdit">
+                        Edit Tenant
+                    </h1>
+                    <ol class="breadcrumb" ng-show="!isFormMode">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active">Tenant Management</li>
+                    </ol>
+                    <ol class="breadcrumb" ng-show="isNew">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Tenant Management</a></li>
+                        <li class="active">Create Tenant</li>
+                    </ol>
+                    <ol class="breadcrumb" ng-show="isEdit">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Tenant Management</a></li>
+                        <li class="active">Edit Tenant</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-aqua">
-                                <div class="inner">
-                                    <h3>
-                                        Create
-                                    </h3>
-                                    <p>
-                                        Tenants
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-pricetag-outline"></i>
-                                </div>
-                                <a href="#/TenantManagement/CreateTenant" class="small-box-footer">
-                                    Create Now <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    <h3>
-                                        Get 
-                                    </h3>
-                                    <p>
-                                        Tenants
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-pricetag-outline"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Get Now <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-yellow">
-                                <div class="inner">
-                                    <h3>
-                                        Edit
-                                    </h3>
-                                    <p>
-                                        Tenants
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-pricetag-outline"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Edit Now <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>
-                                        Delete
-                                    </h3>
-                                    <p>
-                                        Tenants
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios7-pricetag-outline"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Delete Now <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
+   
+                     <div ng-show="!isFormMode">
+                          <button class="btn btn-info" ng-click="createNew()">Create New Tenant</button>
+  
+                     </div>
+                    <table class="table table-striped" ng-show="!isFormMode">
+                      <thead>
+                           <tr>
+                             <th>Id</th>
+                             <th>Name</th>
+                             <th>Tenant String</th>
+                             <th>Logo URL</th>
+                             <th>Enable</th>
+                           </tr>
+                      </thead>
+                      <tbody ng-repeat="tenant in Tenants">
+                           <tr>
+                              <td> <span>{{tenant.id}}</span></td>
+                              <td> <span>{{tenant.name}}</span></td>
+                              <td> <span>{{tenant.tenantString}}</span></td>
+                              <td> <span>{{tenant.logoUrl}}</span></td>
+                              <td> <span>{{tenant.enable}}</span></td>
+                              <td> <span><button class="btn btn-warning" ng-click="edit(tenant.id)">Edit</button></span></td>
+                              <td> <span><button class="btn btn-danger" ng-click="delete(tenant.id)">Delete</button></span></td>
+                           </tr>
+                     </tbody>
+                   </table>
 
-                    </div><!-- /.row -->
-               </section><!-- /.content -->
+                    <form name="createTenant" method="get" action="" ng-show="isFormMode">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="tenantString" placeholder="Tenant String" ng-model="tString">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="tLogo">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="tEnable">
+                        </div>
+                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+                        <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
+                    </form>
+                    {{Message}}
+</section>
+
             

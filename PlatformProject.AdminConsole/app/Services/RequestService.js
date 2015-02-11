@@ -1,125 +1,68 @@
 ﻿//Created by Madushanka on 29/01/2015.
 
-
-
-angular.module('admin').service('RequestService', function ($http)
-{
-    var responce = {
+angular.module('admin').service('RequestService', function ($http) {
+    var response = {
         isSuccess: false,
         data: null
     };
 
     //Create new record
-    this.post = function (requestUrl,data,headers)
-    {
-        
+    this.post = function (requestUrl, data, headers) {
+
         $http({
-            method: "POST",
+            method: "post",
             url: requestUrl,
-            params: data
-        }).success(function (status)
-        {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
-        }); alert('service');
-        return this.responce;
-    }
-    //Get  Records
-    this.get = function (requestUrl, data,headers)
-    {
-        $http({
-            method: 'get',
-            url: requestUrl,
-            params: data,
+            data: data,
             headers: headers
-        }).success(function (status)
-        {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
+        }).success(function (status) {
+            response.isSuccess = true;
+            response.data = status;
+
         });
-        return this.responce;
+        return response;
     }
 
-    //Update the Record
-    this.put = function (requestUrl, data)
-    {
+    //Get  Records
+    this.get = function (requestUrl, data, headers) {
         var request = $http({
-            method: "PUT",
+            method: 'get',
             url: requestUrl,
-            params: data
+            data: data,
+            headers: headers
         });
         return request;
     }
-    //Delete the Record
-    this.delete = function (requestUrl)
-    {
+
+    //Update the Record
+    this.put = function (requestUrl, data) {
         var request = $http({
-            method: "DELETE",
+            method: "put",
+            url: requestUrl,
+            data: data
+        });
+        return request;
+    }
+
+    //Delete the Record
+    this.delete = function (requestUrl) {
+        var request = $http({
+            method: "delete",
             url: requestUrl
         });
         return request;
     }
 
-    this.sendHTTPRequest = function (requestUrl, data,requestMode)
-    {
+    this.sendHTTPRequest = function (requestUrl, data, requestMode) {
         $http({
             method: requestMode,
             url: requestUrl,
-            params: data
-        }).success(function (status)
-        {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
+            data: data
+        }).success(function (status) {
+            response.isSuccess = true;
+            response.data = status;
         });
-        return this.responce;
+        return response;
     }
 });
 
 
-
-/*
-angular.module('admin').service('RequestService', function ($http)
-{
-    var responce = {
-        isSuccess: false,
-        data: null
-    };
-
-    //Create new record
-    this.post = function (requestUrl,data)
-    {
-        return this.sendHTTPRequest(requestUrl,data,"POST");
-    }
-    //Get Single Records
-    this.get = function (requestUrl, data)
-    {
-        return this.sendHTTPRequest(requestUrl,data,'get');
-    }
-
-    //Update the Record
-    this.put = function (requestUrl, data)
-    {
-        return this.sendHTTPRequest(requestUrl,data,"PUT");
-    }
-    //Delete the Record
-    this.delete = function (requestUrl)
-    {
-        return this.sendHTTPRequest(requestUrl,data,"DELETE");
-    }
-
-    this.sendHTTPRequest = function (requestUrl, data,requestMode)
-    {
-        $http({
-            method: requestMode,
-            url: requestUrl,
-            params: data
-        }).success(function (status)
-        {
-            this.responce.isSuccess = true;
-            this.responce.data = status;
-        });
-        return this.responce;
-    }
-});
-
-*/

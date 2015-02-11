@@ -1,14 +1,15 @@
-﻿app.controller('userController', function ($scope, MetaDataService) {
-    $scope.isNew = true;
+﻿app.controller('userController', ['$scope','$window', 'UserService',function ($scope, $window,UserService) {
+    $scope.isEdit = false;
     $scope.isFormMode = false;
     loadRecords();
 
     //Function to load all User records
     function loadRecords() {
-        var promiseGet = MetaDataService.getUsers(); //The Method Call from service
+        var promiseGet = UserService.getUsers(); //The Method Call from service
 
         promiseGet.then(function (pl) {
-            $scope.Users = pl.data
+            $scope.Users = pl.data;
+            $window.location.href = 'http://localhost:40838/index.html#/UserManagement';
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
@@ -20,25 +21,25 @@
             uId: $scope.uId,
             uName: $scope.uName,
             uEmail: $scope.uEmail,
+            uLogo:$scope.uLogo,
             uRole: $scope.uRole,
             uTenant: $scope.uTenant,
-            username: $scope.username,
-            uPassword: $scope.uPassword
+            uEnable:$scope.uEnable
         };
 
         if ($scope.isNew) {
-            var promisePost = MetaDataService.post(user);
-            promisePost.then(function (pl) {
-                $scope.Id = pl.data.Id;
+            var promisePost = UserService.createUser(user);
+            //promisePost.then(function (pl) {
+               // $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
-                console.log($scope.Message);
+                //console.log($scope.Message);
                 $scope.clear();
                 loadRecords();
-            }, function (err) {
-                console.log("Err" + err);
-            });
+          //  }, function (err) {
+           //     console.log("Err" + err);
+          //  });
         } else { //Else Edit the record
-            var promisePut = MetaDataService.put($scope.uId, user);
+            var promisePut = UserService.updateUser($scope.uId, user);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
                 $scope.clear();
@@ -52,16 +53,16 @@
 
     //Method to Delete
     $scope.delete = function (uId) {
-        var promiseDelete = MetaDataService.delete(uId);
+        var promiseDelete = UserService.removeUser(uId);
         promiseDelete.then(function (pl) {
             $scope.Message = "Deleted Successfuly";
             $scope.uId = 0;
             $scope.uName = "";
             $scope.uEmail = "";
+            $scope.uLogo="";
             $scope.uRole = "";
             $scope.uTenant = "";
-            $scope.username = "";
-            $scope.uPassword = "";
+            $scope.uEnable="";
             loadRecords();
         }, function (err) {
             console.log("Err" + err);
@@ -71,16 +72,17 @@
 
     //Method to Get Single user based on Id
     $scope.get = function (uId) {
-        var promiseGetSingle = MetaDataServicee.get(user.Id);
+        var promiseGetSingle = UserService.getUserData(uId);
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
-            $scope.uId = res.Id;
-            $scope.uName = res.Name;
-            $scope.uEmail = res.Email;
-            $scope.uRole = res.Role;
-            $scope.uTenant = res.Tenant;
-            $scope.username = res.Username;
+            $scope.uId = res.id;
+            $scope.uName = res.name;
+            $scope.uEmail = res.email;
+            $scope.uLogo = res.logoUrl;
+            $scope.uRole = res.role;
+            $scope.uTenant = res.tenant;
+            $scope.uEnable = res.enable;
             $scope.isNew = false;
         },
                   function (errorPl) {
@@ -89,30 +91,35 @@
     };
 
     $scope.clear = function () {
-        $scope.isNew = true;
         $scope.uId = "";
         $scope.uName = "";
         $scope.uEmail = "";
+        $scope.uLogo = "";
         $scope.uRole = "";
         $scope.uTenant = "";
-        $scope.username = "";
-        $scope.uPassword = "";
-        $scope.confirm = "";
+        $scope.uEnable = "";
     };
 
-    $scope.edit = function (user) {
+    $scope.edit = function (Id) {
         $scope.isNew = false;
-        $scope.uId = user.uId;
-        $scope.uName = user.uName;
-        $scope.uEmail = user.uEmail;
-        $scope.uRole = user.uRole;
-        $scope.uTenant = user.uTenant;
-        $scope.username = user.username;
-        $scope.uPassword = user.uPassword;
+        $scope.isFormMode = true;
+        $scope.isEdit = true;
+        $scope.Message = "";
+        $scope.get(Id);
     };
+
+    $scope.createNew = function () {
+        $scope.clear();
+        $scope.isFormMode = true;
+        $scope.isNew = true;
+        $scope.Message = "";
+    }
 
     $scope.cancel = function () {
         $scope.clear();
+        $scope.isFormMode = false;
+        $scope.isEdit = false;
+        $scope.isNew = false;
     };
 
-});
+}]);

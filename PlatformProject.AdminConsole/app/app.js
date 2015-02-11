@@ -7,11 +7,11 @@ app.config(function ($routeProvider) {
             templateUrl: 'app/Views/dashboard.html'
         })
         .when('/TenantManagement', {
-            //controller: 'Controller',
+            controller: 'tenantController',
             templateUrl: 'app/Views/tenantManagement.html'
         })
         .when('/UserManagement', {
-             //controller: 'Controller',
+             controller: 'userController',
              templateUrl: 'app/Views/userManagement.html'
          })
         .when('/Licensing', {
@@ -34,12 +34,8 @@ app.config(function ($routeProvider) {
             //controller: 'Controller',
             templateUrl: 'app/Views/darkLaunching.html'
         })
-        .when('/TenantManagement/CreateTenant', {
-             controller: 'tenantController',
-             templateUrl: 'app/Views/createTenant.html'
-         })
         .when('/UserManagement/CreateUser', {
-            controller: 'userController',
+            //controller: 'userController',
             templateUrl: 'app/Views/createUser.html'
         })
         .when('/TenantManagement/CreateAdmin', {

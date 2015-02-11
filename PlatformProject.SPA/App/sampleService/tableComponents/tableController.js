@@ -1,6 +1,4 @@
 ﻿var tableApp = angular.module('tableApp', []);
-
-
 tableApp.controller('tableController', function ($scope) {
     $scope.people = [
         {
@@ -15,9 +13,8 @@ tableApp.controller('tableController', function ($scope) {
         }
     ];
 
+
 });
-   
-  
 
 tableApp.directive('myElement', function () {
     var directive = {};
@@ -31,6 +28,16 @@ tableApp.directive('myElement', function () {
 
 });
 
+tableApp.directive('myHeading', function () {
+    var directive = {};
+    directive.templateUrl = "/App/sampleService/tableComponents/tableTitle.html"
+    directive.scope = {
+        item: '=myHeading'
+    };
+    directive.restrict = 'EA';
+
+    return directive;
+});
 
 
 

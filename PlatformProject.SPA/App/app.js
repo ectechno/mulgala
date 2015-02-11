@@ -19,7 +19,8 @@ var myApp = angular
     'mapComponentsApp',
     'progressBarApp',
     'dialogApp',
-    'tableApp'
+    'tableApp',
+    'mapComponentsApp'
    
   ])
   .config(function ($routeProvider) {

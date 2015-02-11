@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="http://miromannino.com/projects/justified-gallery/" target="_blank">
+  <a href="http://miromannino.github.io/Justified-Gallery/" target="_blank">
     <img src="https://raw.github.com/miromannino/Justified-Gallery/gh-imgs/jgcover.png" />
   </a>
 </div>
@@ -10,10 +10,53 @@ A common problem, for people who create sites, is to create an elegant image gal
 the various sizes of images. Flickr and Google+ manage this situation in an excellent way, 
 the purpose of this plugin is to give you the power of this solutions, with a new fast algorithm.
 
-You can read the entire description of this project 
-in the <a href="http://miromannino.com/projects/justified-gallery/">official project page</a>.
+<div style="text-align: center; font-size: 110%;">
+	<a href="http://miromannino.github.io/Justified-Gallery/" target="_blank">Official project page</a>
+</div>
 
 ## Release History
+
+### 3.5
+
+* The default suffixes are all empty, to be simpler to understand. To have the previous suffixes,
+the following settings can be used:
+
+	```
+	sizeRangeSuffixes : { 
+		'lt100': '_t', 
+		'lt240': '_m', 
+		'lt320': '_n', 
+		'lt500': '', 
+		'lt640': '_z', 
+		'lt1024': '_b' 
+	}
+	```
+
+* Now is possible to have entries with the structure: 
+
+	```
+	<div>
+		<a href="...">
+			<img src="..." />
+		</a>
+		<div class="caption">...</div>
+	</div>
+	```
+
+* Fixed margins, the border of the entire gallery is included
+* Corrected bugs for the callbacks when waitThumbnailsLoad = false
+
+### 3.4
+
+* Performance improvements
+	* In presence of width and height attributes in thumbnails, and with the option 
+	  'waitThumbnailsLoad', the layout is immediately built, and the thumbnails will appear randomly
+	  while they are loaded.
+	* Other code refactorings to be more performant
+* With nojustify, if there is only a row, it doesn't justify anything. The previous behaviour seems
+too like a bug than a feature.
+* Infinite scroll example with plain javascript to be more understandable.
+* Fixes some bugs with infinite scroll
 
 ### 3.3
 
@@ -22,11 +65,14 @@ in the <a href="http://miromannino.com/projects/justified-gallery/">official pro
 * Initial opacity settings for the caption to allow them to be always visible
 	* Can be also configured changing the less file, if one prefers CSS animations
 * All caption settings in a single object to be more compact
+
+	```
 	captionSettings : { //ignored with css animations
 		animationDuration : 500,
 		visibleOpacity : 0.7, 
 		nonVisibleOpacity : 0.0 
 	},
+	```
 * Justification formulas refactoring to be more maintainable
 
 ### 3.2

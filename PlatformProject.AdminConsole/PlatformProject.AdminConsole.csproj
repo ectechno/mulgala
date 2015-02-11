@@ -84,6 +84,7 @@
     <Content Include="app\Services\MessageService.js" />
     <Content Include="app\Services\MetaDataService.js" />
     <Content Include="app\Services\RequestService.js" />
+    <Content Include="app\Services\SharedServices.js" />
     <Content Include="app\Services\TenantService.js" />
     <Content Include="app\Services\UserService.js" />
     <Content Include="app\Views\charts\empty.html" />
@@ -91,7 +92,6 @@
     <Content Include="app\Views\charts\inline.html" />
     <Content Include="app\Views\charts\morris.html" />
     <Content Include="app\Views\createAdmin.html" />
-    <Content Include="app\Views\createTenant.html" />
     <Content Include="app\Views\createUser.html" />
     <Content Include="app\Views\darkLaunching.html" />
     <Content Include="app\Views\dashboard.html" />

@@ -1,6 +1,4 @@
-﻿
-
-var myApp = angular.module('mapComponentsApp', []);
+﻿var myApp = angular.module('mapComponentsApp', []);
 myApp.directive('sayWhere', function ($compile) {
     return {
         controller: function ($scope) {
