@@ -1,4 +1,5 @@
-﻿angular.module('admin').controller('tenantController', ['$scope','$window', 'TenantService', function ($scope, $window,TenantService) {
+﻿angular.module('admin').controller('tenantController', ['$scope', '$window', 'TenantService', 'SharedServices', function ($scope, $window, TenantService, SharedServices)
+{
     $scope.isFormMode = false;
     $scope.isEdit = false;
     loadRecords();
@@ -10,7 +11,8 @@
       
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data;
-            $window.location.href = 'http://localhost:40838/index.html#/TenantManagement';
+            alert(pl.data);
+            SharedServices.locateToWindow("http://localhost:40838/index.html#/TenantManagement");
         },
               function (errorPl) {
                   $log.error('failure loading Tenants', errorPl);
