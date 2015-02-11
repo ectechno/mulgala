@@ -61,7 +61,9 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 LogoUrl = user.LogoUrl,
                 Enable = user.Enable,
                 Role = user.Role.Name,
-                Tenant = user.Tenant.Name
+                Tenant = user.Tenant.Name,
+                RoleId=user.RoleId,
+                TenantId=user.TenantId
             });
             return response;
         }

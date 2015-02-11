@@ -1,7 +1,10 @@
-﻿app.controller('userController', ['$scope','$window', 'UserService',function ($scope, $window,UserService) {
+﻿app.controller('userController', ['$scope', '$window', 'UserService', 'TenantService', function ($scope, $window, UserService, TenantService) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
     loadRecords();
+    loadTenantRecords();
+    
+    //var path = 'http://localhost:40838/index.html#/UserManagement';
 
     //Function to load all User records
     function loadRecords() {
@@ -10,9 +13,22 @@
         promiseGet.then(function (pl) {
             $scope.Users = pl.data;
             $window.location.href = 'http://localhost:40838/index.html#/UserManagement';
+            //SharedServices.locateToWindow('http://localhost:40838/index.html#/UserManagement');
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
+              });
+    };
+
+    function loadTenantRecords() {
+
+        var promiseGet = TenantService.getTenants(); //The Method Call from service
+
+        promiseGet.then(function (pl) {
+            $scope.Tenants = pl.data;
+        },
+              function (errorPl) {
+                  $log.error('failure loading Tenants', errorPl);
               });
     };
 
@@ -80,8 +96,8 @@
             $scope.uName = res.name;
             $scope.uEmail = res.email;
             $scope.uLogo = res.logoUrl;
-            $scope.uRole = res.role;
-            $scope.uTenant = res.tenant;
+            $scope.uRole = res.roleId;
+            $scope.uTenant = res.tenantId;
             $scope.uEnable = res.enable;
             $scope.isNew = false;
         },
@@ -113,6 +129,8 @@
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
+        $scope.uRole = 0;
+        $scope.uTenant = 0;
     }
 
     $scope.cancel = function () {

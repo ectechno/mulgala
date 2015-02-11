@@ -21,6 +21,10 @@ namespace PlatformProject.DTO
         public string Role { get; set; }
 
         public string Tenant { get; set; }
+
+        public int RoleId { get; set; }
+
+        public int TenantId { get; set; }
     }
 
     public class UserUpdateDTO 

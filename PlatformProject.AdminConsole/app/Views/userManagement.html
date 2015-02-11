@@ -66,10 +66,17 @@
             <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="uLogo">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="roleId" placeholder="Role ID" ng-model="uRole">
+            <select ng-model="uRole" class="form-control">
+                <option value="0">Role</option>
+                <option value="1">Administrator</option>
+                <option value="2">User</option>
+            </select>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="tenantId" placeholder="Tenant ID" ng-model="uTenant">
+            <select ng-model="uTenant" class="form-control">
+                <option value="0">Tenant</option>
+                <option ng-repeat="tenant in Tenants" value={{tenant.id}}>{{tenant.name}}</option>
+            </select>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="uEnable">
@@ -77,4 +84,5 @@
         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
         <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" />
     </form>
+    {{Message}}
 </section><!-- /.content -->
