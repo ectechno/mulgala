@@ -2,7 +2,8 @@
     $scope.isEdit = false;
     $scope.isFormMode = false;
     loadRecords();
-    loadTenantRecords()
+    loadTenantRecords();
+    
     //var path = 'http://localhost:40838/index.html#/UserManagement';
 
     //Function to load all User records
@@ -128,6 +129,8 @@
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
+        $scope.uRole = 0;
+        $scope.uTenant = 0;
     }
 
     $scope.cancel = function () {
