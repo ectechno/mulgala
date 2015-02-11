@@ -11,7 +11,6 @@
       
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data;
-            alert(pl.data);
             SharedServices.locateToWindow("http://localhost:40838/index.html#/TenantManagement");
         },
               function (errorPl) {
