@@ -26,8 +26,7 @@ myApp.directive('sayWhere', function ($compile) {
               latitude = attrs.latitude,
               longitude = attrs.longitude,
               controlTemplate,
-              controlElem,
-              map;
+              controlE
             // parsing latLong or setting default location
             latitude = latitude && parseFloat(latitude, 10) || 43.074688;
             longitude = longitude && parseFloat(longitude, 10) || -89.384294;

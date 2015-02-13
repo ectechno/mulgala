@@ -7,7 +7,7 @@ progressBarApp.controller("progressbarController", ['$scope', function ($scope) 
 }])
 .directive('progressbar', [function () {
     return {
-        restrict: 'A',
+        restrict: 'A',  //Atribute
         scope: {
             'progress': '=progressbar'
         },

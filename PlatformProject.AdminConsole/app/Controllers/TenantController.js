@@ -8,7 +8,7 @@
     function loadRecords() {
        
         var promiseGet = TenantService.getTenants(); //The Method Call from service
-      
+
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data;
             SharedServices.locateToWindow("http://localhost:40838/index.html#/TenantManagement");
@@ -26,17 +26,17 @@
             tLogo: $scope.tLogo,
             tEnable: $scope.tEnable
         };
-
+      
         if ($scope.isNew) {
          
             var promisePost = TenantService.createTenant(tenant);
-
+        
              //promisePost.then(function (pl) {
                // $scope.Id = pl.data.Id;
-               $scope.Message = "Created Successfuly";
+                $scope.Message = "Created Successfuly";
                // console.log($scope.Message);
-               $scope.clear();
-               loadRecords();
+                $scope.clear();
+                loadRecords();
            //  }, function (err) {
              //    console.log("Err" + err);
             // });
@@ -89,6 +89,7 @@
     };
 
     $scope.clear = function () {
+        $scope.isNew = true;
         $scope.tId = "";
         $scope.tName = "";
         $scope.tString = "";

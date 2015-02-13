@@ -24,7 +24,7 @@ dialogApp.controller('dialogController', function ($scope, dialogService) {
         document.getElementById('titleBar').className = 'titleBar';
         document.getElementById('dialog').className = 'dialogBox';
                 
-        dialog.style.backgroundColor = backgroundColour;
+        dialog.style.backgroundColor = backgroundColour;;
         dialog.style.color = textColour;
         dialog.style.textAlign = textAlign;
         
