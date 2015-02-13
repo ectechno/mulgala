@@ -40,6 +40,8 @@
             uLogo:$scope.uLogo,
             uRole: $scope.uRole,
             uTenant: $scope.uTenant,
+            username: $scope.username,
+            uPassword:$scope.uPassword,
             uEnable:$scope.uEnable
         };
 

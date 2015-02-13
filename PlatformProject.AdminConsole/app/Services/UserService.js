@@ -21,6 +21,8 @@ angular.module('admin').service('UserService',['$http', 'RequestService', functi
                 "LogoUrl": userObj.uLogo,
                 "RoleId": userObj.uRole,
                 "TenantId": userObj.uTenant,
+                "UserName": userObj.username,
+                "Password":userObj.uPassword,
                 "Enable": userObj.uEnable
             };
 
