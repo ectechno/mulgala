@@ -35,7 +35,7 @@
                // $scope.Id = pl.data.Id;
                $scope.Message = "Created Successfuly";
                // console.log($scope.Message);
-               $scope.clear();
+               //$scope.clear();
                loadRecords();
            //  }, function (err) {
              //    console.log("Err" + err);
@@ -44,7 +44,7 @@
             var promisePut = TenantService.updateTenant($scope.tId, tenant);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
-                $scope.clear();
+                //$scope.clear();
                 loadRecords();
             }, function (err) {
                 console.log("Err" + err);
