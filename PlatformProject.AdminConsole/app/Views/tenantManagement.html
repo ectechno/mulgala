@@ -55,18 +55,22 @@
                    </table>
 
                     <form name="createTenant" method="get" action="" ng-show="isFormMode">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tenantName" placeholder="Tenant Name" ng-model="tName">
+                        <div class="form-group" ng-class="{ 'has-error' : createTenant.tenantName.$invalid && !createTenant.tenantName.$pristine && submitted}">
+                            <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Tenant Name" ng-model="tName" required>
+                            <p ng-show="createTenant.tenantName.$invalid && !createTenant.tenantName.$pristine" style="color:red;">Tenant name is required.</p>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tenantString" placeholder="Tenant String" ng-model="tString">
+                        <div class="form-group" ng-class="{ 'has-error' : createTenant.tenantString.$invalid && !createTenant.tenantString.$pristine && submitted}">
+                            <input type="text" class="form-control" id="tenantString" name="tenantString" placeholder="Tenant String" ng-model="tString" required>
+                            <p ng-show="createTenant.tenantString.$invalid && !createTenant.tenantString.$pristine" style="color:red;">Tenant string is required.</p>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="tLogo">
+                        <div class="form-group" ng-class="{ 'has-error' : createTenant.logo.$invalid && !createTenant.logo.$pristine && submitted}">
+                            <input type="text" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
+                            <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="tEnable">
+                        <div class="form-group" ng-class="{ 'has-error' : createTenant.enable.$invalid && !createTenant.enable.$pristine && submitted}">
+                            <input type="text" class="form-control" id="enable" name="enable" placeholder="Enable" ng-model="tEnable" required>
+                            <p ng-show="createTenant.enable.$invalid && !createTenant.enable.$pristine" style="color:red;">Type true or false.</p>
                         </div>
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                         <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
@@ -75,3 +79,5 @@
 </section>
 
             
+
+

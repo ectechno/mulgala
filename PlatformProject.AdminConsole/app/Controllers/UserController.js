@@ -1,19 +1,16 @@
-﻿app.controller('userController', ['$scope', '$window', 'UserService', 'TenantService', function ($scope, $window, UserService, TenantService) {
+﻿app.controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
     loadRecords();
     loadTenantRecords();
     
-    //var path = 'http://localhost:40838/index.html#/UserManagement';
-
     //Function to load all User records
     function loadRecords() {
         var promiseGet = UserService.getUsers(); //The Method Call from service
 
         promiseGet.then(function (pl) {
             $scope.Users = pl.data;
-            $window.location.href = 'http://localhost:40838/index.html#/UserManagement';
-            //SharedServices.locateToWindow('http://localhost:40838/index.html#/UserManagement');
+            SharedServices.locateToWindow("http://localhost:40838/index.html#/UserManagement");
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
@@ -40,6 +37,8 @@
             uLogo:$scope.uLogo,
             uRole: $scope.uRole,
             uTenant: $scope.uTenant,
+            username: $scope.username,
+            uPassword:$scope.uPassword,
             uEnable:$scope.uEnable
         };
 
@@ -49,7 +48,7 @@
                // $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
                 //console.log($scope.Message);
-                $scope.clear();
+                //$scope.clear();
                 loadRecords();
           //  }, function (err) {
            //     console.log("Err" + err);
@@ -58,7 +57,7 @@
             var promisePut = UserService.updateUser($scope.uId, user);
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
-                $scope.clear();
+                //$scope.clear();
                 loadRecords();
             }, function (err) {
                 console.log("Err" + err);

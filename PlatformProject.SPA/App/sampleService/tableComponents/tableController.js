@@ -22,7 +22,7 @@ tableApp.directive('myElement', function () {
     directive.scope = {
         item: '=myElement'
     };
-    directive.restrict = 'EA';
+    directive.restrict = 'EA';    
    
     return directive;
 

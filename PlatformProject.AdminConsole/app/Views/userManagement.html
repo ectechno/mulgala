@@ -55,34 +55,50 @@
             </tr>
         </tbody>
     </table>
-    <form name="createUser" method="get" action="" ng-show="isFormMode">
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="uName">
+    <form role="form" name="createUser"  ng-show="isFormMode">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.name.$invalid && !createUser.name.$pristine && submitted}">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" required>
+            <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="email" placeholder="Eamil" ng-model="uEmail">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.email.$invalid && !createUser.email.$pristine && submitted}">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Eamil" ng-model="uEmail" required>
+            <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="logo" placeholder="Logo URL" ng-model="uLogo">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.logo.$invalid && !createUser.logo.$pristine && submitted}">
+            <input type="text" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="uLogo" required>
+            <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
         </div>
-        <div class="form-group">
-            <select ng-model="uRole" class="form-control">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.role.$invalid && !createUser.role.$pristine && submitted}">
+            <select id="role" name="role" ng-model="uRole" class="form-control" required>
                 <option value="0">Role</option>
                 <option value="1">Administrator</option>
                 <option value="2">User</option>
             </select>
+            <p ng-show="createUser.role.$invalid && !createUser.role.$pristine" style="color:red;">Select a Role.</p>
         </div>
-        <div class="form-group">
-            <select ng-model="uTenant" class="form-control">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.tenant.$invalid && !createUser.tenant.$pristine && submitted}">
+            <select id="tenant" name="tenant" ng-model="uTenant" class="form-control" required>
                 <option value="0">Tenant</option>
                 <option ng-repeat="tenant in Tenants" value={{tenant.id}}>{{tenant.name}}</option>
             </select>
+            <p ng-show="createUser.tenant.$invalid && !createUser.tenant.$pristine" style="color:red;">Select a Tenant.</p>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="enable" placeholder="Enable" ng-model="uEnable">
+        <div class="form-group" ng-class="{ 'has-error' : createUser.username.$invalid && !createUser.username.$pristine && submitted}">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="username" required>
+            <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
         </div>
+        <div class="form-group" ng-class="{ 'has-error' : createUser.password.$invalid && !createUser.password.$pristine && submitted}">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="uPassword" required>
+            <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : createUser.enable.$invalid && !createUser.enable.$pristine && submitted}">
+            <input type="text" class="form-control" id="enable" name="enable" placeholder="Enable" ng-model="uEnable" required>
+            <p ng-show="createUser.enable.$invalid && !createUser.enable.$pristine" style="color:red;">Type true or false.</p>
+        </div>
+
         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" />
+        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();"/>
+             
     </form>
     {{Message}}
 </section><!-- /.content -->
