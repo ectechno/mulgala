@@ -533,6 +533,9 @@
     <Content Include="App\forms\registrationAngular.html" />
     <Content Include="App\gallery\gallery_flickr.html" />
     <Content Include="App\gallery\gallery_simple.html" />
+    <Content Include="App\googleMap\githubUser.html" />
+    <Content Include="App\googleMap\githubUserController.js" />
+    <Content Include="App\googleMap\githubUserService.js" />
     <Content Include="App\googleMap\map.html" />
     <Content Include="App\googleMap\mapController.js" />
     <Content Include="App\maps\maps.html" />
