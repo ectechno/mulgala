@@ -35,13 +35,10 @@
                // $scope.Id = pl.data.Id;
                 $scope.Message = "Created Successfuly";
                // console.log($scope.Message);
-<<<<<<< HEAD
+
                //$scope.clear();
                loadRecords();
-=======
-                $scope.clear();
-                loadRecords();
->>>>>>> 70935d70e5a012f4fb762f063587dc42030bce08
+                         
            //  }, function (err) {
              //    console.log("Err" + err);
             // });

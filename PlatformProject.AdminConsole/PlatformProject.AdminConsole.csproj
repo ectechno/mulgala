@@ -552,7 +552,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="js\plugins\bootstrap-slider\" />

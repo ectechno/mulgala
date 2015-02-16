@@ -1,4 +1,4 @@
-﻿app.controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
+﻿angular.module('admin').controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
     loadRecords();
