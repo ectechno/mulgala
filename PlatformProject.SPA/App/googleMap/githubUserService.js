@@ -1,5 +1,4 @@
-﻿angular.module('myApp.services', [])
-  .factory('githubService', ['$http', function ($http) {
+﻿angular.module('githubServiceApp').factory('githubService', ['$http', function ($http) {
 
       var doRequest = function (username, path) {
           return $http({

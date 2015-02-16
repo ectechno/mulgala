@@ -1,5 +1,7 @@
-﻿<div ng-controller="ServiceController">
-    <label for="username">Type in a GitHub username</label>
-    <input type="text" ng-model="username" placeholder="Enter a GitHub username, like auser" />
-    <pre ng-show="username">{{ events }}</pre>
+﻿<div ng-app="githubServiceApp">
+    <div ng-controller="ServiceController">
+        <label for="username">Type in a GitHub username</label>
+        <input type="text" ng-model="username" placeholder="Enter a GitHub username like a user" />
+        <pre ng-show="username">{{ events }}</pre>
+    </div>
 </div>

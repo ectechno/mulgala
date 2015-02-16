@@ -20,7 +20,8 @@ var myApp = angular
     'progressBarApp',
     'dialogApp',
     'tableApp',
-    'mapComponentsApp'
+    'mapComponentsApp',
+    'githubServiceApp'
    
   ])
   .config(function ($routeProvider) {
@@ -90,9 +91,10 @@ var myApp = angular
      }
  })
  .when('/googleMap/:url', {
-     templateUrl: 'App/googleMap/map.html',
-     controller: 'mapController'
- })
+               templateUrl: function (params) {
+                   return 'App/googleMap/' + params.url
+               }
+           })
    .otherwise({
        redirectTo: '/'
    });

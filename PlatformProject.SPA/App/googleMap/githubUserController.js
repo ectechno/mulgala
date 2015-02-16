@@ -1,15 +1,18 @@
-﻿app.controller('ServiceController', ['$scope', 'githubService',
-    function ($scope, githubService) {
-        // Watch for changes on the username property.
-        // If there is a change, run the function
-        $scope.$watch('username', function (newUsername) {
-            // uses the $http service to call the GitHub API
-            // and returns the resulting promise
-            githubService.events(newUsername)
-              .success(function (data, status, headers) {
-                  // the success function wraps the response in data
-                  // so we need to call data.data to fetch the raw data
-                  $scope.events = data.data;
-              })
-        });
-    }]);
+﻿githubServiceApp = angular.module('githubServiceApp', []);
+
+githubServiceApp.controller('ServiceController', ['$scope', '$timeout', 'githubService',
+  function ($scope, $timeout, githubService) {
+      // The same example as above, plus the $timeout service
+      var timeout;
+      $scope.$watch('username', function (newVal) {
+          if (newVal) {
+              if (timeout) $timeout.cancel(timeout);
+              timeout = $timeout(function () {
+                  githubService.events(newVal)
+                  .success(function (data, status) {
+                      $scope.events = data.data;
+                  });
+              }, 350);
+          }
+      });
+  }]);
