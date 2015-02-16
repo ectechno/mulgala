@@ -188,6 +188,7 @@
     <Content Include="js\AdminLTE\app.js" />
     <Content Include="js\AdminLTE\dashboard.js" />
     <Content Include="js\angular-cookies.js" />
+    <Content Include="js\angular-match.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />

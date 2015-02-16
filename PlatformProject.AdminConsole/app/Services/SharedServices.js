@@ -6,4 +6,7 @@ angular.module('admin').service('SharedServices', ['$window', function ($window)
     {
         $window.location.href = path;
     }
+    function reloadWindow() {
+        $window.location.reload();
+    }
 }]);

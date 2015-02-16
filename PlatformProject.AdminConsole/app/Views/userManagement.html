@@ -55,7 +55,7 @@
             </tr>
         </tbody>
     </table>
-    <form role="form" name="createUser"  ng-show="isFormMode">
+    <form role="form" name="createUser"  ng-show="isFormMode" onsubmit="return customValidate(this)">
         <div class="form-group" ng-class="{ 'has-error' : createUser.name.$invalid && !createUser.name.$pristine && submitted}">
             <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" required>
             <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
@@ -65,7 +65,7 @@
             <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.logo.$invalid && !createUser.logo.$pristine && submitted}">
-            <input type="text" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="uLogo" required>
+            <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="uLogo" required>
             <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.role.$invalid && !createUser.role.$pristine && submitted}">
@@ -91,6 +91,10 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="uPassword" required>
             <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
         </div>
+        <div class="form-group" ng-class="{ 'has-error' : createUser.cPassword.$invalid && !createUser.cPassword.$pristine && submitted}">
+            <input type="password" class="form-control" id="cPassword" name="cPassword" placeholder="Confirm Password" ng-model="cPassword" required>
+            <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
+        </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.enable.$invalid && !createUser.enable.$pristine && submitted}">
             <input type="text" class="form-control" id="enable" name="enable" placeholder="Enable" ng-model="uEnable" required>
             <p ng-show="createUser.enable.$invalid && !createUser.enable.$pristine" style="color:red;">Type true or false.</p>
@@ -102,3 +106,25 @@
     </form>
     {{Message}}
 </section><!-- /.content -->
+
+<script>
+    function customValidate(form) {
+        if(form.role.value==0){
+            window.alert("Please select a role");  
+            return false;
+        }
+        if(form.tenant.value==0){
+            window.alert("Please select a tenant");
+            return false;
+        }
+        if ((form.password.value) != (form.cPassword.value)) {
+            window.alert("The passwords you entered are not mathcing");
+            return false;
+        }
+        if (!(((form.enable.value) == 'true') || ((form.enable.value) == 'false'))) {
+            window.alert("Please type true or false for the enable option");
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -64,7 +64,7 @@
                             <p ng-show="createTenant.tenantString.$invalid && !createTenant.tenantString.$pristine" style="color:red;">Tenant string is required.</p>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : createTenant.logo.$invalid && !createTenant.logo.$pristine && submitted}">
-                            <input type="text" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
+                            <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
 
