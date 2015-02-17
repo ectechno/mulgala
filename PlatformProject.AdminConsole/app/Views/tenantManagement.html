@@ -67,17 +67,23 @@
                             <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
-
                         <div class="form-group" ng-class="{ 'has-error' : createTenant.enable.$invalid && !createTenant.enable.$pristine && submitted}">
-                            <input type="text" class="form-control" id="enable" name="enable" placeholder="Enable" ng-model="tEnable" required>
-                            <p ng-show="createTenant.enable.$invalid && !createTenant.enable.$pristine" style="color:red;">Type true or false.</p>
+                            <select id="enable" name="enable" ng-model="tEnable" class="form-control" ng-options="e.code as e.name for e in enableOptions" required>
+                                <option value="">Enable</option>
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select>
+                            <p ng-show="isEdit" style="color:green;">Current option is {{tEnable}}</p>
+                            <p ng-show="createTenant.enable.$invalid && !createTenant.enable.$pristine" style="color:red;">Select true or false.</p>
                         </div>
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                         <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" />
                     </form>
                     {{Message}}
-</section>
+             </section>
 
             
+
+
 
 

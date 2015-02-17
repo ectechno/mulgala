@@ -4,6 +4,11 @@
     $scope.isEdit = false;
     loadRecords();
 
+    $scope.enableOptions = [
+      { code: "true", name: "true" },
+      { code: "false", name: "false" }
+    ];
+
     //Function to load all Tenant records
     function loadRecords() {
        

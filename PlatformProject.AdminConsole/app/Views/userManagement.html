@@ -39,6 +39,7 @@
                 <th>Enable</th>
                 <th>Role</th>
                 <th>Tenant</th>
+                <th>Username</th>
             </tr>
         </thead>
         <tbody ng-repeat="user in Users">
@@ -50,12 +51,13 @@
                 <td> <span>{{user.enable}}</span></td>
                 <td> <span>{{user.role}}</span></td>
                 <td> <span>{{user.tenant}}</span></td>
+                <td><span>{{user.userName}}</span></td>
                 <td> <span><button class="btn btn-warning" ng-click="edit(user.id)">Edit</button></span></td>
                 <td> <span><button class="btn btn-danger" ng-click="delete(user.id)">Delete</button></span></td>
             </tr>
         </tbody>
     </table>
-    <form role="form" name="createUser"  ng-show="isFormMode" onsubmit="return customValidate(this)">
+    <form role="form" name="createUser"  ng-show="isFormMode" onsubmit="">
         <div class="form-group" ng-class="{ 'has-error' : createUser.name.$invalid && !createUser.name.$pristine && submitted}">
             <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" required>
             <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
@@ -69,11 +71,12 @@
             <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.role.$invalid && !createUser.role.$pristine && submitted}">
-            <select id="role" name="role" ng-model="uRole" class="form-control" required>
-                <option value="0">Role</option>
+            <select id="role" name="role" ng-model="uRole" class="form-control" ng-options="u.code as u.name for u in userNames" required>
+                <option value="">Role</option>
                 <option value="1">Administrator</option>
                 <option value="2">User</option>
             </select>
+            <p ng-show="isEdit" style="color:green;">Selected Role is {{selectedRole}}</p>
             <p ng-show="createUser.role.$invalid && !createUser.role.$pristine" style="color:red;">Select a Role.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.tenant.$invalid && !createUser.tenant.$pristine && submitted}">
@@ -92,12 +95,17 @@
             <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.cPassword.$invalid && !createUser.cPassword.$pristine && submitted}">
-            <input type="password" class="form-control" id="cPassword" name="cPassword" placeholder="Confirm Password" ng-model="cPassword" required>
+            <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
             <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : createUser.enable.$invalid && !createUser.enable.$pristine && submitted}">
-            <input type="text" class="form-control" id="enable" name="enable" placeholder="Enable" ng-model="uEnable" required>
-            <p ng-show="createUser.enable.$invalid && !createUser.enable.$pristine" style="color:red;">Type true or false.</p>
+            <select id="enable" name="enable" ng-model="uEnable" class="form-control" ng-options="e.code as e.name for e in enableOptions" required>
+                <option value="">Enable</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+            <p ng-show="isEdit" style="color:green;">Current option is {{uEnable}}</p>
+            <p ng-show="createUser.enable.$invalid && !createUser.enable.$pristine" style="color:red;">Select true or false.</p>
         </div>
 
         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
@@ -107,24 +115,3 @@
     {{Message}}
 </section><!-- /.content -->
 
-<script>
-    function customValidate(form) {
-        if(form.role.value==0){
-            window.alert("Please select a role");  
-            return false;
-        }
-        if(form.tenant.value==0){
-            window.alert("Please select a tenant");
-            return false;
-        }
-        if ((form.password.value) != (form.cPassword.value)) {
-            window.alert("The passwords you entered are not mathcing");
-            return false;
-        }
-        if (!(((form.enable.value) == 'true') || ((form.enable.value) == 'false'))) {
-            window.alert("Please type true or false for the enable option");
-            return false;
-        }
-        return true;
-    }
-</script>

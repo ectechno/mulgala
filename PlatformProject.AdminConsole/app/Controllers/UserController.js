@@ -1,19 +1,17 @@
 ﻿angular.module('admin').controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
-
-    /*$scope.userNames = [
+  
+    $scope.userNames = [
        { code: "1", name: "Administrator" },
        { code: "2", name: "User" }
     ];
-    //ng-options="u.code as u.name for u in userNames"
-
+   
     $scope.enableOptions = [
        { code: "true", name: "true" },
        { code: "false", name: "false" }
     ];
-    //ng-options="e.code as e.name for e in enableOptions"*/
-
+  
     loadRecords();
     loadTenantRecords();
             
@@ -23,8 +21,7 @@
 
         promiseGet.then(function (pl) {
             $scope.Users = pl.data;
-            SharedServices.reloadWindow();
-           // SharedServices.locateToWindow("http://localhost:40838/index.html#/UserManagement");
+            SharedServices.locateToWindow("http://localhost:40838/index.html#/UserManagement");
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
@@ -91,7 +88,9 @@
             $scope.uLogo="";
             $scope.uRole = "";
             $scope.uTenant = "";
-            $scope.uEnable="";
+            $scope.uEnable = "";
+            $scope.username = "";
+            $scope.uPassword = "";
             loadRecords();
         }, function (err) {
             console.log("Err" + err);
@@ -110,8 +109,12 @@
             $scope.uEmail = res.email;
             $scope.uLogo = res.logoUrl;
             $scope.uRole = res.roleId;
+            $scope.selectedRole = res.role;
             $scope.uEnable = res.enable;
             $scope.uTenant = res.tenantId;
+            $scope.username = res.userName;
+            $scope.uPassword = res.password;
+            $scope.cPassword = res.password;
             $scope.isNew = false;
         },
                   function (errorPl) {
@@ -127,6 +130,9 @@
         $scope.uRole = "";
         $scope.uTenant = "";
         $scope.uEnable = "";
+        $scope.username = "";
+        $scope.uPassword = "";
+        $scope.cPassword = "";
     };
 
     $scope.edit = function (Id) {
@@ -142,7 +148,6 @@
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
-        $scope.uRole = 0;
         $scope.uTenant = 0;
     }
 

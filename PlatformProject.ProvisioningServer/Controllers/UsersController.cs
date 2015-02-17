@@ -37,7 +37,9 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 LogoUrl = user.LogoUrl,
                 Enable = user.Enable,
                 Role = user.Role.Name,
-                Tenant = user.Tenant.Name
+                Tenant = user.Tenant.Name,
+                UserName=user.UserName,
+                Password=user.Password
             }).ToList();
         }
 
@@ -63,7 +65,9 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 Role = user.Role.Name,
                 Tenant = user.Tenant.Name,
                 RoleId=user.RoleId,
-                TenantId=user.TenantId
+                TenantId=user.TenantId,
+                UserName=user.UserName,
+                Password=user.Password
             });
             return response;
         }
