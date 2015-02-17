@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.Provisionin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.DTO", "PlatformProject.DTO\PlatformProject.DTO.csproj", "{85EEF3BD-2B1D-43C3-AE4B-E3C96CE2BB89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.StarterKit", "PlatformProject.StarterKit\PlatformProject.StarterKit.csproj", "{A59A423F-0A9E-4AA0-BB12-9B1B182BD510}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{85EEF3BD-2B1D-43C3-AE4B-E3C96CE2BB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85EEF3BD-2B1D-43C3-AE4B-E3C96CE2BB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85EEF3BD-2B1D-43C3-AE4B-E3C96CE2BB89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59A423F-0A9E-4AA0-BB12-9B1B182BD510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59A423F-0A9E-4AA0-BB12-9B1B182BD510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59A423F-0A9E-4AA0-BB12-9B1B182BD510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59A423F-0A9E-4AA0-BB12-9B1B182BD510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
