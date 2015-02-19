@@ -22,7 +22,8 @@ namespace PlatformProject.Constants
             RedirectUrls = new List<string> { 
                 Paths.ImplicitGrantCallBackPathT1, 
                 Paths.ImplicitGrantCallBackPathT2,
-                Paths.ImplicitGrantCallBackPathT3
+                Paths.ImplicitGrantCallBackPathT3,
+                Paths.ImplicitGrantCallBackPathT4
             }
         };
 
