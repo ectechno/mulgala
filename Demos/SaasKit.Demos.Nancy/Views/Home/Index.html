@@ -33,6 +33,7 @@
             var returnUri = 'http://' + window.location.host + '/SignIn';
             var productApiUri = "http://localhost:48846/api/Products";
             var productOneUri = "http://localhost:48846/api/Products/1";
+
             $('#Authorize').click(function () {
                 var nonce = 'my-nonce';
 
@@ -44,7 +45,7 @@
                     'response_type': 'token',
                     'tenant': '@Model.Tenant.Tenant.Name'
                 });
-
+                
                 window.oauth = {};
                 window.oauth.signin = function (data) {
                     if (data.state !== nonce) {
@@ -54,7 +55,9 @@
                     $('#AccessToken').val(data.access_token);
                 }
 
+                //window.open(uri, '_self');
                 window.open(uri, 'Authorize', 'width=640,height=760');
+                
             });
 
             $('#GetOneFromApi').click(function () {
