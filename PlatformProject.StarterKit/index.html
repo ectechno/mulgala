@@ -67,8 +67,7 @@
                 <p id="userData"></p>
 
                 <input type="hidden" id="AccessToken" name="AccessToken" />
-                <input id="CallApi" name="submit.CallApi" value="Access Protected Resource API" type="button" />
-
+              
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -124,33 +123,6 @@
             return uri;
         }
 
-
-        $('#CallApi').click(function () {
-            $.ajax(apiUri, {
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
-                },
-                dataType: 'text',
-                type: "GET",
-                cache: false,
-                success: function (data) {
-                    console.log(data);
-                    obj = $.parseJSON(data)
-                    $('#tokenUserName').text('Welcome ' + obj[0].Value);
-                    $('#subHeader').text('Hi ' + obj[0].Value);
-                    $('#userData').text('You are a '+obj[1].Value+' user');
-                },
-                statusCode: {
-                    401: function () {
-                        $('#output').text("Unauthorized.");
-                    }
-                }
-            });
-            //document.getElementById('tokenUserName').value = obj[0].Value;
-        });
-
-       
-
         jQuery(document).ready(function () {
                var nonce = 'my-nonce';
 
@@ -170,9 +142,30 @@
                     }
 
                     $('#AccessToken').val(data.access_token);
+
+                    $.ajax(apiUri, {
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
+                        },
+                        dataType: 'text',
+                        type: "GET",
+                        cache: false,
+                        success: function (data) {
+                            console.log(data);
+                            obj = $.parseJSON(data)
+                            $('#tokenUserName').text('Welcome ' + obj[0].Value);
+                            $('#subHeader').text('Hi ' + obj[0].Value);
+                            $('#userData').text('You are a ' + obj[1].Value + ' user');
+                        },
+                        statusCode: {
+                            401: function () {
+                                $('#output').text("Unauthorized.");
+                            }
+                        }
+                    });
                 }
 
-                //window.open(uri, '_self');
+                //window.open(uri, '_top');
                 window.open(uri, 'Authorize', 'width=640,height=760');
         });
            
