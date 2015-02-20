@@ -10,6 +10,9 @@ namespace SaasKit.Demos.Nancy
     using System.Net.Http;
     using System.Net.Http.Headers;
 using System.Threading;
+    using System.Net.Sockets;
+    using System.Net;
+    using System.Text;
    
     /*
      The class that used to load data object from REST api
@@ -26,10 +29,11 @@ using System.Threading;
 
 
 
-
     public class Program
     {
-        
+
+       
+
 
         private static List<UserTenant> getTenantListFromDatabase()
         {
@@ -68,7 +72,7 @@ using System.Threading;
             return TenantList;
         }
 
-        public static void SpinProgram(StartOptions startOptions)
+        public static string SpinProgram(StartOptions startOptions, UdpClient udpServer)
         {
             /**
             * If you want to add a new tenant while program is running
@@ -76,74 +80,69 @@ using System.Threading;
             *   Sony 3 sony.localhost 127.0.0.1 9000
             * all the parameters are customizable
             * **/
-
+            string message = "";
             using (WebApp.Start<Startup>(startOptions))
             {
                 Console.WriteLine("Running on {0}", string.Join(" and ", startOptions.Urls.ToArray()));
                 Console.WriteLine("Press enter to exit");
-                String line = Console.ReadLine();
-                if (line == "")
-                {
-                    RestoreOriginalHostFile(HostFilePath, OriginalHostFile);
-                    return;
-                }
-                else
-                {
-                    try
-                    {
-                        string[] dataInput = line.Split(' ');
-                        UserTenant newUserTenant = new UserTenant(dataInput[0], Convert.ToInt32(dataInput[1]),
-                            dataInput[2], dataInput[3], Convert.ToInt32(dataInput[4]));
+                Console.WriteLine("waiting for data");
+                //String line = Console.ReadLine();
+                //wait for a socket message
+                var remoteEP = new IPEndPoint(IPAddress.Any, 11000);
+                var data = udpServer.Receive(ref remoteEP); // listen on port 11000
+                Console.WriteLine(Encoding.ASCII.GetString(data));
+                udpServer.Send(new byte[] { 1 }, 1, remoteEP); // reply back
 
-                        //Adding tenants when program is running
-                        AddNewTenant(TenantList, newUserTenant, HostFilePath, startOptions);
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-                }
+                return "OK";
+               
 
             }
+            return message;
 
 
         }
 
 
-
-        //public static UserTenant[] TenantList;
         public static List<UserTenant> TenantList;
         private const String HostFilePath = @"C:\Windows\System32\drivers\etc\Hosts";
         private static string OriginalHostFile = "";
-
+        public static Object obj = new Object();
         private static void Main(string[] args)
         {
-            var startOptions = new StartOptions();
+            UdpClient udpServer = new UdpClient(11000);
 
-            // Note: Add the following host entries to your host file
-            //      127.0.0.1    sony.localhost
-            //      127.0.0.1    samsung.localhost
-            //      127.0.0.1    htc.localhost
+            while (true)
+            {
+                //creating new startOptions
+                var startOptions = new StartOptions();
+                
+                //get tenants from db
+                TenantList=getTenantListFromDatabase();
+
+                //handling host file
+                SaveOriginalHostFile(HostFilePath);
+                AppendCurrentHosts(TenantList, HostFilePath);
+                DisplayCurrentHostFile(HostFilePath);
+
+                //register all tenants in startoptions
+                RegisterAllTenants(TenantList, startOptions);
 
 
-            TenantList = new List<UserTenant>();
+                //Then we should spinup the program
+                //program should wait for next change of the system
+                //if there is a change, then the whole program will be refreshed
+                //with new startoptions
 
-            //TenantList.Add(new UserTenant("Sony", 0, "sony.localhost", "127.0.0.1", 9000));
-            //TenantList.Add(new UserTenant("Samsung", 1, "samsung.localhost", "127.0.0.1", 9000));
-            //TenantList.Add(new UserTenant("HTC", 1, "htc.localhost", "127.0.0.1", 9000));
-            //TenantList.Add(new UserTenant("Acer", 1, "acer.localhost", "127.0.0.1", 9000));
-            TenantList=getTenantListFromDatabase();
 
+                string programState = SpinProgram(startOptions, udpServer);
+
+
+                //In this state, program is ready to start new instance
+                RestoreOriginalHostFile(HostFilePath, OriginalHostFile);
+                
+            }
             
-
-
-            SaveOriginalHostFile(HostFilePath);
-            AppendCurrentHosts(TenantList, HostFilePath);
-            DisplayCurrentHostFile(HostFilePath);
-            RegisterAllTenants(TenantList, startOptions);
-            SpinProgram(startOptions);
-           
+            
 
 
             
