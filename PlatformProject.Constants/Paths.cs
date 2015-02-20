@@ -23,7 +23,7 @@ namespace PlatformProject.Constants
         /// </summary>
         public const string ImplicitGrantCallBackPathT1 = "http://sony.localhost:9000/SignIn";
         public const string ImplicitGrantCallBackPathT2 = "http://samsung.localhost:9000/SignIn";
-        public const string ImplicitGrantCallBackPathT3 = "http://htc.localhost:9000/SignIn";
+        public const string ImplicitGrantCallBackPathT3 = "http://toshiba.localhost:9000/SignIn";
         public const string ImplicitGrantCallBackPathT4 = "http://localhost:50680/SignIn.html";
 
         
