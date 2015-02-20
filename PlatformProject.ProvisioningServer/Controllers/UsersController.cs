@@ -174,6 +174,40 @@ namespace PlatformProject.ProvisioningServer.Controllers
             return response;
         }
 
+        [Route("~/api/tenants/{tenantString}/users/{userName}")]
+        public HttpResponseMessage GetTenantUser(string tenantString, string userName) 
+        {
+            Tenant tenantData;
+            User userData;
+
+            tenantData = tenantRepository.Find(tenant => tenant.TenantString == tenantString).FirstOrDefault();
+            if (tenantData == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid Tenant String.");
+            }
+            else
+            {
+                userData = userRepository.Find(user => user.UserName == userName && user.TenantId == tenantData.Id).FirstOrDefault();
+                if (userData == null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid User Name.");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new TenantUserDTO 
+                    {
+                        TenantString = tenantData.TenantString,
+                        TenantName = tenantData.Name,
+                        TenantLogoUrl = tenantData.LogoUrl,
+                        UserName = userData.Name,
+                        UserEmail = userData.Email,
+                        UserLogoUrl = userData.LogoUrl,
+                        UserRole = roleRepository.Find(role => role.Id == userData.RoleId).FirstOrDefault().Name
+                    });
+                }
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             unitOfWork.Dispose();

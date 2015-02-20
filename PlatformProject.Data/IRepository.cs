@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace PlatformProject.Data
     {
 
         IQueryable<Entity> Get();
+
+        IQueryable<Entity> Find(Expression<Func<Entity, bool>> predicate);
 
         Entity GetByID(int id);
 
