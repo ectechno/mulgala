@@ -62,7 +62,7 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
                 <h1 class="page-header">Overview</h1>
                 <div>
-                    <p>This is a sample starter project  <input id="logos" name="logos" type="button" value="Show Logos" /></p>
+                    <p>This is a sample starter project</p>
                 </div>
                 <h3 class="sub-header" id="subHeader"></h3>
                 <p id="userData"></p>
@@ -125,26 +125,6 @@
             return uri;
         }
 
-        $('#logos').click(function () {
-            uri = 'http://localhost:44552/api/tenants/' + obj[1].Value + '/users/'+obj[0].Value;
-            $.ajax(uri, {
-                dataType: 'text',
-                type: "GET",
-                cache: false,
-                success: function (data) {
-                    console.log(data);
-                    urlData=$.parseJSON(data)
-                    $('#imageLogo').attr('src', urlData.tenantLogoUrl);
-                    $('#userLogo').attr('src', urlData.userLogoUrl);
-                },
-                statusCode: {
-                    401: function () {
-                        alert('unauthorized');
-                    }
-                }
-            });
-        });
-
         jQuery(document).ready(function () {
                var nonce = 'my-nonce';
 
@@ -178,6 +158,7 @@
                             $('#tokenUserName').text('Welcome ' + obj[0].Value);
                             $('#subHeader').text('Hi ' + obj[0].Value);
                             $('#userData').text('You are a ' + obj[1].Value + ' user');
+                            loadImage();
                         },
                         statusCode: {
                             401: function () {
@@ -187,14 +168,30 @@
 
 
                     });
-
-                   
-
                 }
                 //window.open(uri, '_self');
                 window.open(uri, 'Authorize', 'width=640,height=760');
 
-               
+                function loadImage() {
+                    uri = 'http://localhost:44552/api/tenants/' + obj[1].Value + '/users/' + obj[0].Value;
+                    $.ajax(uri, {
+                        dataType: 'text',
+                        type: "GET",
+                        cache: false,
+                        success: function (data) {
+                            console.log(data);
+                            urlData = $.parseJSON(data)
+                            $('#imageLogo').attr('src', urlData.tenantLogoUrl);
+                            $('#userLogo').attr('src', urlData.userLogoUrl);
+                        },
+                        statusCode: {
+                            401: function () {
+                                alert('unauthorized');
+                            }
+                        }
+                    });
+                };
+              
         });
            
     </script>
