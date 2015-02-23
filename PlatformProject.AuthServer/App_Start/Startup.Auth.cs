@@ -83,13 +83,8 @@ namespace PlatformProject.AuthServer
             }
             else if (context.ClientId == Clients.ImplicitGrantClient.Id)
             {
-                foreach (var redirectUrl in Clients.ImplicitGrantClient.RedirectUrls)
-                {
-                    if (context.Validated(redirectUrl))
-                    {
-                        break;
-                    }
-                }
+                // Note: This validation can be extended to validate the actual redirect url of the client
+                context.Validated();
             }
             return Task.FromResult(0);
         }
