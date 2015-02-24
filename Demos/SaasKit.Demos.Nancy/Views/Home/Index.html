@@ -15,125 +15,206 @@
     <!-- Bootstrap core CSS -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 
-    
+
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-route.min.js" rel="script">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular.min.js" rel="script">
     <style>
-        /*
- * Base structure
- */
+               /*
+        * Base structure
+        */
+               /* Move down content because we have a fixed navbar that is 50px tall */
+               body {
+                   padding-top: 50px;
+               }
+               /*
+        * Global add-ons
+        */
+               .sub-header {
+                   padding-bottom: 10px;
+                   border-bottom: 1px solid #eee;
+               }
+               /*
+        * Top navigation
+        * Hide default border to remove 1px line.
+        */
+               .navbar-fixed-top {
+                   border: 0;
+               }
+               /*
+        * Sidebar
+        */
+               /* Hide for mobile, show later */
+               .sidebar {
+                   display: none;
+               }
 
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
+               @media (min-width: 768px) {
+                   .sidebar {
+                       position: fixed;
+                       top: 51px;
+                       bottom: 0;
+                       left: 0;
+                       z-index: 1000;
+                       display: block;
+                       padding: 20px;
+                       overflow-x: hidden;
+                       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+                       background-color: #bfccd9;
+                       border-right: 1px solid #eee;
+                   }
+               }
+               /* Sidebar navigation */
+               .nav-sidebar {
+                   margin-right: -21px; /* 20px padding + 1px border */
+                   margin-bottom: 20px;
+                   margin-left: -20px;
+               }
 
+                   .nav-sidebar > li > a {
+                       padding-right: 20px;
+                       padding-left: 20px;
+                   }
 
-/*
- * Global add-ons
- */
+                   .nav-sidebar > .active > a,
+                   .nav-sidebar > .active > a:hover,
+                   .nav-sidebar > .active > a:focus {
+                       color: #fff;
+                       background-color: #428bca;
+                   }
+               /*
+        * Main content
+        */
+               .main {
+                   padding: 20px;
+               }
 
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
+               @media (min-width: 768px) {
+                   .main {
+                       padding-right: 40px;
+                       padding-left: 40px;
+                   }
+               }
 
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-.navbar-fixed-top {
-  border: 0;
-}
+               .main .page-header {
+                   margin-top: 0;
+               }
+               /*
+        * Placeholder dashboard ideas
+        */
+               .placeholders {
+                   margin-bottom: 30px;
+                   text-align: center;
+               }
 
-/*
- * Sidebar
- */
+                   .placeholders h4 {
+                       margin-bottom: 0;
+                   }
 
-/* Hide for mobile, show later */
-.sidebar {
-  display: none;
-}
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #bfccd9;
-    border-right: 1px solid #eee;
-  }
-}
+               .placeholder {
+                   margin-bottom: 20px;
+               }
 
-/* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-}
-
-
-/*
- * Main content
- */
-
-.main {
-  padding: 20px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-.main .page-header {
-  margin-top: 0;
-}
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
-
- </style>
+                   .placeholder img {
+                       display: inline-block;
+                       border-radius: 50%;
+                   }
+    </style>
 </head>
 <body style="background-color: lightcyan;">
-    <h1>Hello from @Model.Tenant</h1>
+    <!--<h1>Hello from @Model.Tenant</h1>-->
     <h2>Client Page</h2>
-     <div class="container-fluid">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">WINGS PLATFORM</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Logout</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-right">
+                    <img id="userLogo" style="height:50px;" />
+                </form>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                    <li><a href="">Profile</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Tenant Data</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Product Details</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">@Model.Tenant</h1>
+                <div>
+                    <p>This is a sample starter project</p>
+                </div>
+                <h3 class="sub-header" id="subHeader"></h3>
+                <p id="userData"></p>
+                <img id="imageLogo" style="height:200px; padding-left:378px;" />
+                <input type="hidden" id="AccessToken" name="AccessToken" />
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Products</th>
+                                <th>Product Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Camera</td>
+                                <td>Camera Data</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mobile</td>
+                                <td>Mobile Data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table id="records_table" border='1'>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <form id="form1">
                 <div>
                     Access Token<br />
@@ -153,7 +234,7 @@ body {
 
 
         </div>
-        </div>
+    </div>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
     <script type="text/javascript">
         (function ($) {
@@ -163,10 +244,8 @@ body {
             var returnUri = 'http://' + window.location.host + '/SignIn';
             var productApiUri = "http://localhost:48846/api/Products";
             var productOneUri = "http://localhost:48846/api/Products/1";
-
             $('#Authorize').click(function () {
                 var nonce = 'my-nonce';
-
                 var uri = addQueryString(authorizeUri, {
                     'client_id': '7890ab',
                     'redirect_uri': returnUri,
@@ -175,21 +254,16 @@ body {
                     'response_type': 'token',
                     'tenant': '@Model.Tenant.Tenant.Name'
                 });
-
                 window.oauth = {};
                 window.oauth.signin = function (data) {
                     if (data.state !== nonce) {
                         return;
                     }
-
                     $('#AccessToken').val(data.access_token);
                 }
-
                 //window.open(uri, '_self');
                 window.open(uri, 'Authorize', 'width=640,height=760');
-
             });
-
             $('#GetOneFromApi').click(function () {
                 $.ajax(productOneUri, {
                     beforeSend: function (xhr) {
@@ -210,19 +284,23 @@ body {
                     }
                 });
             });
-
             $('#GetAllFromApi').click(function () {
                 $.ajax(productApiUri, {
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
                     },
-                    dataType: 'text',
+                    dataType: 'json',
                     type: "GET",
                     cache: false,
                     success: function (data) {
                         console.log(data);
                         //alert(data);
                         $('#output').text(data);
+                        var trHTML = '';
+                        $.each(data, function (i, item) {
+                            trHTML += '<tr><td>' + item.ID + '</td><td>' + item.Name + '</td><td>' + item.Category + '</td><td>' + item.Price + '</td></tr>';
+                        });
+                        $('#records_table').append(trHTML);
                     },
                     statusCode: {
                         401: function () {
@@ -231,8 +309,6 @@ body {
                     }
                 });
             });
-
-
             $('#CallApi').click(function () {
                 $.ajax(apiUri, {
                     beforeSend: function (xhr) {
@@ -253,7 +329,6 @@ body {
                     }
                 });
             });
-
             function addQueryString(uri, parameters) {
                 var delimiter = (uri.indexOf('?') == -1) ? '?' : '&';
                 for (var parameterName in parameters) {
@@ -273,105 +348,92 @@ body {
 
 
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
-        <script type="text/javascript">
-
-            var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
-            var tokenUri = 'http://localhost:21681/OAuth/Token';
-            var apiUri = 'http://localhost:48846/api/Me';
-            var returnUri = 'http://localhost:50680/SignIn.html';
-            var productApiUri = "http://localhost:48846/api/Products";
-            var productOneUri = "http://localhost:48846/api/Products/1";
-
-            var obj = '';
-            var urlData = '';
-
-            function addQueryString(uri, parameters) {
-                var delimiter = (uri.indexOf('?') == -1) ? '?' : '&';
-                for (var parameterName in parameters) {
-                    var parameterValue = parameters[parameterName];
-                    uri += delimiter + encodeURIComponent(parameterName) + '=' + encodeURIComponent(parameterValue);
-                    delimiter = '&';
-                }
-                return uri;
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script type="text/javascript">
+        var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
+        var tokenUri = 'http://localhost:21681/OAuth/Token';
+        var apiUri = 'http://localhost:48846/api/Me';
+        var returnUri = 'http://localhost:50680/SignIn.html';
+        var productApiUri = "http://localhost:48846/api/Products";
+        var productOneUri = "http://localhost:48846/api/Products/1";
+        var obj = '';
+        var urlData = '';
+        function addQueryString(uri, parameters) {
+            var delimiter = (uri.indexOf('?') == -1) ? '?' : '&';
+            for (var parameterName in parameters) {
+                var parameterValue = parameters[parameterName];
+                uri += delimiter + encodeURIComponent(parameterName) + '=' + encodeURIComponent(parameterValue);
+                delimiter = '&';
             }
-
-            jQuery(document).ready(function () {
-                var nonce = 'my-nonce';
-
-                var uri = addQueryString(authorizeUri, {
-                    'client_id': '7890ab',
-                    'redirect_uri': returnUri,
-                    'state': nonce,
-                    'scope': 'bio notes',
-                    'response_type': 'token',
-                    'tenant': 'Sony'
-                });
-
-                window.oauth = {};
-                window.oauth.signin = function (data) {
-                    if (data.state !== nonce) {
-                        return;
-                    }
-
-                    $('#AccessToken').val(data.access_token);
-
-                    $.ajax(apiUri, {
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
-                        },
-                        dataType: 'text',
-                        type: "GET",
-                        cache: false,
-                        success: function (data) {
-                            console.log(data);
-                            obj = $.parseJSON(data)
-                            $('#tokenUserName').text('Welcome ' + obj[0].Value);
-                            $('#subHeader').text('Hi ' + obj[0].Value);
-                            $('#userData').text('You are a ' + obj[1].Value + ' user');
-                            loadImage();
-                        },
-                        statusCode: {
-                            401: function () {
-                                $('#output').text("Unauthorized.");
-                            }
-                        }
-
-
-                    });
-                }
-                //window.open(uri, '_self');
-                window.open(uri, 'Authorize', 'width=640,height=760');
-
-                function loadImage() {
-                    uri = 'http://localhost:44552/api/tenants/' + obj[1].Value + '/users/' + obj[0].Value;
-                    $.ajax(uri, {
-                        dataType: 'text',
-                        type: "GET",
-                        cache: false,
-                        success: function (data) {
-                            console.log(data);
-                            urlData = $.parseJSON(data)
-                            $('#imageLogo').attr('src', urlData.tenantLogoUrl);
-                            $('#userLogo').attr('src', urlData.userLogoUrl);
-                        },
-                        statusCode: {
-                            401: function () {
-                                alert('unauthorized');
-                            }
-                        }
-                    });
-                };
-
+            return uri;
+        }
+        jQuery(document).ready(function () {
+            var nonce = 'my-nonce';
+            var uri = addQueryString(authorizeUri, {
+                'client_id': '7890ab',
+                'redirect_uri': returnUri,
+                'state': nonce,
+                'scope': 'bio notes',
+                'response_type': 'token',
+                'tenant': 'Sony'
             });
-
-        </script>
+            window.oauth = {};
+            window.oauth.signin = function (data) {
+                if (data.state !== nonce) {
+                    return;
+                }
+                $('#AccessToken').val(data.access_token);
+                $.ajax(apiUri, {
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
+                    },
+                    dataType: 'text',
+                    type: "GET",
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                        obj = $.parseJSON(data)
+                        $('#tokenUserName').text('Welcome ' + obj[0].Value);
+                        $('#subHeader').text('Hi ' + obj[0].Value);
+                        $('#userData').text('You are a ' + obj[1].Value + ' user');
+                        loadImage();
+                    },
+                    statusCode: {
+                        401: function () {
+                            $('#output').text("Unauthorized.");
+                        }
+                    }
+                });
+            }
+            //window.open(uri, '_self');
+            window.open(uri, 'Authorize', 'width=640,height=760');
+            function loadImage() {
+                uri = 'http://localhost:44552/api/tenants/' + obj[1].Value + '/users/' + obj[0].Value;
+                $.ajax(uri, {
+                    dataType: 'text',
+                    type: "GET",
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                        urlData = $.parseJSON(data)
+                        $('#imageLogo').attr('src', urlData.tenantLogoUrl);
+                        $('#userLogo').attr('src', urlData.userLogoUrl);
+                    },
+                    statusCode: {
+                        401: function () {
+                            alert('unauthorized');
+                        }
+                    }
+                });
+            };
+        });
+    </script>
 
 
 
