@@ -10,7 +10,7 @@ namespace PlatformProject.API.Controllers
 {
     //[Authorize]
     //[Authorize(Users = "Oliver,Sara,John")]
-    [Authorize(Roles="Administrator")]
+    [Authorize(Roles="Administrator,User")]
     public class MeController : ApiController
     {
         public IEnumerable<object> Get()
