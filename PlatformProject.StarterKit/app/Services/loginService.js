@@ -21,6 +21,20 @@
         });
         return request;
     }
+
+
+    this.getProductData = function (productUri, accessToken) {
+        var request = $http({
+            method: 'get',
+            url: productUri,
+            headers: { 'Authorization': 'Bearer ' + accessToken },
+            dataType: 'text',
+            cache: false,
+        });
+        return request;
+    }
+
+
 })
 
 

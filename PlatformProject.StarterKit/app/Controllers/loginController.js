@@ -2,6 +2,8 @@
 
 app.controller('loginController', function ($scope,loginService) {
     $scope.isLogged = false;
+    $scope.isAdmin = false;
+    $scope.isUser = false;
     $scope.obj = [];
     $scope.uri = '';
     $scope.AccessToken = '';
@@ -37,37 +39,54 @@ app.controller('loginController', function ($scope,loginService) {
 
 
     $scope.startApp = function () {
-            var nonce = 'my-nonce';
-            var uri = addQueryString(authorizeUri, {
-                'client_id': '7890ab',
-                'redirect_uri': returnUri,
-                'state': nonce,
-                'scope': 'bio notes',
-                'response_type': 'token',
-                'tenant': 'Sony'
-            });
+        var nonce = 'my-nonce';
+        var uri = addQueryString(authorizeUri, {
+            'client_id': '7890ab',
+            'redirect_uri': returnUri,
+            'state': nonce,
+            'scope': 'bio notes',
+            'response_type': 'token',
+            'tenant': 'Sony'
+        });
 
-            window.oauth = {};
+        window.oauth = {};
 
-            window.oauth.signin = function (data) {
-                if (data.state !== nonce) {
-                    return;
-                }
-            
-                $scope.AccessToken = data.access_token;
-
-                var promiseGet = loginService.getUserData($scope.AccessToken);
-                promiseGet.then(function (p1) {
-                    $scope.obj = p1.data;
-                    $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
-                    loadImage($scope.uri);
-
-                },
-                 function (errorPl) {
-                     console.log('failure loading token data', errorPl);
-                 });
-
+        window.oauth.signin = function (data) {
+            if (data.state !== nonce) {
+                return;
             }
-            window.open(uri, 'Authorize', 'width=640,height=760');
+
+            $scope.AccessToken = data.access_token;
+
+            var promiseGet = loginService.getUserData($scope.AccessToken);
+            promiseGet.then(function (p1) {
+                $scope.obj = p1.data;
+                $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
+                loadImage($scope.uri);
+                if ($scope.obj[2].Value == 'Administrator') {
+                    $scope.isAdmin = true;
+                    showProducts();
+                }
+                else {
+                    $scope.isUser = true;
+                }
+                
+            },
+             function (errorPl) {
+                 console.log('failure loading token data', errorPl);
+             });
+
+        }
+        window.open(uri, 'Authorize', 'width=640,height=760');
+    };
+
+    function showProducts () {
+        var promiseProducts = loginService.getProductData(productApiUri, $scope.AccessToken);
+        promiseProducts.then(function (p1) {
+            $scope.Products = p1.data;
+        },
+        function (errorPl) {
+             $log.error('failure loading product data', errorPl);
+        });
     }
 });

@@ -60,29 +60,27 @@
                 <h3 class="sub-header" id="subHeader" ng-show="isLogged">Hi {{obj[0].Value}}</h3>
                 <p id="userData" ng-show="isLogged">You are a {{obj[1].Value}} user.</p>
                 <img src="{{urlData.tenantLogoUrl}}" id="imageLogo" style="height:200px; padding-left:378px;" ng-show="isLogged" />
-                <input type="hidden" id="AccessToken" name="AccessToken" />
-
-                <div class="table-responsive">
+               
+                <h3>Product Details</h3>
+                <p ng-show="isUser">You do not have permission to view product details</p>
+                <div class="table-responsive" ng-show="isAdmin">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Products</th>
-                                <th>Product Details</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody ng-repeat="product in Products">
                             <tr>
-                                <td>1</td>
-                                <td>Camera</td>
-                                <td>Camera Data</td>
+                                <td><span>{{product.ID}}</span></td>
+                                <td><span>{{product.Name}}</span></td>
+                                <td><span>{{product.Category}}</span></td>
+                                <td><span>{{product.Price}}</span></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mobile</td>
-                                <td>Mobile Data</td>
-                            </tr>
-                        </tbody>
+                       </tbody>
                     </table>
                 </div>
             </div>
