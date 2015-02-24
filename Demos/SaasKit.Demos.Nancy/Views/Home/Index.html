@@ -130,7 +130,7 @@ body {
     </style>
 </head>
 <body style="background-color: lightcyan;">
-    <h1>Hello from @Model.Tenant</h1>
+    <!--<h1>Hello from @Model.Tenant</h1>-->
     <h2>Client Page</h2>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -173,7 +173,7 @@ body {
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Overview</h1>
+                <h1 class="page-header">@Model.Tenant</h1>
                 <div>
                     <p>This is a sample starter project</p>
                 </div>
@@ -205,12 +205,24 @@ body {
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <table id="records_table" border='1'>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                    </table>
+                </div>
+
+
             </div>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <form id="form1">
                 <div>
                     Access Token<br />
@@ -293,13 +305,20 @@ body {
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Bearer ' + $('#AccessToken').val());
                     },
-                    dataType: 'text',
+                    dataType: 'json',
                     type: "GET",
                     cache: false,
                     success: function (data) {
                         console.log(data);
                         //alert(data);
                         $('#output').text(data);
+                        var trHTML = '';
+                        $.each(data, function (i, item) {
+                            trHTML += '<tr><td>' + item.ID + '</td><td>' + item.Name + '</td><td>' + item.Category + '</td><td>' + item.Price + '</td></tr>';
+                        });
+                        $('#records_table').append(trHTML);
+
+
                     },
                     statusCode: {
                         401: function () {
