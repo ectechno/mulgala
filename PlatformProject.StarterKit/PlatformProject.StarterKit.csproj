@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Controllers\loginController.js" />
+    <Content Include="app\Services\loginService.js" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <None Include="Web.Debug.config">
@@ -85,8 +87,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Controllers\" />
-    <Folder Include="app\Services\" />
     <Folder Include="app\Views\" />
   </ItemGroup>
   <PropertyGroup>
