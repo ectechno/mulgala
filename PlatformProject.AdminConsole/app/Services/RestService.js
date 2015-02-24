@@ -2,7 +2,7 @@
 
 angular.module('admin').factory('RestService', function ($resource)
 {
-    this.ResuestData = function (restPath)
+    this.requestData = function (restPath)
     {
         return $resource(restPath); 
     };
