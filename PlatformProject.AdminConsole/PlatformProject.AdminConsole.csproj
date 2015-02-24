@@ -84,6 +84,7 @@
     <Content Include="app\Services\MessageService.js" />
     <Content Include="app\Services\MetaDataService.js" />
     <Content Include="app\Services\RequestService.js" />
+    <Content Include="app\Services\RestService.js" />
     <Content Include="app\Services\SharedServices.js" />
     <Content Include="app\Services\TenantService.js" />
     <Content Include="app\Services\UserService.js" />
