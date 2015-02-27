@@ -33,7 +33,7 @@
         
              //promisePost.then(function (pl) {
                // $scope.Id = pl.data.Id;
-                $scope.Message = "Created Successfuly";
+               // $scope.Message = "Created Successfuly";
                // console.log($scope.Message);
 
                //$scope.clear();
@@ -115,7 +115,6 @@
 
     $scope.createNew = function () {
         $scope.clear();
-        $scope.tEnable = "true";
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
