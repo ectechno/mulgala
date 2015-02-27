@@ -25,10 +25,17 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
     }
 
 
+    //get the subdomain from url
+    var full = window.location.host;
+    var parts = full.split('.');
+    var sub = parts[0];
+    $scope.subDomain = sub;
+
+
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
    // var tokenUri = 'http://localhost:21681/OAuth/Token';
    // var apiUri = 'http://localhost:48846/api/Me';
-    var returnUri = 'http://localhost:50680/SignIn.html';
+    var returnUri = 'http://' + $scope.subDomain + '.localhost:50680/SignIn.html';
     var productApiUri = "http://localhost:48846/api/Products";
     var productOneUri = "http://localhost:48846/api/Products/1";
 
@@ -57,13 +64,15 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
 
     $scope.startApp = function () {
         var nonce = 'my-nonce';
+        console.log($scope.subDomain + " is your subdomain");
+        var subdomain = $scope.subDomain;
         var uri = addQueryString(authorizeUri, {
             'client_id': '7890ab',
             'redirect_uri': returnUri,
             'state': nonce,
             'scope': 'bio notes',
             'response_type': 'token',
-            'tenant': 'Sony'
+            'tenant': subdomain
         });
 
         window.oauth = {};
