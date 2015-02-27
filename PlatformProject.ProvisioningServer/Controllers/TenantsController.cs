@@ -178,7 +178,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
             unitOfWork.Save();
 
             //notify the main program
-            NotifyMainProgram();
+            //NotifyMainProgram();
             response = Request.CreateResponse(HttpStatusCode.NoContent);
             return response;
         }

@@ -26,15 +26,14 @@
 
                 <!-- Main content -->
                 <section class="content">
-   
                      <div ng-show="!isFormMode">
-                          <button class="btn btn-info" ng-click="createNew()">Create New Tenant</button>
-  
+                         <button class="btn btn-info" ng-click="createNew()">Create New Tenant</button>
                      </div>
                     <table class="table table-striped" ng-show="!isFormMode">
                       <thead>
                            <tr>
                              <th>Id</th>
+                             <th>Logo</th>
                              <th>Name</th>
                              <th>Tenant String</th>
                              <th>Logo URL</th>
@@ -44,6 +43,7 @@
                       <tbody ng-repeat="tenant in Tenants">
                            <tr>
                               <td> <span>{{tenant.id}}</span></td>
+                              <td><span><img src="{{tenant.logoUrl}}" style="height:35px;width:35px"/></span></td>
                               <td> <span>{{tenant.name}}</span></td>
                               <td> <span>{{tenant.tenantString}}</span></td>
                               <td> <span>{{tenant.logoUrl}}</span></td>
@@ -53,7 +53,21 @@
                            </tr>
                      </tbody>
                    </table>
-
+                    <div class="alert alert-success alert-dismissable" ng-show="isCreated">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Created.
+                    </div>
+                    <div class="alert alert-success alert-dismissable" ng-show="isEdited">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Edited.
+                    </div>
+                    <div class="alert alert-success alert-dismissable" ng-show="isDeleted">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Deleted.
+                    </div>
                     <form name="createTenant" method="get" action="" ng-show="isFormMode">
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.tenantName.$invalid]">
                             <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Tenant Name" ng-model="tName" autofocus required>
@@ -68,12 +82,15 @@
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="enable" name="enable" value="true" ng-model="tEnable" />Enable
-                            <input type="radio" id="enable" name="enable" value="false" ng-model="tEnable" style="margin-left:62px" />Disable
+                            <input type="radio" id="enable" name="enable" value="true" ng-model="tEnable" ng-required="!tEnable"/>Enable
+                            <input type="radio" id="enable" name="enable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
                         </div>
-                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+
                         <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" ng-disabled="!createTenant.$valid" />
+                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+                      
                     </form>
+                    
                </section>
 
             

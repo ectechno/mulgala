@@ -33,6 +33,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Logo</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Logo URL</th>
@@ -45,6 +46,7 @@
         <tbody ng-repeat="user in Users">
             <tr>
                 <td> <span>{{user.id}}</span></td>
+                <td><span><img src="{{user.logoUrl}}" style="height:35px;width:35px" /></span></td>
                 <td> <span>{{user.name}}</span></td>
                 <td> <span>{{user.email}}</span></td>
                 <td> <span>{{user.logoUrl}}</span></td>
@@ -57,60 +59,66 @@
             </tr>
         </tbody>
     </table>
-    <form role="form" name="createUser"  ng-show="isFormMode" onsubmit="">
-        <div class="form-group" ng-class="{ 'has-error' : createUser.name.$invalid && !createUser.name.$pristine && submitted}">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" required>
+
+    <div class="alert alert-success alert-dismissable" ng-show="isCreated">
+        <i class="fa fa-check"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Successfully Created.
+    </div>
+    <div class="alert alert-success alert-dismissable" ng-show="isEdited">
+        <i class="fa fa-check"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Successfully Edited.
+    </div>
+    <div class="alert alert-success alert-dismissable" ng-show="isDeleted">
+        <i class="fa fa-check"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Successfully Deleted.
+    </div>
+
+    <form name="createUser"  method="get" action="" ng-show="isFormMode">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.name.$invalid]">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" autofocus required>
             <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.email.$invalid && !createUser.email.$pristine && submitted}">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.email.$invalid]">
             <input type="email" class="form-control" id="email" name="email" placeholder="Eamil" ng-model="uEmail" required>
             <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.logo.$invalid && !createUser.logo.$pristine && submitted}">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.logo.$invalid]">
             <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="uLogo" required>
             <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.tenant.$invalid && !createUser.tenant.$pristine && submitted}">
-            <select id="tenant" name="tenant" ng-model="uTenant" class="form-control" required>
-                <option value="0">Tenant</option>
-                <option ng-repeat="tenant in Tenants" value={{tenant.id}}>{{tenant.name}}</option>
+        <div class="form-group" >
+            <select id="tenant" name="tenant" ng-model="uSelectedTenant" class="form-control" ng-options="tenant for tenant in tenantGroup" required>
+                 <option value="">Tenant</option>
             </select>
-            <p ng-show="createUser.tenant.$invalid && !createUser.tenant.$pristine" style="color:red;">Select a Tenant.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.role.$invalid && !createUser.role.$pristine && submitted}">
-            <select id="role" name="role" ng-model="uRole" class="form-control" ng-options="u.code as u.name for u in userNames" required>
+        <div class="form-group">
+            <select id="role" name="role" ng-model="uSelectedRole" class="form-control" ng-options="role for role in userNames" required>
                 <option value="">Role</option>
-                <option value="1">Administrator</option>
-                <option value="2">User</option>
             </select>
-            <p ng-show="isEdit" style="color:green;">Selected Role is {{selectedRole}}</p>
-            <p ng-show="createUser.role.$invalid && !createUser.role.$pristine" style="color:red;">Select a Role.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.username.$invalid && !createUser.username.$pristine && submitted}">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.username.$invalid]">
             <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="username" required>
             <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.password.$invalid && !createUser.password.$pristine && submitted}">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.password.$invalid]">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="uPassword" required>
             <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.cPassword.$invalid && !createUser.cPassword.$pristine && submitted}">
+        <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.cPassword.$invalid]">
             <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
             <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : createUser.enable.$invalid && !createUser.enable.$pristine && submitted}">
-            <select id="enable" name="enable" ng-model="uEnable" class="form-control" ng-options="e.code as e.name for e in enableOptions" required>
-                <option value="">Enable</option>
-                <option value="true">true</option>
-                <option value="false">false</option>
-            </select>
-            <p ng-show="isEdit" style="color:green;">Current option is {{uEnable}}</p>
-            <p ng-show="createUser.enable.$invalid && !createUser.enable.$pristine" style="color:red;">Select true or false.</p>
+        <div class="form-group">
+            <input type="radio" id="enable" name="enable" value="true" ng-model="uEnable" ng-required="!tEnable" />Enable
+            <input type="radio" id="enable" name="enable" value="false" ng-model="uEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
         </div>
 
+        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createUser.$valid" />
         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();"/>
-             
+            
     </form>
    
 </section><!-- /.content -->
