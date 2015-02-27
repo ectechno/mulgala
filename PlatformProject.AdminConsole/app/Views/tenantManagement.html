@@ -26,10 +26,8 @@
 
                 <!-- Main content -->
                 <section class="content">
-   
                      <div ng-show="!isFormMode">
-                          <button class="btn btn-info" ng-click="createNew()">Create New Tenant</button>
-  
+                         <button class="btn btn-info" ng-click="createNew()">Create New Tenant</button>
                      </div>
                     <table class="table table-striped" ng-show="!isFormMode">
                       <thead>
@@ -55,7 +53,21 @@
                            </tr>
                      </tbody>
                    </table>
-
+                    <div class="alert alert-success alert-dismissable" ng-show="isCreated">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Created.
+                    </div>
+                    <div class="alert alert-success alert-dismissable" ng-show="isEdited">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Edited.
+                    </div>
+                    <div class="alert alert-success alert-dismissable" ng-show="isDeleted">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Deleted.
+                    </div>
                     <form name="createTenant" method="get" action="" ng-show="isFormMode">
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.tenantName.$invalid]">
                             <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Tenant Name" ng-model="tName" autofocus required>
@@ -78,6 +90,7 @@
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                       
                     </form>
+                    
                </section>
 
             

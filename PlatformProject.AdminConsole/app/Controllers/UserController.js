@@ -1,6 +1,9 @@
 ﻿angular.module('admin').controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
+    $scope.isCreated = false;
+    $scope.isEdited = false;
+    $scope.isDeleted = false;
     $scope.tenantGroup = [];
     $scope.userNames = ['Administrator','User'];
       
@@ -88,10 +91,16 @@
 
         if ($scope.isNew) {
             var promisePost = UserService.createUser(user);
-               loadRecords();
+            $scope.isCreated = true;
+            $scope.isEdited = false;
+            $scope.isDeleted = false;
+            loadRecords();
           
         } else { //Else Edit the record
             var promisePut = UserService.updateUser($scope.uId, user);
+            $scope.isEdited = true;
+            $scope.isCreated = false;
+            $scope.isDeleted = false;
             promisePut.then(function (pl) {
                 $scope.Message = "Updated Successfuly";
                 loadRecords();
@@ -105,9 +114,11 @@
 
     //Method to Delete
     $scope.delete = function (uId) {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = true;
         var promiseDelete = UserService.removeUser(uId);
         promiseDelete.then(function (pl) {
-            $scope.Message = "Deleted Successfuly";
             $scope.uId = 0;
             $scope.uName = "";
             $scope.uEmail = "";
@@ -121,12 +132,14 @@
         }, function (err) {
             console.log("Err" + err);
         });
-
     }
 
 
     //Method to Get Single user based on Id
     $scope.get = function (uId) {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = false;
         var promiseGetSingle = UserService.getUserData(uId);
 
         promiseGetSingle.then(function (pl) {
@@ -159,6 +172,9 @@
 
 
     $scope.clear = function () {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = false;
         $scope.uId = "";
         $scope.uName = "";
         $scope.uEmail = "";
@@ -173,6 +189,9 @@
 
 
     $scope.edit = function (Id) {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = false;
         $scope.isNew = false;
         $scope.isFormMode = true;
         $scope.isEdit = true;
@@ -182,6 +201,9 @@
 
 
     $scope.createNew = function () {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = false;
         $scope.clear();
         $scope.isFormMode = true;
         $scope.isNew = true;
@@ -190,6 +212,9 @@
 
 
     $scope.cancel = function () {
+        $scope.isCreated = false;
+        $scope.isEdited = false;
+        $scope.isDeleted = false;
         $scope.clear();
         $scope.isFormMode = false;
         $scope.isEdit = false;
