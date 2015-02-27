@@ -24,7 +24,7 @@ namespace PlatformProject.Constants
                 Paths.ImplicitGrantCallBackPathT2,
                 Paths.ImplicitGrantCallBackPathT3,
                 Paths.ImplicitGrantCallBackPathT4
-            }
+           }
         };
 
     }

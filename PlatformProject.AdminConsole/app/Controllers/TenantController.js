@@ -1,22 +1,17 @@
-﻿angular.module('admin').controller('tenantController', ['$scope', '$window', 'TenantService', 'SharedServices', function ($scope, $window, TenantService, SharedServices)
+﻿angular.module('admin').controller('tenantController', ['$scope', '$window', 'TenantService', function ($scope, $window, TenantService)
 {
     $scope.isFormMode = false;
     $scope.isEdit = false;
     loadRecords();
 
-    $scope.enableOptions = [
-      { code: "true", name: "true" },
-      { code: "false", name: "false" }
-    ];
-
-    //Function to load all Tenant records
+   //Function to load all Tenant records
     function loadRecords() {
        
         var promiseGet = TenantService.getTenants(); //The Method Call from service
 
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data;
-            SharedServices.locateToWindow("http://localhost:40838/index.html#/TenantManagement");
+            //SharedServices.locateToWindow("http://localhost:40838/index.html#/TenantManagement");
         },
               function (errorPl) {
                   $log.error('failure loading Tenants', errorPl);
@@ -87,7 +82,13 @@
             $scope.tName = res.name;
             $scope.tString = res.tenantString;
             $scope.tLogo = res.logoUrl;
-            $scope.tEnable = res.enable;
+            if(res.enable){
+                $scope.tEnable = "true";
+            }
+            else {
+                $scope.tEnable = "false";
+            }
+           // $scope.tEnable = res.enable;
             $scope.isNew = false;
         },
                   function (errorPl) {
@@ -114,6 +115,7 @@
 
     $scope.createNew = function () {
         $scope.clear();
+        $scope.tEnable = "true";
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
