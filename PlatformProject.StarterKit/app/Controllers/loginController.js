@@ -1,12 +1,42 @@
-﻿var app = angular.module('starterkit', []);
+﻿var app = angular.module('starterkit', ["ngStorage"]);
 
-app.controller('loginController', function ($scope,loginService) {
+app.controller('loginController', function ($scope, loginService, $localStorage) {
     $scope.isLogged = false;
     $scope.isAdmin = false;
     $scope.isUser = false;
     $scope.obj = [];
     $scope.uri = '';
     $scope.AccessToken = '';
+
+    
+    $scope.LocalToken = $localStorage.token;
+
+    function isLocalTokenAvailable() {
+        var token = $localStorage.token;
+        if (typeof token == 'undefined') {
+            //then there is no token
+            return false;
+        }else{
+            //there is a token
+            return true;
+        }
+    }
+
+    function ValidateToken(token) {
+        var response = sendValidationRequest
+        if (response == 'valid') {
+            //this is a valid token
+            //so save token to scope
+            $scope.AccessToken = token;
+        }
+        else {
+            //invalid token
+            //so request again
+
+        }
+    }
+
+
 
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
    // var tokenUri = 'http://localhost:21681/OAuth/Token';
@@ -51,13 +81,8 @@ app.controller('loginController', function ($scope,loginService) {
 
         window.oauth = {};
 
-        window.oauth.signin = function (data) {
-            if (data.state !== nonce) {
-                return;
-            }
-
-            $scope.AccessToken = data.access_token;
-
+        function GetUserDataUsingToken() {
+            //send the token and get data
             var promiseGet = loginService.getUserData($scope.AccessToken);
             promiseGet.then(function (p1) {
                 $scope.obj = p1.data;
@@ -70,14 +95,58 @@ app.controller('loginController', function ($scope,loginService) {
                 else {
                     $scope.isUser = true;
                 }
-                
+
             },
              function (errorPl) {
                  console.log('failure loading token data', errorPl);
              });
+        }
+
+        //check there is a token in locally
+        //
+        var LocalTokenAvailable = isLocalTokenAvailable();
+        if (LocalTokenAvailable === true) {
+
+            console.log("local token available");
+            //TODO:validate token
+            //currently assume it is valid always
+            //if valid use it
+            //get the token from localstorage
+            $scope.AccessToken = $localStorage.token;
+
+            //then get user details
+            GetUserDataUsingToken();
+
+            //TODO:If not valid token, request new one
+
+
+        } else {
+            //else we should request a new token
+            console.log("local token not available");
+
+            //requesting a new token
+            window.oauth.signin = function (data) {
+                if (data.state !== nonce) {
+                    return;
+                }
+
+                //data is return, we have access token there
+                $scope.AccessToken = data.access_token;
+
+                //save token to localstorage
+                $localStorage.token = data.access_token;
+
+                //take userData with access token
+                GetUserDataUsingToken();
+
+            }
+            window.open(uri, 'Authorize', 'width=640,height=760');
+
 
         }
-        window.open(uri, 'Authorize', 'width=640,height=760');
+
+
+
     };
 
     function showProducts () {
