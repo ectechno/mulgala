@@ -9,4 +9,11 @@ angular.module('admin').service('SharedServices', ['$window', function ($window)
     function reloadWindow() {
         $window.location.reload();
     }
+    function setLocalStorage()
+    {
+    }
+    function getLocalStorage()
+    {
+
+    }
 }]);
