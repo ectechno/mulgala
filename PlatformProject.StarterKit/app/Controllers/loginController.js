@@ -8,9 +8,11 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
     $scope.uri = '';
     $scope.AccessToken = '';
 
-    
-    $scope.LocalToken = $localStorage.token;
 
+    /**
+     * function to check if there is a
+     * local token available
+     */
     function isLocalTokenAvailable() {
         var token = $localStorage.token;
         if (typeof token == 'undefined') {
@@ -21,21 +23,6 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
             return true;
         }
     }
-
-    function ValidateToken(token) {
-        var response = sendValidationRequest
-        if (response == 'valid') {
-            //this is a valid token
-            //so save token to scope
-            $scope.AccessToken = token;
-        }
-        else {
-            //invalid token
-            //so request again
-
-        }
-    }
-
 
 
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
@@ -80,6 +67,11 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
         });
 
         window.oauth = {};
+
+
+        /*
+         * Function to get user data using token
+         */
 
         function GetUserDataUsingToken() {
             //send the token and get data
