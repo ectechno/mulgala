@@ -2,6 +2,9 @@
 
 app.config(function ($routeProvider) {
     $routeProvider
+         .when('/', {
+             templateUrl: 'app/Views/dashboard.html'
+         })
         .when('/Dashboard', {
             //controller: 'Controller',
             templateUrl: 'app/Views/dashboard.html'
@@ -14,26 +17,10 @@ app.config(function ($routeProvider) {
              controller: 'userController',
              templateUrl: 'app/Views/userManagement.html'
          })
-        .when('/Licensing', {
-            //controller: 'Controller',
-            templateUrl: 'app/Views/licensing.html'
-        })
         .when('/Logs', {
              //controller: 'Controller',
              templateUrl: 'app/Views/logs.html'
          })
-        .when('/Statistics', {
-            //controller: 'Controller',
-            templateUrl: 'app/Views/statistics.html'
-        })
-        .when('/SystemHealth', {
-            //controller: 'Controller',
-            templateUrl: 'app/Views/systemHealth.html'
-        })
-        .when('/DarkLaunching', {
-            //controller: 'Controller',
-            templateUrl: 'app/Views/darkLaunching.html'
-        })
         .when('/UserManagement/CreateUser', {
             //controller: 'userController',
             templateUrl: 'app/Views/createUser.html'
@@ -43,7 +30,7 @@ app.config(function ($routeProvider) {
              templateUrl: 'app/Views/createAdmin.html'
          })
        
-        .otherwise({ redirectTo: '/' });
+        .otherwise({ redirectTo: '/dashboard.html' });
 });
 
 /*app.controller('submission', function ($scope, $http, $location) {
