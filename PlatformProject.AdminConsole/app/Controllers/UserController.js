@@ -16,7 +16,7 @@
 
         promiseGet.then(function (pl) {
             $scope.Users = pl.data;
-            SharedServices.locateToWindow("http://localhost:40838/index.html#/UserManagement");
+           
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
@@ -94,7 +94,7 @@
             $scope.isCreated = true;
             $scope.isEdited = false;
             $scope.isDeleted = false;
-            loadRecords();
+            window.location.href = "http://localhost:40838/index.html?#/UserManagement";
           
         } else { //Else Edit the record
             var promisePut = UserService.updateUser($scope.uId, user);
@@ -208,7 +208,6 @@
         $scope.isCreated = false;
         $scope.isEdited = false;
         $scope.isDeleted = false;
-        $scope.clear();
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
@@ -216,10 +215,11 @@
 
 
     $scope.cancel = function () {
-        $scope.clear();
+        $scope.isCreated = false;
         $scope.isFormMode = false;
         $scope.isEdit = false;
         $scope.isNew = false;
+        window.location.href = "http://localhost:40838/index.html?#/UserManagement"
     };
 
 }]);

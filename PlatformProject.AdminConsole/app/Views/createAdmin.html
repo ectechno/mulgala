@@ -19,7 +19,7 @@
                         Successfully Created.
                     </div>
 
-                    <form name="createAdmin" action="">
+                    <form name="createAdmin">
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.name.$invalid]">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="aName" autofocus required>
                             <p ng-show="createAdmin.name.$invalid && !createAdmin.name.$pristine" style="color:red;">Name is required.</p>

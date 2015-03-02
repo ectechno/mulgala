@@ -63,6 +63,6 @@
 
         var promisePost = UserService.createUser(tenantAdmin);
         $scope.isCreated = true;
-        window.location.href = "#/TenantManagement";
+        window.location.href = "http://localhost:40838/index.html?#/TenantManagement";
    }
 });

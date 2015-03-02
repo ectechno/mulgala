@@ -138,8 +138,7 @@
     $scope.createNew = function () {
         $scope.isCreated = false;
         $scope.isEdited = false;
-        $scope.isDeleted = false;
-        $scope.clear();
+        $scope.isDeleted = false;    
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.Message = "";
@@ -149,10 +148,10 @@
         $scope.isCreated = false;
         $scope.isEdited = false;
         $scope.isDeleted = false;
-        $scope.clear();
         $scope.isFormMode = false;
         $scope.isEdit = false;
         $scope.isNew = false;
+        window.location.href = "http://localhost:40838/index.html?#/TenantManagement"
     };
 
 }]);

@@ -76,7 +76,7 @@
         Successfully Deleted.
     </div>
 
-    <form name="createUser"  method="get" action="" ng-show="isFormMode">
+    <form name="createUser" ng-show="isFormMode">
         <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.name.$invalid]">
             <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="uName" autofocus required>
             <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
