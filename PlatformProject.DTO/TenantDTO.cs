@@ -17,5 +17,7 @@ namespace PlatformProject.DTO
         public string LogoUrl { get; set; }
 
         public bool Enable { get; set; }
+
+        public virtual UserDTO User { get; set; }
     }
 }

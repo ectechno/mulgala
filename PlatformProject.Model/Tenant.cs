@@ -29,6 +29,6 @@ namespace PlatformProject.Model
         public int? UpdaterId { get; set; }
         public virtual User Updater { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual IList<User> Users { get; set; }
     }
 }

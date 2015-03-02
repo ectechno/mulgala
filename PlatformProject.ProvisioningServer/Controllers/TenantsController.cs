@@ -119,24 +119,61 @@ namespace PlatformProject.ProvisioningServer.Controllers
             HttpResponseMessage response;
             if (ModelState.IsValid)
             {
-                Tenant tenant = tenantRepository.Insert(new Tenant
+                Tenant tenant;
+                if (tenantDTO.User != null)
                 {
-                    Id = 0,
-                    GUID = Guid.NewGuid(),
-                    Name = tenantDTO.Name,
-                    TenantString = tenantDTO.TenantString,
-                    LogoUrl = tenantDTO.LogoUrl,
-                    Enable = tenantDTO.Enable,
-                    CreatedDateTime = DateTime.Now,
-                    UpdatedDateTime = DateTime.Now
+                    tenant = tenantRepository.Insert(new Tenant
+                    {
+                        Id = 0,
+                        GUID = Guid.NewGuid(),
+                        Name = tenantDTO.Name,
+                        TenantString = tenantDTO.TenantString,
+                        LogoUrl = tenantDTO.LogoUrl,
+                        Enable = tenantDTO.Enable,
+                        CreatedDateTime = DateTime.Now,
+                        UpdatedDateTime = DateTime.Now,
+                        Users = new List<User> 
+                        {
+                            new User
+                            {
+                                Name = tenantDTO.User.Name,
+                                UserName = tenantDTO.User.UserName,
+                                Email = tenantDTO.User.Email,
+                                Password = tenantDTO.User.Password,
+                                LogoUrl = tenantDTO.User.LogoUrl,
+                                Enable = tenantDTO.User.Enable,
+                                CreatedDateTime = DateTime.Now,
+                                UpdatedDateTime = DateTime.Now,
+                                RoleId = 1                          // Need to change later
+                            }
+                        }
+                    });
+                }
+                else
+                {
+               
+                    tenant = tenantRepository.Insert(new Tenant
+                    {
+                        Id = 0,
+                        GUID = Guid.NewGuid(),
+                        Name = tenantDTO.Name,
+                        TenantString = tenantDTO.TenantString,
+                        LogoUrl = tenantDTO.LogoUrl,
+                        Enable = tenantDTO.Enable,
+                        CreatedDateTime = DateTime.Now,
+                        UpdatedDateTime = DateTime.Now
 
-                    //, Note: Creator and Updater should be the current logged in user, It will be taken from the token
-                    //CreatorId = 0,
-                    //UpdaterId = 0
-                });
+                        //, Note: Creator and Updater should be the current logged in user, It will be taken from the token
+                        //CreatorId = 0,
+                        //UpdaterId = 0
+                    });
+                }
+
                 unitOfWork.Save();
+
                 //notify the main program
                 NotifyMainProgram();
+
                 //tenantDTO.Id = tenant.Id;
                 response = Request.CreateResponse(HttpStatusCode.Created, new TenantDTO
                 {
