@@ -137,8 +137,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Tenants\Logo\Panasonic-logo.jpg" />
     <Content Include="Images\Tenants\Logo\Samsung-logo.jpg" />
     <Content Include="Images\Tenants\Logo\Sony-logo.jpg" />
+    <Content Include="Images\Tenants\Logo\Toshiba-logo.jpg" />
     <Content Include="Images\User\Logo\Oliver-logo.jpg" />
     <Content Include="packages.config" />
     <Compile Include="App_Start\RouteConfig.cs" />
