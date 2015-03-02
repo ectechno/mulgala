@@ -1,5 +1,17 @@
 ﻿var app = angular.module('starterkit', ["ngStorage"]);
 
+app.directive('imageonload', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('load', function () {
+                //alert('image is loaded');
+            });
+        }
+    };
+});
+
+
 app.controller('loginController', function ($scope, loginService, $localStorage) {
     $scope.isLogged = false;
     $scope.isAdmin = false;
@@ -23,27 +35,6 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
             return true;
         }
     }
-
-    /*
-     * Check subdomain is valid one
-     * 
-     */
-    function isSubdomainValid(subdomain,apiUrl) {
-        //return true;
-        var request = new XMLHttpRequest();
-        request.open('GET', apiUrl, false);  // `false` makes the request synchronous
-        request.send(null);
-
-        if (request.status === 200) {
-            console.log("Your response " + request.responseText);
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }
-
 
     //get the subdomain from url
     var full = window.location.host;
@@ -87,16 +78,8 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
         var nonce = 'my-nonce';
         console.log($scope.subDomain + " is your subdomain");
         var subdomain = $scope.subDomain;
-        var apiUrl = provisioningUrl + subdomain;
-        var valid = isSubdomainValid(subdomain,apiUrl);
-        if (valid == false) {
-            //if not valid do not show anything
-            console.log("this is a invalid subdomain");
-            window.open("error.html","_parent");
-            return 
-        }
-        
-        console.log("this is a valid subdomain");
+
+        console.log("app is starting for "+subdomain);
 
         var uri = addQueryString(authorizeUri, {
             'client_id': '7890ab',
@@ -164,6 +147,8 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
                     return;
                 }
 
+
+                
                 //data is return, we have access token there
                 $scope.AccessToken = data.access_token;
 

@@ -74,6 +74,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dashboard.css" />
+    <Content Include="error.html" />
     <Content Include="index.html" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
@@ -82,6 +83,7 @@
     <Content Include="js\ngStorage.js" />
     <Content Include="js\npm.js" />
     <Content Include="SignIn.html" />
+    <Content Include="tenantValidate.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

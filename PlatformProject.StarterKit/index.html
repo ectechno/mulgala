@@ -12,8 +12,14 @@
     <title>Welcome to StarterKit</title>
     <script src="js/angular.js"></script>
     <script src="js/angular-route.js"></script>
-    <!-- ngStorage is to transfer  -->
+
+    <!-- do not erase -->
+    <!-- ngStorage is to transfer data to localstorage -->
     <script src="js/ngStorage.js"></script>
+    <!-- tenantvalidate.js is to validate current tenant is available in the backend -->
+    <script src="tenantValidate.js"></script>
+
+
 </head>
 
 <body ng-controller="loginController" data-ng-init="startApp()">
@@ -35,7 +41,7 @@
                 </ul>
 
                 <form class="navbar-form navbar-right">
-                    <img src="{{urlData.userLogoUrl}}" id="userLogo" style="height:50px;" ng-show="isLogged" />
+                    <img src="{{urlData.userLogoUrl}}" imageonload id="userLogo" style="height:50px;" ng-show="isLogged" />
                 </form>
             </div>
         </div>
@@ -61,7 +67,7 @@
                 </div>-->
                 <h3 class="sub-header" id="subHeader" ng-show="isLogged" ng-init="obj[0].Value='bug'">Hi <span ng-bind="obj[0].Value"></span></h3>
                 <p id="userData" ng-show="isLogged" ng-init="obj[1].Value='bug'">You are a <span ng-bind="obj[1].Value"></span> user.</p>
-                <img src="{{urlData.tenantLogoUrl}}" id="imageLogo" style="height:200px; padding-left:378px;" ng-show="isLogged" />
+                <img src="{{urlData.tenantLogoUrl}}" imageonload id="imageLogo" style="height:200px; padding-left:378px;" ng-show="isLogged" />
 
                 <h3>Product Details</h3>
                 <p ng-show="isUser">You do not have permission to view product details</p>
