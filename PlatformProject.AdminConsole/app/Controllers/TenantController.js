@@ -16,7 +16,7 @@
             $scope.Tenants = pl.data;
         },
               function (errorPl) {
-                  $log.error('failure loading Tenants', errorPl);
+                  console.log('failure loading Tenants', errorPl);
               });
     };
 
@@ -42,8 +42,8 @@
             $scope.isCreated = true;
             $scope.isEdited = false;
             $scope.isDeleted = false;
-            loadRecords();
-            
+            //loadRecords();
+            window.location.href = "#/TenantManagement/CreateAdmin";
                          
            //  }, function (err) {
              //    console.log("Err" + err);
@@ -64,20 +64,24 @@
 
     //Method to Delete
     $scope.delete = function (tId) {
-        $scope.isCreated = false;
-        $scope.isEdited = false;
-        $scope.isDeleted = true;
-        var promiseDelete = TenantService.removeTenant(tId);
-        promiseDelete.then(function (pl) {
-            $scope.tId = 0;
-            $scope.tName = "";
-            $scope.tString = "";
-            $scope.tLogo = "";
-            $scope.tEnable = "";
-            loadRecords();
-        }, function (err) {
-            console.log("Err" + err);
-        });
+        decision = confirm("Are you sure you want to delete this tenant?");
+
+        if (decision) {
+            $scope.isCreated = false;
+            $scope.isEdited = false;
+            $scope.isDeleted = true;
+            var promiseDelete = TenantService.removeTenant(tId);
+            promiseDelete.then(function (pl) {
+                $scope.tId = 0;
+                $scope.tName = "";
+                $scope.tString = "";
+                $scope.tLogo = "";
+                $scope.tEnable = "";
+                loadRecords();
+            }, function (err) {
+                console.log("Err" + err);
+            });
+        }
 
     }
 

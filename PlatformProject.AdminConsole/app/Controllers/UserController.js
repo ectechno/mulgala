@@ -114,24 +114,28 @@
 
     //Method to Delete
     $scope.delete = function (uId) {
-        $scope.isCreated = false;
-        $scope.isEdited = false;
-        $scope.isDeleted = true;
-        var promiseDelete = UserService.removeUser(uId);
-        promiseDelete.then(function (pl) {
-            $scope.uId = 0;
-            $scope.uName = "";
-            $scope.uEmail = "";
-            $scope.uLogo="";
-            $scope.uRole = "";
-            $scope.uTenant = "";
-            $scope.uEnable = "";
-            $scope.username = "";
-            $scope.uPassword = "";
-            loadRecords();
-        }, function (err) {
-            console.log("Err" + err);
-        });
+        decision = confirm("Are you sure you want to delete this user?");
+
+        if (decision) {
+            $scope.isCreated = false;
+            $scope.isEdited = false;
+            $scope.isDeleted = true;
+            var promiseDelete = UserService.removeUser(uId);
+            promiseDelete.then(function (pl) {
+                $scope.uId = 0;
+                $scope.uName = "";
+                $scope.uEmail = "";
+                $scope.uLogo = "";
+                $scope.uRole = "";
+                $scope.uTenant = "";
+                $scope.uEnable = "";
+                $scope.username = "";
+                $scope.uPassword = "";
+                loadRecords();
+            }, function (err) {
+                console.log("Err" + err);
+            });
+        }
     }
 
 
@@ -212,9 +216,6 @@
 
 
     $scope.cancel = function () {
-        $scope.isCreated = false;
-        $scope.isEdited = false;
-        $scope.isDeleted = false;
         $scope.clear();
         $scope.isFormMode = false;
         $scope.isEdit = false;

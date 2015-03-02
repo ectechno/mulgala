@@ -12,32 +12,46 @@
 
                 <!-- Main content -->
                 <section class="content">
+
+                    <div class="alert alert-success alert-dismissable" ng-show="isCreated">
+                        <i class="fa fa-check"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Successfully Created.
+                    </div>
+
                     <form name="createAdmin" action="">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="adminId" placeholder="Admin Id" ng-model="taId">
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.name.$invalid]">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="aName" autofocus required>
+                            <p ng-show="createAdmin.name.$invalid && !createAdmin.name.$pristine" style="color:red;">Name is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.email.$invalid]">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Eamil" ng-model="aEmail" required>
+                            <p ng-show="createAdmin.email.$invalid && !createAdmin.email.$pristine" style="color:red;">Email is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.logo.$invalid]">
+                            <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="aLogo" required>
+                            <p ng-show="createAdmin.logo.$invalid && !createAdmin.logo.$pristine" style="color:red;">Logo URL is required.</p>
+                        </div>
+                       
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.username.$invalid]">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="username" required>
+                            <p ng-show="createAdmin.username.$invalid && !createAdmin.username.$pristine" style="color:red;">Username is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.password.$invalid]">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="aPassword" required>
+                            <p ng-show="createAdmin.password.$invalid && !createAdmin.password.$pristine" style="color:red;">Password is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createAdmin.cPassword.$invalid]">
+                            <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
+                            <p ng-show="createAdmin.cPassword.$invalid && !createAdmin.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="adminName" placeholder="Admin Name" ng-model="taName">
+                            <input type="radio" id="enable" name="enable" value="true" ng-model="aEnable" ng-required="!aEnable" />Enable
+                            <input type="radio" id="enable" name="enable" value="false" ng-model="aEnable" style="margin-left:62px" ng-required="!aEnable" />Disable
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="adminEmail" placeholder="Admin Email" ng-model="taEmail">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" ng-model="taRole">
-                                <option>Admin Role</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="username" placeholder="Admin Username" ng-model="taUsername">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="taPassword">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-                        </div>
-                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-                        <input type="submit" class="btn btn-success btn-lg" value="Finish" ng-click="save();"/>
+
+                        <input type="submit" class="btn btn-success btn-lg" value="Finish" ng-click="save();" ng-disabled="!createAdmin.$valid" />
+                        <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                     </form>                    
                 </section><!-- /.content -->
             

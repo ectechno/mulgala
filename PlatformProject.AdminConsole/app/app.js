@@ -26,30 +26,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'app/Views/createUser.html'
         })
         .when('/TenantManagement/CreateAdmin', {
-             //controller: 'Controller',
-             templateUrl: 'app/Views/createAdmin.html'
+            controller: 'tenantAdminController',
+            templateUrl: 'app/Views/createAdmin.html'
          })
        
         .otherwise({ redirectTo: '/dashboard.html' });
 });
 
-/*app.controller('submission', function ($scope, $http, $location) {
-    $scope.save = function () {
-        $http({
-            method: "POST",
-            //url: "r",
-            //data: {
-            //Fornecedor: $scope.fornecedor
-            //},
-            //headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).success(function (data) {
-            //to change the angular view use $location t0 redirect
-            $location.path("#/Create/CreateTenant/CreateAdmin");
-            //to redirect to page outside current angular app use 'window.location':
-            //window.location = "/path-where-you-want-to-go
-
-        }).error(function () {
-            alert("Error");
-        });
-    };
-});*/
