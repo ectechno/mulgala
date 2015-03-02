@@ -18,6 +18,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
         private UnitOfWork unitOfWork;
         private IRepository<Tenant> tenantRepository;
 
+
         private void NotifyMainProgram()
         {
             Console.WriteLine("this is client");
@@ -62,6 +63,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
         }
 
         // GET api/tenants/5
+        [Route("~/api/tenants/{id:int}")]
         public HttpResponseMessage Get(int id)
         {
             Tenant tenant = tenantRepository.GetByID(id);
@@ -69,7 +71,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
             HttpResponseMessage response;
             if (tenant == null)
             {
-                response = Request.CreateResponse(HttpStatusCode.NotFound);
+                response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not found");
                 return response;
             }
 
@@ -80,6 +82,32 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 TenantString = tenant.TenantString,
                 LogoUrl = tenant.LogoUrl,
                 Enable = tenant.Enable
+            });
+            return response;
+        }
+
+        // GET api/tenants/sony
+        [Route("~/api/tenants/{tenantString}")]
+        public HttpResponseMessage Get(string tenantString)
+        {
+            //Tenant tenant = tenantRepository.GetByID(id);
+            var tenantData = tenantRepository.Find(tenant => tenant.TenantString == tenantString).FirstOrDefault();
+
+
+            HttpResponseMessage response;
+            if (tenantData == null)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not found");
+                return response;
+            }
+
+            response = Request.CreateResponse(HttpStatusCode.OK, new TenantDTO
+            {
+                Id = tenantData.Id,
+                Name = tenantData.Name,
+                TenantString = tenantData.TenantString,
+                LogoUrl = tenantData.LogoUrl,
+                Enable = tenantData.Enable
             });
             return response;
         }
