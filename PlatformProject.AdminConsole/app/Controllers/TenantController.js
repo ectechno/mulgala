@@ -70,7 +70,7 @@
             $scope.isDeleted = false;
             promisePut.then(function (pl) {
                // loadRecords();
-                window.location.href = "http://localhost:40838/index.html/#/TenantManagement"
+               // window.location.href = "http://localhost:40838/index.html/#/TenantManagement"
             }, function (err) {
                 console.log("Err" + err);
             });
