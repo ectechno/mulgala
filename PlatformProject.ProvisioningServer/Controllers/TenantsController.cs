@@ -19,28 +19,6 @@ namespace PlatformProject.ProvisioningServer.Controllers
         private IRepository<Tenant> tenantRepository;
 
 
-        private void NotifyMainProgram()
-        {
-            Console.WriteLine("this is client");
-            String line = "data Recieved";
-            Console.WriteLine(line);
-
-            var client = new UdpClient();
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000); // endpoint where server is listening
-            client.Connect(ep);
-
-            // send data
-            byte[] dataToSend = Encoding.ASCII.GetBytes(line);
-
-            client.Send(dataToSend, dataToSend.Length);
-
-            // then receive data
-            var receivedData = client.Receive(ref ep);
-
-            Console.Write("receive data from " + ep.ToString());
-
-        }
-
 
         protected TenantsController()
         {
@@ -145,8 +123,6 @@ namespace PlatformProject.ProvisioningServer.Controllers
 
                 unitOfWork.Save();
 
-                //notify the main program
-                NotifyMainProgram();
 
                 //tenantDTO.Id = tenant.Id;
                 response = Request.CreateResponse(HttpStatusCode.Created, new TenantDTO
@@ -184,8 +160,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
 
                 Tenant tenant = tenantRepository.Update(exTenant);
                 unitOfWork.Save();
-                //notify the main program
-                NotifyMainProgram();
+                
                 response = Request.CreateResponse(HttpStatusCode.OK, new TenantDTO
                 {
                     Id = tenant.Id,
@@ -217,8 +192,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
             tenantRepository.Delete(id);
             unitOfWork.Save();
 
-            //notify the main program
-            //NotifyMainProgram();
+            
             response = Request.CreateResponse(HttpStatusCode.NoContent);
             return response;
         }
