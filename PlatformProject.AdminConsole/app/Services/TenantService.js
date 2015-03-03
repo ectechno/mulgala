@@ -15,8 +15,17 @@ angular.module('admin').service('TenantService', ['$http', 'RequestService', fun
             "TenantString": trnObj.tString,
             "Name": trnObj.Name,
             "LogoUrl": trnObj.tLogo,
-            "Enable": trnObj.tEnable
+            "Enable": trnObj.tEnable,
+            "User": {
+                "Name": trnObj.uName,
+                "UserName": trnObj.username,
+                "Email": trnObj.uEmail,
+                "Password": trnObj.uPassword,
+                "LogoUrl": trnObj.uLogo,
+                "Enable": trnObj.uEnable
+            }
         };
+
 
         var header = {
             'Content-Type': 'application/json'
@@ -38,13 +47,13 @@ angular.module('admin').service('TenantService', ['$http', 'RequestService', fun
 
 
     function updateTenant(tenantID, tenant) {
-        var request = 'http://localhost:44552/api/tenants/' + tenant.tId;
+        var request = 'http://localhost:44552/api/tenants/' + tenant.etId;
         var params = {
-            "Id": tenant.tId,
-            "TenantString": tenant.tString,
-            "Name": tenant.Name,
-            "LogoUrl": tenant.tLogo,
-            "Enable": tenant.tEnable
+            "Id": tenant.etId,
+            "TenantString": tenant.etString,
+            "Name": tenant.eName,
+            "LogoUrl": tenant.etLogo,
+            "Enable": tenant.etEnable
         };
         var status = RequestService.put(request, params);
         return status;

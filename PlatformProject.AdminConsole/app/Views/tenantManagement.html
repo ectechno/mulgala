@@ -68,7 +68,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         Successfully Deleted.
                     </div>
-                    <form name="createTenant" method="get" action="" ng-show="isFormMode">
+                    <form name="createTenant" method="get" action="" ng-show="isNew">
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.tenantName.$invalid]">
                             <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Tenant Name" ng-model="tName" autofocus required>
                             <p ng-show="createTenant.tenantName.$invalid && !createTenant.tenantName.$pristine" style="color:red;">Tenant name is required.</p>
@@ -81,15 +81,63 @@
                             <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
-                        <div class="form-group">
-                            <input type="radio" id="enable" name="enable" value="true" ng-model="tEnable" ng-required="!tEnable" />Enable
-                            <input type="radio" id="enable" name="enable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
+
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.name.$invalid]">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Admin Name" ng-model="aName" autofocus required />
+                            <p ng-show="createTenant.name.$invalid && !createTenant.name.$pristine" style="color:red;">Admin Name is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.email.$invalid]">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Admin Eamil" ng-model="aEmail" required>
+                            <p ng-show="createTenant.email.$invalid && !createTenant.email.$pristine" style="color:red;">Admin Email is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.alogo.$invalid]">
+                            <input type="url" class="form-control" id="alogo" name="alogo" placeholder="Admin Logo URL" ng-model="aLogo" required>
+                            <p ng-show="createTenant.alogo.$invalid && !createTenant.alogo.$pristine" style="color:red;">Admin Logo URL is required.</p>
                         </div>
 
-                        <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" ng-disabled="!createTenant.$valid" ng-show="isNew" />
-                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid" ng-show="!isNew" />
-                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.username.$invalid]">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Admin Username" ng-model="username" required>
+                            <p ng-show="createTenant.username.$invalid && !createTenant.username.$pristine" style="color:red;">Admin Username is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.password.$invalid]">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Admin Password" ng-model="aPassword" required>
+                            <p ng-show="createTenant.password.$invalid && !createTenant.password.$pristine" style="color:red;">Admin Password is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.cPassword.$invalid]">
+                            <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
+                            <p ng-show="createTenant.cPassword.$invalid && !createTenant.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
+                        </div>
 
+                        <div class="form-group">
+                            <input type="radio" id="tenable" name="tenable" value="true" ng-model="tEnable" ng-required="!tEnable" />Enable
+                            <input type="radio" id="tenable" name="tenable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
+                        </div>
+
+                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid" />
+                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
+                    </form>
+
+                   
+                    <form name="editTenant" method="get" action="" ng-show="isEdit">
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && editTenant.etenantName.$invalid]">
+                            <input type="text" class="form-control" id="etenantName" name="etenantName" placeholder="Tenant Name" ng-model="etName" autofocus required>
+                            <p ng-show="editTenant.etenantName.$invalid && !editTenant.etenantName.$pristine" style="color:red;">Tenant name is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && editTenant.etenantString.$invalid]">
+                            <input type="text" class="form-control" id="etenantString" name="etenantString" placeholder="Tenant String" ng-model="etString" required>
+                            <p ng-show="editTenant.etenantString.$invalid && !editTenant.etenantString.$pristine" style="color:red;">Tenant string is required.</p>
+                        </div>
+                        <div class="form-group" ng-class="{true: 'error'}[submitted && editTenant.elogo.$invalid]">
+                            <input type="url" class="form-control" id="elogo" name="elogo" placeholder="Logo URL" ng-model="etLogo" required>
+                            <p ng-show="editTenant.elogo.$invalid && !editTenant.elogo.$pristine" style="color:red;">Logo URL is required.</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" id="etenable" name="etenable" value="true" ng-model="etEnable" ng-required="!etEnable" />Enable
+                            <input type="radio" id="etenable" name="etenable" value="false" ng-model="etEnable" style="margin-left:62px" ng-required="!etEnable" />Disable
+                        </div>
+
+                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!editTenant.$valid" />
+                        <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                     </form>
                     
                </section>

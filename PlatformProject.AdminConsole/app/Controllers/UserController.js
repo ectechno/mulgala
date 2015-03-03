@@ -1,22 +1,22 @@
-﻿angular.module('admin').controller('userController', ['$scope', '$window', 'UserService', 'TenantService', 'SharedServices', function ($scope, $window, UserService, TenantService, SharedServices) {
+﻿angular.module('admin').controller('userController', ['$scope', '$window', 'UserService', 'TenantService', function ($scope, $window, UserService, TenantService) {
     $scope.isEdit = false;
     $scope.isFormMode = false;
     $scope.isCreated = false;
     $scope.isEdited = false;
     $scope.isDeleted = false;
     $scope.tenantGroup = [];
-    $scope.userNames = ['Administrator','User'];
-      
+    $scope.userNames = ['Administrator', 'User'];
+
     loadRecords();
     loadTenantRecords();
-            
+
     //Function to load all User records
     function loadRecords() {
         var promiseGet = UserService.getUsers(); //The Method Call from service
 
         promiseGet.then(function (pl) {
             $scope.Users = pl.data;
-           
+
         },
               function (errorPl) {
                   $log.error('failure loading Users', errorPl);
@@ -31,7 +31,7 @@
         promiseGet.then(function (pl) {
             $scope.Tenants = pl.data;
             count = 0;
-            for (x = 0; x < $scope.Tenants.length;x++){
+            for (x = 0; x < $scope.Tenants.length; x++) {
                 $scope.tenantGroup[x] = $scope.Tenants[x].name;
                 count++;
             }
@@ -45,9 +45,9 @@
 
     function findTenantId(name) {
         answer = '';
-        for (x = 0; x < $scope.Tenants.length;x++){
+        for (x = 0; x < $scope.Tenants.length; x++) {
             if ($scope.Tenants[x].name == name) {
-                answer=$scope.Tenants[x].id;
+                answer = $scope.Tenants[x].id;
                 break;
             }
         }
@@ -70,7 +70,7 @@
     $scope.save = function () {
         $scope.uTenant = findTenantId($scope.uSelectedTenant);
 
-        if($scope.uSelectedRole=='Administrator'){
+        if ($scope.uSelectedRole == 'Administrator') {
             $scope.uRole = 1;
         }
         else {
@@ -81,12 +81,12 @@
             uId: $scope.uId,
             uName: $scope.uName,
             uEmail: $scope.uEmail,
-            uLogo:$scope.uLogo,
+            uLogo: $scope.uLogo,
             uRole: $scope.uRole,
             uTenant: $scope.uTenant,
             username: $scope.username,
-            uPassword:$scope.uPassword,
-            uEnable:$scope.uEnable
+            uPassword: $scope.uPassword,
+            uEnable: $scope.uEnable
         };
 
         if ($scope.isNew) {
@@ -94,16 +94,17 @@
             $scope.isCreated = true;
             $scope.isEdited = false;
             $scope.isDeleted = false;
-            window.location.href = "http://localhost:40838/index.html?#/UserManagement";
-          
+            
+            window.location.href = "http://localhost:40838/index.html/#/UserManagement";
+
         } else { //Else Edit the record
             var promisePut = UserService.updateUser($scope.uId, user);
             $scope.isEdited = true;
             $scope.isCreated = false;
             $scope.isDeleted = false;
             promisePut.then(function (pl) {
-                $scope.Message = "Updated Successfuly";
                 loadRecords();
+                window.location.href = "http://localhost:40838/index.html/#/UserManagement";
             }, function (err) {
                 console.log("Err" + err);
             });
@@ -155,13 +156,13 @@
             $scope.uRole = res.roleId;
             $scope.uSelectedRole = res.role;
 
-            if(res.enable){
+            if (res.enable) {
                 $scope.uEnable = "true";
             }
             else {
                 $scope.uEnable = "false";
             }
-           
+
             $scope.uTenant = res.tenantId;
             $scope.uSelectedTenant = findTenantName(res.tenantId);
             $scope.username = res.userName;
@@ -183,8 +184,8 @@
         $scope.uName = "";
         $scope.uEmail = "";
         $scope.uLogo = "";
-        $scope.uSelectedTenant="";
-        $scope.uSelectedRole="";
+        $scope.uSelectedTenant = "";
+        $scope.uSelectedRole = "";
         $scope.uRole = "";
         $scope.uTenant = "";
         $scope.uEnable = "";
@@ -212,6 +213,7 @@
         $scope.isDeleted = false;
         $scope.isFormMode = true;
         $scope.isNew = true;
+        $scope.isEdit = false;
         $scope.Message = "";
     }
 
@@ -226,6 +228,7 @@
         $scope.createUser.cPassword.$pristine = true;
         $scope.isNew = false;
         $scope.isFormMode = false;
+        $scope.isEdit = false;
         window.location.href = "http://localhost:40838/index.html?#/UserManagement"
     };
 

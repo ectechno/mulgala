@@ -5,6 +5,7 @@
     $scope.isCreated = false;
     $scope.isEdited = false;
     $scope.isDeleted = false;
+    $scope.aEnable = true;
     loadRecords();
 
    //Function to load all Tenant records
@@ -22,12 +23,27 @@
 
     $scope.save = function () {
         var tenant = {
-            tId: $scope.tId,
+            tId: $scope.tId,    //tenant data
             Name: $scope.tName,
             tString: $scope.tString,
             tLogo: $scope.tLogo,
-            tEnable: $scope.tEnable
+            tEnable: $scope.tEnable,
+                      
+            uName: $scope.aName,  //tenant admin data
+            uEmail: $scope.aEmail,
+            uLogo: $scope.aLogo,
+            username: $scope.username,
+            uPassword: $scope.aPassword,
+            uEnable: $scope.aEnable
         };
+
+        var editedTenant = {
+            etId: $scope.etId,    //tenant data
+            eName: $scope.etName,
+            etString: $scope.etString,
+            etLogo: $scope.etLogo,
+            etEnable: $scope.etEnable,
+        }
       
         if ($scope.isNew) {
          
@@ -39,23 +55,22 @@
                // console.log($scope.Message);
 
             //$scope.clear();
-            $scope.isCreated = false;
+            $scope.isCreated = true;
             $scope.isEdited = false;
             $scope.isDeleted = false;
             //loadRecords();
-            window.location.href = "#/TenantManagement/CreateAdmin";
-                         
+                                     
            //  }, function (err) {
              //    console.log("Err" + err);
             // });
         } else { //Else Edit the record
-            var promisePut = TenantService.updateTenant($scope.tId, tenant);
+            var promisePut = TenantService.updateTenant($scope.etId, editedTenant);
             $scope.isEdited = true;
             $scope.isCreated = false;
             $scope.isDeleted = false;
             promisePut.then(function (pl) {
-                loadRecords();
-                window.location.href = "http://localhost:40838/index.html?#/TenantManagement"
+               // loadRecords();
+                window.location.href = "http://localhost:40838/index.html/#/TenantManagement"
             }, function (err) {
                 console.log("Err" + err);
             });
@@ -95,15 +110,15 @@
 
         promiseGetSingle.then(function (pl) {
             var res = pl.data;
-            $scope.tId = res.id;
-            $scope.tName = res.name;
-            $scope.tString = res.tenantString;
-            $scope.tLogo = res.logoUrl;
+            $scope.etId = res.id;
+            $scope.etName = res.name;
+            $scope.etString = res.tenantString;
+            $scope.etLogo = res.logoUrl;
             if(res.enable){
-                $scope.tEnable = "true";
+                $scope.etEnable = "true";
             }
             else {
-                $scope.tEnable = "false";
+                $scope.etEnable = "false";
             }
            // $scope.tEnable = res.enable;
             $scope.isNew = false;
@@ -117,12 +132,19 @@
         $scope.isCreated = false;
         $scope.isEdited = false;
         $scope.isDeleted = false;
-        $scope.isNew = true;
+        //$scope.isNew = true;
         $scope.tId = "";
         $scope.tName = "";
         $scope.tString = "";
         $scope.tLogo = "";
         $scope.tEnable = "";
+        $scope.aName = "";
+        $scope.aEmail = "";
+        $scope.aLogo = "";
+        $scope.username = "";
+        $scope.aPassword = "";
+        $scope.cPassword = "";
+
     };
 
     $scope.edit = function (Id) {
@@ -142,6 +164,7 @@
         $scope.isDeleted = false;    
         $scope.isFormMode = true;
         $scope.isNew = true;
+        $scope.isEdit = false;
         $scope.Message = "";
     }
 
@@ -150,6 +173,15 @@
         $scope.createTenant.tenantName.$pristine = true;
         $scope.createTenant.tenantString.$pristine = true;
         $scope.createTenant.logo.$pristine = true;
+        $scope.createTenant.name.$pristine = true;
+        $scope.createTenant.email.$pristine = true;
+        $scope.createTenant.alogo.$pristine = true;
+        $scope.createTenant.username.$pristine = true;
+        $scope.createTenant.password.$pristine = true;
+        $scope.createTenant.cPassword.$pristine = true;
+        $scope.editTenant.etenantName.$pristine = true;
+        $scope.editTenant.etenantString.$pristine = true;
+        $scope.editTenant.elogo.$pristine = true;
       
         $scope.isFormMode = false;
         $scope.isEdit = false;
