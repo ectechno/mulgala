@@ -12,7 +12,7 @@ app.directive('imageonload', function () {
 });
 
 
-app.controller('loginController', function ($scope, loginService, $localStorage) {
+app.controller('loginController', function ($scope, $window, loginService, $localStorage) {
     $scope.isLogged = false;
     $scope.isAdmin = false;
     $scope.isUser = false;
@@ -162,6 +162,20 @@ app.controller('loginController', function ($scope, loginService, $localStorage)
             window.open(uri, 'Authorize', 'width=640,height=760');
 
 
+        }
+        /*
+         * Logout function
+         * TODO:remove from logincontroller.js and 
+         * put it in different file
+         */
+
+        $scope.logout = function () {
+            //delete the token
+            console.log($localStorage.token);
+            //clear all local storage data
+            window.localStorage.clear();
+            //refresh the page
+            $window.location.reload();
         }
 
 

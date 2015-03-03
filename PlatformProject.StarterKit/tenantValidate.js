@@ -6,7 +6,7 @@ var full = window.location.host;
 var parts = full.split('.');
 var subdomain = parts[0];
 
-var provisioningUrl = "http://localhost:44552/api/tenants/";
+var provisioningUrl = "http://localhost:44552/api/tenantdetails/";
 
 var apiUrl = provisioningUrl + subdomain;
 
