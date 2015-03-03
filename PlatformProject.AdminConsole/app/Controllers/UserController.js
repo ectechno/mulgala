@@ -183,6 +183,8 @@
         $scope.uName = "";
         $scope.uEmail = "";
         $scope.uLogo = "";
+        $scope.uSelectedTenant="";
+        $scope.uSelectedRole="";
         $scope.uRole = "";
         $scope.uTenant = "";
         $scope.uEnable = "";
@@ -215,10 +217,15 @@
 
 
     $scope.cancel = function () {
-        $scope.isCreated = false;
-        $scope.isFormMode = false;
-        $scope.isEdit = false;
+        $scope.clear();
+        $scope.createUser.name.$pristine = true;
+        $scope.createUser.email.$pristine = true;
+        $scope.createUser.logo.$pristine = true;
+        $scope.createUser.username.$pristine = true;
+        $scope.createUser.password.$pristine = true;
+        $scope.createUser.cPassword.$pristine = true;
         $scope.isNew = false;
+        $scope.isFormMode = false;
         window.location.href = "http://localhost:40838/index.html?#/UserManagement"
     };
 

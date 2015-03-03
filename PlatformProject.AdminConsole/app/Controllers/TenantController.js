@@ -147,14 +147,10 @@
 
     $scope.cancel = function () {
         $scope.clear();
-        //$scope.createTenant.$pristine = true;
         $scope.createTenant.tenantName.$pristine = true;
         $scope.createTenant.tenantString.$pristine = true;
         $scope.createTenant.logo.$pristine = true;
-        
-        $scope.isCreated = false;
-        $scope.isEdited = false;
-        $scope.isDeleted = false;
+      
         $scope.isFormMode = false;
         $scope.isEdit = false;
         $scope.isNew = false;
