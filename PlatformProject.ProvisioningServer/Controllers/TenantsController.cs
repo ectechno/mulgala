@@ -63,7 +63,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
         }
 
         // GET api/tenants/5
-        [Route("~/api/tenants/{id:int}")]
+        // [Route("~/api/tenants/{id:int}")]
         public HttpResponseMessage Get(int id)
         {
             Tenant tenant = tenantRepository.GetByID(id);
@@ -71,7 +71,8 @@ namespace PlatformProject.ProvisioningServer.Controllers
             HttpResponseMessage response;
             if (tenant == null)
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not found");
+               // response = Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not found");
+                response = Request.CreateResponse(HttpStatusCode.NotFound);
                 return response;
             }
 
@@ -87,7 +88,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
         }
 
         // GET api/tenants/sony
-        [Route("~/api/tenants/{tenantString}")]
+        /*[Route("~/api/tenants/{tenantString}")]
         public HttpResponseMessage Get(string tenantString)
         {
             //Tenant tenant = tenantRepository.GetByID(id);
@@ -110,7 +111,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 Enable = tenantData.Enable
             });
             return response;
-        }
+        }*/
 
         // POST api/tenants
         public HttpResponseMessage Post([FromBody]TenantDTO tenantDTO)

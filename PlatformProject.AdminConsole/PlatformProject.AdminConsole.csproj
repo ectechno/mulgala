@@ -186,14 +186,14 @@
     <Content Include="img\user.jpg" />
     <Content Include="img\user2.jpg" />
     <Content Include="index.html" />
-    <Content Include="js\AdminLTE\app.js" />
-    <Content Include="js\AdminLTE\dashboard.js" />
     <Content Include="js\angular-cookies.js" />
     <Content Include="js\angular-match.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
+    <Content Include="js\app.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\jquery-ui-1.10.3.js" />
     <Content Include="js\jquery-ui-1.10.3.min.js" />
     <Content Include="js\jquery.min.js" />

@@ -137,6 +137,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Tenants\Logo\Apple-logo.jpg" />
     <Content Include="Images\Tenants\Logo\Panasonic-logo.jpg" />
     <Content Include="Images\Tenants\Logo\Samsung-logo.jpg" />
     <Content Include="Images\Tenants\Logo\Sony-logo.jpg" />
