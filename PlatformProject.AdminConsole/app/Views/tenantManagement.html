@@ -82,14 +82,14 @@
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="enable" name="enable" value="true" ng-model="tEnable" ng-required="!tEnable"/>Enable
+                            <input type="radio" id="enable" name="enable" value="true" ng-model="tEnable" ng-required="!tEnable" />Enable
                             <input type="radio" id="enable" name="enable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
                         </div>
 
                         <input type="submit" class="btn btn-success btn-lg" value="Next" ng-click="save();" ng-disabled="!createTenant.$valid" ng-show="isNew" />
                         <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid" ng-show="!isNew" />
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
-                      
+
                     </form>
                     
                </section>

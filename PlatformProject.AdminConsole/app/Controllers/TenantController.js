@@ -39,7 +39,7 @@
                // console.log($scope.Message);
 
             //$scope.clear();
-            $scope.isCreated = true;
+            $scope.isCreated = false;
             $scope.isEdited = false;
             $scope.isDeleted = false;
             //loadRecords();
@@ -54,7 +54,8 @@
             $scope.isCreated = false;
             $scope.isDeleted = false;
             promisePut.then(function (pl) {
-               loadRecords();
+                loadRecords();
+                window.location.href = "http://localhost:40838/index.html?#/TenantManagement"
             }, function (err) {
                 console.log("Err" + err);
             });
@@ -145,6 +146,12 @@
     }
 
     $scope.cancel = function () {
+        $scope.clear();
+        //$scope.createTenant.$pristine = true;
+        $scope.createTenant.tenantName.$pristine = true;
+        $scope.createTenant.tenantString.$pristine = true;
+        $scope.createTenant.logo.$pristine = true;
+        
         $scope.isCreated = false;
         $scope.isEdited = false;
         $scope.isDeleted = false;
