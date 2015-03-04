@@ -188,7 +188,10 @@
         $scope.isNew = false;
         window.location.href = "http://localhost:40838/index.html?#/TenantManagement"
     };
-
+    
+    /*
+     * helper function calls server syncronously
+     */
 
     function isSubdomainValid(apiUrl) {
         
@@ -206,6 +209,11 @@
         }
 
     }
+
+    /*
+     * check there is a subdomain available
+     * 
+     */
 
 
 
@@ -243,5 +251,9 @@
         }
         
     }
+
+  
+
+
 
 }]);
