@@ -85,7 +85,6 @@
         if (decision) {
             $scope.isCreated = false;
             $scope.isEdited = false;
-            $scope.isDeleted = true;
             var promiseDelete = TenantService.removeTenant(tId);
             promiseDelete.then(function (pl) {
                 $scope.tId = 0;
@@ -93,6 +92,7 @@
                 $scope.tString = "";
                 $scope.tLogo = "";
                 $scope.tEnable = "";
+                $scope.isDeleted = true;
                 loadRecords();
             }, function (err) {
                 console.log("Err" + err);
