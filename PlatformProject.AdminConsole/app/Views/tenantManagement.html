@@ -69,19 +69,23 @@
                         Successfully Deleted.
                     </div>
                     <form name="createTenant" method="get" action="" ng-show="isNew">
+                        <h3>Tenant</h3>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.tenantName.$invalid]">
                             <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Tenant Name" ng-model="tName" autofocus required>
                             <p ng-show="createTenant.tenantName.$invalid && !createTenant.tenantName.$pristine" style="color:red;">Tenant name is required.</p>
                         </div>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.tenantString.$invalid]">
-                            <input type="text" class="form-control" id="tenantString" name="tenantString" placeholder="Tenant String" ng-model="tString" required>
+                            <input type="text" class="form-control" id="tenantString" name="tenantString" placeholder="SubDomain" ng-model="tString" ng-blur='checkSubdomainAvailable()' ng-focus="isTenantInUse=false" required>
                             <p ng-show="createTenant.tenantString.$invalid && !createTenant.tenantString.$pristine" style="color:red;">Tenant string is required.</p>
+                            <!-- check tenant is already in use (and not empty to show a message)-->
+                            <p ng-show="isTenantInUse && tString" style="color:red;">Tenant is already in use.</p>
                         </div>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.logo.$invalid]">
                             <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="tLogo" required>
                             <p ng-show="createTenant.logo.$invalid && !createTenant.logo.$pristine" style="color:red;">Logo URL is required.</p>
                         </div>
-
+                        <hr>
+                        <h3>Tenant Admin</h3>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && createTenant.name.$invalid]">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Admin Name" ng-model="aName" autofocus required />
                             <p ng-show="createTenant.name.$invalid && !createTenant.name.$pristine" style="color:red;">Admin Name is required.</p>
@@ -112,8 +116,8 @@
                             <input type="radio" id="tenable" name="tenable" value="true" ng-model="tEnable" ng-required="!tEnable" />Enable
                             <input type="radio" id="tenable" name="tenable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
                         </div>
-
-                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid" />
+                        <!-- if there is duplicate tenatn or, there is error in form fill, disable submit button -->
+                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid || isTenantInUse" />
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                     </form>
 
