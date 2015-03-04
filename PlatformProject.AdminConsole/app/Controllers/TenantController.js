@@ -189,4 +189,59 @@
         window.location.href = "http://localhost:40838/index.html?#/TenantManagement"
     };
 
+
+    function isSubdomainValid(apiUrl) {
+        
+        var request = new XMLHttpRequest();
+        request.open('GET', apiUrl, false);  // `false` makes the request synchronous
+        request.send(null);
+
+        if (request.status === 200) {
+            console.log("Your response " + request.responseText);
+            return true;
+        }
+        else {
+            console.log("invalid subdomain");
+            return false;
+        }
+
+    }
+
+
+
+    $scope.checkSubdomainAvailable = function () {
+        console.log("check this subdomain " + $scope.tString);
+        
+        $scope.isTenantInUse = false;
+        var provisioningUrl = "http://localhost:44552/api/tenantdetails/";
+        //if there is value, check. otherwise return
+        if ($scope.tString) {
+            //if there is a value, check it with api call
+            console.log("data to check "+$scope.tString);
+            var apiUrl = provisioningUrl + $scope.tString;
+
+            var valid = isSubdomainValid(apiUrl);
+            console.log("subdomain result "+valid)
+            if (valid == false) {
+                //if not valid, we donot have a tenant there
+                //is tenant in use = false
+                console.log("this is a invalid subdomain");
+                $scope.isTenantInUse = false;
+                return;
+
+            } else {
+                console.log("this is a valid subdomain");
+                //is tenant in use = true
+                $scope.isTenantInUse = true;
+            }
+
+
+        } else{
+            //if scope string is undefined just return, there is not tenant
+            $scope.isTenantInUse = false;
+            return;
+        }
+        
+    }
+
 }]);
