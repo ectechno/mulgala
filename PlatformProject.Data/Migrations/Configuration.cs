@@ -8,7 +8,7 @@ namespace PlatformProject.Data
 {
 
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PlatformProjectDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PlatformDBContext>
     {
 
         private List<Tenant> _tenants = new List<Tenant>();
@@ -19,7 +19,7 @@ namespace PlatformProject.Data
             ContextKey = "PlatformProject.AuthServer.Models.PlatformProjectAuthServerContext";
         }
 
-        private void AddRoles(PlatformProjectDBContext context) 
+        private void AddRoles(PlatformDBContext context) 
         {
             context.Roles.AddOrUpdate(
                 role => role.Name,
@@ -29,7 +29,7 @@ namespace PlatformProject.Data
             context.SaveChanges();
         }
 
-        private void AddTenants(PlatformProjectDBContext context)
+        private void AddTenants(PlatformDBContext context)
         {
             context.Tenants.AddOrUpdate(
                 tenant => tenant.TenantString,
@@ -81,7 +81,7 @@ namespace PlatformProject.Data
             context.SaveChanges();
         }
 
-        private void AddUsers(PlatformProjectDBContext context)
+        private void AddUsers(PlatformDBContext context)
         {
             context.Users.AddOrUpdate(
                 user => user.UserName,
@@ -174,7 +174,7 @@ namespace PlatformProject.Data
         }
 
 
-        protected override void Seed(PlatformProjectDBContext context)
+        protected override void Seed(PlatformDBContext context)
         {
             AddRoles(context);
             AddTenants(context);

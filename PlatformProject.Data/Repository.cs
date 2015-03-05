@@ -10,10 +10,10 @@ namespace PlatformProject.Data
 {
     public class Repository<Entity> : IRepository<Entity> where Entity : class
     {
-        internal PlatformProjectDBContext dbContext;
+        internal PlatformDBContext dbContext;
         internal DbSet<Entity> dbSet;
 
-        public Repository(PlatformProjectDBContext context)
+        public Repository(PlatformDBContext context)
         {
             dbContext = context;
             dbSet = context.Set<Entity>();

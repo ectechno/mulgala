@@ -17,7 +17,7 @@ namespace PlatformProject.AuthServer.Controllers
     public class AccountController : Controller
     {
 
-        private PlatformProjectDBContext db = new PlatformProjectDBContext();
+        private PlatformDBContext db = new PlatformDBContext();
 
         public ActionResult Login()
         {

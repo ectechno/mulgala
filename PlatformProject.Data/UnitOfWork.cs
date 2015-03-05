@@ -8,7 +8,7 @@ namespace PlatformProject.Data
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private PlatformProjectDBContext dbContext = new PlatformProjectDBContext();
+        private PlatformDBContext dbContext = new PlatformDBContext();
 
         public IRepository<Entity> GetRepository<Entity>() where Entity : class
         {

@@ -8,7 +8,7 @@ using PlatformProject.Model;
 
 namespace PlatformProject.Data
 {
-    public class PlatformProjectDBContext : DbContext
+    public class PlatformDBContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -17,8 +17,8 @@ namespace PlatformProject.Data
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
-        public PlatformProjectDBContext()
-            : base("name=PlatformProjectAuthServerContext")
+        public PlatformDBContext()
+            : base("name=PlatformDBContext")
         {
             Configuration.LazyLoadingEnabled = true;
         }
