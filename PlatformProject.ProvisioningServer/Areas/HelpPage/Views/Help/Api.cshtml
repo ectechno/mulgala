@@ -1,0 +1,25 @@
+@using System.Web.Http
+@using PlatformProject.ProvisioningServer.Areas.HelpPage.Models
+@model HelpPageApiModel
+
+@{
+    var description = Model.ApiDescription;
+    ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<div id="body" class="help-page">
+    <section class="featured">
+        <br />
+        <div class="content-wrapper">
+            <p>
+                @Html.ActionLink("Help Page Home", "Index")
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @Html.DisplayForModel()
+    </section>
+</div>

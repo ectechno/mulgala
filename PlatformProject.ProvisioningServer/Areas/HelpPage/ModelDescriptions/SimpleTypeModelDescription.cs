@@ -1,0 +1,6 @@
+namespace PlatformProject.ProvisioningServer.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
