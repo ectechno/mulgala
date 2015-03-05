@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Provisioning Server</title>
+    <title>Secure Token Server</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="/index.html" class="navbar-brand">99X Product Suite</a>
+                <a href="/" class="navbar-brand">99X Product Suite</a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -31,15 +31,15 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Provision APIs <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Products <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="themes">
-                            <li><a href="http://localhost:21681/">Token Server</a></li>
-                            <li><a href="/index.html">Provisioning Server</a></li>
+                            <li><a href="/">Token Server</a></li>
+                            <li><a href="http://localhost:44552/index.html">Provisioning Server</a></li>
                             <li><a href="http://localhost:40838/index.html">Product Admin Console</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Help">Help</a>
+                        <a href="#">Help</a>
                     </li>
                 </ul>
 
@@ -61,12 +61,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h1 id="container">Provisioning Server</h1>
+                        <h1 id="container">Secure Token Server</h1>
                     </div>
                     <div class="bs-component">
                         <div class="jumbotron">
-                            <h1>Provisioning APIs</h1>
-                            <p>Provisioning server exposes powerful APIs to manage several provisioning process of 99X Product Suite. This is inlcuding Multi tenant management, Tenant Roles management, Tenant User management, ..etc</p>
+                            <h1>Token Server</h1>
+                            <p>Token server authenticates the 99X Products Suite Tenants and Tenant Users. And authorizes the OAuth 2.0 client application requests. On successful authentication, client application will be provided with a claim based token.</p>
                             <p><a class="btn btn-primary btn-lg">Learn more</a></p>
                         </div>
                     </div>
@@ -78,50 +78,34 @@
 
         <div class="bs-docs-section">
 
+            
             <div class="row">
-                <div class="col-lg-12">
-                    <h2>Available APIs</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="bs-component">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <span class="badge">7</span>
-                                Tenant Management
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge">5</span>
-                                Roles Management
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge">5</span>
-                                User Management
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bs-component">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item active">
-                                Suported Media Types
-                            </a>
-                            <a href="#" class="list-group-item">
-                                Jason
-                            </a>
-                            <a href="#" class="list-group-item">
-                                Xml
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bs-component">
 
+                <div class="col-lg-4">
+                    <div class="bs-component">
+                        <h2>OAuth 2.0 based</h2>
+                        <p>Token server is designed based on <a href="#">OAuth 2.0</a>. It can support all four types of the authentication flows for the client applications. New application flows also will be supported soon.</p>
                     </div>
+
                 </div>
+
+                <div class="col-lg-4">
+                    <div class="bs-component">
+                        <h2>Claim based</h2>
+                        <p>Secure token issues are claim based. It can be used with any of the 99X Product suite applications seemlessly while they are active. When expired, they can be renewed by exchanging a refresh key which was supplied along with the secure token.</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="bs-component">
+                        <h2>Multitenant based</h2>
+                        <p>Token server is based on multi tenancy. It can authenticate the users of different tenants and bundle the their tenant based access in secure token to use with other 99X Product suite applications.</p>
+                    </div>
+
+                </div>
+                
+                
             </div>
 
         </div>
