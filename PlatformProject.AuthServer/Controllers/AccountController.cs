@@ -51,7 +51,16 @@ namespace PlatformProject.AuthServer.Controllers
                 {
                     var username = Request.Form["username"];
                     var password = Request.Form["password"];
-                    User currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Tenant.TenantString == tenantString);
+
+                    User currentUser;
+                    if (currentTenant == null)
+                    {
+                        currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Role.Name == "Product Suite Administrator");
+                    }
+                    else
+                    {
+                        currentUser = db.Users.FirstOrDefault(user => user.UserName == username && user.Password == password && user.Tenant.TenantString == tenantString);
+                    }
 
                     if (currentUser != null)
                     {

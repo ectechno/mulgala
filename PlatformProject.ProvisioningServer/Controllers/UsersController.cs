@@ -65,7 +65,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 Role = user.Role.Name,
                 Tenant = user.Tenant.Name,
                 RoleId=user.RoleId,
-                TenantId=user.TenantId,
+                TenantId=user.TenantId.GetValueOrDefault(),
                 UserName=user.UserName,
                 Password=user.Password
             });
@@ -106,7 +106,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                     LogoUrl = user.LogoUrl,
                     Enable = user.Enable,
                     Role = roleRepository.GetByID(user.RoleId).Name,
-                    Tenant = tenantRepository.GetByID(user.TenantId).Name
+                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name
                 });
                 return response;
             }
@@ -146,7 +146,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                     LogoUrl = user.LogoUrl,
                     Enable = user.Enable,
                     Role = roleRepository.GetByID(user.RoleId).Name,
-                    Tenant = tenantRepository.GetByID(user.TenantId).Name
+                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name
                 });
                 return response;
             }
@@ -180,30 +180,56 @@ namespace PlatformProject.ProvisioningServer.Controllers
             Tenant tenantData;
             User userData;
 
-            tenantData = tenantRepository.Find(tenant => tenant.TenantString == tenantString).FirstOrDefault();
-            if (tenantData == null)
+            if (tenantString.ToLower() == "root")
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid Tenant String.");
-            }
-            else
-            {
-                userData = userRepository.Find(user => user.UserName == userName && user.TenantId == tenantData.Id).FirstOrDefault();
+                userData = userRepository.Find(user => user.UserName == userName && user.Role.Name == "Product Suite Administrator").FirstOrDefault();
                 if (userData == null)
                 {
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid User Name.");
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, new TenantUserDTO 
+                    return Request.CreateResponse(HttpStatusCode.OK, new TenantUserDTO
                     {
-                        TenantString = tenantData.TenantString,
-                        TenantName = tenantData.Name,
-                        TenantLogoUrl = tenantData.LogoUrl,
+                        TenantString = "",
+                        TenantName = "",
+                        TenantLogoUrl = "",
                         UserName = userData.Name,
                         UserEmail = userData.Email,
                         UserLogoUrl = userData.LogoUrl,
                         UserRole = roleRepository.Find(role => role.Id == userData.RoleId).FirstOrDefault().Name
                     });
+                }
+
+            }
+            else
+            {
+
+                tenantData = tenantRepository.Find(tenant => tenant.TenantString == tenantString).FirstOrDefault();
+                if (tenantData == null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid Tenant String.");
+                }
+                else
+                {
+                    userData = userRepository.Find(user => user.UserName == userName && user.TenantId == tenantData.Id).FirstOrDefault();
+                    if (userData == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid User Name.");
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new TenantUserDTO 
+                        {
+                            TenantString = tenantData.TenantString,
+                            TenantName = tenantData.Name,
+                            TenantLogoUrl = tenantData.LogoUrl,
+                            UserName = userData.Name,
+                            UserEmail = userData.Email,
+                            UserLogoUrl = userData.LogoUrl,
+                            UserRole = roleRepository.Find(role => role.Id == userData.RoleId).FirstOrDefault().Name
+                        });
+                    }
                 }
             }
         }

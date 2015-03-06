@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201502051435203_InitialCreate.Designer.cs">
       <DependentUpon>201502051435203_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503060443113_MakeTenantIdNullableInUser.cs" />
+    <Compile Include="Migrations\201503060443113_MakeTenantIdNullableInUser.Designer.cs">
+      <DependentUpon>201503060443113_MakeTenantIdNullableInUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlatformDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201502051435203_InitialCreate.resx">
       <DependentUpon>201502051435203_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503060443113_MakeTenantIdNullableInUser.resx">
+      <DependentUpon>201503060443113_MakeTenantIdNullableInUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

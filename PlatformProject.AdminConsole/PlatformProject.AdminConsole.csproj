@@ -78,9 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\Controllers\LoginController.js" />
     <Content Include="app\Controllers\TenantAdminController.js" />
     <Content Include="app\Controllers\TenantController.js" />
     <Content Include="app\Controllers\UserController.js" />
+    <Content Include="app\Services\LoginService.js" />
     <Content Include="app\Services\MessageService.js" />
     <Content Include="app\Services\MetaDataService.js" />
     <Content Include="app\Services\RequestService.js" />
@@ -200,6 +202,8 @@
     <Content Include="js\jquery-ui-1.10.3.js" />
     <Content Include="js\jquery-ui-1.10.3.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\ngStorage.js" />
+    <Content Include="js\npm.js" />
     <Content Include="js\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="js\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.js" />
     <Content Include="js\plugins\ckeditor\adapters\jquery.js" />
@@ -489,6 +493,7 @@
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="js\raphael-min.js" />
+    <Content Include="SignIn.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

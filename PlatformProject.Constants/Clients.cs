@@ -23,7 +23,8 @@ namespace PlatformProject.Constants
                 Paths.ImplicitGrantCallBackPathT1, 
                 Paths.ImplicitGrantCallBackPathT2,
                 Paths.ImplicitGrantCallBackPathT3,
-                Paths.ImplicitGrantCallBackPathT4
+                Paths.ImplicitGrantCallBackPathT4,
+                Paths.ImplicitGrantCallBackPathT5
            }
         };
 
