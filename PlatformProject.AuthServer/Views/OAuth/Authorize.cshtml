@@ -6,7 +6,7 @@
     var identity = ticket != null ? ticket.Identity : null;
     var scopes = (Request.QueryString.Get("scope") ?? "").Split(' ');
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Authorize</title>
@@ -47,5 +47,112 @@
     </form>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Authorize</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/authserver.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/index.html" class="navbar-brand">99X Product Suite</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Help">Help</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <br />
+
+        <div class="bs-docs-section">
+            <div class="row">
+                <div class="col-lg-12" align="center">
+                    <div class="outter"><img src="@ViewBag.UserLogoUrl" class="image-circle" /></div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <form class="form-horizontal" method="POST">
+                            <fieldset>
+                                <legend>
+                                    Hi <strong>@identity.Name</strong>, <span>Application want to access the following on your behalf</span>
+                                </legend>
+                                <div class="form-group">
+                                    <ul class="scopelist">
+                                        @foreach (var scope in scopes)
+                                        {
+                                            <li class="scope">@scope</li>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+
+                                        <input type="submit" class="btn btn-default" name="submit.Login" value="Not @identity.Name ?" />
+                                        <input type="submit" class="btn btn-primary" name="submit.Grant" value="Grant" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <br />
+
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <p>Token Server is a part of <a href="http://www.99xtechnology.com" rel="nofollow">99X Product Suite</a>. Developed by <a href="http://www.99xtechnology.com" rel="nofollow">99X Technology</a>.</p>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="~/Scripts/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

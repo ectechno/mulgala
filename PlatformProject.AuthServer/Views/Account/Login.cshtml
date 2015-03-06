@@ -9,45 +9,119 @@
     var authentication = Context.GetOwinContext().Authentication;
 }
 
+
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <title>Login</title>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Sign In</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/authserver.css" rel="stylesheet" />
 </head>
+
 <body>
-    <form method="POST">
+
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="row login_box">
-                <div class="col-md-12 col-xs-12" align="center">
+            <div class="navbar-header">
+                <a href="/index.html" class="navbar-brand">99X Product Suite</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Help">Help</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <br />
+
+        <div class="bs-docs-section">
+            <div class="row">
+                <div class="col-lg-12" align="center">
                     <div class="outter"><img src="@ViewBag.TenantLogoUrl" class="image-circle" /></div>
-                    <h1>Hi Guest</h1>
-                    <span>Please Sign In</span>
                 </div>
+            </div>
 
-                <div class="col-md-12 col-xs-12 login_control">
 
-                    <div class="control">
-                        <div class="label">User Name</div>
-                        <input type="text" class="form-control" id="username" name="username" />
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <form class="form-horizontal" method="POST">
+                            <fieldset>
+                                <legend>Hi Guest, Please sign in</legend>
+                                <div class="form-group">
+                                    <label for="username" class="col-lg-2 control-label">User Name</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="User Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-lg-2 control-label">Password</label>
+                                    <div class="col-lg-10">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                        @*<div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember Me
+                                            </label>
+                                        </div>*@
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="reset" class="btn btn-default">Cancel</button>
+                                        @*<button type="submit" class="btn btn-primary" name="submit.Signin">Sign In</button>*@
+                                        <input type="submit" class="btn btn-primary" name="submit.Signin" value="Sign In" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
-
-                    <div class="control">
-                        <div class="label">Password</div>
-                        <input type="password" class="form-control" id="password" name="password" />
-                    </div>
-                    <div align="center">
-                        <input type="submit" class="btn btn-orange" name="submit.Signin" value="Sign In" />
-                    </div>
-
                 </div>
 
             </div>
         </div>
-    </form>
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+        <br />
+
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <p>Token Server is a part of <a href="http://www.99xtechnology.com" rel="nofollow">99X Product Suite</a>. Developed by <a href="http://www.99xtechnology.com" rel="nofollow">99X Technology</a>.</p>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="~/Scripts/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

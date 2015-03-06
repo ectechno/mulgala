@@ -159,7 +159,7 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
                 GetUserDataUsingToken();
 
             }
-            window.open(uri, 'Authorize', 'width=640,height=760');
+            window.open(uri, 'Authorize', 'width=480,height=640');
 
 
         }

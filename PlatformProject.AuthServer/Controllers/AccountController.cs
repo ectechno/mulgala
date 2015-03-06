@@ -36,6 +36,7 @@ namespace PlatformProject.AuthServer.Controllers
             if (currentTenant != null)
             {
                 ViewBag.TenantLogoUrl = currentTenant.LogoUrl;
+                ViewBag.TenantName = currentTenant.Name;
             }
 
             //To-Do : Add validation for the tenant like null validation ..etc
