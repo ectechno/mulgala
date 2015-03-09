@@ -65,7 +65,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 Role = user.Role.Name,
                 Tenant = user.Tenant.Name,
                 RoleId=user.RoleId,
-                TenantId=user.TenantId,
+                TenantId=user.TenantId.GetValueOrDefault(),
                 UserName=user.UserName,
                 Password=user.Password
             });
@@ -106,7 +106,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                     LogoUrl = user.LogoUrl,
                     Enable = user.Enable,
                     Role = roleRepository.GetByID(user.RoleId).Name,
-                    Tenant = tenantRepository.GetByID(user.TenantId).Name
+                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name
                 });
                 return response;
             }
@@ -146,7 +146,7 @@ namespace PlatformProject.ProvisioningServer.Controllers
                     LogoUrl = user.LogoUrl,
                     Enable = user.Enable,
                     Role = roleRepository.GetByID(user.RoleId).Name,
-                    Tenant = tenantRepository.GetByID(user.TenantId).Name
+                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name
                 });
                 return response;
             }

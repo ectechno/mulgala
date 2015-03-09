@@ -23,6 +23,7 @@ namespace PlatformProject.Data
         {
             context.Roles.AddOrUpdate(
                 role => role.Name,
+                new Role {Id = 0, Name = "Product Suite Administrator"},
                 new Role { Id = 0, Name = "Administrator" },
                 new Role { Id = 0, Name = "User" }
                 );
@@ -81,13 +82,35 @@ namespace PlatformProject.Data
             context.SaveChanges();
         }
 
+        private void AddProductSuiteAdmin(PlatformDBContext context) 
+        {
+            context.Users.AddOrUpdate(
+                user => user.UserName,
+                new User()
+                {
+                    Id = 0,
+                    Name = "Product Suite Administrator",
+                    UserName = "psadmin",
+                    Password = "psadmin",
+                    LogoUrl = "http://localhost:21681/Images/User/Logo/admin.png",
+                    //TenantId = context.Tenants.FirstOrDefault(tenant => tenant.TenantString == "sony").Id,
+                    RoleId = context.Roles.FirstOrDefault(role => role.Name == "Product Suite Administrator").Id,
+                    Email = "admin@productsuite.com",
+                    Enable = true,
+                    CreatedDateTime = DateTime.Now,
+                    UpdatedDateTime = DateTime.Now
+                });
+            context.SaveChanges();
+
+        }
+
         private void AddUsers(PlatformDBContext context)
         {
             context.Users.AddOrUpdate(
                 user => user.UserName,
                 new User()
                 {
-                    Id = 1,
+                    Id = 0,
                     Name = "Oliver Queen",
                     UserName = "Oliver",
                     Password = "oli@queen",
@@ -101,7 +124,7 @@ namespace PlatformProject.Data
                 },
                 new User()
                 {
-                    Id = 2,
+                    Id = 0,
                     Name = "Sara Lance",
                     UserName = "Sara",
                     Password = "sara@lance",
@@ -115,7 +138,7 @@ namespace PlatformProject.Data
                 },
                 new User()
                 {
-                    Id = 3,
+                    Id = 0,
                     Name = "Sony Admin",
                     UserName = "soadmin",
                     Password = "admin",
@@ -129,7 +152,7 @@ namespace PlatformProject.Data
                 },
                 new User()
                 {
-                    Id = 4,
+                    Id = 0,
                     Name = "Sony User",
                     UserName = "souser",
                     Password = "user",
@@ -143,7 +166,7 @@ namespace PlatformProject.Data
                 },
                 new User()
                 {
-                    Id = 5,
+                    Id = 0,
                     Name = "Samsung Admin",
                     UserName = "saadmin",
                     Password = "admin",
@@ -157,7 +180,7 @@ namespace PlatformProject.Data
                 },
                 new User()
                 {
-                    Id = 6,
+                    Id = 0,
                     Name = "Samsung User",
                     UserName = "sauser",
                     Password = "user",
@@ -177,6 +200,7 @@ namespace PlatformProject.Data
         protected override void Seed(PlatformDBContext context)
         {
             AddRoles(context);
+            AddProductSuiteAdmin(context);
             AddTenants(context);
             AddUsers(context);
         }
