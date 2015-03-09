@@ -56,7 +56,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
         var promiseGet = loginService.getUserData($scope.AccessToken);
         promiseGet.then(function (p1) {
             $scope.obj = p1.data;
-            $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
+            $scope.uri = 'http://localhost:44552/api/tenants/root/users/' + $scope.obj[0].Value;
             loadUserData($scope.uri);
             if ($scope.obj[2].Value == 'Administrator') {
                 //todo
@@ -77,7 +77,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
             'state': nonce,
             'scope': 'bio notes',
             'response_type': 'token',
-            'tenant': 'Sony'
+            'tenant': ''
         });
 
         window.oauth = {};
@@ -114,7 +114,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
             GetUserDataUsingToken();
 
         }
-        window.open(uri, 'Authorize', 'width=640,height=760');
+        window.open(uri, 'Authorize', 'width=480,height=640');
             
     };
         
