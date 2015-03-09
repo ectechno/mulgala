@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.DTO", "Plat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.StarterKit", "PlatformProject.StarterKit\PlatformProject.StarterKit.csproj", "{86F7D54D-D12C-4FC1-AF61-39A602BB325F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformProject.TenantAdminConsole", "PlatformProject.TenantAdminConsole\PlatformProject.TenantAdminConsole.csproj", "{7C1AA0B0-5DEE-440D-802F-D0F4C0967C30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{86F7D54D-D12C-4FC1-AF61-39A602BB325F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F7D54D-D12C-4FC1-AF61-39A602BB325F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F7D54D-D12C-4FC1-AF61-39A602BB325F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1AA0B0-5DEE-440D-802F-D0F4C0967C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1AA0B0-5DEE-440D-802F-D0F4C0967C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1AA0B0-5DEE-440D-802F-D0F4C0967C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1AA0B0-5DEE-440D-802F-D0F4C0967C30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

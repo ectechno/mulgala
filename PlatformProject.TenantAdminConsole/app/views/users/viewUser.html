@@ -1,0 +1,42 @@
+﻿<div>
+
+
+    <div class="bs-docs-section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h1 id="forms">Edit User</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="well bs-component">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            
+                            <div class="form-group">
+                                <label for="inputUser" class="col-lg-2 control-label">User</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputUser" placeholder="User" ng-model="user.name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="button" class="btn btn-default" ng-click="goBack()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="update()">Update</button>
+                                    <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</div>
