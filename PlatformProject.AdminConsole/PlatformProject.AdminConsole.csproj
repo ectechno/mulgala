@@ -196,9 +196,6 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\dashboard.js" />
-    <Content Include="js\dialog\dialogs.min.css" />
-    <Content Include="js\dialog\dialogs.min.js" />
-    <Content Include="js\dialog\ui-bootstrap-tpls-0.11.2.min.js" />
     <Content Include="js\jquery-ui-1.10.3.js" />
     <Content Include="js\jquery-ui-1.10.3.min.js" />
     <Content Include="js\jquery.min.js" />
