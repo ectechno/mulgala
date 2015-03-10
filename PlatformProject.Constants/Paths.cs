@@ -26,6 +26,7 @@ namespace PlatformProject.Constants
         public const string ImplicitGrantCallBackPathT3 = "http://toshiba.localhost:9000/SignIn";
         public const string ImplicitGrantCallBackPathT4 = "http://localhost:50680/SignIn.html";
         public const string ImplicitGrantCallBackPathT5 = "http://localhost:40838/SignIn.html";
+        public const string ImplicitGrantCallBackPathT6 = "http://localhost:23657/SignIn.html";
               
         /// <summary>
         /// AuthorizationCodeGrant project should be running on this URL.

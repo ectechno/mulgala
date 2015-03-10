@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\services\loginService.js" />
     <Content Include="scripts\angular\angular-animate.min.js.map" />
     <Content Include="scripts\angular\angular-aria.min.js.map" />
     <Content Include="scripts\angular\angular-cookies.min.js.map" />
@@ -868,6 +870,9 @@
     <Content Include="scripts\bootstrap\js\npm.js" />
     <Content Include="scripts\jquery\jquery.min.js" />
     <None Include="scripts\_references.js" />
+    <Content Include="scripts\ngStorage.js" />
+    <Content Include="scripts\npm.js" />
+    <Content Include="SignIn.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
