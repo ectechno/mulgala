@@ -21,3 +21,4 @@
 /// <reference path="../app/services/loginservice.js" />
 /// <reference path="ngstorage.js" />
 /// <reference path="npm.js" />
+/// <reference path="../app/services/tenantservice.js" />

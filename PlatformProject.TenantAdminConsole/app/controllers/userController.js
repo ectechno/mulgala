@@ -1,27 +1,40 @@
-﻿mainApp.controller('userController', ['$scope', '$rootScope','userService',
-    function ($scope, $rootScope, userService) {
-
+﻿mainApp.controller('userController', ['$scope', '$rootScope','userService','tenantService',
+    function ($scope, $rootScope, userService,tenantService) {
+            $rootScope.tId = '';
             $scope.tenantUsers = [];
-            $scope.users = userService.query(function () {
-            count = 0;
 
-            for (x = 0; x < $scope.users.length;x++){
-                if (($rootScope.subDomain).toLowerCase()===($scope.users[x].tenant).toLowerCase()) {
-                    $scope.tenantUsers[count] = $scope.users[x];
-                    count++;
+            $scope.tenants = tenantService.query(function () {
+                for (x = 0; x < $scope.tenants.length;x++){
+                    if (($rootScope.subDomain).toLowerCase() === ($scope.tenants[x].tenantString).toLowerCase()) {
+                        $rootScope.tId = $scope.tenants[x].id;
+                        break;
+                    }
                 }
-            }
+            });
+
+            $scope.users = userService.query(function () {
+                count = 0;
+
+                for (x = 0; x < $scope.users.length; x++) {
+                    if ($scope.users[x].tenant!=null) {
+                       if (($rootScope.subDomain).toLowerCase()===($scope.users[x].tenant).toLowerCase()) {
+                            $scope.tenantUsers[count] = $scope.users[x];
+                            count++;
+                       }
+                   }
+               }
+                
+              
         });
                  
         $scope.new = function () {
             window.location = '#/users/new';
         };
-
-    }
+     }
 ]);
 
-mainApp.controller('userDetailController', ['$scope','$routeParams', 'userService',
-    function ($scope,$routeParams, userService) {
+mainApp.controller('userDetailController', ['$scope','$rootScope','$routeParams', 'userService',
+    function ($scope,$rootScope, $routeParams, userService) {
 
         if (isNaN($routeParams.id)) {
             // Create a new item
@@ -45,8 +58,9 @@ mainApp.controller('userDetailController', ['$scope','$routeParams', 'userServic
         };
 
         $scope.save = function () {
+            $scope.user.TenantId = $rootScope.tId;
           
-             $scope.user.$save(function () {
+            $scope.user.$save(function () {
                 window.location.hash = '#/users';
             });
         };
@@ -70,6 +84,5 @@ mainApp.controller('userDetailController', ['$scope','$routeParams', 'userServic
                 window.location.hash = "#/users";
             });
         };
-
-    }
+     }
 ]);

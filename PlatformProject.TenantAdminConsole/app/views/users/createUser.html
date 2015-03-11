@@ -1,98 +1,95 @@
 ﻿<div>
-
-
-    <div class="bs-docs-section">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="page-header">
-                    <h1 id="forms">New User</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="well bs-component">
-                    <form name="createUser" class="form-horizontal" method="POST">
-                        <fieldset>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.name.$invalid]">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="user.Name" autofocus required>
-                                    <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.email.$invalid]">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="user.Email" required>
-                                    <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                               <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.logo.$invalid]">
-                                    <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="user.LogoUrl" required>
-                                    <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.tenant.$invalid]">
-                                    <input type="text" class="form-control" id="tenant" name="tenant" placeholder="Tenant Id" ng-model="user.TenantId" required>
-                                    <p ng-show="createUser.tenant.$invalid && !createUser.tenant.$pristine" style="color:red;">tenant is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10">
-                                    <select id="role" name="role" ng-model="user.RoleId" class="form-control"  required>
-                                        <option value="">Role</option>
-                                        <option value="1">Administrator</option>
-                                        <option value="2">User</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.username.$invalid]">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.UserName" required>
-                                    <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.password.$invalid]">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.Password" required>
-                                    <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.cPassword.$invalid]">
-                                    <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
-                                    <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="radio" id="enable" name="enable" value="true" ng-model="user.Enable" style="margin-left:15px" ng-required="!user.Enable" />Enable
-                                <input type="radio" id="enable" name="enable" value="false" ng-model="user.Enable" style="margin-left:96px" ng-required="!user.Enable" />Disable
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
-                                    <button type="button" class="btn btn-default" ng-click="goBack()" style="margin-left:-87px">Cancel</button>
-                                    <button type="submit" class="btn btn-primary" ng-click="save()" style="margin-left:9px" ng-disabled="!createUser.$valid">Save</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+    <br />
+    <h2 ng-show="!isLogged">Please Login to Continue</h2>
+    <h2 ng-show="!isAdmin && isLogged">You do not have permission to access data</h2>
+    
+    <div ng-show="isAdmin">
+        <div class="bs-docs-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h1 id="forms">New User</h1>
+                    </div>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <form name="createUser" class="form-horizontal" method="POST">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.name.$invalid]">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="user.Name" autofocus required>
+                                        <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.email.$invalid]">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="user.Email" required>
+                                        <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.logo.$invalid]">
+                                        <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="user.LogoUrl" required>
+                                        <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <select id="role" name="role" ng-model="user.RoleId" class="form-control" required>
+                                            <option value="">Role</option>
+                                            <option value="1">Administrator</option>
+                                            <option value="2">User</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.username.$invalid]">
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.UserName" required>
+                                        <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.password.$invalid]">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.Password" required>
+                                        <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10" ng-class="{true: 'error'}[submitted && createUser.cPassword.$invalid]">
+                                        <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
+                                        <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="radio" id="enable" name="enable" value="true" ng-model="user.Enable" style="margin-left:15px" ng-required="!user.Enable" />Enable
+                                    <input type="radio" id="enable" name="enable" value="false" ng-model="user.Enable" style="margin-left:96px" ng-required="!user.Enable" />Disable
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="button" class="btn btn-default" ng-click="goBack()" style="margin-left:-87px">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="save()" style="margin-left:9px" ng-disabled="!createUser.$valid">Save</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
 
-</div>
+    </div>

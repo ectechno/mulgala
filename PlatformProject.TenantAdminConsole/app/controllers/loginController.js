@@ -1,10 +1,10 @@
 ﻿mainApp.controller('loginController', function ($scope, $rootScope, $window, loginService, $localStorage) {
    
-    $scope.isAdmin = false;
-    $scope.isUser = false;
+    $rootScope.isAdmin = false;
     $scope.obj = [];
     $scope.uri = '';
     $scope.AccessToken = '';
+    $rootScope.isLogged = false;
     $rootScope.fullName = '';
     $rootScope.userImage = '';
 
@@ -48,6 +48,7 @@
             $scope.urlData = p1.data;
             $rootScope.fullName = $scope.urlData.userName;
             $rootScope.userImage = $scope.urlData.userLogoUrl;
+            $rootScope.tenantImage = $scope.urlData.tenantLogoUrl;
             $rootScope.isLogged = true;
         },
          function (errorPl) {
@@ -61,10 +62,12 @@
         promiseGet.then(function (p1) {
             $scope.obj = p1.data;
             $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
-           
+            loadUserData($scope.uri);
+
             if ($scope.obj[2].Value == 'Administrator') {
-                loadUserData($scope.uri);
+                $rootScope.isAdmin = true;
             }
+           
         },
          function (errorPl) {
              console.log('failure loading token data', errorPl);
@@ -126,8 +129,11 @@
         $scope.logout = function () {
             console.log($localStorage.token);
             window.localStorage.clear();
+            $rootScope.isLogged = false;
             $rootScope.fullName = '';
             $rootScope.userImage = '';
+            $rootScope.tId = '';
+            $rootScope.isAdmin = false;
             $rootScope.subDomain = '';
             $window.location.reload();
         };

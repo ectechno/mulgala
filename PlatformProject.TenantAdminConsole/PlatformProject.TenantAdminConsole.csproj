@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\services\loginService.js" />
+    <Content Include="app\services\tenantService.js" />
     <Content Include="scripts\angular\angular-animate.min.js.map" />
     <Content Include="scripts\angular\angular-aria.min.js.map" />
     <Content Include="scripts\angular\angular-cookies.min.js.map" />
