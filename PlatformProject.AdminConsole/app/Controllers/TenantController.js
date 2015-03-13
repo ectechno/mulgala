@@ -113,6 +113,7 @@
             $scope.etId = res.id;
             $scope.etName = res.name;
             $scope.etString = res.tenantString;
+            $scope.currentTenant = res.tenantString;
             $scope.etLogo = res.logoUrl;
             if(res.enable){
                 $scope.etEnable = "true";
@@ -156,6 +157,7 @@
         $scope.isEdit = true;
         $scope.Message = "";
         $scope.get(Id);
+        
     };
 
     $scope.createNew = function () {
@@ -210,26 +212,16 @@
 
     }
 
-    /*
-     * check there is a subdomain available
-     * 
-     */
-
-
-
-    $scope.checkSubdomainAvailable = function () {
-        console.log("check this subdomain " + $scope.tString);
-        
-        $scope.isTenantInUse = false;
+    function findTenantStrings(tenantString) {
         var provisioningUrl = "http://localhost:44552/api/tenantdetails/";
         //if there is value, check. otherwise return
-        if ($scope.tString) {
+        if (tenantString) {
             //if there is a value, check it with api call
-            console.log("data to check "+$scope.tString);
-            var apiUrl = provisioningUrl + $scope.tString;
+            console.log("data to check " + tenantString);
+            var apiUrl = provisioningUrl + tenantString;
 
             var valid = isSubdomainValid(apiUrl);
-            console.log("subdomain result "+valid)
+            console.log("subdomain result " + valid)
             if (valid == false) {
                 //if not valid, we donot have a tenant there
                 //is tenant in use = false
@@ -244,16 +236,32 @@
             }
 
 
-        } else{
+        } else {
             //if scope string is undefined just return, there is not tenant
             $scope.isTenantInUse = false;
             return;
         }
-        
     }
 
-  
 
+    /*
+     * check there is a subdomain available
+     * 
+     */
+    
+    $scope.checkSubdomainAvailable = function () {
+               
+        $scope.isTenantInUse = false;
 
+        if($scope.isNew){
+            findTenantStrings($scope.tString);
+        }
 
+        if ($scope.isEdit) {
+            if (($scope.currentTenant).toLowerCase() != ($scope.etString).toLowerCase()) {
+                findTenantStrings($scope.etString);
+            }
+        }
+        
+    }
 }]);

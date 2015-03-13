@@ -6,7 +6,9 @@
     $scope.isDeleted = false;
     $scope.tenantGroup = [];
     $scope.userNames = ['Administrator', 'User'];
-
+    $scope.uSelectedTenant = '';
+    $scope.currentUser = '';
+      
     loadRecords();
     loadTenantRecords();
 
@@ -19,7 +21,7 @@
 
         },
               function (errorPl) {
-                  $log.error('failure loading Users', errorPl);
+                  console.log('failure loading Users', errorPl);
               });
     };
 
@@ -98,13 +100,14 @@
             window.location.href = "http://localhost:40838/index.html/#/UserManagement";
 
         } else { //Else Edit the record
+          
             var promisePut = UserService.updateUser($scope.uId, user);
             $scope.isEdited = true;
             $scope.isCreated = false;
             $scope.isDeleted = false;
             promisePut.then(function (pl) {
-                loadRecords();
-                window.location.href = "http://localhost:40838/index.html/#/UserManagement";
+               loadRecords();
+               // window.location.href = "http://localhost:40838/index.html/#/UserManagement";
             }, function (err) {
                 console.log("Err" + err);
             });
@@ -166,6 +169,7 @@
             $scope.uTenant = res.tenantId;
             $scope.uSelectedTenant = findTenantName(res.tenantId);
             $scope.username = res.userName;
+            $scope.currentUser = res.userName;
             $scope.uPassword = res.password;
             $scope.cPassword = res.password;
             $scope.isNew = false;
@@ -214,7 +218,8 @@
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.isEdit = false;
-        $scope.Message = "";
+        $scope.currentUser = '';
+        $scope.username = '';
     }
 
 
@@ -229,7 +234,35 @@
         $scope.isNew = false;
         $scope.isFormMode = false;
         $scope.isEdit = false;
-        window.location.href = "http://localhost:40838/index.html?#/UserManagement"
+        $scope.isUsernameInUse = false;
+        //window.location.href = "http://localhost:40838/index.html?#/UserManagement"
     };
+
+    function findUserNames() {
+        if ($scope.uSelectedTenant != '') {
+            for (x = 0; x < $scope.Users.length; x++) {
+                if ($scope.Users[x].tenant == $scope.uSelectedTenant) {
+                    if (($scope.Users[x].userName).toLowerCase() == ($scope.username).toLowerCase()) {
+                        $scope.isUsernameInUse = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    $scope.isUsernameAvailable = function () {
+        $scope.isUsernameInUse = false;
+
+        if($scope.isNew){
+            findUserNames();
+        }
+
+        if($scope.isEdit){
+         if (($scope.currentUser).toLowerCase() != ($scope.username).toLowerCase()) {
+             findUserNames();
+         }
+      }
+    }
 
 }]);

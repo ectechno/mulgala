@@ -59,7 +59,9 @@ angular.module('admin').service('UserService',['$http', 'RequestService', functi
                 "LogoUrl": user.uLogo,
                 "RoleId":user.uRole,
                 "TenantId":user.uTenant,
-                "Enable": user.uEnable
+                "Enable": user.uEnable,
+                "UserName": user.username,
+                "Password":user.uPassword
             };
             var status = RequestService.put(request, params);
             return status;

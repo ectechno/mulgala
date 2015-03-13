@@ -100,8 +100,9 @@
             </select>
         </div>
         <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.username.$invalid]">
-            <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="username" required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="username" ng-blur="isUsernameAvailable()" ng-focus="isUsernameInUse = false" required>
             <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
+            <p ng-show="isUsernameInUse && username" style="color:red;">Username is already in use.</p>
         </div>
         <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.password.$invalid]">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="uPassword" required>
@@ -116,7 +117,7 @@
             <input type="radio" id="enable" name="enable" value="false" ng-model="uEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
         </div>
 
-        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createUser.$valid" />
+        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createUser.$valid || isUsernameInUse" />
         <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
             
     </form>

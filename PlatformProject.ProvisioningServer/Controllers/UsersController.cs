@@ -130,6 +130,8 @@ namespace PlatformProject.ProvisioningServer.Controllers
                 exUser.Enable = userDTO.Enable;
                 exUser.RoleId = userDTO.RoleId;
                 exUser.TenantId = userDTO.TenantId;
+                exUser.UserName = userDTO.UserName;
+                exUser.Password = userDTO.Password;
                 exUser.UpdatedDateTime = DateTime.Now;
 
                 //, Note: Updater should be the current logged in user, It will be taken from the token
@@ -146,7 +148,9 @@ namespace PlatformProject.ProvisioningServer.Controllers
                     LogoUrl = user.LogoUrl,
                     Enable = user.Enable,
                     Role = roleRepository.GetByID(user.RoleId).Name,
-                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name
+                    Tenant = tenantRepository.GetByID(user.TenantId.GetValueOrDefault()).Name,
+                    UserName=user.UserName,
+                    Password=user.Password
                 });
                 return response;
             }

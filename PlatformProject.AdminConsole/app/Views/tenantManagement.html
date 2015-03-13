@@ -128,9 +128,10 @@
                             <p ng-show="editTenant.etenantName.$invalid && !editTenant.etenantName.$pristine" style="color:red;">Tenant name is required.</p>
                         </div>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && editTenant.etenantString.$invalid]">
-                            <input type="text" class="form-control" id="etenantString" name="etenantString" placeholder="Tenant String" ng-model="etString"  readonly required>
+                            <input type="text" class="form-control" id="etenantString" name="etenantString" placeholder="Tenant String" ng-model="etString" ng-blur='checkSubdomainAvailable()' ng-focus="isTenantInUse=false" required>
                             <p ng-show="editTenant.etenantString.$invalid && !editTenant.etenantString.$pristine" style="color:red;">Tenant string is required.</p>
-                            </div>
+                            <p ng-show="isTenantInUse && etString" style="color:red;">Tenant is already in use.</p>
+                        </div>
                         <div class="form-group" ng-class="{true: 'error'}[submitted && editTenant.elogo.$invalid]">
                             <input type="url" class="form-control" id="elogo" name="elogo" placeholder="Logo URL" ng-model="etLogo" required>
                             <p ng-show="editTenant.elogo.$invalid && !editTenant.elogo.$pristine" style="color:red;">Logo URL is required.</p>
@@ -140,7 +141,7 @@
                             <input type="radio" id="etenable" name="etenable" value="false" ng-model="etEnable" style="margin-left:62px" ng-required="!etEnable" />Disable
                         </div>
 
-                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!editTenant.$valid " />
+                        <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!editTenant.$valid || isTenantInUse " />
                         <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="cancel();" />
                     </form>
                     
