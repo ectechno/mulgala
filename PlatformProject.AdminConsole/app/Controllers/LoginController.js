@@ -44,6 +44,8 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
             $scope.urlData = p1.data;
             $rootScope.fullName = $scope.urlData.userName;
             $rootScope.userImage = $scope.urlData.userLogoUrl;
+            $rootScope.role = $scope.urlData.userRole;
+            $rootScope.email = $scope.urlData.userEmail;
             $rootScope.isLogged = true;
         },
          function (errorPl) {
@@ -123,6 +125,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
         window.localStorage.clear();
         $rootScope.fullName = '';
         $rootScope.userImage = '';
+        $rootScope.isLogged = false;
         $window.location.reload();
     };
 

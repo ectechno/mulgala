@@ -29,7 +29,10 @@ app.config(function ($routeProvider) {
             controller: 'tenantAdminController',
             templateUrl: 'app/Views/createAdmin.html'
          })
-       
+        .when('/Profile', {
+           controller: '',
+           templateUrl: 'app/Views/profile.html'
+         })
         .otherwise({ redirectTo: '/dashboard.html' });
 });
 

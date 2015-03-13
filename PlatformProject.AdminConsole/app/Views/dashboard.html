@@ -1,156 +1,161 @@
-﻿<section class="content-header" ng-show="isLogged">
+﻿<section class="content-header">
     <h1>
         Platform Admin Terminal Home
         <small>Control Panel</small>
     </h1>
 </section>
 <!-- Main content -->
-<section class="content" ng-show="isLogged">
-    <div class="row">
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>
-                        Tenant
-                    </h3>
-                    <p>
-                        Management
-                    </p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-ios7-pricetag-outline"></i>
-                </div>
-                <a href="#/TenantManagement" class="small-box-footer">
-                    More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div><!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>
-                        User
-                    </h3>
-                    <p>
-                        Management
-                    </p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-
-                <a href="#/UserManagement" class="small-box-footer">
-                    More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div><!-- ./col -->
-        <!--<div class="col-lg-3 col-xs-6">
-
-                <div class="small-box bg-yellow">
+<section class="content">
+    <div ng-show="!isLogged">
+        <h3>Please Login to Continue</h3>
+    </div>
+    <div ng-show="isLogged">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3>
-                            Licensing
+                            Tenant
                         </h3>
                         <p>
                             Management
                         </p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-ios7-briefcase-outline"></i>
+                        <i class="ion ion-ios7-pricetag-outline"></i>
                     </div>
-
-                    <a href="#/Licensing" class="small-box-footer">
+                    <a href="#/TenantManagement" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
-
+            </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
-
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>
-                            Logs
-                        </h3>
-                        <p>
-                            Traces
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#/Logs" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-
-                <div class="small-box bg-blue">
+                <!-- small box -->
+                <div class="small-box bg-green">
                     <div class="inner">
                         <h3>
                             User
                         </h3>
                         <p>
-                            Statistics
+                            Management
                         </p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#/Statistics" class="small-box-footer">
+
+                    <a href="#/UserManagement" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
+            </div><!-- ./col -->
+            <!--<div class="col-lg-3 col-xs-6">
 
-            <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>
+                                Licensing
+                            </h3>
+                            <p>
+                                Management
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios7-briefcase-outline"></i>
+                        </div>
 
-                <div class="small-box bg-purple">
-                    <div class="inner">
-                        <h3>
-                            System
-                        </h3>
-                        <p>
-                            Health
-                        </p>
+                        <a href="#/Licensing" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
+                </div>
+
+                <div class="col-lg-3 col-xs-6">
+
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>
+                                Logs
+                            </h3>
+                            <p>
+                                Traces
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#/Logs" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                    <a href="#/SystemHealth" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-xs-6">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
 
-                <div class="small-box bg-teal">
-                    <div class="inner">
-                        <h3>
-                            Dark
-                        </h3>
-                        <p>
-                            Launching
-                        </p>
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <h3>
+                                User
+                            </h3>
+                            <p>
+                                Statistics
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#/Statistics" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                    <div class="icon">
-                        <i class="ion ion-ios7-alarm-outline"></i>
-                    </div>
-                    <a href="#/DarkLaunching" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
-            </div>
 
-        </div>-->
-        <!-- Widgets as boxes -->
+                <div class="col-lg-3 col-xs-6">
 
+                    <div class="small-box bg-purple">
+                        <div class="inner">
+                            <h3>
+                                System
+                            </h3>
+                            <p>
+                                Health
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#/SystemHealth" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="col-lg-3 col-xs-6">
+
+                    <div class="small-box bg-teal">
+                        <div class="inner">
+                            <h3>
+                                Dark
+                            </h3>
+                            <p>
+                                Launching
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios7-alarm-outline"></i>
+                        </div>
+                        <a href="#/DarkLaunching" class="small-box-footer">
+                            More info <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>-->
+            <!-- Widgets as boxes -->
+
+   </div>
+  </div>
 </section><!-- /.content -->

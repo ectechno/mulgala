@@ -103,6 +103,7 @@
     <Content Include="app\Views\forms\general.html" />
     <Content Include="app\Views\Licensing.html" />
     <Content Include="app\Views\logs.html" />
+    <Content Include="app\Views\profile.html" />
     <Content Include="app\Views\Statistics.html" />
     <Content Include="app\Views\systemHealth.html" />
     <Content Include="app\Views\tenantManagement.html" />
