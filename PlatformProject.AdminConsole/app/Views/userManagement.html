@@ -117,8 +117,8 @@
                     <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
                 </div>
                 <div class="form-group">
-                    <input type="radio" id="enable" name="enable" value="true" ng-model="uEnable" ng-required="!tEnable" />Enable
-                    <input type="radio" id="enable" name="enable" value="false" ng-model="uEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
+                    <input type="radio" id="enable" name="enable" value="true" ng-model="uEnable" />Enable
+                    <input type="radio" id="enable" name="enable" value="false" ng-model="uEnable" style="margin-left:62px" />Disable
                 </div>
 
                 <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createUser.$valid || isUsernameInUse" />

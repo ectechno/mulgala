@@ -220,6 +220,7 @@
         $scope.isEdit = false;
         $scope.currentUser = '';
         $scope.username = '';
+        $scope.uEnable = "true";
     }
 
 

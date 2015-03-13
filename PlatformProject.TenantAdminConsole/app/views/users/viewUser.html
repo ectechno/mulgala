@@ -21,6 +21,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.name.$invalid]">
+                                        Name
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="user.name" autofocus required>
                                         <p ng-show="viewUser.name.$invalid && !viewUser.name.$pristine" style="color:red;">Name is required.</p>
                                     </div>
@@ -28,6 +29,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.email.$invalid]">
+                                        Email
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="user.email" required>
                                         <p ng-show="viewUser.email.$invalid && !viewUser.email.$pristine" style="color:red;">Email is required.</p>
                                     </div>
@@ -35,6 +37,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.logo.$invalid]">
+                                        Logo URL
                                         <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="user.logoUrl" required>
                                         <p ng-show="viewUser.logo.$invalid && !viewUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
                                     </div>
@@ -42,6 +45,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10">
+                                        Role
                                         <select id="role" name="role" ng-model="user.roleId" class="form-control" required>
                                             <option value="">Role</option>
                                             <option value="1">Administrator</option>
@@ -52,6 +56,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.username.$invalid]">
+                                        Username
                                         <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.userName" required>
                                         <p ng-show="viewUser.username.$invalid && !viewUser.username.$pristine" style="color:red;">Username is required.</p>
                                     </div>
@@ -59,6 +64,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.password.$invalid]">
+                                        Password
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.password" required>
                                         <p ng-show="viewUser.password.$invalid && !viewUser.password.$pristine" style="color:red;">Password is required.</p>
                                     </div>
@@ -66,6 +72,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.cPassword.$invalid]">
+                                        Confirm Password
                                         <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="user.password" placeholder="Confirm Password" pw-check="password" required>
                                         <p ng-show="viewUser.cPassword.$invalid && !viewUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
                                     </div>

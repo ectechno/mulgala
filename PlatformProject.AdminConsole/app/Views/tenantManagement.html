@@ -117,8 +117,8 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="radio" id="tenable" name="tenable" value="true" ng-model="tEnable" ng-required="!tEnable" />Enable
-                    <input type="radio" id="tenable" name="tenable" value="false" ng-model="tEnable" style="margin-left:62px" ng-required="!tEnable" />Disable
+                    <input type="radio" id="tenable" name="tenable" value="true" ng-model="tEnable" />Enable
+                    <input type="radio" id="tenable" name="tenable" value="false" ng-model="tEnable" style="margin-left:62px" />Disable
                 </div>
                 <!-- if there is duplicate tenatn or, there is error in form fill, disable submit button -->
                 <input type="submit" class="btn btn-success btn-lg" value="Submit" ng-click="save();" ng-disabled="!createTenant.$valid || isTenantInUse" />

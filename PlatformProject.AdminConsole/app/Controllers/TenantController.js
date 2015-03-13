@@ -167,7 +167,7 @@
         $scope.isFormMode = true;
         $scope.isNew = true;
         $scope.isEdit = false;
-        $scope.Message = "";
+        $scope.tEnable = "true";
     }
 
     $scope.cancel = function () {
