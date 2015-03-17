@@ -1,0 +1,64 @@
+﻿<section class="content-header">
+    <h1>
+        Create User
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#Dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#UserManagement"><i class="fa fa-bookmark"></i> User Management</a></li>
+        <li class="active">Create User</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div ng-show="!isLogged">
+        <h3>Please Login to Continue</h3>
+    </div>
+    <div ng-show="isLogged">
+        <form name="createUser">
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.name.$invalid]">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="user.Name" autofocus required>
+                <p ng-show="createUser.name.$invalid && !createUser.name.$pristine" style="color:red;">Name is required.</p>
+            </div>
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.email.$invalid]">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="user.Email" required>
+                <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" style="color:red;">Email is required.</p>
+            </div>
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.logo.$invalid]">
+                <input type="url" class="form-control" id="logo" name="logo" placeholder="Logo URL" ng-model="user.LogoUrl" required>
+                <p ng-show="createUser.logo.$invalid && !createUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
+            </div>
+            <div class="form-group">
+                <select id="tenant" name="tenant" ng-model="user.TenantId" class="form-control"  required>
+                    <option value="">Tenant</option>
+                    <option ng-repeat="tenant in tenants" value="{{tenant.id}}">{{tenant.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="role" name="role" ng-model="user.RoleId" class="form-control" required>
+                    <option value="">Role</option>
+                    <option value="1">Administrator</option>
+                    <option value="2">User</option>
+                </select>
+            </div>
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.username.$invalid]">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.UserName" ng-blur="isUsernameAvailable()" ng-focus="isUsernameInUse = false" required>
+                <p ng-show="createUser.username.$invalid && !createUser.username.$pristine" style="color:red;">Username is required.</p>
+                <p ng-show="isUsernameInUse && user.UserName" style="color:red;">Username is already in use.</p>
+            </div>
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.password.$invalid]">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="user.Password" required>
+                <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" style="color:red;">Password is required.</p>
+            </div>
+            <div class="form-group" ng-class="{true: 'error'}[submitted && createUser.cPassword.$invalid]">
+                <input type="password" class="form-control" id="cPassword" name="cPassword" ng-model="cPassword" placeholder="Confirm Password" pw-check="password" required>
+                <p ng-show="createUser.cPassword.$invalid && !createUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
+            </div>
+            <div class="form-group">
+                <input type="radio" id="enable" name="enable" value="true" ng-model="user.Enable" />Enable
+                <input type="radio" id="enable" name="enable" value="false" ng-model="user.Enable" style="margin-left:62px" />Disable
+            </div>
+            <input type="submit" class="btn btn-success btn-lg" value="Create" ng-click="save();" ng-disabled="!createUser.$valid || isUsernameInUse" />
+            <input type="submit" class="btn btn-primary btn-lg" value="Cancel" ng-click="goBack();" />
+        </form>
+    </div>
+</section>

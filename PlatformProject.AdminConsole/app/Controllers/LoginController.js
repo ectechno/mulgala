@@ -1,6 +1,4 @@
-﻿
-app.controller('loginController', function ($scope, $rootScope, $window, loginService, $localStorage) {
-    //app.controller('loginController', function ($scope, $window, loginService, $localStorage) {
+﻿app.controller('loginController', function ($scope, $rootScope, $window, loginService, $localStorage) {
     $rootScope.isLogged = false;
     $scope.isAdmin = false;
     $scope.isUser = false;
@@ -9,8 +7,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
     $scope.AccessToken = '';
     $rootScope.fullName = '';
     $rootScope.userImage = '';
-
-
+    
     function isLocalTokenAvailable() {
         var token = $localStorage.token;
         if (typeof token == 'undefined') {
@@ -19,8 +16,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
            return true;
         }
     }
-
-
+    
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
     var tokenUri = 'http://localhost:21681/OAuth/Token';
     var apiUri = 'http://localhost:48846/api/Me';
@@ -36,8 +32,7 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
         }
         return uri;
     };
-
-
+    
     function loadUserData(uri) {
         var promiseUrl = loginService.getLogoData(uri);
         promiseUrl.then(function (p1) {
@@ -54,25 +49,20 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
     };
 
     function GetUserDataUsingToken() {
-        //send the token and get data
-        var promiseGet = loginService.getUserData($scope.AccessToken);
+        var promiseGet = loginService.getUserData($scope.AccessToken);   //send the token and get data
         promiseGet.then(function (p1) {
             $scope.obj = p1.data;
             $scope.uri = 'http://localhost:44552/api/tenants/root/users/' + $scope.obj[0].Value;
             loadUserData($scope.uri);
-            if ($scope.obj[2].Value == 'Administrator') {
-                //todo
-            }
         },
-         function (errorPl) {
+        function (errorPl) {
              console.log('failure loading token data', errorPl);
-         });
+        });
     }
 
 
     $scope.startApp = function () {
         var nonce = 'my-nonce';
-       
         var uri = addQueryString(authorizeUri, {
             'client_id': '7890ab',
             'redirect_uri': returnUri,
@@ -83,53 +73,31 @@ app.controller('loginController', function ($scope, $rootScope, $window, loginSe
         });
 
         window.oauth = {};
-
-         var LocalTokenAvailable = isLocalTokenAvailable();
-         if (LocalTokenAvailable === true) {
-
+        var LocalTokenAvailable = isLocalTokenAvailable();
+        if (LocalTokenAvailable === true) {
             console.log("local token available");
-      
             $scope.AccessToken = $localStorage.token;
-
-       
-          GetUserDataUsingToken();
-
-      
-
-           } else {
-       
-           console.log("local token not available");
-
-       
-        window.oauth.signin = function (data) {
-            if (data.state !== nonce) {
-                return;
-            }
-                
-           
-            $scope.AccessToken = data.access_token;
-
-          
-              $localStorage.token = data.access_token;
-
-            //take userData with access token
             GetUserDataUsingToken();
+        } else {
+            console.log("local token not available");
+            window.oauth.signin = function (data) {
+                if (data.state !== nonce) {
+                    return;
+                }
+                $scope.AccessToken = data.access_token;
+                $localStorage.token = data.access_token;
+                GetUserDataUsingToken();   //take userData with access token
+            }
+            window.open(uri, 'Authorize', 'width=480,height=640');
+        };
 
-        }
-        window.open(uri, 'Authorize', 'width=480,height=640');
-            
+        $scope.logout = function () {
+            console.log($localStorage.token);
+            window.localStorage.clear();
+            $rootScope.fullName = '';
+            $rootScope.userImage = '';
+            $rootScope.isLogged = false;
+            $window.location.reload();
+        };
     };
-        
-    $scope.logout = function () {
-        console.log($localStorage.token);
-        window.localStorage.clear();
-        $rootScope.fullName = '';
-        $rootScope.userImage = '';
-        $rootScope.isLogged = false;
-        $window.location.reload();
-    };
-
-   
-    };
-
  });

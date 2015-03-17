@@ -21,7 +21,7 @@ angular.module('admin').controller('tenantDetailController', ['$scope', '$routeP
     };
 
     $scope.save = function () {
-        $scope.tenant.Users.Enable = true;
+        $scope.tenant.User.Enable = true;
         $scope.tenant.$save(function () {
             window.location = '#/TenantManagement';
         });
@@ -46,7 +46,6 @@ angular.module('admin').controller('tenantDetailController', ['$scope', '$routeP
    //helper function calls server syncronously
      
     function isSubdomainValid(apiUrl) {
-        
         var request = new XMLHttpRequest();
         request.open('GET', apiUrl, false);  // `false` makes the request synchronous
         request.send(null);
@@ -59,7 +58,6 @@ angular.module('admin').controller('tenantDetailController', ['$scope', '$routeP
             console.log("invalid subdomain");
             return false;
         }
-
     }
 
     function findTenantStrings(tenantString) {

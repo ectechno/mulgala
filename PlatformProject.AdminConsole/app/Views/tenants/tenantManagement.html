@@ -1,0 +1,51 @@
+﻿    <section class="content-header">
+        <h1>
+            Tenant Management
+        </h1>
+        <ol class="breadcrumb" ng-show="!isFormMode">
+            <li><a href="#Dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#TenantManagement"><i class="fa fa-bookmark"></i>Tenant Management</a></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div ng-show="!isLogged">
+            <h3>Please Login to Continue</h3>
+        </div>
+        <div ng-show="isLogged">
+            <div>
+                <a class="btn btn-info" href="#/TenantManagement/CreateTenant">Create New Tenant</a>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Logo</th>
+                        <th>Name</th>
+                        <th>Tenant String</th>
+                        <th>Logo URL</th>
+                        <th>Enable</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="tenant in tenants">
+                    <tr>
+                        <td> <span>{{tenant.id}}</span></td>
+                        <td><span><img src="{{tenant.logoUrl}}" style="height:35px;width:35px" /></span></td>
+                        <td> <span>{{tenant.name}}</span></td>
+                        <td> <span>{{tenant.tenantString}}</span></td>
+                        <td> <span>{{tenant.logoUrl}}</span></td>
+                        <td> <span>{{tenant.enable}}</span></td>
+                        <td> <a class="btn btn-warning" href="/#/TenantManagement/{{tenant.id}}">Modify</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+            
+
+
+
+
