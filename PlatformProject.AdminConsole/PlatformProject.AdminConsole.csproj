@@ -95,6 +95,7 @@
     <Content Include="app\Views\charts\inline.html" />
     <Content Include="app\Views\charts\morris.html" />
     <Content Include="app\Views\createAdmin.html" />
+    <Content Include="app\Views\createTenant.html" />
     <Content Include="app\Views\createUser.html" />
     <Content Include="app\Views\darkLaunching.html" />
     <Content Include="app\Views\dashboard.html" />
@@ -108,6 +109,8 @@
     <Content Include="app\Views\systemHealth.html" />
     <Content Include="app\Views\tenantManagement.html" />
     <Content Include="app\Views\userManagement.html" />
+    <Content Include="app\Views\viewTenant.html" />
+    <Content Include="app\Views\viewUser.html" />
     <Content Include="css\AdminLTE.css" />
     <Content Include="css\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
     <Content Include="css\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
@@ -191,6 +194,7 @@
     <Content Include="index.html" />
     <Content Include="js\angular-cookies.js" />
     <Content Include="js\angular-match.js" />
+    <Content Include="js\angular-resource.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
     <Content Include="js\app.js" />
