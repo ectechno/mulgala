@@ -80,10 +80,12 @@
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-1.9.0.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="js\ngStorage.js" />
     <Content Include="js\npm.js" />
     <Content Include="SignIn.html" />
-    <Content Include="tenantValidate.js" />
+    <Content Include="js\tenantValidate.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -10,16 +10,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
     <title>Welcome to StarterKit</title>
-    <script src="js/angular.js"></script>
-    <script src="js/angular-route.js"></script>
-
-    <!-- do not erase -->
-    <!-- ngStorage is to transfer data to localstorage -->
-    <script src="js/ngStorage.js"></script>
-    <!-- tenantvalidate.js is to validate current tenant is available in the backend -->
-    <script src="tenantValidate.js"></script>
-
-
 </head>
 
 <body ng-controller="loginController" data-ng-init="startApp()">
@@ -34,41 +24,33 @@
                 </button>
                 <a class="navbar-brand" href="#">WINGS PLATFORM</a>
             </div>
-
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li style="cursor: pointer"><a ng-click='logout()'>Logout</a></li>
                 </ul>
-
                 <form class="navbar-form navbar-right">
                     <img src="{{urlData.userLogoUrl}}" imageonload id="userLogo" style="height:50px;" ng-show="isLogged" />
                 </form>
             </div>
         </div>
     </nav>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                    <li><a href="">Profile</a></li>
+                    <!--<li><a href="">Profile</a></li>-->
                 </ul>
-                <ul class="nav nav-sidebar">
+                <!--<ul class="nav nav-sidebar">
                     <li><a href="">Tenant Data</a></li>
                     <li><a href="">Products</a></li>
                     <li><a href="">Product Details</a></li>
-                </ul>
+                </ul>-->
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <!--<h1 class="page-header">Overview</h1>
-                <div>
-                    <p>This is a sample starter project</p>
-                </div>-->
                 <h3 class="sub-header" id="subHeader" ng-show="isLogged" ng-init="obj[0].Value='bug'">Hi <span ng-bind="obj[0].Value"></span></h3>
                 <p id="userData" ng-show="isLogged" ng-init="obj[1].Value='bug'">You are a <span ng-bind="obj[1].Value"></span> user.</p>
                 <img src="{{urlData.tenantLogoUrl}}" imageonload id="imageLogo" style="height:200px; padding-left:378px;" ng-show="isLogged" />
-
                 <h3>Product Details</h3>
                 <p ng-show="isUser">You do not have permission to view product details</p>
                 <div class="table-responsive" ng-show="isAdmin">
@@ -95,11 +77,16 @@
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <!-- ngStorage is to transfer data to localstorage -->
+    <script src="js/ngStorage.js"></script>
+    <!-- tenantvalidate.js is to validate current tenant is available in the backend -->
+    <script src="js/tenantValidate.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script src="js/jquery-1.9.0.js"></script>
     <script src="app/Controllers/loginController.js" type="text/javascript"></script>
     <script src="app/Services/loginService.js" type="text/javascript"></script>
 </body>
-
 </html>

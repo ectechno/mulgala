@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="adminConsole">
 <head>
     <meta charset="utf-8">
@@ -8,91 +7,92 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
     <title>Admin Console</title>
-
-    <!-- Bootstrap core CSS -->
+  
     <link href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="scripts/bootstrap/css/toaster.css" rel="stylesheet" />
 </head>
 
 <body ng-controller="loginController" ng-init="startApp()">
-
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <img src="{{tenantImage}}" style="height:44px;width:45px;margin-top:1px;"/>
-                <a href="/#/home" class="navbar-brand">99X Product Suite</a>
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" id="resources">Resources <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="themes">
-                            <li><a href="/#/users">Users</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" id="products">Products <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="themes">
-                            <li><a href="http://{{subDomain}}.localhost:50680/">Starter Kit</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/Help">Help</a>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><img src="{{userImage}}" style="height:45px;width:45px;margin-top:2px;" /></li>
-                    <li><a href="#">{{fullName}}</a></li>
-                    <li><a ng-click="logout()" href="#"><i class="glyphicon glyphicon-log-out">&nbsp;</i>Log Out</a></li>
-                </ul>
-                
-
-            </div>
+      <div class="navbar navbar-default navbar-fixed-top">
+          <toaster-container toaster-options="{
+                'closeButton': true,
+                'debug': false,
+                'positionClass': 'toast-top-right',
+                'onclick': null,
+                'showDuration': '200',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut'
+              }">
+           </toaster-container>
+           <div class="container">
+                  <div class="navbar-header">
+                      <img src="{{tenantImage}}" style="height:44px;width:45px;margin-top:1px;" />
+                      <a href="/#/home" class="navbar-brand">99X Product Suite</a>
+                      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                  </div>
+                  <div class="navbar-collapse collapse" id="navbar-main">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown" id="resources">Resources <span class="caret"></span></a>
+                              <ul class="dropdown-menu" aria-labelledby="themes">
+                                  <li><a href="/#/users">Users</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown" id="products">Products <span class="caret"></span></a>
+                              <ul class="dropdown-menu" aria-labelledby="themes">
+                                  <li><a href="http://{{subDomain}}.localhost:50680/">Starter Kit</a></li>
+                              </ul>
+                          </li>
+                          <li>
+                              <a href="/Help">Help</a>
+                          </li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                          <li><img src="{{userImage}}" style="height:45px;width:45px;margin-top:2px;" /></li>
+                          <li><a href="#">{{fullName}}</a></li>
+                          <li><a ng-click="logout()" href="#"><i class="glyphicon glyphicon-log-out">&nbsp;</i>Log Out</a></li>
+                      </ul>
+                  </div>
+              </div>
         </div>
-    </div>
-
-    <div class="container">
-
-        <br />
-
-        <div ng-view id="mainView"></div>
-
-        <br />
-
-        <br />
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <p>Admin console is a part of <a href="http://www.99xtechnology.com" rel="nofollow">99X Product Suite</a>. Developed by <a href="http://www.99xtechnology.com" rel="nofollow">99X Technology</a>.</p>
-
+        <div class="container">
+            <br />
+            <div ng-view id="mainView"></div>
+            <br />
+            <br />
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Admin console is a part of <a href="http://www.99xtechnology.com" rel="nofollow">99X Product Suite</a>. Developed by <a href="http://www.99xtechnology.com" rel="nofollow">99X Technology</a>.</p>
+                    </div>
                 </div>
-            </div>
+            </footer>
+        </div>
 
-        </footer>
-
-    </div>
-
-    <script src="Scripts/jquery/jquery.min.js"></script>
-    <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
-    <script src="scripts/angular/angular.js"></script>
-    <script src="scripts/angular/angular-route.js"></script>
-    <script src="scripts/angular/angular-resource.js"></script>
-    <script src="scripts/ngStorage.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/services/userService.js"></script>
-    <script src="app/controllers/userController.js"></script>
-    <script src="app/services/tenantService.js"></script>
-    <script src="app/controllers/loginController.js"></script>
-    <script src="app/services/loginService.js"></script>
+        <script src="Scripts/jquery/jquery.min.js"></script>
+        <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
+        <script src="scripts/angular/angular.js"></script>
+        <script src="scripts/angular/angular-route.js"></script>
+        <script src="scripts/angular/angular-resource.js"></script>
+        <script src="scripts/bootstrap/js/ngStorage.js"></script>
+        <script src="scripts/angular/angular-animate.js"></script>
+        <script src="app/app.js"></script>
+        <script src="scripts/bootstrap/js/toaster.js"></script>
+        <script src="app/services/userService.js"></script>
+        <script src="app/controllers/userController.js"></script>
+        <script src="app/services/tenantService.js"></script>
+        <script src="app/controllers/loginController.js"></script>
+        <script src="app/services/loginService.js"></script>
 </body>
 </html>

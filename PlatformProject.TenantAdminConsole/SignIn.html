@@ -8,9 +8,6 @@
     <script type="text/javascript">
         (function ($) {
             function getFragment() {
-
-                //alert(window.location);
-
                 if (window.location.hash.indexOf("#") === 0) {
                     return parseQueryString(window.location.hash.substr(1));
                 } else {

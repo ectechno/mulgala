@@ -16,10 +16,8 @@
 </head>
 
 <body class="skin-blue" ng-controller="loginController" data-ng-init="startApp()">
-    <!-- header logo: style can be found in header.less -->
     <header class="header">
         <a href="index.html" class="logo">
-            <!-- Add the class icon to your logo image or logo icon to add the margining -->
             WINGS PLATFORM
         </a>
         <toaster-container toaster-options="{
@@ -37,9 +35,8 @@
                 'hideMethod': 'fadeOut'
             }">
         </toaster-container>
-        <!-- Header Navbar: style can be found in header.less -->
+      
         <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
             <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -48,7 +45,6 @@
             </a>
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
                     <!--<li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope"></i>
@@ -57,7 +53,6 @@
                         <ul class="dropdown-menu">
                             <li class="header">You have 4 messages</li>
                             <li>
-
                                 <ul class="menu">
                                     <li>
 
@@ -134,8 +129,7 @@
                         <ul class="dropdown-menu">
                             <li class="header">You have 10 notifications</li>
                             <li>
-
-                                <ul class="menu">
+                               <ul class="menu">
                                     <li>
                                         <a href="#">
                                             <i class="ion ion-ios7-people info"></i> 5 new members joined today
@@ -166,7 +160,6 @@
                             <li class="footer"><a href="#">View all</a></li>
                         </ul>
                     </li>
-
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-tasks"></i>
@@ -175,11 +168,9 @@
                         <ul class="dropdown-menu">
                             <li class="header">You have 9 tasks</li>
                             <li>
-
-                                <ul class="menu">
+                              <ul class="menu">
                                     <li>
-
-                                        <a href="#">
+                                       <a href="#">
                                             <h3>
                                                 Design some buttons
                                                 <small class="pull-right">20%</small>
@@ -192,7 +183,6 @@
                                         </a>
                                     </li>
                                     <li>
-
                                         <a href="#">
                                             <h3>
                                                 Create a nice theme
@@ -206,7 +196,6 @@
                                         </a>
                                     </li>
                                     <li>
-
                                         <a href="#">
                                             <h3>
                                                 Some task I need to do
@@ -220,8 +209,7 @@
                                         </a>
                                     </li>
                                     <li>
-
-                                        <a href="#">
+                                       <a href="#">
                                             <h3>
                                                 Make beautiful transitions
                                                 <small class="pull-right">80%</small>
@@ -240,7 +228,6 @@
                             </li>
                         </ul>
                     </li>-->
-
                     <li class="dropdown user user-menu">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
@@ -255,7 +242,6 @@
                                     <small>Platform Admin</small>
                                 </p>
                             </li>
-
                             <!--<li class="user-body">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">Followers</a>
@@ -267,13 +253,11 @@
                                     <a href="#">Friends</a>
                                 </div>
                             </li>-->
-
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="#/Profile" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                   <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a>-->
                                     <a class="btn btn-default btn-flat" ng-click="logout()">Log out</a>
                                 </div>
                             </li>
@@ -284,12 +268,9 @@
         </nav>
     </header>
     <div class="wrapper row-offcanvas row-offcanvas-left">
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="left-side sidebar-offcanvas">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel" ng-show="isLogged">
+       <aside class="left-side sidebar-offcanvas">
+           <section class="sidebar">
+               <div class="user-panel" ng-show="isLogged">
                     <div class="pull-left image">
                         <img src="{{userImage}}" class="img-circle" alt="User Image" />
                     </div>
@@ -298,7 +279,6 @@
                         <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
                     </div>
                 </div>
-                <!-- search form -->
                 <!--<form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
@@ -307,8 +287,6 @@
                         </span>
                     </div>
                 </form>-->
-                <!-- /.search form -->
-                <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" ng-show="isLogged">
                     <li class="active">
                         <a href="#/Dashboard">
@@ -350,14 +328,10 @@
                             <i class="fa fa-cloud-upload"></i> <span>Dark Launching</span>
                         </a>
                     </li>-->
-
                 </ul>
             </section>
-            <!-- /.sidebar -->
         </aside>
-
         <aside class="right-side" data-ng-view=""></aside>
-
     </div>
 
     <script src="js/jquery.min.js"></script>
@@ -366,12 +340,16 @@
     <script src="js/ngStorage.js"></script>
     <script src="js/angular-resource.js"></script>
     <script src="js/angular-animate.js"></script>
-   
     <script src="js/angular-cookies.js"></script>
+    <script src="js/angular-match.js"></script>
     <script src="app/app.js"></script>
     <script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/raphael-min.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/dashboard.js" type="text/javascript"></script>
+    <script src="js/toaster.js" type="text/javascript"></script>
+    
     <script src="js/plugins/morris/morris.min.js" type="text/javascript"></script>
     <script src="js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
     <script src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
@@ -380,22 +358,13 @@
     <script src="js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
     <script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-    <script src="js/app.js" type="text/javascript"></script>
-    <script src="js/dashboard.js" type="text/javascript"></script>
-    <script src="js/toaster.js" type="text/javascript"></script>
-
-    <script src="app/Services/SharedServices.js" type="text/javascript"></script>
-
+  
     <script src="app/Controllers/UserController.js" type="text/javascript"></script>
     <script src="app/Controllers/TenantController.js" type="text/javascript"></script>
     <script src="app/Controllers/LoginController.js" type="text/javascript"></script>
+   
     <script src="app/Services/LoginService.js" type="text/javascript"></script>
-
     <script src="app/Services/UserService.js" type="text/javascript"></script>
-    <script src="app/Services/MessageService.js" type="text/javascript"></script>
-    <script src="app/Services/RequestService.js" type="text/javascript"></script>
-    <script src="app/Services/MetaDataService.js" type="text/javascript"></script>
     <script src="app/Services/TenantService.js" type="text/javascript"></script>
-    <script src="js/angular-match.js"></script>
-</body>
+  </body>
 </html>

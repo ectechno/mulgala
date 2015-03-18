@@ -6,12 +6,15 @@
     function showNotifications() {
         if ($rootScope.createdUser) {
             toaster.success({ title: "User Creation", body: "Cretaed Successfully" });
+            $rootScope.createdUser = false;
         }
         else if ($rootScope.updatedUser) {
             toaster.success({ title: "User Modification", body: "Updated Successfully" });
+            $rootScope.updatedUser = false;
         }
         else if ($rootScope.deletedUser) {
             toaster.success({ title: "User Deletion", body: "Deleted Successfully" });
+            $rootScope.deletedUser = false;
         }
     }
 }]);

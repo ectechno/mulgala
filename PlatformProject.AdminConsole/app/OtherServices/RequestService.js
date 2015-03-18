@@ -1,5 +1,4 @@
 ﻿//Created by Madushanka on 29/01/2015.
-
 angular.module('admin').service('RequestService', function ($http) {
     var response = {
         isSuccess: false,

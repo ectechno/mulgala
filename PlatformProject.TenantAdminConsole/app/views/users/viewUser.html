@@ -2,7 +2,6 @@
     <br />
     <h2 ng-show="!isLogged">Please Login to Continue</h2>
     <h2 ng-show="!isAdmin && isLogged">You do not have permission to access data</h2>
-    
     <div ng-show="isAdmin">
         <div class="bs-docs-section">
             <div class="row">
@@ -12,13 +11,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-6">
                     <div class="well bs-component">
                         <form name="viewUser" class="form-horizontal">
                             <fieldset>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.name.$invalid]">
                                         Name
@@ -26,7 +23,6 @@
                                         <p ng-show="viewUser.name.$invalid && !viewUser.name.$pristine" style="color:red;">Name is required.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.email.$invalid]">
                                         Email
@@ -34,7 +30,6 @@
                                         <p ng-show="viewUser.email.$invalid && !viewUser.email.$pristine" style="color:red;">Email is required.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.logo.$invalid]">
                                         Logo URL
@@ -42,7 +37,6 @@
                                         <p ng-show="viewUser.logo.$invalid && !viewUser.logo.$pristine" style="color:red;">Logo URL is required.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10">
                                         Role
@@ -53,15 +47,14 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.username.$invalid]">
                                         Username
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.userName" required>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="user.userName" ng-blur="isEditUsernameAvailable()" ng-focus="isUsernameInUse=false" required>
                                         <p ng-show="viewUser.username.$invalid && !viewUser.username.$pristine" style="color:red;">Username is required.</p>
+                                        <p ng-show="isUsernameInUse && user.userName" style="color:red;">Username is already in use.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.password.$invalid]">
                                         Password
@@ -69,7 +62,6 @@
                                         <p ng-show="viewUser.password.$invalid && !viewUser.password.$pristine" style="color:red;">Password is required.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10" ng-class="{true: 'error'}[submitted && viewUser.cPassword.$invalid]">
                                         Confirm Password
@@ -77,16 +69,14 @@
                                         <p ng-show="viewUser.cPassword.$invalid && !viewUser.cPassword.$pristine" style="color:red;">Passwords are not matching.</p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <input type="radio" id="enable" name="enable" ng-value="true" ng-model="user.enable" style="margin-left:15px" ng-required="!user.enable" />Enable
                                     <input type="radio" id="enable" name="enable" ng-value="false" ng-model="user.enable" style="margin-left:96px" ng-required="!user.enable" />Disable
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-lg-10 col-lg-offset-2">
                                         <button type="button" class="btn btn-default" ng-click="goBack()">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" ng-click="update()" ng-disabled="!viewUser.$valid">Update</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="update()" ng-disabled="!viewUser.$valid || isUsernameInUse">Update</button>
                                         <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
                                     </div>
                                 </div>
@@ -94,11 +84,8 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-    </div>
+</div>
 

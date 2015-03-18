@@ -1,17 +1,12 @@
-﻿var mainApp = angular.module('adminConsole', ['ngRoute', 'ngResource', 'ngStorage']);
+﻿var mainApp = angular.module('adminConsole', ['ngRoute', 'ngResource', 'ngStorage', 'ngAnimate', 'toaster']);
 
 mainApp.config(['$routeProvider', function ($routeProvider) {
-
     $routeProvider.
-
-        //Home route
-        when('/home', {
+        when('/home', {    //Home route
             templateUrl: './app/views/home.html',
             controller: 'mainAppController'
         }).
-
-        //Item type routes
-        when('/users', {
+        when('/users', {      //Item type routes
             templateUrl: './app/views/users/listusers.html',
             controller: 'userController'
         }).
@@ -23,21 +18,17 @@ mainApp.config(['$routeProvider', function ($routeProvider) {
             templateUrl: './app/views/users/viewuser.html',
             controller: 'userDetailController'
         }).
-
-        //Default route
-        otherwise({
+        otherwise({   //Default route
             redirectTo: '/home'
         });
 }]);
 
 
 mainApp.controller('mainAppController', function ($scope) {
-
-
 });
 
 
-angular.module('adminConsole').directive('pwCheck', [function () {
+angular.module('adminConsole').directive('pwCheck', [function () {   // Checking whether the content in Password and Confirm Password fields are same
     return {
         require: 'ngModel',
         link: function (scope, elem, attrs, ctrl) {

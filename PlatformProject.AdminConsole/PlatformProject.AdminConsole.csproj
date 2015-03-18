@@ -82,11 +82,11 @@
     <Content Include="app\Controllers\TenantController.js" />
     <Content Include="app\Controllers\UserController.js" />
     <Content Include="app\Services\LoginService.js" />
-    <Content Include="app\Services\MessageService.js" />
-    <Content Include="app\Services\MetaDataService.js" />
-    <Content Include="app\Services\RequestService.js" />
-    <Content Include="app\Services\RestService.js" />
-    <Content Include="app\Services\SharedServices.js" />
+    <Content Include="app\OtherServices\MessageService.js" />
+    <Content Include="app\OtherServices\MetaDataService.js" />
+    <Content Include="app\OtherServices\RequestService.js" />
+    <Content Include="app\OtherServices\RestService.js" />
+    <Content Include="app\OtherServices\SharedServices.js" />
     <Content Include="app\Services\TenantService.js" />
     <Content Include="app\Services\UserService.js" />
     <Content Include="app\Views\charts\empty.html" />
@@ -568,7 +568,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="js\plugins\bootstrap-slider\" />
     <Folder Include="js\plugins\colorpicker\" />
     <Folder Include="js\plugins\fullcalendar\" />

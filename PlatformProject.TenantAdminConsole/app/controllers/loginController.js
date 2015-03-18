@@ -1,5 +1,4 @@
 ﻿mainApp.controller('loginController', function ($scope, $rootScope, $window, loginService, $localStorage) {
-   
     $rootScope.isAdmin = false;
     $scope.obj = [];
     $scope.uri = '';
@@ -7,13 +6,11 @@
     $rootScope.isLogged = false;
     $rootScope.fullName = '';
     $rootScope.userImage = '';
-
-    //get the subdomain from url
-    var full = window.location.host;
+   
+    var full = window.location.host;    //get the subdomain from url
     var parts = full.split('.');
     var sub = parts[0];
     $rootScope.subDomain = sub;
-
 
     function isLocalTokenAvailable() {
         var token = $localStorage.token;
@@ -23,7 +20,6 @@
             return true;
         }
     }
-
 
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
     var tokenUri = 'http://localhost:21681/OAuth/Token';
@@ -40,8 +36,7 @@
         }
         return uri;
     };
-
-
+    
     function loadUserData(uri) {
         var promiseUrl = loginService.getLogoData(uri);
         promiseUrl.then(function (p1) {
@@ -57,8 +52,7 @@
     };
 
     function GetUserDataUsingToken() {
-        //send the token and get data
-        var promiseGet = loginService.getUserData($scope.AccessToken);
+        var promiseGet = loginService.getUserData($scope.AccessToken);    //send the token and get data
         promiseGet.then(function (p1) {
             $scope.obj = p1.data;
             $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
@@ -67,18 +61,15 @@
             if ($scope.obj[2].Value == 'Administrator') {
                 $rootScope.isAdmin = true;
             }
-           
         },
          function (errorPl) {
              console.log('failure loading token data', errorPl);
          });
     }
-
-
+    
     $scope.startApp = function () {
         var nonce = 'my-nonce';
         var subdomain = $rootScope.subDomain;
-
         var uri = addQueryString(authorizeUri, {
             'client_id': '7890ab',
             'redirect_uri': returnUri,
@@ -87,43 +78,23 @@
             'response_type': 'token',
             'tenant': subdomain
         });
-
         window.oauth = {};
-
         var LocalTokenAvailable = isLocalTokenAvailable();
         if (LocalTokenAvailable === true) {
-
             console.log("local token available");
-
             $scope.AccessToken = $localStorage.token;
-
-
             GetUserDataUsingToken();
-
-
-
         } else {
-
             console.log("local token not available");
-
-
             window.oauth.signin = function (data) {
                 if (data.state !== nonce) {
                     return;
                 }
-
-
                 $scope.AccessToken = data.access_token;
-
-
                 $localStorage.token = data.access_token;
-
-                //take userData with access token
-                GetUserDataUsingToken();
-
+                GetUserDataUsingToken();    //take userData with access token
             }
             window.open(uri, 'Authorize', 'width=480,height=640');
-
         };
 
         $scope.logout = function () {
@@ -133,12 +104,10 @@
             $rootScope.fullName = '';
             $rootScope.userImage = '';
             $rootScope.tId = '';
+            $rootScope.tenantUsers = [];
             $rootScope.isAdmin = false;
             $rootScope.subDomain = '';
             $window.location.reload();
         };
-
-
     };
-
 });

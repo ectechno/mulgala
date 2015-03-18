@@ -6,12 +6,15 @@
     function showNotifications() {
         if ($rootScope.created) {
             toaster.success({ title: "Tenant Creation", body: "Cretaed Successfully" });
+            $rootScope.created = false;
         }
         else if ($rootScope.updated) {
             toaster.success({ title: "Tenant Modification", body: "Updated Successfully" });
+            $rootScope.updated = false;
         }
         else if ($rootScope.deleted) {
             toaster.success({ title: "Tenant Deletion", body: "Deleted Successfully" });
+            $rootScope.deleted = false;
         }
     }
 }]);

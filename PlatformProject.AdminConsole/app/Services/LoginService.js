@@ -1,5 +1,4 @@
 ﻿angular.module('admin').service('loginService', function ($http) {
-
     this.getUserData = function (accessToken) {
         var request = $http({
             method: 'get',
@@ -10,7 +9,6 @@
         });
         return request;
     }
-
 
     this.getLogoData = function (logoUri) {
         var request = $http({

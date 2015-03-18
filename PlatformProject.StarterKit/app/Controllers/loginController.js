@@ -11,7 +11,6 @@ app.directive('imageonload', function () {
     };
 });
 
-
 app.controller('loginController', function ($scope, $window, loginService, $localStorage) {
     $scope.isLogged = false;
     $scope.isAdmin = false;
@@ -19,33 +18,26 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
     $scope.obj = [];
     $scope.uri = '';
     $scope.AccessToken = '';
+    
+    /* function to check if there is a
+      local token available
+    */
 
-
-    /**
-     * function to check if there is a
-     * local token available
-     */
     function isLocalTokenAvailable() {
         var token = $localStorage.token;
         if (typeof token == 'undefined') {
-            //then there is no token
-            return false;
+            return false;      //then there is no token
         }else{
-            //there is a token
-            return true;
+            return true;      //there is a token
         }
     }
-
-    //get the subdomain from url
-    var full = window.location.host;
+       
+    var full = window.location.host;    //get the subdomain from url
     var parts = full.split('.');
     var sub = parts[0];
     $scope.subDomain = sub;
 
-
     var authorizeUri = 'http://localhost:21681/OAuth/Authorize';
-   // var tokenUri = 'http://localhost:21681/OAuth/Token';
-   // var apiUri = 'http://localhost:48846/api/Me';
     var returnUri = 'http://' + $scope.subDomain + '.localhost:50680/SignIn.html';
     var productApiUri = "http://localhost:48846/api/Products";
     var productOneUri = "http://localhost:48846/api/Products/1";
@@ -60,8 +52,7 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
         }
         return uri;
     };
-
-       
+           
     function loadImage(uri) {
         var promiseUrl = loginService.getLogoData(uri);
         promiseUrl.then(function (p1) {
@@ -72,15 +63,10 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
              $log.error('failure loading logo data', errorPl);
          });
     };
-
-
+    
     $scope.startApp = function () {
         var nonce = 'my-nonce';
-        console.log($scope.subDomain + " is your subdomain");
         var subdomain = $scope.subDomain;
-
-        console.log("app is starting for "+subdomain);
-
         var uri = addQueryString(authorizeUri, {
             'client_id': '7890ab',
             'redirect_uri': returnUri,
@@ -89,17 +75,10 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
             'response_type': 'token',
             'tenant': subdomain
         });
-
         window.oauth = {};
 
-
-        /*
-         * Function to get user data using token
-         */
-
-        function GetUserDataUsingToken() {
-            //send the token and get data
-            var promiseGet = loginService.getUserData($scope.AccessToken);
+        function GetUserDataUsingToken() {      // Function to get user data using token
+            var promiseGet = loginService.getUserData($scope.AccessToken);      //send the token and get data
             promiseGet.then(function (p1) {
                 $scope.obj = p1.data;
                 $scope.uri = 'http://localhost:44552/api/tenants/' + $scope.obj[1].Value + '/users/' + $scope.obj[0].Value;
@@ -117,69 +96,41 @@ app.controller('loginController', function ($scope, $window, loginService, $loca
                  console.log('failure loading token data', errorPl);
              });
         }
-
-        //check there is a token in locally
-        //
-        var LocalTokenAvailable = isLocalTokenAvailable();
+                
+        var LocalTokenAvailable = isLocalTokenAvailable();     //check there is a token in locally
         if (LocalTokenAvailable === true) {
-
             console.log("local token available");
-            //TODO:validate token
-            //currently assume it is valid always
-            //if valid use it
-            //get the token from localstorage
+            /*TODO:validate token
+              currently assume it is valid always 
+              if valid use it
+              get the token from localstorage*/
+
             $scope.AccessToken = $localStorage.token;
-
-            //then get user details
-            GetUserDataUsingToken();
-
+            GetUserDataUsingToken();     //then get user details
             //TODO:If not valid token, request new one
-
-
-
         } else {
-            //else we should request a new token
-            console.log("local token not available");
-
-            //requesting a new token
-            window.oauth.signin = function (data) {
+            console.log("local token not available");    //else we should request a new token
+            window.oauth.signin = function (data) {    //requesting a new token
                 if (data.state !== nonce) {
                     return;
                 }
-
-
-                
-                //data is return, we have access token there
-                $scope.AccessToken = data.access_token;
-
-                //save token to localstorage
-                $localStorage.token = data.access_token;
-
-                //take userData with access token
-                GetUserDataUsingToken();
-
+                $scope.AccessToken = data.access_token;      //data is return, we have access token there
+                $localStorage.token = data.access_token;       //save token to localstorage
+                GetUserDataUsingToken();    //take userData with access token
             }
             window.open(uri, 'Authorize', 'width=480,height=640');
-
-
         }
-        /*
-         * Logout function
-         * TODO:remove from logincontroller.js and 
-         * put it in different file
+        
+         /* Logout function
+            TODO:remove from logincontroller.js and 
+            put it in different file
          */
 
         $scope.logout = function () {
-            //delete the token
-            console.log($localStorage.token);
-            //clear all local storage data
-            window.localStorage.clear();
-            //refresh the page
-            $window.location.reload();
+            console.log($localStorage.token);    //delete the token
+            window.localStorage.clear();     //clear all local storage data
+            $window.location.reload();    //refresh the page
         }
-
-
-
     };
 
     function showProducts () {

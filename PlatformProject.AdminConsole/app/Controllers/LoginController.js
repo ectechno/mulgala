@@ -59,8 +59,7 @@
              console.log('failure loading token data', errorPl);
         });
     }
-
-
+    
     $scope.startApp = function () {
         var nonce = 'my-nonce';
         var uri = addQueryString(authorizeUri, {
@@ -100,4 +99,4 @@
             $window.location.reload();
         };
     };
- });
+});
