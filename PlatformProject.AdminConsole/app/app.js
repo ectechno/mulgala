@@ -1,4 +1,4 @@
-﻿var app = angular.module('admin', ['ngRoute','ngResource', 'ngStorage']);
+﻿var app = angular.module('admin', ['ngRoute', 'ngResource', 'ngStorage', 'ngAnimate', 'toaster']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -21,7 +21,7 @@ app.config(function ($routeProvider) {
            templateUrl: 'app/Views/tenants/viewTenant.html'
         })
         .when('/UserManagement', {
-           controller: 'userDetailController',
+           controller: 'userController',
            templateUrl: 'app/Views/users/userManagement.html'
         })
         .when('/UserManagement/CreateUser', {

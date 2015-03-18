@@ -1,11 +1,27 @@
-﻿angular.module('admin').controller('tenantController', ['$scope', '$window', 'TenantService', function ($scope, $window, TenantService) {
+﻿angular.module('admin').controller('tenantController', ['$scope', '$rootScope','toaster','TenantService', function ($scope, $rootScope, toaster, TenantService) {
     $scope.tenants = TenantService.query(function () {
+        showNotifications();
     });
+
+    function showNotifications() {
+        if ($rootScope.created) {
+            toaster.success({ title: "Tenant Creation", body: "Cretaed Successfully" });
+        }
+        else if ($rootScope.updated) {
+            toaster.success({ title: "Tenant Modification", body: "Updated Successfully" });
+        }
+        else if ($rootScope.deleted) {
+            toaster.success({ title: "Tenant Deletion", body: "Deleted Successfully" });
+        }
+    }
 }]);
 
 
-angular.module('admin').controller('tenantDetailController', ['$scope', '$routeParams', 'TenantService',
-    function ($scope, $routeParams, TenantService) {
+angular.module('admin').controller('tenantDetailController', ['$scope','$rootScope', '$routeParams','TenantService', function ($scope,$rootScope, $routeParams, TenantService) {
+
+    $rootScope.created = false;
+    $rootScope.deleted = false;
+    $rootScope.updated = false;
 
     if (isNaN($routeParams.id)) {
         $scope.tenant = new TenantService();      // Create a new tenant
@@ -23,12 +39,14 @@ angular.module('admin').controller('tenantDetailController', ['$scope', '$routeP
     $scope.save = function () {
         $scope.tenant.User.Enable = true;
         $scope.tenant.$save(function () {
+            $rootScope.created = true;
             window.location = '#/TenantManagement';
         });
     };
 
     $scope.update = function () {
         $scope.tenant.$update(function () {
+            $rootScope.updated = true;
             window.location.hash = "#/TenantManagement";
         });
     };
@@ -37,12 +55,12 @@ angular.module('admin').controller('tenantDetailController', ['$scope', '$routeP
         decision = confirm("Are you sure you want to delete this tenant?");
         if (decision) {
             $scope.tenant.$delete(function () {
+                $rootScope.deleted = true;
                 window.location.hash = "#/TenantManagement";
             });
         }
     };
-
-       
+      
    //helper function calls server syncronously
      
     function isSubdomainValid(apiUrl) {

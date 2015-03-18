@@ -1,5 +1,26 @@
-﻿angular.module('admin').controller('userDetailController', ['$scope', '$routeParams','UserService', 'TenantService', function ($scope, $routeParams, UserService, TenantService) {
-      
+﻿angular.module('admin').controller('userController', ['$scope', '$rootScope', 'toaster', 'UserService', function ($scope, $rootScope, toaster, UserService) {
+    $scope.users = UserService.query(function () {
+        showNotifications();
+    });
+
+    function showNotifications() {
+        if ($rootScope.createdUser) {
+            toaster.success({ title: "User Creation", body: "Cretaed Successfully" });
+        }
+        else if ($rootScope.updatedUser) {
+            toaster.success({ title: "User Modification", body: "Updated Successfully" });
+        }
+        else if ($rootScope.deletedUser) {
+            toaster.success({ title: "User Deletion", body: "Deleted Successfully" });
+        }
+    }
+}]);
+
+angular.module('admin').controller('userDetailController', ['$scope', '$routeParams','$rootScope','UserService', 'TenantService', function ($scope, $routeParams,$rootScope, UserService, TenantService) {
+        $rootScope.createdUser = false;
+        $rootScope.deletedUser = false;
+        $rootScope.updatedUser = false;
+
         if (isNaN($routeParams.id)) {
             $scope.user = new UserService();  // Create a new user
             $scope.user.Enable = "true";
@@ -21,20 +42,23 @@
 
         $scope.save = function () {
             $scope.user.$save(function () {
+                $rootScope.createdUser = true;
                 window.location.hash = '#/UserManagement';
             });
         };
 
         $scope.update = function () {
             $scope.user.$update(function () {
+                $rootScope.updatedUser = true;
                 window.location.hash = "#/UserManagement";
             });
         };
 
         $scope.delete = function () {
-            decision = confirm("Are you sure you want to delete this tenant?");
+            decision = confirm("Are you sure you want to delete this user?");
             if (decision) {
                 $scope.user.$delete(function () {
+                    $rootScope.deletedUser = true;
                     window.location.hash = "#/UserManagement";
                 });
             }

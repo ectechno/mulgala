@@ -157,6 +157,7 @@
     <Content Include="css\jQueryUI\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="css\jvectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="css\morris\morris.css" />
+    <Content Include="css\toaster.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />
@@ -195,6 +196,7 @@
     <Content Include="js\angular-resource.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
+    <Content Include="js\angular.min.js" />
     <Content Include="js\app.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -493,6 +495,7 @@
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="js\raphael-min.js" />
+    <Content Include="js\toaster.js" />
     <Content Include="SignIn.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -556,6 +559,7 @@
     <Content Include="Models\less\small-box.less" />
     <Content Include="Models\less\timeline.less" />
     <Content Include="Models\less\vars.less" />
+    <Content Include="js\angular-animate.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
