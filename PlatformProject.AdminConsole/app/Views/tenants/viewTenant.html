@@ -33,7 +33,7 @@
                 <input type="radio" id="etenable" name="etenable" ng-value="true" ng-model="tenant.enable" ng-required="!etEnable" />Enable
                 <input type="radio" id="etenable" name="etenable" ng-value="false" ng-model="tenant.enable" style="margin-left:62px" ng-required="!etEnable" />Disable
             </div>
-             <input type="submit" class="btn btn-success btn-lg" value="Update" ng-click="update();" ng-disabled="!editTenant.$valid || isTenantInUse" />
+            <input type="submit" class="btn btn-success btn-lg" value="Update" ng-click="update();" ng-disabled="!editTenant.$valid || isTenantInUse" />
             <input type="button" class="btn btn-danger btn-lg" value="Delete" ng-click="delete();"/>
             <input type="button" class="btn btn-primary btn-lg" value="Cancel" ng-click="goBack();" />
         </form>

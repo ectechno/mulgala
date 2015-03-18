@@ -196,7 +196,6 @@
     <Content Include="js\angular-resource.js" />
     <Content Include="js\angular-route.js" />
     <Content Include="js\angular.js" />
-    <Content Include="js\angular.min.js" />
     <Content Include="js\app.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
